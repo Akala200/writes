@@ -9,11 +9,6 @@ from writers.models import WritersProfile, Rating
 
 class IndexView(TemplateView):
     template_name = 'index.html'
-    model = Rating
-
-
-def index(request):
-    rating = get_user_model().objects.all()
-    return render(request, 'index.html', {'rating': rating})
+    model = 'gugu'
 
 
