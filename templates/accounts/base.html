@@ -56,7 +56,6 @@
 			</div>
           </nav>
           
-          {% block content %}
 
 
 
@@ -75,7 +74,10 @@
 	<script src="{% static 'vendor/tilt/tilt.jquery.min.js' %}"></script>
 
 <!--===============================================================================================-->
-    <script src="{% static 'js/main.js' %}"></script>
+		<script src="{% static 'js/login.js' %}"></script>
+		
+		{% block content %}
+
     
     {% endblock content %}
 

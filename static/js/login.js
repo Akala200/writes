@@ -20,10 +20,6 @@
         return check;
     });
 
-    $('.js-tilt').tilt({
-        scale: 1.1
-    });
-
 
     $('.validate-form .input100').each(function(){
         $(this).focus(function(){
