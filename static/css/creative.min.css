@@ -89,14 +89,14 @@ img::-moz-selection {
   transition: all 0.2s;
 }
 
-#mainNav .navbar-brand {
+#mainNav {
   font-weight: 700;
   text-transform: uppercase;
   color: #F05F40;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 }
 
-#mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
+#mainNav :focus, #mainNav {
   color: #f05f40;
 }
 
@@ -128,10 +128,10 @@ img::-moz-selection {
   #mainNav {
     background-color: #FFF;
   }
-  #mainNav .navbar-brand {
+  #mainNav  {
     color: rgba(255, 255, 255, 0.7);
   }
-  #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
+  #mainNav:focus, #mainNav:hover {
     color: #000;
   }
   #mainNav .navbar-nav > li.nav-item > a.nav-link {
@@ -149,10 +149,10 @@ img::-moz-selection {
     border-bottom: 1px solid rgba(33, 37, 41, 0.1);
     background-color: #fff;
   }
-  #mainNav.navbar-shrink .navbar-brand {
+  #mainNav.navbar-shrink  {
     color: #F05F40;
   }
-  #mainNav.navbar-shrink .navbar-brand:focus, #mainNav.navbar-shrink .navbar-brand:hover {
+  #mainNav.navbar-shrink :focus, #mainNav.navbar-shrink :hover {
     color: #f05f40;
   }
   #mainNav.navbar-shrink .navbar-nav > li.nav-item > a.nav-link,
@@ -477,10 +477,6 @@ span.input-group-addon i {
     border: 1px solid #39D1B4;
   }
   
-  form {
-    background-color: #F05F40;
-    transform: rotateY(0);
-  }
   
   
   fieldset {
