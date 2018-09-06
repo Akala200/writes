@@ -135,14 +135,14 @@
   [ Utility ]*/
   .txt1 {
     font-family: Poppins-Regular;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.5;
     color: #999999;
   }
   
   .txt2 {
     font-family: Poppins-Regular;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.5;
     color: #666666;
   }
@@ -168,11 +168,7 @@
     justify-content: center;
     align-items: center;
     padding: 15px;
-    background: #F05F40;
-    background: -webkit-linear-gradient(-135deg, #F05F40, #F05F40);
-    background: -o-linear-gradient(-135deg, #F05F40, #F05F40);
-    background: -moz-linear-gradient(-135deg, #F05F40, #F05F40);
-    background: linear-gradient(-135deg, #F05F40, #F05F40);
+    background: #f0f2f6;
   }
   
   .wrap-login100 {

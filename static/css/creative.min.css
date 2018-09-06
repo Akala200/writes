@@ -452,20 +452,6 @@ span.input-group-addon i {
    text-align: center;
 }
 
-.hnav:hover, .hnav:focus {
-	color: #cb0076;
-	text-decoration: none;
-    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
-}
-
-.hnav{
-    border-radius: 50px;
-    background: #FB0EB3;
-    color: white;
-    width: 200px;
-    font-size: 20px;
-}
-
   
   hgroup {
     width: 100%;
