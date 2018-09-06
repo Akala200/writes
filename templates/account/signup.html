@@ -7,65 +7,72 @@
 
 
 <div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="{% static 'img/logo.jpg' %}" alt="IMG">
+	<div class="container-login100">
+		<div class="wrap-login100">
+			<div class="login100-pic js-tilt" data-tilt>
+				<img src="{% static 'img/logo.jpg' %}" alt="IMG">
+			</div>
+
+			<form class="login100-form validate-form">
+				<span class="login100-form-title">
+					<h2 id="login-title" style="color: #f05f40">Signup</h2>
+				</span>
+
+				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<input class="input100" type="text" name="email" placeholder="Email">
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+						<i class="fa fa-envelope" aria-hidden="true"></i>
+					</span>
 				</div>
 
-				<form class="login100-form validate-form">
-					<span class="login100-form-title">
-						<h2 id="login-title" style="color: #f05f40">Signup</h2>
+				<div class="wrap-input100 validate-input" data-validate = "Password is required" id="password1">
+					<input class="input100" type="password" name="pass" placeholder="Password">
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+						<i class="fa fa-lock" aria-hidden="true"></i>
 					</span>
+				</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
+				<div class="wrap-input100 validate-input" data-validate = "Confirm your password" id="password2">
+					<input class="input100" type="password" name="pass" placeholder="Confirm password">
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+						<i class="fa fa-lock" aria-hidden="true"></i>
+					</span>
+				</div>
+				
+				<div class="container-login100-form-btn">
+					<button class="login100-form-btn">
+						Signup
+					</button>
+				</div>					
+				
+				<div class="text-center w-full p-t-42 p-b-22">
+					<span class="txt1">
+						Or login with
+					</span>
+				</div>
+				
+				<a href="#" class="btn-face m-b-10" style="float:  left;">
+					<i class="fab fa-facebook-f"></i>
+					Facebook
+				</a>
 
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
+				<a href="#" class="btn-google m-b-10">
+					<img src="{% static 'img/icon-google.png' %}" alt="GOOGLE">
+					Google
+				</a>
 
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Confirm password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-					
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Login
-						</button>
-					</div>					
-
-					<div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
-						</span>
-						<a class="txt2" href="#">
-							Username / Password?
-						</a>
-					</div>					
-
-					<div class="text-center p-t-136">
-						<a class="txt2" href="#">
-							Create your Account
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
-					</div>
-				</form>
-			</div>
+				<div class="text-center p-t-136">
+					<a class="txt2" href="#">
+						Create your Account
+						<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+					</a>
+				</div>
+			</form>
 		</div>
 	</div>
+</div>
 
 	{% endblock content %}
