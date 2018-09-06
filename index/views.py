@@ -9,4 +9,10 @@ from writers.models import WritersProfile, Rating
 
 class IndexView(TemplateView):
     template_name = 'index.html'
-    model = 'gugu'
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['rating'] = get_user_model().objects.all()
+        print(context)
+        return context
