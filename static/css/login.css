@@ -227,7 +227,7 @@ iframe {
   margin-bottom: 10px;
 }
 
-.input100 {
+.input101 {
   font-family: Poppins-Medium;
   font-size: 15px;
   line-height: 1.5;
@@ -525,3 +525,20 @@ iframe {
   color: #EA4335;
 }
 
+#link{
+  font-size: 20px;
+}
+
+.input101 {
+  font-family: Poppins-Medium;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666666;
+
+  display: block;
+  width: 100%;
+  background: #e6e6e6;
+  height: 45px;
+  border-radius: 25px;
+  padding: 0 30px 0 68px;
+}
