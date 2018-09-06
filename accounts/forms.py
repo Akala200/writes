@@ -18,7 +18,8 @@ class SignupuserForm(UserCreationForm):
         fields = ['email']
 
     def signup(self, request, user):
-        pass
+        user.is_user = True
+        user.save()
 
 
 

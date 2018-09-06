@@ -181,7 +181,7 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
-ACCOUNT_ADAPTER = 'accounts.adapter.AccountAdapter'
+#ACCOUNT_ADAPTER = 'accounts.adapter.AccountAdapter'
 
 
 ACCOUNT_FORMS = {'login': 'accounts.forms.LoginuserForm', 'signup': 'accounts.forms.SignupuserForm'}

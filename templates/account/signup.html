@@ -13,56 +13,17 @@
 				<img src="{% static 'img/logo.jpg' %}" alt="IMG">
 			</div>
 
-<<<<<<< HEAD
-				<form class="login100-form validate-form" method="POST" action="{% url 'account_signup' %}">
-						{% csrf_token %}
-					<span class="login100-form-title">
-						<h2 id="login-title" style="color: #f05f40">Signup</h2>
-					</span>
-			
-					{% if form.errors %}
-					{% for error in form.errors %}
-					<p class="text-warning" style="margin-bottom: 20px;margin-left: 10px;color: red;"> {{ error }} </p>
-					{% endfor %}
-					{% endif %}
-
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						{{form.email }}
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						{{ form.password1 }}
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						{{ form.password2 }}
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-					
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Signup
-						</button>
-					</div>					
-=======
 			<form class="login100-form validate-form">
+				{% csrf_token %}
 				<span class="login100-form-title">
 					<h2 id="login-title" style="color: #f05f40">Signup</h2>
 				</span>
+				{% if form.errors %}
+					<p class="text-warning" style="margin-bottom: 20px;margin-left: 10px;color: red;"> Your username and/or password didn't match </p>
+					{% endif %}
 
 				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-					<input class="input100" type="text" name="email" placeholder="Email">
+					{{ form.email }}
 					<span class="focus-input100"></span>
 					<span class="symbol-input100">
 						<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -70,7 +31,7 @@
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Password is required" id="password1">
-					<input class="input100" type="password" name="pass" placeholder="Password">
+						{{ form.password1 }}
 					<span class="focus-input100"></span>
 					<span class="symbol-input100">
 						<i class="fa fa-lock" aria-hidden="true"></i>
@@ -78,7 +39,7 @@
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Confirm your password" id="password2">
-					<input class="input100" type="password" name="pass" placeholder="Confirm password">
+						{{ form.password2 }}
 					<span class="focus-input100"></span>
 					<span class="symbol-input100">
 						<i class="fa fa-lock" aria-hidden="true"></i>
@@ -101,7 +62,6 @@
 					<i class="fab fa-facebook-f"></i>
 					Facebook
 				</a>
->>>>>>> 10f9336eb35c86a86b0d9d0b3585ee7b3d7ee77b
 
 				<a href="#" class="btn-google m-b-10">
 					<img src="{% static 'img/icon-google.png' %}" alt="GOOGLE">
