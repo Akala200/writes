@@ -180,9 +180,11 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.SignupForm'
 
-ACCOUNT_FORMS = {'login': 'accounts.forms.LoginuserForm'  }
+ACCOUNT_ADAPTER = 'accounts.adapter.AccountAdapter'
+
+
+ACCOUNT_FORMS = {'login': 'accounts.forms.LoginuserForm', 'signup': 'accounts.forms.SignupuserForm'}
 
 LOGIN_REDIRECT_URL = '/'
 
