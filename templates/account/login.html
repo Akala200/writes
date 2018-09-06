@@ -17,7 +17,7 @@
 						<h2 id="login-title" style="color: #f05f40">Member Login</h2>
 					</span>
 					{% if form.errors %}
-					<p class="text-warning"> Your username and/or password didn't match </p>
+					<p class="text-warning" style="margin-bottom: 20px;margin-left: 10px;color: red;"> Your username and/or password didn't match </p>
 					{% endif %}
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						{{ form.login }}
