@@ -10,5 +10,3 @@ from writers.models import WritersProfile, Rating
 class IndexView(TemplateView):
     template_name = 'index.html'
     model = 'gugu'
-
-

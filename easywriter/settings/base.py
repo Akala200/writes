@@ -182,6 +182,8 @@ SOCIALACCOUNT_PROVIDERS = {
 
 ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.SignupForm'
 
+ACCOUNT_FORMS = {'login': 'accounts.forms.LoginuserForm'  }
+
 LOGIN_REDIRECT_URL = '/'
 
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login'
