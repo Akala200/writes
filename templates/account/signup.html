@@ -3,7 +3,31 @@
 {% load static %}
 {% load i18n %}
 {% load account socialaccount %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #f05f40 !important;" id="mainNav">
+		<div class="container">
+		  <a class="navbar-brand js-scroll-trigger" href="#page-top"></a>
+		  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-color:  #fff;">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+			  <li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="{% url 'index' %}">Home</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="{% url 'account_login' %}">Login</a>
+			  </li>
+			</ul>
+		  </div>
+		</div>
+				</nav>
+
+	{% endblock %}
+	
 {% block content %} 
+
 
 
 <div class="limiter">
@@ -13,13 +37,19 @@
 				<img src="{% static 'img/logo.jpg' %}" alt="IMG">
 			</div>
 
-			<form class="login100-form validate-form">
+			<form class="login100-form validate-form" method="POST" action="{% url 'account_signup' %}">
+				{% csrf_token %}
 				<span class="login100-form-title">
 					<h2 id="login-title" style="color: #f05f40">Signup</h2>
 				</span>
+				{% if form.errors %}
+				{% for error in form.errors %}
+					<p class="text-warning" style="margin-bottom: 20px;margin-left: 10px;color: red;">{{ error }} </p>
+					{% endfor %}
+					{% endif %}
 
 				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-					<input class="input100" type="text" name="email" placeholder="Email">
+					{{ form.email }}
 					<span class="focus-input100"></span>
 					<span class="symbol-input100">
 						<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -27,7 +57,7 @@
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Password is required" id="password1">
-					<input class="input100" type="password" name="pass" placeholder="Password">
+						{{ form.password1 }}
 					<span class="focus-input100"></span>
 					<span class="symbol-input100">
 						<i class="fa fa-lock" aria-hidden="true"></i>
@@ -35,7 +65,7 @@
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Confirm your password" id="password2">
-					<input class="input100" type="password" name="pass" placeholder="Confirm password">
+						{{ form.password2 }}
 					<span class="focus-input100"></span>
 					<span class="symbol-input100">
 						<i class="fa fa-lock" aria-hidden="true"></i>
@@ -53,13 +83,13 @@
 						Or login with
 					</span>
 				</div>
-				
-				<a href="#" class="btn-face m-b-10" style="float:  left;">
+					<a href="{% provider_login_url 'facebook' method='oauth2' %}"  class="btn-face m-b-10" style="float:  left;">
 					<i class="fab fa-facebook-f"></i>
 					Facebook
 				</a>
 
-				<a href="#" class="btn-google m-b-10">
+						<a href="{% provider_login_url 'google' method='oauth2' %}" class="btn-google m-b-10" >
+					
 					<img src="{% static 'img/icon-google.png' %}" alt="GOOGLE">
 					Google
 				</a>
