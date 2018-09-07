@@ -17,4 +17,20 @@ class IndexView(TemplateView):
     template_name = 'index.html'
 
 
+class Faq(TemplateView):
+    template_name = 'pages/faq.html'
+
+
+class HowitWorks(TemplateView):
+    template_name = 'pages/how_it_works.html'
+
+
+class Writers(TemplateView):
+    template_name = 'pages/writers.html'
+
+
+class Reviews(TemplateView):
+    template_name = 'pages/review.html'
+
+
 
