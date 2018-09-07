@@ -2,26 +2,21 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
-from allauth.account.forms import LoginForm, SignupForm
+from allauth.account.forms import LoginForm
+from allauth.account.forms import SignupForm
 
 
-class SignupuserForm(UserCreationForm):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'input100', 'placeholder': 
-    'Email'}))
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input100', 'placeholder': 
-    'Password'}))
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'input100', 'placeholder': 
-    'Password'}))
+class SignUpForm(SignupForm):
 
-    class Meta:
-        model = get_user_model()
-        fields = ['email']
+    def __init__(self, *args, **kwargs):
+        super(SignUpForm, self).__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs.update({'class': 'input100', 'placeholder': 'Email'})
+        self.fields['password1'].widget.attrs.update({'class': 'input100', 'placeholder': 'Password'})
+        self.fields['password2'].widget.attrs.update({'class': 'input100', 'placeholder': 'Confirm-password'})
 
     def signup(self, request, user):
-        user.is_user = True
+        user.is_writer = True
         user.save()
-
-
 
 class LoginuserForm(LoginForm):
     def __init__(self, *args, **kwargs):

@@ -13,13 +13,15 @@
 				<img src="{% static 'img/logo.jpg' %}" alt="IMG">
 			</div>
 
-			<form class="login100-form validate-form">
+			<form class="login100-form validate-form" method="POST" action="{% url 'account_signup' %}">
 				{% csrf_token %}
 				<span class="login100-form-title">
 					<h2 id="login-title" style="color: #f05f40">Signup</h2>
 				</span>
 				{% if form.errors %}
-					<p class="text-warning" style="margin-bottom: 20px;margin-left: 10px;color: red;"> Your username and/or password didn't match </p>
+				{% for error in form.errors %}
+					<p class="text-warning" style="margin-bottom: 20px;margin-left: 10px;color: red;">{{ error }}Your username and/or password didn't match </p>
+					{% endfor %}
 					{% endif %}
 
 				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
@@ -57,13 +59,13 @@
 						Or login with
 					</span>
 				</div>
-				
-				<a href="#" class="btn-face m-b-10" style="float:  left;">
+					<a href="{% provider_login_url 'facebook' method='oauth2' %}"  class="btn-face m-b-10" style="float:  left;">
 					<i class="fab fa-facebook-f"></i>
 					Facebook
 				</a>
 
-				<a href="#" class="btn-google m-b-10">
+						<a href="{% provider_login_url 'google' method='oauth2' %}" class="btn-google m-b-10" >
+					
 					<img src="{% static 'img/icon-google.png' %}" alt="GOOGLE">
 					Google
 				</a>

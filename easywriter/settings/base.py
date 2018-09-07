@@ -183,8 +183,10 @@ SOCIALACCOUNT_PROVIDERS = {
 
 #ACCOUNT_ADAPTER = 'accounts.adapter.AccountAdapter'
 
+#ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.SignUpForm'
 
-ACCOUNT_FORMS = {'login': 'accounts.forms.LoginuserForm', 'signup': 'accounts.forms.SignupuserForm'}
+
+ACCOUNT_FORMS = {'signup': 'accounts.forms.SignUpForm', 'login': 'accounts.forms.LoginuserForm'}
 
 LOGIN_REDIRECT_URL = '/'
 
