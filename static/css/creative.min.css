@@ -125,6 +125,13 @@ img::-moz-selection {
 }
 
 @media (min-width: 992px) {
+
+  .set{
+    padding-left: 100px;
+     padding-right: 250px;
+     padding-top: 100px;
+     padding-bottom:  30px;
+  }
   #mainNav {
     background-color: #FFF;
   }
@@ -162,6 +169,21 @@ img::-moz-selection {
   #mainNav.navbar-shrink .navbar-nav > li.nav-item > a.nav-link:hover,
   #mainNav.navbar-shrink .navbar-nav > li.nav-item > a.nav-link:focus:hover {
     color: #000;
+  }
+
+  .numberCircle {
+    width: 46px;
+    line-height: 46px;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 25px;
+    border: 2px solid #666;
+    float: left;
+  }
+  
+  .circle-h1{
+    margin-left: 24px;
+    margin-top: 10px;
   }
 }
 
@@ -201,6 +223,13 @@ header.masthead p {
     min-height: 650px;
     padding-top: 0;
     padding-bottom: 0;
+  }
+
+  header.how-to-order {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 450px !important;
+    min-height: 500px;
   }
   header.masthead h1 {
     font-size: 3rem;
@@ -910,7 +939,59 @@ section .section-title {
 }
 
 
-@media (min-width: 975px) {
+@media only screen and (max-width: 400px) and (min-width: 300px)  {
+
+  .numberCircle {
+    width: 46px;
+    line-height: 30px;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 25px;
+    border: 2px solid #666;
+    float: left;
+  
+  }
+  .row{
+    margin-top: 20px;
+  }
+  
+  .circle-h1{
+
+    margin-left: 24px;
+    margin-top: 10px;
+    font-size: 22px;
+  }
+  .sect{
+    padding: 13px;
+  }
+  
+}
+
+
+@media only screen and (max-width: 600px) and (min-width: 401px)  {
+
+  .numberCircle {
+    width: 46px;
+    line-height: 46px;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 25px;
+    border: 2px solid #666;
+    float: left;
+  }
+  .row{
+    margin-top: 20px;
+  }
+  
+  .circle-h1{
+
+    margin-left: 24px;
+    margin-top: 10px;
+    font-size: 24px;
+  }
+  .sect{
+    padding: 25px;
+  }
   
 }
 
@@ -922,4 +1003,247 @@ section .section-title {
     margin-top: 50px;
     margin-bottom: 50px;
   }
+}
+
+@media only screen and (max-width: 800px) and (min-width: 601px)  {
+  .numberCircle {
+    width: 46px;
+    line-height: 46px;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 25px;
+    border: 2px solid #666;
+    float: left;
+  }
+  .row{
+    margin-top: 20px;
+  }
+  
+  .circle-h1{
+
+    margin-left: 24px;
+    margin-top: 10px;
+    font-size: 24px;
+  }
+  .sect{
+    padding: 25px;
+  }
+}
+
+@media only screen and (max-width: 1500px) and (min-width: 801px)  {
+  .numberCircle {
+    width: 46px;
+    line-height: 46px;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 25px;
+    border: 2px solid #666;
+    float: left;
+  }
+  .row{
+    margin-top: 20px;
+  }
+  
+  .circle-h1{
+
+    margin-left: 24px;
+    margin-top: 10px;
+    font-size: 24px;
+  }
+  .sect{
+    padding: 65px;
+  }
+}
+
+
+.rating-block{
+	background-color:#FAFAFA;
+	border:1px solid #EFEFEF;
+	padding:15px 15px 20px 15px;
+	border-radius:3px;
+}
+.bold{
+	font-weight:700;
+}
+.padding-bottom-7{
+	padding-bottom:7px;
+}
+
+.review-block{
+	background-color:#FAFAFA;
+	border:1px solid #EFEFEF;
+	padding:15px;
+	border-radius:3px;
+	margin-bottom:15px;
+}
+.review-block-name{
+	font-size:12px;
+	margin:10px 0;
+}
+.review-block-date{
+	font-size:12px;
+}
+.review-block-rate{
+	font-size:13px;
+	margin-bottom:15px;
+}
+.review-block-title{
+	font-size:15px;
+	font-weight:700;
+	margin-bottom:10px;
+}
+.review-block-description{
+	font-size:13px;
+}
+
+
+
+.numberCircle {
+  background: #F05F40;
+  font-weight: 400;
+  font-size: 18px;
+  color: #fff;
+  letter-spacing: 0;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+
+header.review {
+  padding-top: 30px;
+  padding-bottom: 0;
+  height: 300px !important;
+}
+header.masthead h1 {
+  font-size: 3rem;
+}
+
+@media only screen and (max-width: 500px)  {
+
+  
+header.review {
+  padding-top: 30px;
+  padding-bottom: 0;
+  height: 450px !important;
+  min-height: 500px;
+}
+header.masthead h1 {
+  font-size: 3rem;
+}
+
+}
+
+
+
+
+.panel-shadow {
+  box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;
+}
+.panel-white {
+border: 1px solid #dddddd;
+}
+.panel-white  .panel-heading {
+color: #333;
+background-color: #fff;
+border-color: #ddd;
+}
+.panel-white  .panel-footer {
+background-color: #fff;
+border-color: #ddd;
+}
+
+.post .post-heading {
+height: 95px;
+padding: 20px 15px;
+}
+.post .post-heading .avatar {
+width: 60px;
+height: 60px;
+display: block;
+margin-right: 15px;
+}
+.post .post-heading .meta .title {
+margin-bottom: 0;
+}
+.post .post-heading .meta .title a {
+color: black;
+}
+.post .post-heading .meta .title a:hover {
+color: #aaaaaa;
+}
+.post .post-heading .meta .time {
+margin-top: 8px;
+color: #999;
+}
+.post .post-image .image {
+width: 100%;
+height: auto;
+}
+.post .post-description {
+padding: 15px;
+}
+.post .post-description p {
+font-size: 14px;
+}
+.post .post-description .stats {
+margin-top: 20px;
+}
+.post .post-description .stats .stat-item {
+display: inline-block;
+margin-right: 15px;
+}
+.post .post-description .stats .stat-item .icon {
+margin-right: 8px;
+}
+.post .post-footer {
+border-top: 1px solid #ddd;
+padding: 15px;
+}
+.post .post-footer .input-group-addon a {
+color: #454545;
+}
+.post .post-footer .comments-list {
+padding: 0;
+margin-top: 20px;
+list-style-type: none;
+}
+.post .post-footer .comments-list .comment {
+display: block;
+width: 100%;
+margin: 20px 0;
+}
+.post .post-footer .comments-list .comment .avatar {
+width: 35px;
+height: 35px;
+}
+.post .post-footer .comments-list .comment .comment-heading {
+display: block;
+width: 100%;
+}
+.post .post-footer .comments-list .comment .comment-heading .user {
+font-size: 14px;
+font-weight: bold;
+display: inline;
+margin-top: 0;
+margin-right: 10px;
+}
+.post .post-footer .comments-list .comment .comment-heading .time {
+font-size: 12px;
+color: #aaa;
+margin-top: 0;
+display: inline;
+}
+.post .post-footer .comments-list .comment .comment-body {
+margin-left: 50px;
+}
+.post .post-footer .comments-list .comment > .comments-list {
+margin-left: 50px;
 }
