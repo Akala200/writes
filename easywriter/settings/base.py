@@ -186,7 +186,8 @@ SOCIALACCOUNT_PROVIDERS = {
 #ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.SignUpForm'
 
 
-ACCOUNT_FORMS = {'signup': 'accounts.forms.SignUpForm', 'login': 'accounts.forms.LoginuserForm'}
+ACCOUNT_FORMS = {'signup': 'accounts.forms.SignUpForm', 'login': 'accounts.forms.LoginuserForm',
+'reset_password': 'accounts.forms.ResetuserPasswordForm'}
 
 LOGIN_REDIRECT_URL = '/'
 
