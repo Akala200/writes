@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.shortcuts import render, redirect, reverse
 from django.conf import settings
 from django.contrib import messages
@@ -18,8 +20,6 @@ def process_payment(request):
     form = PaymentForm(request.POST)
     if request.method == "POST" and form.is_valid():
         request.session['amount'] = form.cleaned_data['amount']
-       
-        request.session.set_expiry(300)
         return redirect(reverse('customer:payment-form'))
   
     else:
@@ -31,7 +31,6 @@ def payment_button(request):
         stripe_key = settings.STRIPE_PUBLIC_KEY
         amount = request.session['amount']
         request.session['payment_process'] = True
-        request.session.set_expiry(300)
         return render(request, 'customer/process_payment.html', context={
             'stripe_key': stripe_key,
             'amount': amount})
@@ -68,9 +67,13 @@ def charge_payment(request):
                 status = True
     
             )
-            update_user_balance = WalletBalance.objects.filter(balance_id=request.user).update(F('balance') + amount)
+            update_user_balance = WalletBalance.objects.get(balance_id=request.user)
+            update_user_balance.balance += Decimal(amount)
+            update_user_balance.save()
             request.session['payment_completed'] = True
-            request.session.set_expiry(300)
+            del request.session['amount']
+            del request.session['payment_process']
+            
             return redirect(reverse('customer:payment_completed'))
     return HttpResponseBadRequest('something happened')
 

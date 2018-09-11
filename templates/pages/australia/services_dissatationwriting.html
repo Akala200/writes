@@ -1,3 +1,8 @@
+  {% extends 'base.html' %}
+  {% load static %}
+
+  {% block content %}
+  
   <!--================Home Banner Area =================-->
   <section class="home_banner_area" style="height: 500px;">
         <div class="banner_inner">
@@ -96,7 +101,7 @@
                       </div>
                       <div class="col-lg-5">
                           <div class="row">
-                              <img src="img/computer1.gif" id="giff" class="img-fluid">
+                              <img src="{% static 'img/computer1.gif' %}" id="giff" class="img-fluid">
                           </div>
                           <div class="row" style="margin-top: 50px;">
                                 <div class="col-lg-12 text-center">
@@ -323,5 +328,6 @@
               </div>
           </section>
               
-                 
+          {% endblock content %}
+        
            

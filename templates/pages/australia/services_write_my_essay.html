@@ -1,6 +1,7 @@
 
-
-
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 
 
      <!--================Home Banner Area =================-->
@@ -32,7 +33,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="feature_item">
                                 <div class="f_icon">
-                                    <img src="img/icon/f-icon-4.png" alt="">
+                                    <img src="{% static 'img/icon/f-icon-4.png' %}" alt="">
                                 </div>
                                 <h4>Video Support</h4>
                                 <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
@@ -41,7 +42,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="feature_item">
                                 <div class="f_icon">
-                                    <img src="img/icon/f-icon-5.png" alt="">
+                                    <img src="{% static 'img/icon/f-icon-5.png' %}" alt="">
                                 </div>
                                 <h4>Fast Support</h4>
                                 <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
@@ -50,7 +51,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="feature_item">
                                 <div class="f_icon">
-                                    <img src="img/icon/f-icon-6.png" alt="">
+                                    <img src="{% static 'img/icon/f-icon-6.png' %}" alt="">
                                 </div>
                                 <h4>Download test</h4>
                                 <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
@@ -61,7 +62,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="feature_item">
                                 <div class="f_icon">
-                                    <img src="img/icon/f-icon-4.png" alt="">
+                                    <img src="{% static 'img/icon/f-icon-4.png' %}" alt="">
                                 </div>
                                 <h4>Video Support</h4>
                                 <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
@@ -70,7 +71,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="feature_item">
                                 <div class="f_icon">
-                                    <img src="img/icon/f-icon-5.png" alt="">
+                                    <img src="{% static 'img/icon/f-icon-5.png' %}" alt="">
                                 </div>
                                 <h4>Fast Support</h4>
                                 <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
@@ -79,7 +80,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="feature_item">
                                 <div class="f_icon">
-                                    <img src="img/icon/f-icon-6.png" alt="">
+                                    <img src="{% static 'img/icon/f-icon-6.png' %}" alt="">
                                 </div>
                                 <h4>Download test</h4>
                                 <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
@@ -99,7 +100,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <img class="img-fluid" src="img/interior-2.png" alt="">
+                                <img class="img-fluid" src="{% static 'img/interior-2.png' %}" alt="">
                             </div>
                         </div>
                     </div>
@@ -247,3 +248,5 @@
                             </div>
                           </div>
                       </section>
+
+{% endblock content %}

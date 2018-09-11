@@ -14,7 +14,7 @@
         <h2>Essay delimma?<br />Hire a Writer.</h2>
         <p style="font-size: 24px;">We’ll make the grade</p>
         <a class="banner_btn btn-header" id="findwriter" href="#">Find Your Writer</a>
-        <a class="banner_btn btn-header" id="signup" href="#">Signup</a>
+        <a class="banner_btn btn-header" id="signup" href="{% url 'account_signup' %}">Signup</a>
       </div>
       <div class="col-lg-3">
           <div class="container">  
@@ -36,7 +36,7 @@
       <div class="feature_inner row">
         <div class="col-lg-3 col-md-6">
           <div class="feature_item">
-            <img src="img/icon/f-icon-1.png" alt="">
+            <img src="{% static 'img/icon/f-icon-1.png' %}" alt="">
              <p class="p1">Custom Essay (any type)</p>
                        <p class="p1">Admission Essay</p>
                        <p class="p1">Annotated Bibliography</p>
@@ -46,7 +46,7 @@
         </div>
         <div class="col-lg-3 col-md-6">
           <div class="feature_item">
-            <img src="img/icon/f-icon-1.png" alt="">
+            <img src="{% static 'img/icon/f-icon-1.png' %}" alt="">
         <p class="p1">Business Plan</p>
         <p class="p1">Case Study</p>
         <p class="p1">Coursework</p>
@@ -56,7 +56,7 @@
         </div>
         <div class="col-lg-3 col-md-6">
           <div class="feature_item">
-            <img src="img/icon/f-icon-1.png" alt="">
+            <img src="{% static 'img/icon/f-icon-1.png' %}" alt="">
         <p class="p1">Literature Review</p>
         <p class="p1">Multiple Choice Questions</p>
         <p class="p1">Presentation or Speech</p>
@@ -66,7 +66,7 @@
         </div>
         <div class="col-lg-3 col-md-6">
           <div class="feature_item">
-            <img src="img/icon/f-icon-1.png" alt="">
+            <img src="{% static 'img/icon/f-icon-1.png' %}" alt="">
         <p class="p1">Literature Review</p>
         <p class="p1">Multiple Choice Questions</p>
         <p class="p1">Presentation or Speech</p>
@@ -142,7 +142,7 @@
               <div class="col-lg-4 col-md-6">
                   <div class="feature_item">
                       <div class="f_icon">
-                          <img src="img/icon/f-icon-4.png" alt="">
+                          <img src="{% static 'img/icon/f-icon-4.png' %}" alt="">
                       </div>
                       <h4>Video Support</h4>
                       <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
@@ -156,17 +156,11 @@
                       <h4>Fast Support</h4>
                       <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
                   </div>
-<<<<<<< HEAD
-                  <div class="col-lg-5">
-                      <div class="row">
-                          <img src="{% static 'img/keyboard.gif' %}" id="giff" class="img-fluid">
-=======
               </div>
               <div class="col-lg-4 col-md-6">
                   <div class="feature_item">
                       <div class="f_icon">
-                          <img src="img/icon/f-icon-6.png" alt="">
->>>>>>> 50c64b1ccf8fde237d3209adc5dc20afa5e3bfef
+                          <img src="{% static 'img/icon/f-icon-6.png' %}" alt="">
                       </div>
                       <h4>Download test</h4>
                       <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
@@ -177,7 +171,7 @@
               <div class="col-lg-4 col-md-6">
                   <div class="feature_item">
                       <div class="f_icon">
-                          <img src="img/icon/f-icon-4.png" alt="">
+                          <img src="{% static 'img/icon/f-icon-4.png' %}" alt="">
                       </div>
                       <h4>Video Support</h4>
                       <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
@@ -186,7 +180,7 @@
               <div class="col-lg-4 col-md-6">
                   <div class="feature_item">
                       <div class="f_icon">
-                          <img src="img/icon/f-icon-5.png" alt="">
+                          <img src="{% static 'img/icon/f-icon-5.png' %}" alt="">
                       </div>
                       <h4>Fast Support</h4>
                       <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
@@ -195,7 +189,7 @@
               <div class="col-lg-4 col-md-6">
                   <div class="feature_item">
                       <div class="f_icon">
-                          <img src="img/icon/f-icon-6.png" alt="">
+                          <img src="{% static 'img/icon/f-icon-6.png' %}" alt="">
                       </div>
                       <h4>Download test</h4>
                       <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
@@ -221,126 +215,6 @@
         </div>
 </section>
 
-<<<<<<< HEAD
-      <section class="container-fluid" style="background-color: #f0f2f6;">
-            <div class="container" id="expert2">
-                <div class="row">
-                    <div class="col-lg-7">
-                          <h2 style="color:  #7249fb;margin-bottom: 30px;margin-left: 30px;margin-top: 40px;">Meet Our Expert Writers</h2>
-                        <ul class="ul--sm _wmax-530">
-                            <li class="h--sm">
-                                <h2>100+ Writers Always Online</h2>
-                                <p class="p--sm">We work with hundreds of writers, most of whom are always available to take your order. Find an expert who specializes in your subject area!</p>
-                            </li>
-                            <li class="h--sm" style="margin-bottom: 60px; margin-top: 60px;">
-                                  <h2>Dissertations Written by Ph.D. Graduates</h2>
-                                  <p class="p--sm">Dissertations require a high level of skills and attentiveness. Such tasks fall into the hands of our Ph.D. graduates who have all the experience necessary to write a proper dissertation!</p>
-                              </li>
-                              <li class="h--sm" style="margin-bottom: 60px;">
-                                      <h2>Close Collaboration
-                                          </h2>
-                                      <p class="p--sm">Our writers will collaborate and chat with you online to provide the best dissertation writing services possible! Just tell us if you want to get tutoring service from us!</p>
-                                  </li>
-                                  <li class="h--sm">
-                                          <h2>Access to Scientific Sources and Analytical Software
-                                              </h2>
-                                          <p class="p--sm">Each EssayPro writer has access to numerous scientific databases, as well as analytical software, such as SPSS or Stata, which means they will be able to handle any tasks for you!</p>
-                                      </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="row">
-                            <img src="{% static 'img/computer1.gif' %}" id="giff" class="img-fluid">
-                        </div>
-                        <div class="row" style="margin-top: 50px;">
-                              <div class="col-lg-12 text-center">
-                                  <a class="banner_btn btn-header" id="findwriter" href="#">Find A Writer</a>
-                              </div>
-                          </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="service_feature element_service">
-                <div class="container">
-                    <div class="row feature_inner">
-                        <div class="col-lg-3 col-md-3 col-sm-6">
-                            <div class="feature_item">
-                                        <div class="single_sidebar_widget author_widget">
-                                            <img class="author_img rounded-circle" src="{% static 'img/blog/author.png' %}" alt="">
-                                            <h4>Charlie Barber</h4>
-                                            <p>Orders Completed</p>
-                                            <div class="social_icon">
-                                                <p>454</p>
-                                            </div>
-                                            <p>Boot camps have its supporters andit sdetractors.</p>
-                                            <div class="br"></div>
-                                        </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6">
-                            <div class="feature_item">
-                                    <div class="single_sidebar_widget author_widget">
-                                            <img class="author_img rounded-circle" src="{% static 'img/blog/author.png' %}" alt="">
-                                            <h4>Charlie Barber</h4>
-                                            <p>Orders Completed</p>
-                                            <div class="social_icon">
-                                                <p>454</p>
-                                            </div>
-                                            <p>Boot camps have its supporters andit sdetractors.</p>
-                                            <div class="br"></div>
-                                        </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6">
-                            <div class="feature_item">
-                                    <div class="single_sidebar_widget author_widget">
-                                            <img class="author_img rounded-circle" src="{% static 'img/blog/author.png' %}" alt="">
-                                            <h4>Charlie Barber</h4>
-                                            <p>Orders Completed</p>
-                                            <div class="social_icon">
-                                                <p>454</p>
-                                            </div>
-                                            <p>Boot camps have its supporters andit sdetractors.</p>
-                                            <div class="br"></div>
-                                        </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-3 col-sm-6">
-                                <div class="feature_item">
-                                        <div class="single_sidebar_widget author_widget">
-                                                <img class="author_img rounded-circle" src="{% static 'img/blog/author.png' %}" alt="">
-                                                <h4>Charlie Barber</h4>
-                                                <p>Orders Completed</p>
-                                                <div class="social_icon">
-                                                        <p>454</p>
-                                                </div>
-                                                <p>Boot camps have its supporters andit sdetractors.</p>
-                                                <div class="br"></div>
-                                            </div>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </section>
-
-
-        
-   
-
-
-      <section id="dissertation" class="container-fluid">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-4 col-md-6 text-center">
-                  <div class="service-box mt-5 mx-auto">
-                    <i class="fa fa-4x fa-diamond text-primary mb-3 sr-icons"></i>
-                    <h5 class="mb-3">Any Deadline - Any Subject</h5>
-                    <p class="mb-0">Our professional paper writers can complete any assignment, regardless of topic or difficulty.</p>
-                  </div>
-=======
 
 
 <section class="service_feature element_service">
@@ -354,7 +228,7 @@
       <div class="col-lg-3 col-md-3 col-sm-6">
         <div class="feature_item">
               <div class="single_sidebar_widget author_widget">
-                <img class="author_img rounded-circle" src="img/blog/author.png" alt="">
+                <img class="author_img rounded-circle" src="{% static 'img/blog/author.png' %}" alt="">
                 <h4>Charlie Barber</h4>
                 <p>Orders Completed</p>
                 <div class="social_icon">
@@ -368,12 +242,11 @@
       <div class="col-lg-3 col-md-3 col-sm-6">
         <div class="feature_item">
             <div class="single_sidebar_widget author_widget">
-                <img class="author_img rounded-circle" src="img/blog/author.png" alt="">
+                <img class="author_img rounded-circle" src="{% static 'img/blog/author.png'' %}" alt="">
                 <h4>Charlie Barber</h4>
                 <p>Orders Completed</p>
                 <div class="social_icon">
                   <p>454</p>
->>>>>>> 50c64b1ccf8fde237d3209adc5dc20afa5e3bfef
                 </div>
                 <p>Boot camps have its supporters andit sdetractors.</p>
                 <div class="br"></div>
@@ -383,7 +256,7 @@
       <div class="col-lg-3 col-md-3 col-sm-6">
         <div class="feature_item">
             <div class="single_sidebar_widget author_widget">
-                <img class="author_img rounded-circle" src="img/blog/author.png" alt="">
+                <img class="author_img rounded-circle" src="{% static 'img/blog/author.png' %}" alt="">
                 <h4>Charlie Barber</h4>
                 <p>Orders Completed</p>
                 <div class="social_icon">
@@ -398,7 +271,7 @@
       <div class="col-lg-3 col-md-3 col-sm-6">
           <div class="feature_item">
               <div class="single_sidebar_widget author_widget">
-                  <img class="author_img rounded-circle" src="img/blog/author.png" alt="">
+                  <img class="author_img rounded-circle" src="{% static 'img/blog/author.png' %}" alt="">
                   <h4>Charlie Barber</h4>
                   <p>Orders Completed</p>
                   <div class="social_icon">
@@ -415,13 +288,11 @@
 
 
 
-<<<<<<< HEAD
-=======
 <section class="container-fluid s-7"style="padding-top: 80px; padding-bottom: 20px; height: 450px;">
     <div class="container">
       <div class="row">
          <div class="col-lg-6">
-         <img src="img/face.png" class="img-fluid">
+         <img src="{% static 'img/face.png' %}" class="img-fluid">
          </div>
          <div class="col-lg-6">
          <div class="row">
@@ -444,7 +315,6 @@
     </div>
     </section>
 <!--================End Testimonials Area =================-->
->>>>>>> 50c64b1ccf8fde237d3209adc5dc20afa5e3bfef
 
 <section class="testimonials_area p_120">
   <div class="container">
@@ -456,7 +326,7 @@
         <div class="testi_item">
           <div class="media">
             <div class="d-flex">
-              <img src="img/testimonials/testi-1.png" alt="">
+              <img src="{% static 'img/testimonials/testi-1.png' %}" alt="">
             </div>
             <div class="media-body">
               <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
@@ -470,7 +340,7 @@
         <div class="testi_item">
           <div class="media">
             <div class="d-flex">
-              <img src="img/testimonials/testi-2.png" alt="">
+              <img src="{% static 'img/testimonials/testi-2.png'' %}" alt="">
             </div>
             <div class="media-body">
               <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
@@ -483,7 +353,7 @@
     </div>
     <div class="row">
       <div class="col text-center" style="margin-top: 90px;">
-          <a class="banner_btn success-border circle btn-header" href="#">Explore Now</a>
+          <a class="banner_btn success-border circle btn-header" href="{% url 'reviews' %}">Explore Now</a>
       </div>
     </div>
   </div>
