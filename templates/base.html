@@ -1,105 +1,93 @@
 
 {% load static %}
 
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="img/favicon.png" type="image/png">
+        <title>Essay Kitten</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="vendors/linericon/style.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+        <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css">
+        <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
+        <link rel="stylesheet" href="vendors/animate-css/animate.css">
+        <link rel="stylesheet" href="vendors/popup/magnific-popup.css">
+        <!-- main css -->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/responsive.css">
+    </head>
+    <body data-spy="scroll" data-target="#mainNav" data-offset="70">
 
-  <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Writer</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-
-    <!-- Custom fonts for this template -->
-    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-
-    <!-- Plugin CSS -->
-    <link href="{% static 'vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href= "{% static 'css/creative.min.css' %}" rel="stylesheet">
-
-  </head>
-
-  <body id="page-top">
     {% block navbar %}
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #00688B !important;" id="mainNav">
+    <!--================Header Menu Area =================-->
+    <header class="header_area">
+        <div class="main_menu" id="mainNav" style="
+        background-image: -webkit-linear-gradient(0deg, #bc2bff 0%, #7249fb 100%);
+    ">
+          <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top"></a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-color:  #fff;">
-          <span class="navbar-toggler-icon"></span>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <a class="navbar-brand logo_h" href="index.html"><img src="img/.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{% url 'writers' %}">Writers</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{% url 'how-it-works' %}">How it works</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle js-scroll-trigger" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Services
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Essay Writing Service</a>
-                <a class="dropdown-item" href="#">Custom Essay Writing</a>
-                <a class="dropdown-item" href="#">Disstertation Writing Services</a>
-                <a class="dropdown-item" href="#">Research Paper Writing</a>
-                <a class="dropdown-item" href="#">Term Paper Writing</a>
-                <a class="dropdown-item" href="#">Write My Essay</a>
-                <a class="dropdown-item" href="#">Admission Essay Writing</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{% url 'reviews' %}">Reviews</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{% url 'faq' %}">FAQ</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle js-scroll-trigger" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  About us
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Essay Writing Service</a>
-                  <a class="dropdown-item" href="#">Custom Essay Writing</a>
-                  <a class="dropdown-item" href="#">Disstertation Writing Services</a>
-                  <a class="dropdown-item" href="#">Research Paper Writing</a>
-                  <a class="dropdown-item" href="#">Term Paper Writing</a>
-                  <a class="dropdown-item" href="#">Write My Essay</a>
-                  <a class="dropdown-item" href="#">Admission Essay Writing</a>
-                </div>
-              </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#">Blog</a>
-            </li>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+          <ul class="nav navbar-nav menu_nav ml-auto">
+            <li class="nav-item active"><a class="nav-link" href="#home">WRITER</a></li> 
+            <li class="nav-item"><a class="nav-link" href="#feature">HOW IT WORKS</a></li> 
+            <li class="nav-item submenu dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SERVICE</a>
+              <ul class="dropdown-menu">
+                <li class="nav-item"><a class="nav-link" href="blog.html">Essay Writing</a></li>
+                <li class="nav-item"><a class="nav-link" href="single-blog.html">Admission Essay</a></li>
+                <li class="nav-item"><a class="nav-link" href="elements.html">Custom Essay</a></li>
+                <li class="nav-item"><a class="nav-link" href="elements.html">Disstertation Essay</a></li>
+                <li class="nav-item"><a class="nav-link" href="elements.html">Research Paper</a></li>
+                <li class="nav-item"><a class="nav-link" href="elements.html">Term Paper</a></li>
+                <li class="nav-item"><a class="nav-link" href="elements.html">Write My Essay</a></li>
+              </ul>
+            </li> 								
+            <li class="nav-item"><a class="nav-link" href="#price">REVIEWS</a>
+            <li class="nav-item"><a class="nav-link" href="#screen">FAQ</a>
+            <li class="nav-item submenu dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About us</a>
+              <ul class="dropdown-menu">
+                <li class="nav-item"><a class="nav-link" href="blog.html">Essay Writing</a></li>
+                <li class="nav-item"><a class="nav-link" href="single-blog.html">Admission Essay</a></li>
+                <li class="nav-item"><a class="nav-link" href="elements.html">Custom Essay</a></li>
+                <li class="nav-item"><a class="nav-link" href="elements.html">Disstertation Essay</a></li>
+                <li class="nav-item"><a class="nav-link" href="elements.html">Research Paper</a></li>
+              </ul>
+            </li> 
+            <li class="nav-item submenu dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+              <ul class="dropdown-menu">
+                <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
+              </ul>
+            </li> 
+            <li class="nav-item"><a class="nav-link" href="contact.html">LOGIN</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">SIGNUP</a></li>
+
           </ul>
-          <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{% url 'account_login' %}">Login</a>
-              </li>
-              <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{% url 'account_signup' %}">Signup</a>
-              </li>
-            </ul>
-        </div>
+        </div> 
       </div>
-    </nav>
+          </nav>
+        </div>
+    </header>
     {% endblock navbar %}
 
     
@@ -109,23 +97,33 @@
     {% endblock content %}
 
 
-
-   
-  
-    
-    
-    <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src=" {% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-    <script src="{% static 'vendor/scrollreveal/scrollreveal.min.js' %} "></script>
-    <script src="{% static 'vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="{% static 'js/creative.min.js' %}"></script>
-
+       
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/popper.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/stellar.js"></script>
+        <script src="vendors/lightbox/simpleLightbox.min.js"></script>
+        <script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
+        <script src="vendors/isotope/imagesloaded.pkgd.min.js"></script>
+        <script src="vendors/isotope/isotope-min.js"></script>
+        <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+        <script src="js/jquery.ajaxchimp.min.js"></script>
+        <script src="js/mail-script.js"></script>
+        <script src="vendors/counter-up/jquery.waypoints.min.js"></script>
+        <script src="vendors/counter-up/jquery.counterup.js"></script>
+        <script src="vendors/popup/jquery.magnific-popup.min.js"></script>
+        <!-- contact js -->
+        <script src="js/jquery.form.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script src="js/contact.js"></script>
+        <!--gmaps Js-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+        <script src="js/gmaps.min.js"></script>
+        <script src="js/theme.js"></script>
+    </body>
+</html>
   </body>
 
 </html>
