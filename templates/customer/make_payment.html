@@ -1,0 +1,5 @@
+<form method="POST" action="{% url 'customer:process-payment' %}">
+    {% csrf_token %}
+    {{ form.amount }}
+    <input type="submit">
+</form>
