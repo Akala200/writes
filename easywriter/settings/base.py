@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'accounts',
     'blog',
-    'writers'
+    'writers',
+    'customer'
 
 ]
 
@@ -189,6 +190,8 @@ SOCIALACCOUNT_PROVIDERS = {
 ACCOUNT_FORMS = {'signup': 'accounts.forms.SignUpForm', 'login': 'accounts.forms.LoginuserForm',
 'reset_password': 'accounts.forms.ResetuserPasswordForm'}
 
+
+
 LOGIN_REDIRECT_URL = '/'
 
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login'
@@ -199,3 +202,7 @@ EMAIL_HOST_USER = 'wissac23@gmail.com'
 EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
+STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
