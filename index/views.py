@@ -33,4 +33,44 @@ class Reviews(TemplateView):
     template_name = 'pages/review.html'
 
 
+class ServicesCustomEssay(TemplateView):
+    template_name = 'pages/services_customessay.html'
+
+    
+class ServicesDissatationWriting(TemplateView):
+    template_name = 'pages/services_dissatationwriting.html'
+
+
+class ServicesEssayWriting(TemplateView):
+    template_name = 'pages/services_essaywriting.html'
+
+
+class ServicesResearch(TemplateView):
+    template_name = 'pages/services_research.html'
+
+
+class ServicesAdmissionEssay(TemplateView):
+    template_name = 'pages/admission_essay.html'
+
+class ServicesCustomWriting(TemplateView):
+    template_name = 'pages/custom_writing.html'
+
+class Services(TemplateView):
+    template_name = ''
+
+class ServicesTermPaper(TemplateView):
+    template_name = 'pages/term_paper.html'
+
+
+class ServicesWriteMyEssay(TemplateView):
+    template_name = 'pages/write_my_paper.html'
+
+
+
+class About(TemplateView):
+    template_name = 'pages/about.html'
+
+
+
+
 

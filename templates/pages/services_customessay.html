@@ -1,9 +1,11 @@
 
+{% extends 'base.html' %}
+
+{% load  static %}
+
+{% block content %}
 
 
-
-
-    
         <!--================Home Banner Area =================-->
         <section class="home_banner_area" style="height: 500px;">
                 <div class="banner_inner">
@@ -33,7 +35,7 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="feature_item">
                                     <div class="f_icon">
-                                        <img src="img/icon/f-icon-4.png" alt="">
+                                        <img src="{% static 'img/icon/f-icon-4.png' %}" alt="">
                                     </div>
                                     <h4>Video Support</h4>
                                     <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
@@ -42,7 +44,7 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="feature_item">
                                     <div class="f_icon">
-                                        <img src="img/icon/f-icon-5.png" alt="">
+                                        <img src="{% static 'img/icon/f-icon-5.png' %}" alt="">
                                     </div>
                                     <h4>Fast Support</h4>
                                     <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
@@ -51,7 +53,7 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="feature_item">
                                     <div class="f_icon">
-                                        <img src="img/icon/f-icon-6.png" alt="">
+                                        <img src="{ static 'img/icon/f-icon-6.png' %}" alt="">
                                     </div>
                                     <h4>Download test</h4>
                                     <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. </p>
@@ -140,7 +142,7 @@
                         <div class="col-lg-5">
                                         <div class="feature_item" id="litle" style="width: 280px;  height: 30px;">
                                                 <div class="single_sidebar_widget author_widget" style="height: 450px;">
-                                                        <img class="author_img rounded-circle" src="img/blog/author.png" alt="">
+                                                        <img class="author_img rounded-circle" src="{ static 'img/blog/author.png' %}" alt="">
                                                         <h4>Charlie Barber</h4>
                                                         <p>Senior blog writer</p>
                                                         <div class="social_icon">
@@ -291,3 +293,6 @@
                                         </div>
                   </div>
               </section>
+
+            
+{% endblock content %}
