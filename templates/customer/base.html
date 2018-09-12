@@ -204,7 +204,7 @@
                                 <i class="fab fa-blogger-b"></i>Blog</a>
                         </li>
                         <li>
-                                <a href="form.html">
+                                <a href="{% url 'customer:view_transactions' %}">
                                    <img src="{% static 'images/wallet.png' %}" style="width: 20px;margin-right: 13px;">Wallet</a>
                             </li>
                         
@@ -330,7 +330,7 @@
                                                         <i class="zmdi zmdi-account"></i>Account</a>
                                                 </div>
                                                 <div class="account-dropdown__item">
-                                                    <a href="#">
+                                                    <a href="{% url 'customer:view_transactions' %}">
                                                         <i class="zmdi zmdi-money-box"></i>Wallet</a>
                                                 </div>
                                             </div>

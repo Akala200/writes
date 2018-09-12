@@ -18,7 +18,16 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 @login_required()
 def index(request):
+ 
     return render(request, 'customer/all_orders.html')
+
+
+@login_required()
+def view_transactions(request):
+    wallet = Wallet.objects.filter(wallet_id=request.user).order_by('-date')
+    wallet_balance = WalletBalance.objects.get(balance_id=request.user)
+    context = {'wallet': wallet, 'wallet_balance': wallet_balance}
+    return render(request, 'customer/wallet/wallet.html', context=context)
 
 @login_required()
 def process_payment(request):
@@ -28,7 +37,7 @@ def process_payment(request):
         return redirect(reverse('customer:payment-form'))
   
     else:
-        return render(request, 'customer/make_payment.html', context={'form': form})
+        return render(request, 'customer/wallet/fund_wallet.html', context={'form': form})
         
 @login_required()
 def payment_button(request):
@@ -79,16 +88,10 @@ def charge_payment(request):
             del request.session['amount']
             del request.session['payment_process']
             
-            return redirect(reverse('customer:payment_completed'))
+            return redirect(reverse('customer:view_transaction'))
     return HttpResponseBadRequest('something happened')
 
 
-@login_required()
-def payment_completed(request):
-    if 'payment_completed' not in request.session:
-        return HttpResponseBadRequest('invalid request' )
-    else:
-        return render(request, 'payment_confirmation.html')
 
 
 

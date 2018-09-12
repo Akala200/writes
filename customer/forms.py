@@ -4,7 +4,10 @@ from .models import Wallet
 
 
 class PaymentForm(forms.Form):
-    amount = forms.CharField(max_length=20)
+    amount = forms.DecimalField(max_digits=20, widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': '$'
+    }))
 
 
 

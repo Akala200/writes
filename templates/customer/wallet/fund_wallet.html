@@ -1,5 +1,7 @@
 
-
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block content %}
 
  <div class="page-wrapper">
     <div class="page-content--bge5">
@@ -7,22 +9,20 @@
             <div class="login-wrap">
                 <div class="login-content">
                     <div class="login-logo">
-                        <a href="#">
                            <h3> Essay Kitten</h3>
-                        </a>
                     </div>
                     <div class="login-form">
                         <div class="card">
-                            <div class="card-header">Credit Card</div>
+                            <div class="card-header">Credit Account</div>
                             <div class="card-body">
                                 <div class="card-title">
-                                    <h3 class="text-center title-2">Credit Account</h3>
                                 </div>
                                 <hr>
-                                <form action="" method="post" novalidate="novalidate">
+                                <form action="" method="POST" novalidate="novalidate">
+                                    {% csrf_token %}
                                     <div class="form-group">
                                         <label for="cc-payment" class="control-label mb-1"> Amount</label>
-                                        <input id="cc-pament" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" value="$20.00">
+                                        {{ form.amount }}
                                     </div>
                                     <div>
                                         <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
@@ -39,3 +39,5 @@
             </div>
         </div>
     </div>
+
+{% endblock content %}
