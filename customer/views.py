@@ -18,8 +18,24 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 @login_required()
 def index(request):
- 
     return render(request, 'customer/all_orders.html')
+
+
+@login_required()
+def bidding_order(request):
+    return render(request, 'customer/bidding_orders.html')
+
+@login_required()
+def cancelled_order(request):
+    return render(request, 'customer/canceled_orders.html')
+
+@login_required()
+def completed_order(request):
+    return render(request, 'customer/completed_orders.html')
+
+@login_required()
+def expired_order(request):
+    return render(request, 'customer/expired_order.html')
 
 
 @login_required()
