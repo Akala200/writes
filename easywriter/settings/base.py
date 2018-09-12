@@ -192,7 +192,7 @@ ACCOUNT_FORMS = {'signup': 'accounts.forms.SignUpForm', 'login': 'accounts.forms
 
 
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/customer/home'
 
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login'
 

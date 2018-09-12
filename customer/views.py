@@ -15,6 +15,11 @@ import stripe
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+
+@login_required()
+def index(request):
+    return render(request, 'customer/all_orders.html')
+
 @login_required()
 def process_payment(request):
     form = PaymentForm(request.POST)
