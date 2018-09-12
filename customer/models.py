@@ -80,7 +80,7 @@ class Order(models.Model):
 
     level_choice = (
         ('School', 'School'),
-        ('University', 'U'),
+        ('University', 'University'),
         ('Dictorate', 'Dictorate'),
 
 
@@ -118,7 +118,7 @@ class InvitedWriters(models.Model):
 
 class AdditionalFiles(models.Model):
     user = models.ForeignKey(Order, on_delete=models.CASCADE)
-    files = models.FileField(upload_to='/addtion_files')
+    files = models.FileField(upload_to='addtion_files')
     
     
     def __str__(self):
