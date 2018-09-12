@@ -18,41 +18,36 @@ class WalletBalance(models.Model):
     balance_id = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
     related_name='wallet_balance'
     )
-    balance = models.DecimalField(decimal_places=2, max_digits=1000, default=Decimal('0.00'))
+    balance = models.DecimalField(decimal_places=2, max_digits=20, default=Decimal('0.00'))
 
     def __str__(self):
         return str(self.balance_id)
 
 
 class Order(models.Model):
-    order_choice = (
-        ('')
+    order_type = (
+        ('Essay (any type)', 'Essay (any type)'),
+        ('Admission Essay', 'Admission Essay'),
+        ('Annotated Bibliography', 'Annotated Bibliography'),
+        ('Article Review', 'Article Review'),
+        ('Book / Movie Review', 'Book / Movie Review'),
+        ('Business Plan', 'Business Plan'),
+        ('Case Study', 'Case Study'),
+        ('Coursework', 'Coursework'),
+        ('Creative Writing', 'Creative Writing'),
+        ('Critical Thinking / Review', 'Critical Thinking / Review'),
+        ('Literature Review', 'Literature Review'),
+        ('Multiple choice question', 'Multiple choice question'),
+        ('Presentation or Speech', 'Presentation or Speech'),
+        ('Reflective Writing', 'Reflective Writing'),
+        ('Report', 'Report'),
+        ('Research Paper', 'Research Paper'),
+        ('Research Proposal', 'Research Proposal'),
+        ('Term Paper', 'Term Paper')
     )
 
-    page_choice = (
-        ('1 pages/275 words', '1 pages/275 words'),
-        ('2 pages/550 words', '2 pages/550 words'),
-        ('3 pages/825 words', '3 pages/825 words'),
-        ('4 pages/1100 words', '4 pages/1100 words'),
-        ('5 pages/1375 words', '5 pages/1375 words'),
-        ('6 pages/1650 words', '6 pages/1650 words'),
-        ('7 pages/1925 words', '7 pages/1925 words'),
-        ('8 pages/2200 words', '8 pages/2200 words'),
-        ('9 pages/2475 words', '9 pages/2475 words'),
-        ('10 pages/2750 words', '10 pages/2750 words'),
-        ('11 pages/3025 words', '11 pages/3025 words'),
-        ('12 pages/3300 words', '12 pages/3300 words'),
-        ('13 pages/3575 words', '13 pages/3575 words'),
-        ('14 pages/3850 words', '14 pages/3850 words'),
-        ('15 pages/4125 words', '15 pages/4125 words'),
-        ('16 pages/4400 words', '16 pages/4400 words'),
-        ('17 pages/4675 words', '17 pages/4675 words'),
-        ('18 pages/4950 words', '18 pages/4950 words'),
-        ('19 pages/5225 words', '19 pages/5225 words')
-
-    )
     
-    service_choice = (
+    service_choice = (on>            <option value="40" >
         ('Writing', 'Writing'),
         ('Editing', 'Editing'),
         ('Rewriting', 'Rewriting')
@@ -71,10 +66,101 @@ class Order(models.Model):
     )
 
     style_choice = (
-
+        ('Harvard', 'Harvard'),
+        (' APA', ' APA'),
+        ('Chicago/Turabian', 'Chicago/Turabian'),
+        ('Not Applicable', 'Not Applicable'),
+        (' Other', ' Other')
     )
 
     subject_choice = (
+        ('Advertising', 'Advertising'),
+        ('Aeronautics', 'Aeronautics'),
+        ('African-American Studies', 'African-American Studies'),
+        ('Agricultural Studies', 'Agricultural Studies'),
+        ('Alternative Medicine', 'Alternative Medicine'),
+        ('American History', 'American History'),
+        ('American Literature', 'American Literature'),
+        ('Anthropology', 'Anthropology'),
+        ('Antique Literature', 'Antique Literature'),
+        ('Application Essay', 'Application Essay'),
+        ('Architecture', 'Architecture'),
+        ('Art', 'Art'),
+        ('Asian Literature', 'Asian Literature'),
+        ('Asian Studies', 'Asian Studies'),
+        ('Astronomy', 'Astronomy'),
+        ('Aviation', 'Aviation'),
+        ('Biology', 'Biology'),
+        ('Business', 'Business'),
+        ('Canadian Studies', 'Canadian Studies'),
+        ('Case Study', 'Case Study'),
+        ('Chemistry', 'Chemistry'),
+        ('Communication Strategies', 'Communication Strategies'),
+        ('Communications and Media', 'Communications and Media'),
+        ('Company Analysis', 'Company Analysis'),
+        ('Computer Science', 'Computer Science'),
+        ('Creative Writing', 'Creative Writing'),
+        ('Criminology', 'Criminology'),
+        ('Dance', 'Dance'),
+        ('Design Analysis', 'Design Analysis'),
+        ('Drama', 'Drama'),
+        ('E-Commerce', 'E-Commerce'),
+        ('East European Studies', 'East European Studies'),
+        ('Economics', 'Economics'),
+        ('Education', 'Education'),
+        ('Education Theories', 'Education Theories'),
+        ('Engineering', 'Engineering'),
+        ('English', 'English'),
+        ('English Literature', 'English Literature'),
+        ('Environmental Issues', 'Environmental Issues'),
+        ('Ethics', 'Ethics'),
+        ('Finance', 'Finance'),
+        ('Geography', 'Geography'),
+        ('Geology', 'Geology'),
+        ('Healthcare', 'Healthcare'),
+        ('History', 'History'),
+        ('Holocaust', 'Holocaust'),
+        ('International Affairs/Relations', 'International Affairs/Relations'),
+        ('Internet', 'Internet'),
+        ('Investment', 'Investment'),
+        ('IT Management', 'IT Management'),
+        ('Journalism', 'Journalism'),
+        ('Latin-American Studies', 'Latin-American Studies'),
+        ('Law', 'Law'),
+        ('Legal Issues', 'Legal Issues'),
+        ('Linguistics', 'Linguistics'),
+        ('Literature', 'Literature'),
+        ('Logistics', 'Logistics'),
+        ('Management', 'Management'),
+        ('Marketing', 'Marketing'),
+        ('Mathematics', 'Mathematics'),
+        ('Medicine and Health', 'Medicine and Health'),
+        ('Movies', 'Movies'),
+        (' Music', ' Music'),
+        (' Native-American Studies', 'Native-American Studies'),
+        ('Nature', 'Nature'),
+        ('Nursing', 'Nursing'),
+        ('Nutrition', 'Nutrition'),
+        ('Painting', 'Painting'),
+        ('Pedagogy', 'Pedagogy'),
+        ('Pharmacology', 'Pharmacology'),
+        ('Philosophy', 'Philosophy'),
+        ('Physics', 'Physics'),
+        ('Political Science', 'Political Science'),
+        ('Psychology', 'Psychology'),
+        ('Public Relations', ' Public Relations'),
+        ('Religion and Theology', 'Religion and Theology'),
+        ('Shakespeare Studies', 'Shakespeare Studies'),
+        ('Sociology', 'Sociology'),
+        ('Sport', 'Sport'),
+        ('Teacher', 'Teacher'),
+        ('Technology', 'Technology'),
+        ('Theatre', 'Theatre'),
+        ('Tourism', 'Tourism'),
+        ('Trade', 'Trade'),
+        ('Web design', 'Web design'),
+        ('West European Studies', 'West European Studies'),
+        ('Other', 'Other')
 
     )
 

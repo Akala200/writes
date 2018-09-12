@@ -6,7 +6,7 @@ urlpatterns = [
     path('', include('global.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
-    path('au/', include('australia.urls', namespace='au')),
+    path('au/', include('australia.url(s', namespace='au')),
     path('ca/', include('canada.urls', namespace='ca')),
     path('uk/', include('united_kingdom.urls', namespace='uk')),
     path('uae/', include('uae.urls', namespace='uae')),
