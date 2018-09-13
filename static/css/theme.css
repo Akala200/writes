@@ -1320,7 +1320,7 @@ section {
 }
 
 .noti-wrap .noti__item:last-child {
-    margin-right: 50px;
+    margin-right: 0px;
 }
 
 @media (max-width: 1200px) {
@@ -1420,7 +1420,7 @@ section {
 }
 
 .account-item > .content > a {
-    color: #333;
+    color: #fff;
     text-transform: capitalize;
     font-weight: 500;
 }
