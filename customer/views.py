@@ -27,9 +27,9 @@ def generated_unique_id():
 
 @login_required()
 def index(request):
-    user_order = Order.objects.filter(order_id=request.user).latest()
+    user_order = Order.objects.filter(order_id=request.user).order_by('-deadline')
     return render(request, 'customer/orders/all_orders.html', context={
-        'order': user_order
+        'orders': user_order
     })
 
 
@@ -58,7 +58,7 @@ def place_an_order(request):
             instance.order_id = request.user
             instance.order_uuid = generated_unique_id()
             instance.deadline = timezone.now()
-            instance.save()
+            form.save()
             messages.success(request, 'Your Order was created successfully')
             return redirect(reverse('customer:index'))
 

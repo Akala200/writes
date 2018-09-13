@@ -185,6 +185,8 @@ class Order(models.Model):
     service =  models.CharField(max_length=250, choices=service_choice)
     deadline = models.DateTimeField()
     sources = models.CharField(max_length=250, choices=source_choice)
+    completed = models.BooleanField(default=False)
+    cancelled = models.BooleanField(default=False)
     style  = models.CharField(max_length=250, choices=style_choice)
     subject = models.CharField(max_length=250, choices=subject_choice)
     level = models.CharField(max_length=250, choices=level_choice)

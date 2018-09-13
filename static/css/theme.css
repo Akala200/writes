@@ -14670,3 +14670,11 @@ link :hover {
     color: #fff;
 }
 
+
+
+
+@media (mix-width: 801px) {
+    .login-content{
+        margin-top: 100px;
+    }
+}

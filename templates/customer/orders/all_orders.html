@@ -40,12 +40,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% if orders %}
+                                    {% for order in orders %}
                                     <tr class="tr-shadow">
-                                        <td>23794</td>
-                                        <td class="desc">Herbal Medicine</td>
-                                        <td>2018-09-27 02:12</td>
+                                        <td>{{ order.order_uuid }}}</td>
+                                        <td class="desc">{{ order.description }}</td>
+                                        <td>{{ order.deadline }}</td>
                                         <td>
+                                            {% if order.completed %}
                                             <h4><span class="badge badge-success">Completed</span></h4>
+                                            {% endif %}
+                                            {% endfor %}
                                         </td>
                                         <td>
                                                 <div class="noti__item js-item-menu">

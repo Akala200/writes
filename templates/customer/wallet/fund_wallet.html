@@ -7,7 +7,7 @@
     <div class="page-content--bge5">
         <div class="container">
             <div class="login-wrap">
-                <div class="login-content">
+                <div class="login-content" style="margin-top: 100px;">
                     <div class="login-logo">
                            <h3> Essay Kitten</h3>
                     </div>
@@ -25,11 +25,15 @@
                                         {{ form.amount }}
                                     </div>
                                     <div>
-                                        <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
-                                            <i class="fa fa-lock fa-lg"></i>&nbsp;
-                                            <span id="payment-button-amount">Continue</span>
-                                            <span id="payment-button-sending" style="display:none;">Sending…</span>
-                                        </button>
+                                            <script
+                                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                            data-key= "{{ stripe_key }}"
+                                            data-amount="{{ amount }}"
+                                            data-name="essay kitten"
+                                            data-description="Example charge"
+                                            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                            data-locale="auto">
+                                          </script>
                                     </div>
                                 </form>
                             </div>

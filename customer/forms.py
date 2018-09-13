@@ -18,7 +18,7 @@ class PlaceAnOrderForm(forms.ModelForm):
          self.fields['order_type'].widget
     class Meta:
         model = Order
-        exclude =  ('order_id', 'order_uuid', 'deadline')
+        exclude =  ('order_id', 'order_uuid', 'deadline', 'publication_date')
         widgets = {
             'order_type': forms.Select(attrs={
                 'class' : 'form-control-sm form-control',
