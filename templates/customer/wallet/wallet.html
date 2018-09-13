@@ -30,6 +30,7 @@
                             <th>status</th>
                         </tr>
                     </thead>
+                    {% if wallet %}
                     {% for item in wallet %}
                     <tbody>
                         <tr>
@@ -49,6 +50,9 @@
 
                     </tbody>
                     {% endfor %}
+                    {% else %}
+                    <p> No transactions available</p>
+                    {% endif %}
                 </table>
             </div>
             <!-- END DATA TABLE-->

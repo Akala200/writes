@@ -11,6 +11,15 @@
                         <h2 class="title-1">All Orders
                                 <span class="badge badge-primary">2</span>
                             </h2>
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <li>{% if message.tags %}
+                                    {{ message }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
                         <button class="au-btn au-btn-icon au-btn--blue">
                             <i class="zmdi zmdi-plus"></i>Place New Order</button>
                     </div>
@@ -287,4 +296,4 @@
 </div>
 <!-- END MAIN CONTENT-->
 
-{% endblock %}
+{% endblock content %}

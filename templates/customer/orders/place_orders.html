@@ -1,5 +1,7 @@
 
-
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block content %}
 
 
  <!-- MAIN CONTENT-->
@@ -31,92 +33,102 @@
                          <div class="col-lg-5">
                                 <div class="card">
                                         <div class="card-body card-block">
-                                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                            <form action="{% url 'customer:place_an_order' %}" method="POST"  class="form-horizontal" id="form-submit">
+                                                {% csrf_token %}
+                                                {% if form.errors %}
+                                                {% for e in form.errors %}
+                                                {{ e}}
+                                                {% endfor %}
+                                                {% endif %}
                                                 <div class="row form-group" style="margin-bottom: 35px;">
                                                     <div class="col-lg-12">
-                                                        <select name="selectSm" id="SelectLm" class="form-control-sm form-control" style="height: 45px;border-radius: 7px;">
-                                                            <option value="0">Type</option>
-                                                        </select>
+                                             
+                                                            {{form.order_type}}
+
+                                                            
+                            
                                                     </div>
                                                 </div>
                                                 <div class="row form-group" style="margin-bottom: 35px;">
                                                         <div class="col-lg-12">
-                                                            <select name="selectSm" id="SelectLm" class="form-control-sm form-control" style="height: 45px;border-radius: 7px;">
-                                                                <option value="0">Pages/Words</option>
-                                                            </select>
+                                                           {{ form.pages }}
                                                         </div>
                                                     </div>
                                                     <div class="row form-group" style="margin-bottom: 35px;">
                                                             <div class="col-lg-12">
-                                                                <select name="selectSm" id="SelectLm" class="form-control-sm form-control" style="height: 45px;border-radius: 7px;">
-                                                                    <option value="0">Service</option>
-                                                                </select>
+                                                               {{ form.service }}
                                                             </div>
                                                         </div>
+                                                        <!--
                                                         <div class="row form-group" style="margin-bottom: 35px;">
                                                                 <div class="col-lg-12">
-                                                                    <select name="selectSm" id="SelectLm" class="form-control-sm form-control" style="height: 45px;border-radius: 7px;">
-                                                                        <option value="0">Deadline</option>
-                                                                    </select>
+                                                                    {{ form.deadline }}
+                            
                                                                 </div>
                                                             </div>
+                                                        -->
                                                             <div class="row form-group" style="margin-bottom: 35px;">
                                                                     <div class="col-lg-12">
-                                                                        <select name="selectSm" id="SelectLm" class="form-control-sm form-control" style="height: 45px;border-radius: 7px;">
-                                                                            <option value="0">Sources</option>
-                                                                        </select>
+                                                                        {{ form.sources }}
+                                            
                                                                     </div>
                                                                 </div>
                                                                 <div class="row form-group" style="margin-bottom: 35px;">
                                                                         <div class="col-lg-12">
-                                                                            <select name="selectSm" id="SelectLm" class="form-control-sm form-control" style="height: 45px;border-radius: 7px;">
-                                                                                <option value="0">Style</option>
-                                                                            </select>
+                                                                            {{ form.style }}
+                                                                    
                                                                         </div>
                                                                     </div>
                                                                     <div class="row form-group" style="margin-bottom: 35px;">
                                                                             <div class="col-lg-12">
-                                                                                <select name="selectSm" id="SelectLm" class="form-control-sm form-control" style="height: 45px;border-radius: 7px;">
-                                                                                    <option value="0">Subject</option>
-                                                                                </select>
+                                                                                {{ form.subject }}
+                                                                             
                                                                             </div>
                                                                         </div>
                                                                         <div class="row form-group" style="margin-bottom: 35px;">
                                                                                 <div class="col-lg-12">
-                                                                                    <select name="selectSm" id="SelectLm" class="form-control-sm form-control" style="height: 45px;border-radius: 7px;" >
-                                                                                        <option value="0">Level</option>
-                                                                                    </select>
+                                                                                 {{ form.level }}
                                                                                 </div>
                                                                             </div>
+                                                                            <div class="col-lg-7">
+                                                                                    <div class="row">
+                                                                                       <div class="form-group">
+                                                                                           {{ form.topic }}
+                                                                               
+                                                                                       </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                       <div class="row form-group">
+                                                                                           <div class="col-lg-12">
+                                                                                               {{ form.description }}
+                                                                                              
+                                                                                           </div>
+                                                                                       </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-lg-12">
+                                                                                           <button class="au-btn au-btn-icon au-btn--blue" type="submit" id="form-submit">
+                                                                                               <i class="zmdi zmdi-plus"></i>Place New Order
+                                                                                           </button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
                                                             
                                             </form>
                             </div>
                         </div>
                      </div>
-                     <div class="col-lg-7">
-                         <div class="row">
-                            <div class="form-group">
-                                <input type="text" id="country" placeholder="Topic" class="form-control" style="width: 335px;height: 55px;border-radius: 10px;">
-                            </div>
-                         </div>
-                         <div class="row">
-                            <div class="row form-group">
-                                <div class="col-lg-12">
-                                    <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Decription" class="form-control" style="margin-top: 0px;margin-bottom: 0px;height: 400px;width: 336px;border-radius: 10px;"></textarea>
-                                </div>
-                            </div>
-                         </div>
-                         <div class="row">
-                             <div class="col-lg-12">
-                                <button class="au-btn au-btn-icon au-btn--blue">
-                                    <i class="zmdi zmdi-plus"></i>Place New Order
-                                </button>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-             </div>
+                    
         </div>
     </div>
 </div>
+
+<script>
+</script>
+
+{% endblock %}
 <!-- END MAIN CONTENT-->

@@ -1,4 +1,6 @@
+import random
 from decimal import Decimal
+
 
 from django.shortcuts import render, redirect, reverse
 from django.conf import settings
@@ -6,9 +8,10 @@ from django.contrib import messages
 from django.db.models import F
 from django.http import HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 
-from .forms import PaymentForm
-from .models import Wallet, WalletBalance
+from .forms import PaymentForm, PlaceAnOrderForm
+from .models import Wallet, WalletBalance, Order
 
 import stripe
 
@@ -16,26 +19,56 @@ import stripe
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
+def generated_unique_id():
+    ran = ''.join(str(random.randint(1, 8)) for x in range(6))
+    return ran
+
+
+
 @login_required()
 def index(request):
-    return render(request, 'customer/all_orders.html')
+    user_order = Order.objects.filter(order_id=request.user).latest()
+    return render(request, 'customer/orders/all_orders.html', context={
+        'order': user_order
+    })
 
 
 @login_required()
 def bidding_order(request):
-    return render(request, 'customer/bidding_orders.html')
+    return render(request, 'customer/orders/bidding_orders.html')
 
 @login_required()
 def cancelled_order(request):
-    return render(request, 'customer/canceled_orders.html') 
+    return render(request, 'customer/orders/canceled_orders.html') 
 
 @login_required()
 def completed_order(request):
-    return render(request, 'customer/completed_orders.html')
+    return render(request, 'customer/orders/completed_orders.html')
 
 @login_required()
 def expired_order(request):
-    return render(request, 'customer/expired_order.html')
+    return render(request, 'customer/orders/expired_order.html')
+
+@login_required()
+def place_an_order(request):
+    form = PlaceAnOrderForm(request.POST)
+    if request.method == "POST":
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.order_id = request.user
+            instance.order_uuid = generated_unique_id()
+            instance.deadline = timezone.now()
+            instance.save()
+            messages.success(request, 'Your Order was created successfully')
+            return redirect(reverse('customer:index'))
+
+
+        else:
+            messages.error(request, 'Failed to create an order')
+
+    return render(request, 'customer/orders/place_orders.html', context={
+        'form': form
+    })
 
 
 @login_required()

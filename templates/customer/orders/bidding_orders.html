@@ -8,11 +8,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="overview-wrap">
-                        <h2 class="title-1">Bidding Orders <a href="#">
+                        <h2 class="title-1">Bidding Orders
                                 <span class="badge badge-primary">2</span>
-                              </a></h2>
+                            </h2>
+                       
                         <button class="au-btn au-btn-icon au-btn--blue">
-                            <i class="zmdi zmdi-plus"></i>Place New Order</button>
+                                <a href="{% url 'customer:place_an_order' %}">
+                            <i class="zmdi zmdi-plus"></i>Place New Order</a></button>
                     </div>
                 </div>
             </div>
@@ -31,8 +33,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        
                                         <tr class="tr-shadow">
-                                            <td>23794</td>
+                                            <td></td>
                                             <td class="desc">Herbal Medicine</td>
                                             <td>2018-09-27 02:12</td>
                                             <td>
