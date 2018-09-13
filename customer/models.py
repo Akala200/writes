@@ -47,7 +47,7 @@ class Order(models.Model):
     )
 
     
-    service_choice = (on>            <option value="40" >
+    service_choice = (
         ('Writing', 'Writing'),
         ('Editing', 'Editing'),
         ('Rewriting', 'Rewriting')
@@ -176,14 +176,14 @@ class Order(models.Model):
     topic = models.CharField(max_length=250)
     description = models.TextField()
     order_uuid = models.IntegerField(unique=True)
-    order_type = models.CharField(max_length=250)
+    order_type = models.CharField(max_length=250, choice=order_type)
     pages  = models.CharField(max_length=250)
-    service =  models.CharField(max_length=250)
+    service =  models.CharField(max_length=250, choice=service_choice)
     deadline = models.DateTimeField()
-    sources = models.CharField(max_length=250)
-    style  = models.CharField(max_length=250)
-    subject = models.CharField(max_length=250)
-    level = models.CharField(max_length=250)
+    sources = models.CharField(max_length=250, choice=source_choice)
+    style  = models.CharField(max_length=250, choice=style_choice)
+    subject = models.CharField(max_length=250, choice=subject_choice)
+    level = models.CharField(max_length=250, choice=level_choice)
     
     def __str__(self):
         return str(self.order_id)

@@ -27,7 +27,7 @@ def bidding_order(request):
 
 @login_required()
 def cancelled_order(request):
-    return render(request, 'customer/canceled_orders.html')
+    return render(request, 'customer/canceled_orders.html') 
 
 @login_required()
 def completed_order(request):
