@@ -14,7 +14,7 @@
 				<form class="login100-form validate-form" method="POST" action="{% url 'account_login' %}">
 					{% csrf_token %}
 					<span class="login100-form-title">
-						<h2 id="login-title" style="color: #f05f40">Member Login</h2>
+						<h2 id="login-title" style="color: #bc2bff;">Member Login</h2>
 					</span>
 					{% if form.errors %}
 					<p class="text-warning"> Your username and/or password didn't match </p>
@@ -37,7 +37,7 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button  type="submit" class="login100-form-btn">
+						<button  type="submit" class="login100-form-btn" >
 							{% trans "Sign In" %}
 						</button>
 					</div>

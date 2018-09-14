@@ -1,5 +1,10 @@
 
 
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block content %}
+
+
 
 
 <!-- MAIN CONTENT-->
@@ -17,54 +22,7 @@
              <div class="row">
                  <div class="col-lg-4">
                       <!-- TOP CAMPAIGN-->
-                    <div class="top-campaign">
-                        <div class="table-responsive">
-                            <table class="table table-top-campaign ">
-                                <tbody>
-                                    <tr class="min-nav">
-                                        <td><a href="#child4">Assignment Details</a></td>
-                                        <td><span class="badge badge-primary">5</span></td>
-                                    </tr>
-                                    <tr  class="min-nav">
-                                        <td><a href="#child4">Additional Files</a></td>
-                                        <td><span class="badge badge-primary">5</span></td>
-                                    </tr>
-                                    <tr  class="min-nav">
-                                        <td><a href="#child4">Invite Writers</a></td>
-                                        <td><span class="badge badge-primary">5</span></td>
-                                    </tr>
-                                    <tr  class="min-nav">
-                                        <td><a href="#child4">Favorite</a></td>
-                                        <td><span class="badge badge-primary">5</span></td>
-                                    </tr>
-                                    <tr  class="min-nav">
-                                        <td><a href="#child4">Hired Before</a></td>
-                                        <td><span class="badge badge-primary">5</span></td>
-                                    </tr>
-                                    <tr  class="min-nav">
-                                        <td><a href="#child4">Invited</a></td>
-                                        <td><span class="badge badge-primary">5</span></td>
-                                    </tr>
-                                    <tr  class="min-nav">
-                                        <td><a href="#child4">Assign A Writer</a></td>
-                                        <td><span class="badge badge-primary">5</span></td>
-                                    </tr>
-                                    <tr  class="min-nav">
-                                        <td><a href="#child4">New Bids</a></td>
-                                        <td><span class="badge badge-primary">5</span></td>
-                                    </tr>
-                                    <tr  class="min-nav">
-                                        <td><a href="#child4">Shortlisted</a></td>
-                                        <td><span class="badge badge-primary">5</span></td>
-                                    </tr>
-                                    <tr  class="min-nav">
-                                        <td><a href="#child4">Declined</a></td>
-                                        <td><span class="badge badge-primary">5</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                      {% include 'customer/bids/base.html' %}
                     <!--  END TOP CAMPAIGN-->
                  </div>
                  <div class="col-lg-8 write-col">
@@ -126,3 +84,4 @@
                  </div>
             </div>
     </div>
+    {% endblock %}

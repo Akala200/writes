@@ -87,19 +87,27 @@ class PlaceAnOrderForm(forms.ModelForm):
                  
                  'description': forms.Textarea(attrs={
                      'width': '335px',
-                     'height': '55px',
                      'border-radius': '10px',
                      'class': 'form-control',
                      'placeholder': 'Description',
                      'margin-top': '0px',
                      'margin-bottom': '0px',
                      'height': '400px',
-                     'width': '336px',
                      'border-radius': '10px'
 
                  })
             
         }
+
+    def clean_description(self):
+        min_value = 50
+        if len(self.cleaned_data['description']) < min_value:
+            raise forms.ValidationError('Please input more words')
+        return self.cleaned_data['description']
+
+
+class CancelOrderForm(forms.Form):
+    pass
  
     
 

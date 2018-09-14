@@ -42,15 +42,19 @@
                                 <tbody>
                                     {% if orders %}
                                     {% for order in orders %}
+                                    
                                     <tr class="tr-shadow">
-                                        <td>{{ order.order_uuid }}}</td>
+                                       
+                                <td><a href="{{ order.get_absolute_url  }}">{{order.order_uuid }}</a></td>
+                                        
                                         <td class="desc">{{ order.description }}</td>
                                         <td>{{ order.deadline }}</td>
                                         <td>
-                                            {% if order.completed %}
+                                        {% endfor %}
+                                        {% endif %}
+                                        
                                             <h4><span class="badge badge-success">Completed</span></h4>
-                                            {% endif %}
-                                            {% endfor %}
+                                           
                                         </td>
                                         <td>
                                                 <div class="noti__item js-item-menu">

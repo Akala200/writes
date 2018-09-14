@@ -3,6 +3,7 @@ from decimal import Decimal
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+from django.urls import reverse
 
 class Wallet(models.Model):
     wallet_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -179,7 +180,7 @@ class Order(models.Model):
     topic = models.CharField(max_length=250)
     description = models.TextField()
     order_uuid = models.IntegerField(unique=True)
-    order_type = models.CharField(max_length=250, choices=order_type, help_text='type')
+    order_type = models.CharField(max_length=250, choices=order_type, default='essay order')
     pages  = models.CharField(max_length=250)
     publication_date = models.DateField(default=timezone.now)
     service =  models.CharField(max_length=250, choices=service_choice)
@@ -190,20 +191,18 @@ class Order(models.Model):
     style  = models.CharField(max_length=250, choices=style_choice)
     subject = models.CharField(max_length=250, choices=subject_choice)
     level = models.CharField(max_length=250, choices=level_choice)
+    
 
     class Meta:
         get_latest_by = 'publication_date'
+
     
     def __str__(self):
         return str(self.order_id)
 
-    
-class FavouriteWriters(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    writers = models.CharField(max_length=250, null=True)
-    
-    def __str__(self):
-        return str(self.user)
+    def get_absolute_url(self):
+        return reverse('customer:order_detail',  kwargs= {'order_uuid': self.order_uuid})
+
 
 
 class InvitedWriters(models.Model):

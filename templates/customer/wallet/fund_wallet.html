@@ -18,11 +18,11 @@
                                 <div class="card-title">
                                 </div>
                                 <hr>
-                                <form action="" method="POST" novalidate="novalidate">
+                                <form action="{% url 'customer:process_payment' %}" method="POST" novalidate="novalidate">
                                     {% csrf_token %}
                                     <div class="form-group">
                                         <label for="cc-payment" class="control-label mb-1"> Amount</label>
-                                        {{ form.amount }}
+                                       {{ form.amount }}
                                     </div>
                                     <div>
                                             <script

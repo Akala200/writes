@@ -326,11 +326,10 @@ iframe {
   line-height: 1.5;
   color: #fff;
   text-transform: uppercase;
-
+  background-image: -webkit-linear-gradient(0deg, #bc2bff 0%, #7249fb 100%);
   width: 100%;
   height: 45px;
   border-radius: 25px;
-  background: #003087;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -489,8 +488,8 @@ iframe {
 
 .btn-face {
   color: #fff;
-  background-color: #3b5998;
   border-radius: 25px;
+  background-image: -webkit-linear-gradient(0deg, #bc2bff 0%, #7249fb 100%);
 
 }
 
@@ -502,7 +501,7 @@ iframe {
 
 .btn-google {
   color: #fff;
-  background-color: #EA4335 ;
+  background-image: -webkit-linear-gradient(0deg, #bc2bff 0%, #7249fb 100%);
   border-radius: 25px;
   margin-left: 150px;
 

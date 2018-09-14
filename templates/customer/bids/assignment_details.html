@@ -1,11 +1,8 @@
 
 
-
-
-
-
-
-
+{% extends 'customer/base.html' %}
+{% block content %}
+{% load static %}
 
 
  <!-- MAIN CONTENT-->
@@ -23,64 +20,9 @@
         <div class="container-fluid">
              <div class="row">
                     <div class="col-lg-4">
-                            <!-- TOP CAMPAIGN-->
-                          <div class="top-campaign">
-                              <div class="table-responsive">
-                                  <table class="table table-top-campaign">
-                                      <tbody>
-                                          <tr>
-                                              <td>Assignment Details</td>
-                                              <td><span class="badge badge-primary">5</span></td>
-                                          </tr>
-                                          <tr>
-                                              <td>Additional Files</td>
-                                              <td><span class="badge badge-primary">5</span></td>
-                                          </tr>
-                                          <tr>
-                                              <td>Invite Writers</td>
-                                              <td><span class="badge badge-primary">5</span></td>
-                                          </tr>
-                                          <tr>
-                                              <td>Favorite</td>
-                                              <td><span class="badge badge-primary">5</span></td>
-                                          </tr>
-                                          <tr>
-                                              <td>Hired Before</td>
-                                              <td><span class="badge badge-primary">5</span></td>
-                                          </tr>
-                                          <tr>
-                                              <td>Invited</td>
-                                              <td><span class="badge badge-primary">5</span></td>
-                                          </tr>
-                                          <tr>
-                                              <td>Assign A Writer</td>
-                                              <td><span class="badge badge-primary">5</span></td>
-                                          </tr>
-                                          <tr>
-                                              <td>New Bids</td>
-                                              <td><span class="badge badge-primary">5</span></td>
-                                          </tr>
-                                          <tr>
-                                              <td>Shortlisted</td>
-                                              <td><span class="badge badge-primary">5</span></td>
-                                          </tr>
-                                          <tr>
-                                              <td>Declined</td>
-                                              <td><span class="badge badge-primary">5</span></td>
-                                          </tr>
-                                          <tr>
-                                              <td>5. France</td>
-                                              <td><span class="badge badge-primary">5</span></td>
-                                          </tr>
-                                          <tr>
-                                              <td>4. Germany</td>
-                                              <td><span class="badge badge-primary">5</span></td>
-                                          </tr>
-                                      </tbody>
-                                  </table>
-                              </div>
-                          </div>
-                          <!--  END TOP CAMPAIGN-->
+                        <!-- START TOP CAMPAIGN-->
+                        {% include 'customer/bids/base.html' %}
+                             <!--  END TOP CAMPAIGN-->
                        </div>
                 <div class="col-lg-8">
                   <!-- TOP CAMPAIGN-->
@@ -91,47 +33,49 @@
                                 <tbody>
                                     <tr>
                                         <td><b>Type:</b></td>
-                                        <td>Writing</td>
+                                        <td>{{ bid.type }} </td>
                                     </tr>
                                     <tr>
                                         <td><b>Topic:</b></td>
-                                        <td>Herbal Medicine As An Alternative</td>
+                                        <td>{{ bid.topic }}</td>
                                     </tr>
                                     <tr>
                                         <td><b>Pages:</b></td>
-                                        <td>1(275 words)</td>
+                                        <td>{{ bid.pages }}</td>
                                     </tr>
                                     <tr>
                                         <td><b>Description</b></td>
-                                        <td>The herbal medicine practice in Africa and the rest of the world.</td>
+                                        <td>{{ bid.description }}</td>
                                     </tr>
                                     <tr>
                                         <td><b>Service:</b></td>
-                                        <td>Writing</td>
+                                        <td>{{ bid.service }}</td>
                                     </tr>
                                     <tr>
                                         <td><b>Deadline:</b></td>
-                                        <td>Sep 30, 12:20 pm</td>
+                                        <td>{{ bid.deadline }}</td>
                                     </tr>
                                     <tr>
                                         <td><b>Sources:</b></td>
-                                        <td>2</td>
+                                        <td>{{ bid.sources }}</td>
                                     </tr>
                                     <tr>
                                         <td><b>Style:</b></td>
-                                        <td>APA</td>
+                                        <td>{{ bid.style }}</td>
                                     </tr>
                                     <tr>
                                         <td><b>Subject:</b></td>
-                                        <td>Alternative Medicine</td>
+                                        <td>{{ bid.subject }}</td>
                                     </tr>
                                     <tr>
                                         <td><b>Level:</b></td>
-                                        <td>University</td>
+                                        <td>{{ bid.level }}</td>
                                     </tr>
                                 </tbody>
+                                <a href="{% url 'customer:update_order' bid.order_uuid %}"><p>Edit Order</p></a>
                             </table>
                         </div>
+                       
                     </div>                                
                 </div>
             </div>
@@ -140,3 +84,4 @@
 <!-- END MAIN CONTENT-->
 <!-- END PAGE CONTAINER-->
 </div>
+{% endblock content %}

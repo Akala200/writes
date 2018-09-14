@@ -1,14 +1,19 @@
 import random
+import json
 from decimal import Decimal
+
 
 
 from django.shortcuts import render, redirect, reverse
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import UpdateView
 from django.db.models import F
 from django.http import HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
+from django.shortcuts import get_object_or_404
 
 from .forms import PaymentForm, PlaceAnOrderForm
 from .models import Wallet, WalletBalance, Order
@@ -20,7 +25,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 def generated_unique_id():
-    ran = ''.join(str(random.randint(1, 8)) for x in range(6))
+    ran = ''.join(str(random.randint(2, 8)) for x in range(6))
     return ran
 
 
@@ -65,6 +70,7 @@ def place_an_order(request):
 
         else:
             messages.error(request, 'Failed to create an order')
+            form = PlaceAnOrderForm()
 
     return render(request, 'customer/orders/place_orders.html', context={
         'form': form
@@ -80,30 +86,10 @@ def view_transactions(request):
 
 @login_required()
 def process_payment(request):
+    stripe_key = settings.STRIPE_PUBLIC_KEY
     form = PaymentForm(request.POST)
     if request.method == "POST" and form.is_valid():
-        request.session['amount'] = form.cleaned_data['amount']
-        return redirect(reverse('customer:payment-form'))
-  
-    else:
-        return render(request, 'customer/wallet/fund_wallet.html', context={'form': form})
-        
-@login_required()
-def payment_button(request):
-    if 'amount' in request.session:
-        stripe_key = settings.STRIPE_PUBLIC_KEY
-        amount = request.session['amount']
-        request.session['payment_process'] = True
-        return render(request, 'customer/process_payment.html', context={
-            'stripe_key': stripe_key,
-            'amount': amount})
-    
-    return HttpResponseBadRequest('invalid request')
-
-@login_required()
-def charge_payment(request):
-    if request.method == 'POST' and 'payment_process' in request.session:
-        amount = request.session.get('amount')
+        amount = form.cleaned_data['amount']
         token = request.POST.get('stripeToken')
         description = 'Payed with Card'
         try:
@@ -120,7 +106,8 @@ def charge_payment(request):
             return render(request, 'customer/auth_error.html')
 
         except stripe.error.InvalidRequestError:
-            return render(request, 'customer/error.html')
+            
+            return render(request, 'customer/wallet/error.html')
 
         else:
             payment_data = Wallet.objects.create(
@@ -133,12 +120,99 @@ def charge_payment(request):
             update_user_balance = WalletBalance.objects.get(balance_id=request.user)
             update_user_balance.balance += Decimal(amount)
             update_user_balance.save()
-            request.session['payment_completed'] = True
-            del request.session['amount']
-            del request.session['payment_process']
+
             
-            return redirect(reverse('customer:view_transaction'))
-    return HttpResponseBadRequest('something happened')
+            return redirect(reverse('customer:view_transactions'))
+            
+    return render(request, 'customer/wallet/fund_wallet.html', context={'form': form,
+    'stripe_key': stripe_key, 'amount': request.POST.get('amount')})
+        
+@login_required()
+def charge_payment(request):
+    pass
+
+
+@login_required()
+def order_details(request, order_uuid):
+    order_id = get_object_or_404(Order, order_uuid=order_uuid)
+
+    return render(request, 'customer/bids/assignment_details.html', context={
+        'bid':  order_id
+    })
+
+
+@login_required()
+def upload_addition_files(request):
+    return render(request, 'customer/bids/')
+
+@login_required()
+def favourite_writers(request):
+
+    return render(request, 'customer/bids/favorite.html')
+
+
+@login_required()
+def canceled_order(request, order_uuid):
+    order = get_object_or_404(Order, order_uuid)
+    order.cancelled = True
+    order.save()
+    messages.success(request, 'Order Cancelled ')
+    return redirect(reverse('customer:index'))
+
+@login_required()
+def update_order(request, order_uuid):
+    order = get_object_or_404(Order, order_uuid=order_uuid)
+    form = PlaceAnOrderForm(request.POST, instance=order)
+    if request.method == "POST":
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.order_id = request.user
+            instance.save()
+            messages.success(request, 'Order was submitted')
+            return redirect(reverse('customer:order_detail', kwargs={'order_uuid': instance.order_uuid}))
+        
+    else:
+        form = PlaceAnOrderForm(instance=order)
+
+
+    return render(request, 'customer/orders/edit_assignment.html', context={
+        'form': form, 'order': order
+    })
+
+@login_required()
+def assign_writers(request):
+    return render(request, 'customer/bids/assign_writer.html')
+
+@login_required()
+def declined_bids(request):
+    return render(request, 'customer/bids/declined.html')
+
+
+@login_required()
+def hired_before(request):
+    return render(request, 'customer/bids/hired_before.html')
+
+
+@login_required()
+def invited_writers(request):
+    return render(request, 'customer/bids/invite_writers.html')
+
+@login_required()
+def invited(request):
+    return render(request, 'customer/bids/invited.html')
+
+
+@login_required()
+def new_bids(request):
+    return render(request, 'customers/bids/new_bids.html')
+
+@login_required()
+def shortlisted(request):
+    return render(request, 'customer/bids/shortlisted.html')
+
+@login_required()
+def view_all_bids(request):
+    return render(request, 'customer/bids/view_all_bids.html')
 
 
 
@@ -146,6 +220,9 @@ def charge_payment(request):
 
 
 
+@login_required
+def additional_files(request):
+    return render(request, '')
 
 
 

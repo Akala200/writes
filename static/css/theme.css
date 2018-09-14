@@ -313,7 +313,7 @@ section {
 
 @media (max-width: 991px) {
     .main-content {
-        padding-top: 50px;
+        padding: 40px;
     }
 }
 
@@ -14678,3 +14678,5 @@ link :hover {
         margin-top: 100px;
     }
 }
+
+
