@@ -260,7 +260,11 @@
                                                     <h5 class="name">
                                                         <a href="#">User</a>
                                                     </h5>
+                                                    
                                                     <span class="email">{{ request.user.email }}</span>
+                                                    {% if user.login_status %}
+                                                        <p>User is online</p>
+                                                    {% endif %}
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">

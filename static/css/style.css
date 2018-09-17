@@ -4256,7 +4256,7 @@ background-color: #fff;
 
 
 .service_feature .feature_inner .feature_item {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .service_feature .feature_inner .feature_item .more_btn {
@@ -4295,7 +4295,6 @@ background-color: #fff;
 #background {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 56px);
-  background-image: url(../img/background.jpg);
   background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;

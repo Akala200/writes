@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Wallet, Order
+from .models import Wallet, Order, AdditionalFiles
 
 
 class PaymentForm(forms.Form):
@@ -108,6 +108,12 @@ class PlaceAnOrderForm(forms.ModelForm):
 
 class CancelOrderForm(forms.Form):
     pass
+
+
+class  AdditionalFileForm(forms.ModelForm):
+    class Meta:
+        model = AdditionalFiles
+        fields = ['files']
  
     
 

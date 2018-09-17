@@ -206,18 +206,50 @@ class Order(models.Model):
 
 
 class InvitedWriters(models.Model):
-    user = models.ForeignKey(Order, on_delete=models.CASCADE)
-    invitees = models.CharField(max_length=250, null=True)
+    user = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='invited_writers')
+    invitees = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='invitees')
 
 
 class AdditionalFiles(models.Model):
     user = models.ForeignKey(Order, on_delete=models.CASCADE)
     files = models.FileField(upload_to='addtion_files')
+
+    def get_absolute_url(self):
+        return reverse('customer:additional_files',  kwargs= {'order_uuid': self.user})
     
     
     def __str__(self):
         return str(self.user)
 
+
+class ShortListedBid(models.Model):
+    user = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='shorted_listed_bid')
+    shortlisted_writer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='shorted_listed_writer')
+
+    def __str__(self):
+        return str(self.user)
+
+
+class FavouriteWriters(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='favorite_writer')
+    favorite_writers = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='favorite_writers')
+
+    def __str__(self):
+        return str(self.user)
+
+class Hired(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='hired')
+    hired = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='hired_before')
+
+    def __str__(self):
+        return str(self.user)
+
+class Declined(models.Model):
+    user = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='declined')
+    hired = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='declined')
+
+    def __str__(self):
+        return str(self.user)
 
 
 

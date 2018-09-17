@@ -16,7 +16,11 @@ from django.utils import timezone
 from django.shortcuts import get_object_or_404
 
 from .forms import PaymentForm, PlaceAnOrderForm
-from .models import Wallet, WalletBalance, Order
+from .models import (
+    Wallet, WalletBalance, Order, FavouriteWriters, ShortListedBid,
+    Hired, Declined, AdditionalFiles, 
+
+)
 
 import stripe
 
@@ -127,9 +131,6 @@ def process_payment(request):
     return render(request, 'customer/wallet/fund_wallet.html', context={'form': form,
     'stripe_key': stripe_key, 'amount': request.POST.get('amount')})
         
-@login_required()
-def charge_payment(request):
-    pass
 
 
 @login_required()
@@ -140,15 +141,6 @@ def order_details(request, order_uuid):
         'bid':  order_id
     })
 
-
-@login_required()
-def upload_addition_files(request):
-    return render(request, 'customer/bids/')
-
-@login_required()
-def favourite_writers(request):
-
-    return render(request, 'customer/bids/favorite.html')
 
 
 @login_required()
@@ -215,14 +207,32 @@ def view_all_bids(request):
     return render(request, 'customer/bids/view_all_bids.html')
 
 
-
-
-
+@login_required
+def additional_files(request, order_uuid):
+    order_id = AdditionalFiles.objects.filter(user=order_uuid).all()
+    return render(request, context={'order': order_id, 'order_id': order_uuid})
 
 
 @login_required
-def additional_files(request):
-    return render(request, '')
+def add_additional_file(request, order_uuid):
+    form = AdditionalFileForm(request.POST)
+
+    if form.is_valid() and request.method == 'POST':
+        instance = form.save(commit=False)
+        instance.user = order_uuid
+        instance.save()
+        messages.success(request, 'File submitted sucessfully')
+        return redirect(reverse(instance.get_absolute_url()))
+
+    else:
+        files = AdditionalFiles.objects.filter(user=order_uuid).all()
+        return render(request, 'customer/bids/additonal_files.html')
+
+@login_required
+def view_favorite_writers(request):
+    writers = FavouriteWriters.objects.filter(user=request.user).all()
+    return render(request, 'customer/bids/favorite_writers.html')
+    
 
 
 

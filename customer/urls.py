@@ -7,7 +7,6 @@ app_name = 'customer'
 urlpatterns = [
     path('view-transactions/', views.view_transactions, name='view_transactions'),
     path('process-payment/', views.process_payment, name='process_payment'),
-    path('charge-payment/', views.charge_payment, name='charge_payment'),
     path('home/', views.index, name='index'),
     path('cancelled-orders/', views.cancelled_order, name='cancelled_order'),
     path('completed-orders/', views.completed_order, name='completed_order'),
@@ -15,7 +14,6 @@ urlpatterns = [
     path('expired-orders/', views.expired_order, name='expired_order'),
     path('place-an-order/', views.place_an_order, name='place_an_order'),
     path('order-detail/<int:order_uuid>/', views.order_details, name='order_detail'),
-    path('invite-favourites/', views.favourite_writers, name='favourite_writers'),
     path('edit/<int:order_uuid>/', views.update_order, name='update_order'),
     path('declined/', views.declined_bids, name='declined'),
     path('hired/', views.hired_before, name='hired_before'),
@@ -25,6 +23,7 @@ urlpatterns = [
     path('shortlisted/', views.shortlisted, name='short_listed'),
     path('view-all-bids/', views.view_all_bids, name='view_all_bigs'),
     path('additional-files/', views.additional_files, name='additional_files'),
-    path('assign-writers', views.assign_writers, name='assign_writers')
+    path('assign-writers', views.assign_writers, name='assign_writers'),
+    path('<int:order_uuid>/add-files/', views.additional_files, name='additional_files')
 
 ]
