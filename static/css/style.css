@@ -4319,6 +4319,12 @@ background-color: #fff;
   }
 }
 
+@media (max-width: 800px){
+  #reading{
+    width: 380px
+  }
+}
+
 
 
 ul.socialIcons {
