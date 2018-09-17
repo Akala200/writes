@@ -302,7 +302,7 @@ iframe {
 }
 
 .input100:focus + .focus-input100 + .symbol-input100 {
-  color: #003087;
+  color: #7249fb;
   padding-left: 28px;
 }
 
