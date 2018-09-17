@@ -18,7 +18,7 @@ class SignupView(CreateView):
     def post(self, request, kwargs):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
-            form.save(commit=False)
+            form.save(commit=False) 
             email = form.cleaned_data['email']
             full_name = form.cleaned_data['full_name']
             self.mail_site_admins()
