@@ -10,7 +10,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = [ 'essay-kitten.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = [ 'essay-kitten.herokuapp.com', '127.0.0.1']
 
 
 INSTALLED_APPS = [
@@ -197,7 +197,7 @@ ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login'
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'wissac23@gmail.com'
+EMAIL_HOST_USER = 'issacwilson54@gmail.com'
 EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
