@@ -99,11 +99,7 @@ class PlaceAnOrderForm(forms.ModelForm):
             
         }
 
-    def clean_description(self):
-        min_value = 50
-        if len(self.cleaned_data['description']) < min_value:
-            raise forms.ValidationError('Please input more words')
-        return self.cleaned_data['description']
+
 
 
 class CancelOrderForm(forms.Form):

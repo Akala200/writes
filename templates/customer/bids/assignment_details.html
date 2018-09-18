@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="overview-wrap">
-                        <h2 class="title-1" style="margin-top: 50px;margin-bottom: 50px;">Place Orders</h2>
+                        <h2 class="title-1" style="margin-top: 50px;margin-bottom: 50px;">Order 4646466</h2><hr>
                     </div>
                 </div>
             </div>
@@ -72,8 +72,8 @@
                                         <td>{{ bid.level }}</td>
                                     </tr>
                                 </tbody>
-                                <a href="{% url 'customer:update_order' bid.order_uuid %}"><p>Edit Order</p></a>
                             </table>
+                            <a class="btn btn-primary " style="float:right; margin-top: 40px;" href="{% url 'customer:update_order' bid.order_uuid %}">Edit Order</a>
                         </div>
                        
                     </div>                                

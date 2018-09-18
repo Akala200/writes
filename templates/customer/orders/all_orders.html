@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="overview-wrap">
-                        <h2 class="title-1">All Orders
+                        <h2 class="title-1">Total Orders
                                 <span class="badge badge-primary">2</span>
                             </h2>
                             {% if messages %}
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="container-fluid">
-             <div class="table-responsive table-responsive-data2">
+             <div class="table-responsive table-responsive-data2" style="margin-top: 65px;">
                             <table class="table table-data2">
                                 <thead>
                                     <tr>
@@ -163,8 +163,8 @@
                                                      Action
                                                     </button>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Link 1</a>
-                                                        <a class="dropdown-item" href="#">Link 2</a>
+                                                        <a class="dropdown-item" href="#"><span><i class="fas fa-user-plus"></i></span>        Assign A Writer</a>
+                                                        <a class="dropdown-item" href="#"><span><i class="far fa-times-circle"></i></span>     Cancel</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -222,13 +222,12 @@
                                         <td>
                                             <div class="table-data-feature">
                                                 <div class="dropdown">
-                                                    <button type="button" class="btn btn-danger" disabled>
-                                                     Download
+                                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                     Action
                                                     </button>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Link 1</a>
-                                                        <a class="dropdown-item" href="#">Link 2</a>
-                                                     </div>
+                                                        <a class="dropdown-item" href="#"><span><i class="fas fa-redo-alt"></i></span>        Resubmit Order</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </td>
@@ -239,7 +238,7 @@
                                         <td class="desc">Herbal Medicine</td>
                                         <td>2018-09-24 19:10</td>
                                         <td>
-                                            <h4><span class="badge badge-warning" style="background-color:  #BCDCEB !important;">offers 45</span></h4>
+                                            <h4><span class="badge badge-default" style="background-color:  grey;">Expired</span></h4>
                                         </td>
                                         <td>
                                                 <div class="noti__item js-item-menu">
@@ -289,8 +288,7 @@
                                                      Action
                                                     </button>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Link 1</a>
-                                                        <a class="dropdown-item" href="#">Link 2</a>
+                                                        <a class="dropdown-item" href="#"><span><i class="fas fa-redo-alt"></i></span>        Resubmit Order</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -306,3 +304,11 @@
 <!-- END MAIN CONTENT-->
 
 {% endblock content %}
+
+
+
+<div class="col-lg-12 text-center" style="margin-top: 160px">
+        <button class="au-btn au-btn-icon au-btn--blue">
+        <i class="zmdi zmdi-plus"></i>Place New Order
+        </button>
+</div>

@@ -24,6 +24,7 @@ urlpatterns = [
     path('view-all-bids/', views.view_all_bids, name='view_all_bigs'),
     path('additional-files/', views.additional_files, name='additional_files'),
     path('assign-writers', views.assign_writers, name='assign_writers'),
-    path('<int:order_uuid>/add-files/', views.additional_files, name='additional_files')
+    path('<int:order_uuid>/add-files/', views.additional_files, name='additional_files'),
+    path('<view./', views.view_favorite_writers, name='favorite_writers')
 
 ]
