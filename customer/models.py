@@ -183,14 +183,14 @@ class Order(models.Model):
     order_type = models.CharField(max_length=250, choices=order_type, default='essay order')
     pages  = models.CharField(max_length=250)
     publication_date = models.DateField(default=timezone.now)
-    service =  models.CharField(max_length=250, choices=service_choice)
+    service =  models.CharField(max_length=250, choices=service_choice, default='essay service')
     deadline = models.DateTimeField()
-    sources = models.CharField(max_length=250, choices=source_choice)
+    sources = models.CharField(max_length=250, choices=source_choice, default='essay sources')
     completed = models.BooleanField(default=False)
     cancelled = models.BooleanField(default=False)
-    style  = models.CharField(max_length=250, choices=style_choice)
-    subject = models.CharField(max_length=250, choices=subject_choice)
-    level = models.CharField(max_length=250, choices=level_choice)
+    style  = models.CharField(max_length=250, choices=style_choice, default='essay style')
+    subject = models.CharField(max_length=250, choices=subject_choice, default='essay subject')
+    level = models.CharField(max_length=250, choices=level_choice, default='essay level')
     
 
     class Meta:
@@ -222,13 +222,6 @@ class AdditionalFiles(models.Model):
         return str(self.user)
 
 
-class ShortListedBid(models.Model):
-    user = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='shorted_listed_bid')
-    shortlisted_writer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='shorted_listed_writer')
-
-    def __str__(self):
-        return str(self.user)
-
 
 class FavouriteWriters(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='favorite_writer')
@@ -244,12 +237,9 @@ class Hired(models.Model):
     def __str__(self):
         return str(self.user)
 
-class Declined(models.Model):
-    user = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='declined')
-    hired = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='declined')
 
-    def __str__(self):
-        return str(self.user)
+
+
 
 
 

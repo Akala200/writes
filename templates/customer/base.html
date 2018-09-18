@@ -45,7 +45,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index.html">
-                            <img src="{% static 'images/logo2.png' %}" alt="CoolAdmin" />
+                            <img src="{% static 'images/logo2.png' %}" alt="" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -105,7 +105,7 @@
         <aside class="menu-sidebar d-none d-lg-block" style="background-color: #f3fafe">
             <div class="logo">
                 <a href="#">
-                    <h4>ESSAY KITTEN</h4>
+                    <h4 style="color:#fff">ESSAY KITTEN</h4>
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -152,6 +152,8 @@
                         
                     </ul>
                 </nav>
+            </div>
+            <div class="img_animate" style="background-image: url('img/book.gif')">
             </div>
         </aside>
         <!-- END MENU SIDEBAR-->
@@ -264,6 +266,7 @@
                                                     <span class="email">{{ request.user.email }}</span>
                                                     {% if user.login_status %}
                                                         <p>User is online</p>
+                                                       
                                                     {% endif %}
                                                 </div>
                                             </div>

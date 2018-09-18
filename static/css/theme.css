@@ -1578,11 +1578,11 @@ section {
     bottom: 0;
     background: #fff;
     overflow-y: auto;
-    background-image: linear-gradient(167deg, #009cde, #003087 40rem);
+    background-image: linear-gradient(167deg, #540a94 , #540a94 40rem);
 }
 
 .menu-sidebar .logo {
-    background-image: linear-gradient(167deg, #009cde, #003087 40rem);
+    background-image: linear-gradient(167deg, #540a94 , #540a94 40rem);
     height: 75px;
     padding: 0 35px;
     display: -webkit-box;
@@ -2295,7 +2295,7 @@ section {
 
 .header-desktop2 {
     height: 75px;
-    background-image: linear-gradient(167deg, #009cde, #003087 40rem);
+    background-image: linear-gradient(167deg, #540a94, #540a94 40rem);
     position: fixed;
     z-index: 1001;
     top: 0;
@@ -14679,4 +14679,6 @@ link :hover {
     }
 }
 
-
+.img_animate{
+    background-image: url('img/book.gif');
+}
