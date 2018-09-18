@@ -20,7 +20,7 @@ from django.views.generic import ListView
 from .forms import PaymentForm, PlaceAnOrderForm, CancelOrderForm
 from .models import (
     Wallet, WalletBalance, Order, FavouriteWriters,
-    Hired, AdditionalFiles, 
+    Hired, AdditionalFiles, ShortListed
 
 )
 
@@ -49,7 +49,6 @@ class Index(LoginRequiredMixin, ListView):
         context = super(Index, self).get_context_data(*args, **kwargs)
         context['form'] = CancelOrderForm()
         return context
-
 
 
 
@@ -193,17 +192,36 @@ def update_order(request, order_uuid):
 def assign_writers(request):
     return render(request, 'customer/bids/assign_writer.html')
 
-@login_required()
-def declined_bids(request):
-    declined_bids =  Bids.objects.filter(Q(declined=True))
-    return render(request, 'customer/bids/declined.html', context={
-        'declined_bids' : declined_bids
-    })
 
-@login_required
-def view_completed_order(request):
-    completed_order = Bids.objects.filter(Q(bidding_order=id))
-    return ''
+class DeclinedBids(LoginRequiredMixin, ListView):
+    model = Bids
+    context_object_name = 'bids'
+    paginate_by = 10
+    template_name = 'customer/bids/declined.html'
+    """
+    def get_queryset(self):
+        queryset = self.model.objects.filter(Q(bidding_id=self.kwargs['order_uuid']), Q(declined=True))
+        return queryset
+    """
+
+
+class ShortListedList(LoginRequiredMixin, ListView):
+    model = ShortListed
+    context_object_name = 'shortlist'
+    paginate_by = 10
+    template_name = 'customer/bids/shortlisted.html'
+
+   
+
+class CompletedBids(LoginRequiredMixin, ListView):
+    model = Bids
+    context_object_name = 'bids'
+    paginate_by = 10
+    template_name = 'customer/bids/completed.html'
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(Q(order_uuid=self.request.user), Q(completed=True))
+        return queryset
 
 @login_required()
 def hired_before(request):
@@ -214,9 +232,18 @@ def hired_before(request):
 def invited_writers(request):
     return render(request, 'customer/bids/invite_writers.html')
 
-@login_required()
-def invited(request):
-    return render(request, 'customer/bids/invited.html')
+class Invited(LoginRequiredMixin, ListView):
+    model = Order
+    context_object_name = 'invite'
+    paginate_by = 10
+    template_name = 'customer/bids/invited.html'
+
+    """
+    def get_queryset(self):
+        queryset = self.model.objects.filter(order_uuid=self.request.user).all()
+        return queryset
+    """
+
 
 
 @login_required()
@@ -224,10 +251,8 @@ def new_bids(request):
     new_bids = Bids.objects.all().exclude(approved=True)
     return render(request, 'customer/bids/new_bids.html')
 
-@login_required()
-def shortlisted(request):
-    #bids = Bids.objects.filter(short_listed=True).all()
-    return render(request, 'customer/bids/shortlisted.html')
+
+
 
 @login_required()
 def view_all_bids(request):
@@ -255,10 +280,16 @@ def add_additional_file(request, order_uuid):
         files = AdditionalFiles.objects.filter(user=order_uuid).all()
         return render(request, 'customer/bids/additonal_files.html')
 
-@login_required
-def view_favorite_writers(request):
-    writers = FavouriteWriters.objects.filter(user=request.user).all()
-    return render(request, 'customer/bids/favorite.html')
+
+class FavoriteWriter(LoginRequiredMixin, ListView):
+    template_name = 'customer/bids/favorite.html'
+    model = FavouriteWriters
+    paginate_by = 10
+
+    def get_queryset(self):
+        queryset =  self.model.objects.filter(user=self.request.user).all()
+        return queryset
+
 
 
 @login_required()
@@ -280,3 +311,21 @@ def resubmit_order(request, order_uuid):
     return render(request, 'customer/orders/edit_assignment.html', context={
         'form': form, 'order': order
     })
+
+
+@login_required()
+def add_to_favorite(request):
+    pass
+
+
+@login_required()
+def shortlist_a_writer(request):
+    pass
+
+@login_required()
+def decline_a_bid():
+    pass
+
+
+def view_all_writers(request):
+    return render(request, 'customer/writers/all_writers.html')

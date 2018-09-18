@@ -15,18 +15,19 @@ urlpatterns = [
     path('place-an-order/', views.place_an_order, name='place_an_order'),
     path('order-detail/<int:order_uuid>/', views.order_details, name='order_detail'),
     path('edit/<int:order_uuid>/', views.update_order, name='update_order'),
-    path('declined/', views.declined_bids, name='declined'),
+    path('declined/', views.DeclinedBids.as_view(), name='declined'),
     path('hired/', views.hired_before, name='hired_before'),
     path('invited-writes/', views.invited_writers, name='invited_writers'),
-    path('invited/', views.invited, name='invited'),
+    path('invited/', views.Invited.as_view(), name='invited'),
     path('new-bids/', views.new_bids, name='new_bids'),
-    path('shortlisted/', views.shortlisted, name='short_listed'),
+    path('shortlisted/', views.ShortListedList.as_view(), name='short_listed'),
     path('view-all-bids/', views.view_all_bids, name='view_all_bigs'),
     path('additional-files/', views.additional_files, name='additional_files'),
     path('assign-writers', views.assign_writers, name='assign_writers'),
     path('<int:order_uuid>/add-files/', views.additional_files, name='additional_files'),
-    path('<view./', views.view_favorite_writers, name='favorite_writers'),
+    path('view-favorite/', views.FavoriteWriter.as_view(), name='favorite_writers'),
     path('cancel-order/<int:order_uuid>/', views.cancel_an_order, name='cancel_an_order'),
-    path('resubmit-order/<int:order_uuid>/', views.resubmit_order, name='resubmit_order')
+    path('resubmit-order/<int:order_uuid>/', views.resubmit_order, name='resubmit_order'),
+    path('view-writers/', views.view_all_writers, name=' view_all_writers')
 
 ]

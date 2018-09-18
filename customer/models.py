@@ -239,6 +239,11 @@ class Hired(models.Model):
         return str(self.user)
 
 
+class ShortListed(models.Model):
+    short_id = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='short_id')
+    writer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='writer')
+
+
 
 
 
