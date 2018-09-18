@@ -194,8 +194,8 @@ def assign_writers(request):
     return render(request, 'customer/bids/assign_writer.html')
 
 @login_required()
-def declined_bids(request, order_uuid):
-    declined_bids =  Bids.objects.filter(Q(bidding_id=order_uuid), Q(declined=True))
+def declined_bids(request):
+    declined_bids =  Bids.objects.filter(Q(declined=True))
     return render(request, 'customer/bids/declined.html', context={
         'declined_bids' : declined_bids
     })
@@ -222,11 +222,11 @@ def invited(request):
 @login_required()
 def new_bids(request):
     new_bids = Bids.objects.all().exclude(approved=True)
-    return render(request, 'customers/bids/new_bids.html')
+    return render(request, 'customer/bids/new_bids.html')
 
 @login_required()
 def shortlisted(request):
-    bids = Bids.objects.filter(short_listed=True).all()
+    #bids = Bids.objects.filter(short_listed=True).all()
     return render(request, 'customer/bids/shortlisted.html')
 
 @login_required()
@@ -258,7 +258,7 @@ def add_additional_file(request, order_uuid):
 @login_required
 def view_favorite_writers(request):
     writers = FavouriteWriters.objects.filter(user=request.user).all()
-    return render(request, 'customer/bids/favorite_writers.html')
+    return render(request, 'customer/bids/favorite.html')
 
 
 @login_required()
