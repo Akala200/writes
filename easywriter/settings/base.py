@@ -40,7 +40,6 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -85,7 +84,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 
 LANGUAGE_CODE = 'en-us'
@@ -112,14 +111,6 @@ DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))
 STATIC_URL = '/static/'
 
 
-STATIC_ROOT = os.path.join(DIR, 'static')
-
-#STATICFILES_DIRS = ( os.path.join('static'), )
-
-
-
-
- 
 
 
 STATICFILES_FINDERS = [
@@ -202,7 +193,7 @@ ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login'
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'issacwilson54@gmail.com'
+EMAIL_HOST_USER = 'emmanuelukwuegbu2016@gmail.com'
 EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
