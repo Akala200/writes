@@ -113,12 +113,6 @@ STATIC_URL = '/static/'
 
 
 
-
-
-
- 
-
-
 STATICFILES_FINDERS = [
 
 

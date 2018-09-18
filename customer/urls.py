@@ -7,7 +7,7 @@ app_name = 'customer'
 urlpatterns = [
     path('view-transactions/', views.view_transactions, name='view_transactions'),
     path('process-payment/', views.process_payment, name='process_payment'),
-    path('home/', views.index, name='index'),
+    path('home/', views.Index.as_view(), name='index'),
     path('cancelled-orders/', views.cancelled_order, name='cancelled_order'),
     path('completed-orders/', views.completed_order, name='completed_order'),
     path('bidding-orders/', views.bidding_order, name='bidding_order'),
@@ -25,6 +25,8 @@ urlpatterns = [
     path('additional-files/', views.additional_files, name='additional_files'),
     path('assign-writers', views.assign_writers, name='assign_writers'),
     path('<int:order_uuid>/add-files/', views.additional_files, name='additional_files'),
-    path('<view./', views.view_favorite_writers, name='favorite_writers')
+    path('<view./', views.view_favorite_writers, name='favorite_writers'),
+    path('cancel-order/<int:order_uuid>/', views.cancel_an_order, name='cancel_an_order'),
+    path('resubmit-order/<int:order_uuid>/', views.resubmit_order, name='resubmit_order')
 
 ]

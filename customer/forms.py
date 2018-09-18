@@ -103,7 +103,22 @@ class PlaceAnOrderForm(forms.ModelForm):
 
 
 class CancelOrderForm(forms.Form):
-    pass
+    REASON = (
+        ('Select reason', 'Select reason'),
+        ('Expensive Price', 'Expensive Price'),
+        ('Duplicate Order','Duplicate Order',),
+        ('Do not Need', 'Do not Need')
+    )
+
+    reason = forms.ChoiceField(choices=REASON, widget=forms.Select(attrs={
+        'class': 'custom-select',
+        'value': 'select reason'
+    }))
+    
+    comment = forms.CharField(widget=forms.Textarea(attrs={
+        'class': 'form-control',
+        'placeholder': 'Please help us improve, kindly comment your reason'
+    }))
 
 
 class  AdditionalFileForm(forms.ModelForm):

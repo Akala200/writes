@@ -12,10 +12,12 @@ from django.views.generic import UpdateView
 from django.db.models import F, Q
 from django.http import HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
+from django.views.generic import ListView
 
-from .forms import PaymentForm, PlaceAnOrderForm
+from .forms import PaymentForm, PlaceAnOrderForm, CancelOrderForm
 from .models import (
     Wallet, WalletBalance, Order, FavouriteWriters,
     Hired, AdditionalFiles, 
@@ -33,13 +35,22 @@ def generated_unique_id():
     return ran
 
 
+class Index(LoginRequiredMixin, ListView):
+    model = Order
+    context_object_name = 'orders'
+    paginate_by = 10
+    template_name = 'customer/orders/all_orders.html'
 
-@login_required()
-def index(request):
-    user_order = Order.objects.filter(order_id=request.user).order_by('-deadline')
-    return render(request, 'customer/orders/all_orders.html', context={
-        'orders': user_order
-    })
+    def get_queryset(self):
+        queryset = self.model.objects.filter(order_id=self.request.user).order_by('-deadline').all()
+        return queryset
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(Index, self).get_context_data(*args, **kwargs)
+        context['form'] = CancelOrderForm()
+        return context
+
+
 
 
 @login_required()
@@ -79,6 +90,15 @@ def place_an_order(request):
     return render(request, 'customer/orders/place_orders.html', context={
         'form': form
     })
+
+@login_required()
+def cancel_an_order(request, order_uuid):
+    form = CancelOrderForm(request.POST)
+    if form.is_valid() and request.method == 'POST':
+        cancel_order = Order.objects.filter(order_uuid=order_uuid).update(cancelled=True)
+        messages.success(request, 'Order cancelled successfully')
+        return redirect(reverse('customer:index'))
+
 
 
 @login_required()
@@ -239,7 +259,24 @@ def add_additional_file(request, order_uuid):
 def view_favorite_writers(request):
     writers = FavouriteWriters.objects.filter(user=request.user).all()
     return render(request, 'customer/bids/favorite_writers.html')
-    
 
 
+@login_required()
+def resubmit_order(request, order_uuid):
+    order = get_object_or_404(Order, order_uuid=order_uuid)
+    form = PlaceAnOrderForm(request.POST, instance=order)
+    if request.method == "POST":
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.order_id = request.user
+            instance.save()
+            messages.success(request, 'Order submited')
+            return redirect(reverse('customer:order_detail', kwargs={'order_uuid': instance.order_uuid}))
+        
+    else:
+        form = PlaceAnOrderForm(instance=order)
 
+
+    return render(request, 'customer/orders/edit_assignment.html', context={
+        'form': form, 'order': order
+    })
