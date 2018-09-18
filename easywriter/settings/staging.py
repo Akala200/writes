@@ -4,6 +4,10 @@ from .base import *
 from decouple import config
 
 
+STATICFILES_DIRS = ( os.path.join('static'), )
+
+
+
 
 DATABASES = {
    'default': {

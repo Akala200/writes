@@ -2,14 +2,14 @@ import random
 import json
 from decimal import Decimal
 
-
+import stripe
 
 from django.shortcuts import render, redirect, reverse
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import UpdateView
-from django.db.models import F
+from django.db.models import F, Q
 from django.http import HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
@@ -17,12 +17,12 @@ from django.shortcuts import get_object_or_404
 
 from .forms import PaymentForm, PlaceAnOrderForm
 from .models import (
-    Wallet, WalletBalance, Order, FavouriteWriters, ShortListedBid,
-    Hired, Declined, AdditionalFiles, 
+    Wallet, WalletBalance, Order, FavouriteWriters,
+    Hired, AdditionalFiles, 
 
 )
 
-import stripe
+from writers.models import Bids
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -121,9 +121,7 @@ def process_payment(request):
                 status = True
     
             )
-            update_user_balance = WalletBalance.objects.get(balance_id=request.user)
-            update_user_balance.balance += Decimal(amount)
-            update_user_balance.save()
+            update_user_balance = WalletBalance.objects.filter(balance_id=request.user).update(balance=F('balance') + Decimal(amount))
 
             
             return redirect(reverse('customer:view_transactions'))
@@ -160,7 +158,7 @@ def update_order(request, order_uuid):
             instance = form.save(commit=False)
             instance.order_id = request.user
             instance.save()
-            messages.success(request, 'Order was submitted')
+            messages.success(request, 'Order was Updated')
             return redirect(reverse('customer:order_detail', kwargs={'order_uuid': instance.order_uuid}))
         
     else:
@@ -176,9 +174,16 @@ def assign_writers(request):
     return render(request, 'customer/bids/assign_writer.html')
 
 @login_required()
-def declined_bids(request):
-    return render(request, 'customer/bids/declined.html')
+def declined_bids(request, order_uuid):
+    declined_bids =  Bids.objects.filter(Q(bidding_id=order_uuid), Q(declined=True))
+    return render(request, 'customer/bids/declined.html', context={
+        'declined_bids' : declined_bids
+    })
 
+@login_required
+def view_completed_order(request):
+    completed_order = Bids.objects.filter(Q(bidding_order=id))
+    return ''
 
 @login_required()
 def hired_before(request):
@@ -196,10 +201,12 @@ def invited(request):
 
 @login_required()
 def new_bids(request):
+    new_bids = Bids.objects.all().exclude(approved=True)
     return render(request, 'customers/bids/new_bids.html')
 
 @login_required()
 def shortlisted(request):
+    bids = Bids.objects.filter(short_listed=True).all()
     return render(request, 'customer/bids/shortlisted.html')
 
 @login_required()

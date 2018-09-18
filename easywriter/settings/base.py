@@ -40,7 +40,6 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -85,7 +84,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 
 LANGUAGE_CODE = 'en-us'
@@ -112,9 +111,7 @@ DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))
 STATIC_URL = '/static/'
 
 
-STATIC_ROOT = os.path.join(DIR, 'static')
 
-#STATICFILES_DIRS = ( os.path.join('static'), )
 
 
 
