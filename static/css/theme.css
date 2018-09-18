@@ -14682,3 +14682,33 @@ link :hover {
 .img_animate{
     background-image: url('img/book.gif');
 }
+
+
+.pb_select-wrap {
+  position: relative; 
+}
+  .pb_select-wrap:before {
+    font-family: 'Ionicons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\f3d0";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: 26px;
+ }
+ 
+  .pb_select-wrap select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+}

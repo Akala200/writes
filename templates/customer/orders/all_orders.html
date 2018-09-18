@@ -169,23 +169,66 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </td>
-                                            {% elif order.expired %}
-
-                                            <td>
-                                                <h4><span class="badge badge-default" style="background-color:  grey;">Expired</span></h4>
-                                            </td>
-                                            <td>
-                                                    <div class="table-data-feature">
-                                                        <div class="dropdown">
-                                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                                             Action
-                                                            </button>
-                                                            <div class="dropdown-menu">
-                                                                <a class="dropdown-item" href="#"><span><i class="fas fa-redo-alt"></i></span>        Resubmit Order</a>
+                                            <div class="table-data-feature">
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                     Action
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="{% url 'customer:assign_writers' %}"><span><i class="fas fa-user-plus"></i></span>   Assign A Writer</a>
+                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#cancel"><span><i class="far fa-times-circle"></i></span>     Cancel</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="spacer"></tr>
+                                    <tr class="tr-shadow">
+                                        <td>23794</td>
+                                        <td class="desc">Herbal Medicine</td>
+                                        <td>2018-09-25 19:03</td>
+                                        <td>
+                                            <h4><span class="badge badge-danger">Cancelled</span></h4>
+                                        </td>
+                                        <td>
+                                                <div class="noti__item js-item-menu">
+                                                        <i class="zmdi zmdi-email"></i>
+                                                        <span class="quantity">1</span>
+                                                        <div class="email-dropdown js-dropdown">
+                                                            <div class="email__title">
+                                                                <p>You have 3 New Emails</p>
+                                                            </div>
+                                                            <div class="email__item">
+                                                                <div class="image img-cir img-40">
+                                                                    <img src="{% static 'images/icon/avatar-06.jpg' %}" alt="Cynthia Harvey" />
+                                                                </div>
+                                                                <div class="content">
+                                                                    <p>Meeting about new dashboard...</p>
+                                                                    <span>Cynthia Harvey, 3 min ago</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="email__item">
+                                                                <div class="image img-cir img-40">
+                                                                    <img src="{% static 'images/icon/avatar-05.jpg' %}" alt="Cynthia Harvey" />
+                                                                </div>
+                                                                <div class="content">
+                                                                    <p>Meeting about new dashboard...</p>
+                                                                    <span>Cynthia Harvey, Yesterday</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="email__item">
+                                                                <div class="image img-cir img-40">
+                                                                    <img src="{% static 'images/icon/avatar-04.jpg' %}" alt="Cynthia Harvey" />
+                                                                </div>
+                                                                <div class="content">
+                                                                    <p>Meeting about new dashboard...</p>
+                                                                    <span>Cynthia Harvey, April 12,,2018</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="email__footer">
+                                                                <a href="#">See all emails</a>
                                                             </div>
                                                         </div>
-                                                    </div>
                                                 </td>
                                         {% else %}
                                         <td>
@@ -262,6 +305,35 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="cancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="width: 400px;">
+      <div class="modal-content" style="padding: 20px;">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> <span><i class="fas fa-exclamation-circle"></i></span>   Cancel order</h5>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+                <select class="custom-select">
+                    <option selected>Choose One...</option>
+                    <option value="1">Boots</option>
+                    <option value="2">Shoes</option>
+                    <option value="3">Feet</option>
+                    </select>
+              </div>
+            <div class="form-group">
+              <textarea class="form-control" id="message-text" placeholder="Please help us improve, kindly comment your reason"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn  btn-success col-lg-6">Submit</button>
+          <button type="button" class="btn btn-secondary col-lg-6" data-dismiss="modal">Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
 <!-- END MAIN CONTENT-->
 
 {% endblock content %}
