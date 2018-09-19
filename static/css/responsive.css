@@ -26,6 +26,8 @@
 	.home_banner_area .banner_inner {
 		padding: 80px 0px;
 	}
+
+	
 	/* End Home Banner Area css
 	============================================================================================ */
 }
@@ -259,6 +261,9 @@
 	.home_banner_area {
 		min-height: 1100px;
 	}
+	#another3{
+		min-height: 500px;
+	}
 	.home_banner_area .banner_inner {
 		min-height: 500px;
 	}
@@ -380,6 +385,10 @@
 	============================================================================================ */
 	.home_banner_area {
 		min-height: 1100px;
+	}
+
+	#another {
+		min-height: 500px;
 	}
 	.home_banner_area .banner_inner {
 		min-height: 350px;
