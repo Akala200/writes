@@ -20,9 +20,10 @@
                     <!--  END TOP CAMPAIGN-->
                  </div>
                  <div class="col-lg-8 write-col">
+                     {% for fav in favorite %}
                         <div class="row write-frame" style="padding: 20px;margin-right: 20px;">
                             <div class="card">
-                                <h5 class="card-header mr-auto" style="float: left">Adekunle Sampuel  <span class="badge badge-success" style="margin-left: 10px; font-size: 15px;"> Bid:  $300 </span></h5>
+                                <h5 class="card-header mr-auto" style="float: left">{{ fav.favorite_writers.email }}<span class="badge badge-success" style="margin-left: 10px; font-size: 15px;"> Bid:  $300 </span></h5>
                                 <div class="card-body">
                                   <div class="row">
                                         <div class="col-md-2">
@@ -72,7 +73,7 @@
                                                                         </button>
                                                                         <div class="dropdown-menu">
                                                                             <a class="dropdown-item" href="{% url 'customer:assign_writers' %}"><span><i class="far fa-handshake" style="color: green"></i></span> Invite Writer</a>
-                                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#cancel"><span><i class="fas fa-certificate" style="color:red"></i></span>  Remove from favorites</a>
+                                                                            <a class="dropdown-item" href="{% url 'customer:remove_from_favorite' fav.favorite_writers %}'" data-toggle="modal" data-target="#cancel"><span><i class="fas fa-certificate" style="color:red"></i></span>  Remove from favorites</a>
                                                                     </div>
                                                                  </div>
                                                             </div>
@@ -83,6 +84,7 @@
                                 </div>
                               </div>
                                 </div>
+                                {% endfor %}
                             </div>
                  </div>
             </div>

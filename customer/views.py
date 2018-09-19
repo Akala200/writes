@@ -58,7 +58,8 @@ def bidding_order(request):
 
 @login_required()
 def cancelled_order(request):
-    return render(request, 'customer/orders/canceled_orders.html') 
+    cancelled = Order.objects.filter(Q(order_id=request.user), Q(cancelled=True))
+    return render(request, 'customer/orders/canceled_orders.html', context={'orders':  cancelled }) 
 
 @login_required()
 def completed_order(request):
@@ -285,6 +286,7 @@ class FavoriteWriter(LoginRequiredMixin, ListView):
     template_name = 'customer/bids/favorite.html'
     model = FavouriteWriters
     paginate_by = 10
+    context_object_name = 'favorite'
 
     def get_queryset(self):
         queryset =  self.model.objects.filter(user=self.request.user).all()
@@ -314,8 +316,10 @@ def resubmit_order(request, order_uuid):
 
 
 @login_required()
-def add_to_favorite(request):
-    pass
+def add_to_favorite(request, writer_id):
+    add_writer = FavouriteWriters.objects.create(user=request.user, favorite_writers=writer_id)
+    return messages.success(request, 'Writer added to your favorite list')
+    
 
 
 @login_required()
@@ -329,3 +333,9 @@ def decline_a_bid():
 
 def view_all_writers(request):
     return render(request, 'customer/writers/all_writers.html')
+
+
+def remove_from_favorite(request, writer_id):
+    writer = get_object_or_404(FavouriteWriters, favorite_writers=writer_id)
+    writer.delete()
+    return redirect(reverse('customer:favorite_writers'))

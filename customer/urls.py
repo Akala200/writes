@@ -28,6 +28,7 @@ urlpatterns = [
     path('view-favorite/', views.FavoriteWriter.as_view(), name='favorite_writers'),
     path('cancel-order/<int:order_uuid>/', views.cancel_an_order, name='cancel_an_order'),
     path('resubmit-order/<int:order_uuid>/', views.resubmit_order, name='resubmit_order'),
-    path('view-writers/', views.view_all_writers, name=' view_all_writers')
+    path('view-writers/', views.view_all_writers, name='view_all_writers'),
+    path('remove-writer/<int:writer_id>/', views.remove_from_favorite, name='remove_from_favorite')
 
 ]
