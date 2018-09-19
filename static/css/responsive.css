@@ -24,7 +24,7 @@
 	/* Home Banner Area css
 	============================================================================================ */
 	.home_banner_area .banner_inner {
-		padding: 100px 0px;
+		padding: 80px 0px;
 	}
 	/* End Home Banner Area css
 	============================================================================================ */
@@ -257,7 +257,7 @@
 		font-size: 28px;
 	}
 	.home_banner_area {
-		min-height: 500px;
+		min-height: 1100px;
 	}
 	.home_banner_area .banner_inner {
 		min-height: 500px;
@@ -270,6 +270,11 @@
 	}
 	.home_banner_area .banner_inner .banner_content h5 {
 		margin-top: 0px;
+	}
+
+	.pb_form_v1{
+		margin-top: 60px;
+		margin-left: -10px;
 	}
 	/* End Home Banner Area css
 	============================================================================================ */
@@ -374,7 +379,7 @@
 	/* End Blog Page Area css
 	============================================================================================ */
 	.home_banner_area {
-		min-height: 350px;
+		min-height: 1100px;
 	}
 	.home_banner_area .banner_inner {
 		min-height: 350px;
