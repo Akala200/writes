@@ -15,9 +15,37 @@ def signup(request):
     form =  WriterSignupForm(request.POST)
     if request.method == "POST" and form.is_valid():
         form.save()
-        return redirect('')
+        return redirect(reverse('writers:home'))
     else:
-        return render(request, 'writers/accounts/signup.html')
+        form =  WriterSignupForm()
+        return render(request, 'writers/accounts/signup.html', context = {
+            'form': form
+        })
+
+
+@login_required()
+def home(request):
+    return render(request, 'writers/view/instruction.html')
+
+@login_required()
+def all_orders(request):
+    return render(request, 'writers/view/all_orders.html')
+
+@login_required()
+def bidding_orders(request):
+    return render(request, 'writers/view/all_orders.html')
+
+@login_required()
+def in_progress(request):
+    return render(request, 'writers/view/all_orders.html')
+
+@login_required()
+def new_orders(request):
+    return render(request, 'writers/view/new_orders.html')
+
+@login_required()
+def personal(request):
+    return render(request, 'writers/view/personal.html.html')
 
 
 @login_required()

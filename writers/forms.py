@@ -11,6 +11,14 @@ class WriterSignupForm(UserCreationForm):
         model = get_user_model()
         fields = ('email', 'password')
 
+    def __init__(self, *args, **kwargs):
+        super(WriterSignupForm, self).__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs.update({'class': 'input100', 'placeholder': 'Email'})
+        self.fields['password1'].widget.attrs.update({'class': 'input100', 'placeholder': 'Password'})
+        self.fields['password2'].widget.attrs.update({'class': 'input100', 'placeholder': 'Confirm-password'})
+        self.fields['email'].error_messages['required'] = 'This email exist with an account already'
+
+
     def save(self, commit=True):
         instance = super(WriterSignupForm, self).save(commit=False)
         if not instance.is_writer:
