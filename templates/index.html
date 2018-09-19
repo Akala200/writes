@@ -10,14 +10,85 @@
     <div class="banner_inner">
 <div class="container">
   <div class="row banner_content">
-    <div class="col-lg-9">
+    <div class="col-lg-8">
       <h2>Essay delimma?<br />Hire a Writer.</h2>
       <p style="font-size: 24px;">We’ll make the grade</p>
       <a class="banner_btn btn-header" id="findwriter" href="#">Find Your Writer</a>
       <a class="banner_btn btn-header" id="signup" href="{% url 'account_signup' %}">Signup</a>
     </div>
-    <div class="col-lg-3">
-        <div class="container">  
+    <div class="col-lg-4">
+        <div class="container"> 
+            <form action="#" class="bg-white rounded pb_form_v1">
+                <h2 class="mb-4 mt-0 text-center" style="font-size: 20px;color: #000;">Calculate Price</h2>
+                <div class="form-group">
+                    <div class="pb_select-wrap">
+                      <select class="form-control pb_height-50 reverse">
+                        <option value="" selected>Writing</option>
+                        <option value="">Rewriting</option>
+                        <option value="">Editing</option>
+                      </select>
+                    </div>
+                  </div>
+                <div class="form-group">
+                    <div class="pb_select-wrap">
+                      <select class="form-control pb_height-50 reverse">
+                        <option value="" selected>Essay(Any)</option>
+                        <option value="">Admission Essay</option>
+                        <option value="">Annotated Bibliography</option>
+                        <option value="">Article Review</option>
+                        <option value="">Book/Movie Review</option>
+                        <option value="">Business Plan</option>
+                        <option value="">Case Study</option>
+                        <option value="">Course Work</option>
+                        <option value="">Creative Writing</option>
+                        <option value="">Course Work</option>
+                        <option value="">Critical Thinking/Review</option>
+                        <option value="">Literature Review</option>
+                        <option value="">Multiple Choice Question</option>
+                        <option value="">Presentation or Speech</option>
+                        <option value="">Reflextive Writing</option>
+                        <option value="">Report</option>
+                        <option value="">Research Paper</option>
+                        <option value="">Research proposal</option>
+                        <option value="">Term Paper</option>
+                        <option value="">Thesis </option>
+                        <option value="">Others</option>
+                      </select>
+                    </div>
+                  </div>
+                <div class="form-group">
+                    <div class="pb_select-wrap">
+                      <select class="form-control pb_height-50 reverse">
+                        <option value="" selected>6 Hours</option>
+                        <option value="">12 Hours</option>
+                        <option value="">1 Day</option>
+                        <option value=""> 1 Week</option>
+                        <option value="">2 Weeks</option>
+                        <option value="">1  Month</option>
+                        <option value="">2 Months</option>
+                      </select>
+                    </div>
+                  </div>
+                <div class="form-group">
+                  <div class="pb_select-wrap">
+                    <div class="col-xs-3 col-xs-offset-3">
+                      <div class="input-group number-spinner">
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+                        </span>
+                        <input type="text" class="form-control text-center" value="1">
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <h3 class="text-center" style="color:#000;">$44:23</h3>
+                <div class="form-group">
+                  <input type="submit" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Register">
+                </div>
+              </form> 
             </div>
     </div>
   </div>
@@ -189,7 +260,7 @@
 <!--================End Feature Area =================-->
 
 <!--================Interior Area =================-->
-<section class="interior_area" id="background" style="background-color: #ccc0cc;">
+<section class="interior_area" id="background" style="background-color: #cdbdd6;">
   <div class="container">
     <div class="interior_inner row">
     <div class="col-lg-5">
@@ -313,15 +384,37 @@
   </section>
 <!--================End Testimonials Area =================-->
 
-<section class="testimonials_area p_120">
+<section class="testimonials_area p_120 class">
+    <div class="container">
+        <div class="section-title">
+            <h3>What our Customers Says</h3>
+            <small>Avg rating for 56690 reviews:4.9</small>
+        </div>
+
+        <div class="testimonials owl-carousel">
+            <div class="testimonials-single">
+                <img src="images/client.png" alt="client" class="client-img">
+                <blockquote class="blockquote">Uniquely streamline highly efficient scenarios and 24/7 initiatives. Conveniently embrace multifunctional ideas through proactive customer service. Distinctively conceptualize 2.0 intellectual capital via user-centric partnerships.</blockquote>
+                <h5 class="mt-4 mb-2">Crystal Gordon</h5>
+                <p class="text-primary">United States</p>
+            </div>
+            <div class="testimonials-single">
+                <img src="images/client.png" alt="client" class="client-img">
+                <blockquote class="blockquote">Uniquely streamline highly efficient scenarios and 24/7 initiatives. Conveniently embrace multifunctional ideas through proactive customer service. Distinctively conceptualize 2.0 intellectual capital via user-centric partnerships.</blockquote>
+                <h5 class="mt-4 mb-2">Crystal Gordon</h5>
+                <p class="text-primary">United States</p>
+            </div>
+            <div class="testimonials-single">
+                <img src="images/client.png" alt="client" class="client-img">
+                <blockquote class="blockquote">Uniquely streamline highly efficient scenarios and 24/7 initiatives. Conveniently embrace multifunctional ideas through proactive customer service. Distinctively conceptualize 2.0 intellectual capital via user-centric partnerships.</blockquote>
+                <h5 class="mt-4 mb-2">Crystal Gordon</h5>
+                <p class="text-primary">United States</p>
+            </div>
+        </div>
+
     </div>
-  </div>
-  <div class="row">
-    <div class="col text-center" style="margin-top: 90px;">
-        <a class="banner_btn success-border circle btn-header" href="#">Explore Now</a>
-    </div>
-  </div>
-</div>
+
+<!-- // end .section -->
 </section>
 <!--================End Testimonials Area =================-->
 
