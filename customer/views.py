@@ -292,6 +292,9 @@ class FavoriteWriter(LoginRequiredMixin, ListView):
         queryset =  self.model.objects.filter(user=self.request.user).all()
         return queryset
 
+    def get_context_data(self, *args, **kwargs):
+        pass
+
 
 
 @login_required()
