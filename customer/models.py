@@ -4,7 +4,7 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from django.urls import reverse
-from django.core.validators import MinValueValidator
+from django.core.validators import MinLengthValidator
 
 class Wallet(models.Model):
     wallet_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -209,13 +209,11 @@ class Order(models.Model):
     )
 
 
-    
-
 
 
     order_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     topic = models.CharField(max_length=250)
-    description = models.TextField(validators=[MinValueValidator(limit_value=20, message='Too Short')])
+    description = models.TextField(validators=[MinLengthValidator(limit_value=10, message='Too short')])
     order_uuid = models.IntegerField(unique=True)
     order_type = models.CharField(max_length=250, choices=order_type, default='essay order')
     pages  = models.CharField(max_length=250, choices=page_choice, default='page choice')

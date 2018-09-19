@@ -208,3 +208,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
 STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
+
+ACCOUNT_LOGOUT_ON_GET =False

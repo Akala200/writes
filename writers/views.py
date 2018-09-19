@@ -56,7 +56,7 @@ def create_profile(request):
         instance.profile_id = request.user
         instance.save()
         messages.success(request, 'Your profile set up was successfully')
-        return redirect(reverse(''))
+        return redirect(reverse('writers:all_orders'))
     
     else:
         form =  ProfileForm()

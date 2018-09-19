@@ -27,7 +27,7 @@ class PlaceAnOrderForm(forms.ModelForm):
                 'option': 'type',
             
             }),
-                'pages': forms.TextInput(attrs={
+                'pages': forms.Select(attrs={
                     'class': 'form-control-sm form-control',
                     'placeholder': '1 page / 275 words',
                 
