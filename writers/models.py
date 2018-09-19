@@ -103,11 +103,14 @@ class WritersProfile(models.Model):
     profile_id = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='user_profile',
     on_delete=models.CASCADE)
     image = models.ImageField(upload_to=user_directory_path)
+    full_name = models.CharField(max_length=50, null=True)
     headline = models.CharField(max_length=30)
     about = models.TextField()
     subject_one =  models.CharField(max_length=250,choices=subject_choice, default='subject choice')
     subject_two =  models.CharField(max_length=250, choices=subject_choice, default='subject choice')
     subject_three =  models.CharField(max_length=250, choices=subject_choice, default='subject choice')
+    payment_method = models.CharField(max_length=50, default='Paypal', editable=False)
+    paypal_id = models.CharField(max_length=50, null=True)
 
     def __str__(self):
         return str(self.profile_id)

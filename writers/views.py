@@ -28,7 +28,7 @@ def create_profile(request):
         instance.profile_id = request.user
         instance.save()
         messages.success(request, 'Your profile set up was successfully')
-        return redirect()
+        return redirect(reverse(''))
     
     else:
         form =  ProfileForm()
@@ -54,3 +54,6 @@ def update_profile(request):
         })
 
 
+@login_required()
+def set_up_payment_system(request):
+    pass
