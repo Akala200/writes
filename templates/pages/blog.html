@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 
 <head>
 	<meta charset="utf-8">
@@ -13,20 +14,20 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
 
 	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 
 	<!-- Owl Carousel -->
-	<link type="text/css" rel="stylesheet" href="css/owl.carousel.css" />
-	<link type="text/css" rel="stylesheet" href="css/owl.theme.default.css" />
+	<link type="text/css" rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'css/owl.theme.default.css' %}" />
 
 	<!-- Magnific Popup -->
-	<link type="text/css" rel="stylesheet" href="css/magnific-popup.css" />
+	<link type="text/css" rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" />
 
 	<!-- Font Awesome Icon -->
-	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
 
 	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="css/blog.css" />
+	<link type="text/css" rel="stylesheet" href="{% static 'css/blog.css' %}" />
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,7 +36,7 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 </head>
-
+<body>
 
 	<!-- Blog -->
 	<div id="blog" class="section md-padding">
@@ -50,7 +51,7 @@
 				<main id="main" class="col-md-9">
 					<div class="blog">
 						<div class="blog-img">
-							<img class="img-responsive" src="./img/blog-post.jpg" alt="">
+							<img class="img-responsive" src="{% static 'img/blog-post.jpg' %}" alt="">
 						</div>
 						<div class="blog-content">
 							<ul class="blog-meta">
@@ -78,7 +79,7 @@
 						<div class="blog-author">
 							<div class="media">
 								<div class="media-left">
-									<img class="media-object" src="./img/author.jpg" alt="">
+									<img class="media-object" src="{% static 'img/author.jpg' %}" alt="">
 								</div>
 								<div class="media-body">
 									<div class="media-heading">
@@ -103,7 +104,7 @@
 							<!-- comment -->
 							<div class="media">
 								<div class="media-left">
-									<img class="media-object" src="./img/perso2.jpg" alt="">
+									<img class="media-object" src="{% static 'img/perso2.jpg' %}" alt="">
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading">Joe Doe<span class="time">2 min ago</span><a href="#" class="reply">Reply <i class="fa fa-reply"></i></a></h4>
@@ -115,7 +116,7 @@
 							<!-- comment -->
 							<div class="media">
 								<div class="media-left">
-									<img class="media-object" src="./img/perso1.jpg" alt="">
+									<img class="media-object" src="{% static 'img/perso1.jpg' %}" alt="">
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading">Joe Doe<span class="time">2 min ago</span><a href="#" class="reply">Reply <i class="fa fa-reply"></i></a></h4>
@@ -125,7 +126,7 @@
 								<!-- author reply comment -->
 								<div class="media author">
 									<div class="media-left">
-										<img class="media-object" src="./img/perso2.jpg" alt="">
+										<img class="media-object" src="{% static 'img/perso2.jpg' %}" alt="">
 									</div>
 									<div class="media-body">
 										<h4 class="media-heading">Joe Doe<span class="time">2 min ago</span><a href="#" class="reply">Reply <i class="fa fa-reply"></i></a></h4>
@@ -137,7 +138,7 @@
 								<!-- reply comment -->
 								<div class="media">
 									<div class="media-left">
-										<img class="media-object" src="./img/perso2.jpg" alt="">
+										<img class="media-object" src="{% static 'img/perso2.jpg' %}" alt="">
 									</div>
 									<div class="media-body">
 										<h4 class="media-heading">Joe Doe<span class="time">2 min ago</span><a href="#" class="reply">Reply <i class="fa fa-reply"></i></a></h4>
@@ -153,7 +154,7 @@
 							<!-- comment -->
 							<div class="media">
 								<div class="media-left">
-									<img class="media-object" src="./img/perso.jpg" alt="">
+									<img class="media-object" src="{% static 'img/perso.jpg' %}" alt="">
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading">Joe Doe<span class="time">2 min ago</span><a href="#" class="reply">Reply <i class="fa fa-reply"></i></a></h4>
@@ -213,7 +214,7 @@
 						<!-- single post -->
 						<div class="widget-post">
 							<a href="#">
-								<img src="./img/post1.jpg" alt=""> Blog title goes here
+								<img src="{% static 'img/post1.jpg' %}" alt=""> Blog title goes here
 							</a>
 							<ul class="blog-meta">
 								<li>Oct 18, 2017</li>
@@ -224,7 +225,7 @@
 						<!-- single post -->
 						<div class="widget-post">
 							<a href="#">
-								<img src="./img/post2.jpg" alt=""> Blog title goes here
+								<img src="{% static 'img/post2.jpg' %}" alt=""> Blog title goes here
 							</a>
 							<ul class="blog-meta">
 								<li>Oct 18, 2017</li>
@@ -236,7 +237,7 @@
 						<!-- single post -->
 						<div class="widget-post">
 							<a href="#">
-								<img src="./img/post3.jpg" alt=""> Blog title goes here
+								<img src="{% static 'img/post3.jpg' %}" alt=""> Blog title goes here
 							</a>
 							<ul class="blog-meta">
 								<li>Oct 18, 2017</li>
@@ -287,7 +288,7 @@
 
 					<!-- footer logo -->
 					<div class="footer-logo">
-						<a href="index.html"><img src="img/logo-alt.png" alt="logo"></a>
+						<a href="index.html"><img src="{% static 'img/logo-alt.png' %}" alt="logo"></a>
 					</div>
 					<!-- /footer logo -->
 
@@ -335,11 +336,10 @@
 	<!-- /Preloader -->
 
 	<!-- jQuery Plugins -->
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-	<script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
-	<script type="text/javascript" src="js/blog.js"></script>
+	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/blog.js' %}"></script>
 
 </body>
 

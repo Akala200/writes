@@ -1,65 +1,15 @@
-<!doctype html>
-<html lang="en">
-<!--
+{% extends 'writers/base.html' %}
+{% load static %}
+{% block content %}
 
-Page    : index / MobApp
-Version : 1.0
-Author  : Colorlib
-URI     : https://colorlib.com
 
- -->
-
-<head>
-    <title>Essay Kitten</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Mobland - Mobile App Landing Page Template">
-    <meta name="keywords" content="HTML5, bootstrap, mobile, app, landing, ios, android, responsive">
-
-    <!-- Font -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Themify Icons -->
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <!-- Owl carousel -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <!-- Main css -->
-    <link href="css/style.css" rel="stylesheet">
-</head>
-
-<body data-spy="scroll" data-target="#navbar" data-offset="30">
-
-    <!-- Nav Menu -->
-
-    <div class="nav-menu fixed-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <nav class="navbar navbar-dark navbar-expand-lg">
-                        <a class="navbar-brand" href="index.html">ESSAY KITTEN</a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-                        <div class="collapse navbar-collapse" id="navbar">
-                            <ul class="navbar-nav ml-auto">
-                                <li class="nav-item"> <a class="nav-link active" href="#home">HOME <span class="sr-only">(current)</span></a> </li>
-                                <li class="nav-item"> <a class="nav-link" href="#features">Blog</a> </li>
-                                <li class="nav-item"><a href="#" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Signup</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <header class="bg-gradient" id="home">
         <div class="container mt-5">
             <h1>WELCOME TO THE LEADING PLATFORM FOR FREELANCE WRITERS</h1>
             <p class="tagline">Competitive salaries and a constant stream of assignments guaranteed</p>
-            <a href="#" class="btn btn-primary" style="margin-top: 90px;">Become A Writer On Essay Kitten</a>
+            <a href="{% url 'writers:writer-signup'  %}" class="btn btn-primary" style="margin-top: 90px;">Become A Writer On Essay Kitten</a>
         </div>
     </header>
 
@@ -103,7 +53,7 @@ URI     : https://colorlib.com
                     </ul>
                 </div>
                 <div class="col-md-5">
-                    <img src="images/work.gif" alt="iphone" class="img2">
+                    <img src="{% static 'img/work.gif' %}" alt="iphone" class="img2">
                 </div>
 
             </div>
@@ -149,7 +99,7 @@ URI     : https://colorlib.com
                                     </div>  
                                     </div>
                                     <div class="col-md-6">                                
-                                        <img src="images/giphy.gif" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
+                                        <img src="{% static 'img/giphy.gif' %}" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                                    </div>
                                     </div>
                                     </div>
@@ -175,11 +125,11 @@ URI     : https://colorlib.com
                                                   <p>If you meet this minimum requirement, we would love it if you apply</p>
           
                                               <div>
-                                                  <a href="#" class="btn btn-primary" style="margin-top: 90px;">Apply Now</a> 
+                                                  <a href="{% url 'writers:writer-signup'" class="btn btn-primary" style="margin-top: 90px;">Apply Now</a> 
                                               </div>  
                                               </div>
                                               <div class="col-md-6">                                
-                                                  <img src="images/customer.gif" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
+                                                  <img src="{% static 'img/customer.gif' %}" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
                                              </div>
                                               </div>
                                               </div>
@@ -273,7 +223,7 @@ URI     : https://colorlib.com
                     </ul>
                 </div>
                 <div class="col-md-4">
-                        <img src="images/help.gif" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0" style="
+                        <img src="{% static 'img/help.gif' %}" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0" style="
                         margin-top: 130px;
                     ">
                     </div>
@@ -321,7 +271,7 @@ URI     : https://colorlib.com
                 <h2>Become A Writer Now</h2>
                 <p class="tagline">Available for all major mobile and desktop platforms. Rapidiously visualize optimal ROI rather than enterprise-wide methods of empowerment. </p>
                 <div class="my-4">
-                    <a href="#" class="btn btn-primary" style="margin-top: 40px; width: 200px;">Signup</a>                
+                    <a href="{% url 'writers:writer-signup'  %}" class="btn btn-primary" style="margin-top: 40px; width: 200px;">Signup</a>                
                 </div>
             </div>
         </div>
@@ -332,7 +282,7 @@ URI     : https://colorlib.com
     <!-- // end .section -->
     <footer class="my-5 text-center">
         <!-- Copyright removal is not prohibited! -->
-        <p class="mb-2"><small>COPYRIGHT © 2018. ALL RIGHTS RESERVED.  BY <a href="essayKitten.html">ESSAY KITTEN</a></small></p>
+        <p class="mb-2"><small>COPYRIGHT © 2018. ALL RIGHTS RESERVED.  BY <a href="{% url 'index' %}">ESSAY KITTEN</a></small></p>
 
         <small>
             <a href="#" class="m-2">PRESS</a>
@@ -341,14 +291,8 @@ URI     : https://colorlib.com
         </small>
     </footer>
 
-    <!-- jQuery and Bootstrap -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <!-- Plugins JS -->
-    <script src="js/owl.carousel.min.js"></script>
-    <!-- Custom JS -->
-    <script src="js/script.js"></script>
+ 
 
-</body>
 
-</html>
+
+{% endblock %}

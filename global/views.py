@@ -70,6 +70,12 @@ class ServicesWriteMyEssay(TemplateView):
 class About(TemplateView):
     template_name = 'pages/global/about.html'
 
+class WriterView(TemplateView):
+    template_name = 'writers/writers.html'
+
+class Blog(TemplateView):
+    template_name = 'pages/blog.html'
+
 
 
 

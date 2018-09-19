@@ -4,10 +4,10 @@ from django.contrib.auth import get_user_model
 
 from .models import WritersProfile
 
-class WriterSignupForm(forms.ModelForm):
+class WriterSignupForm(UserCreationForm):
     class Meta:
         model = get_user_model()
-        fields = ('full_name', 'email', 'resume', 'topic_of_interest', 'resume', 'gender')
+        fields = ('email', 'password')
 
     def save(self, commit=True):
         instance = super(WriterSignupForm, self).save(commit=False)
@@ -17,7 +17,11 @@ class WriterSignupForm(forms.ModelForm):
                 instance.save()
             return instance
 
-class WriterProfileForm(forms.ModelForm):
+
+class ProfileForm(forms.ModelForm):
     class Meta:
         model = WritersProfile
-        fields = '__all__'
+        fields = ('image', 'headline', 'subject_one',
+        'subject_two', 'subject_three', 'about')
+
+

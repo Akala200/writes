@@ -9,25 +9,112 @@ def user_directory_path(instance, filename):
 
 
 class WritersProfile(models.Model):
+    
+    subject_choice = (
+        ('Advertising', 'Advertising'),
+        ('Aeronautics', 'Aeronautics'),
+        ('African-American Studies', 'African-American Studies'),
+        ('Agricultural Studies', 'Agricultural Studies'),
+        ('Alternative Medicine', 'Alternative Medicine'),
+        ('American History', 'American History'),
+        ('American Literature', 'American Literature'),
+        ('Anthropology', 'Anthropology'),
+        ('Antique Literature', 'Antique Literature'),
+        ('Application Essay', 'Application Essay'),
+        ('Architecture', 'Architecture'),
+        ('Art', 'Art'),
+        ('Asian Literature', 'Asian Literature'),
+        ('Asian Studies', 'Asian Studies'),
+        ('Astronomy', 'Astronomy'),
+        ('Aviation', 'Aviation'),
+        ('Biology', 'Biology'),
+        ('Business', 'Business'),
+        ('Canadian Studies', 'Canadian Studies'),
+        ('Case Study', 'Case Study'),
+        ('Chemistry', 'Chemistry'),
+        ('Communication Strategies', 'Communication Strategies'),
+        ('Communications and Media', 'Communications and Media'),
+        ('Company Analysis', 'Company Analysis'),
+        ('Computer Science', 'Computer Science'),
+        ('Creative Writing', 'Creative Writing'),
+        ('Criminology', 'Criminology'),
+        ('Dance', 'Dance'),
+        ('Design Analysis', 'Design Analysis'),
+        ('Drama', 'Drama'),
+        ('E-Commerce', 'E-Commerce'),
+        ('East European Studies', 'East European Studies'),
+        ('Economics', 'Economics'),
+        ('Education', 'Education'),
+        ('Education Theories', 'Education Theories'),
+        ('Engineering', 'Engineering'),
+        ('English', 'English'),
+        ('English Literature', 'English Literature'),
+        ('Environmental Issues', 'Environmental Issues'),
+        ('Ethics', 'Ethics'),
+        ('Finance', 'Finance'),
+        ('Geography', 'Geography'),
+        ('Geology', 'Geology'),
+        ('Healthcare', 'Healthcare'),
+        ('History', 'History'),
+        ('Holocaust', 'Holocaust'),
+        ('International Affairs/Relations', 'International Affairs/Relations'),
+        ('Internet', 'Internet'),
+        ('Investment', 'Investment'),
+        ('IT Management', 'IT Management'),
+        ('Journalism', 'Journalism'),
+        ('Latin-American Studies', 'Latin-American Studies'),
+        ('Law', 'Law'),
+        ('Legal Issues', 'Legal Issues'),
+        ('Linguistics', 'Linguistics'),
+        ('Literature', 'Literature'),
+        ('Logistics', 'Logistics'),
+        ('Management', 'Management'),
+        ('Marketing', 'Marketing'),
+        ('Mathematics', 'Mathematics'),
+        ('Medicine and Health', 'Medicine and Health'),
+        ('Movies', 'Movies'),
+        (' Music', ' Music'),
+        (' Native-American Studies', 'Native-American Studies'),
+        ('Nature', 'Nature'),
+        ('Nursing', 'Nursing'),
+        ('Nutrition', 'Nutrition'),
+        ('Painting', 'Painting'),
+        ('Pedagogy', 'Pedagogy'),
+        ('Pharmacology', 'Pharmacology'),
+        ('Philosophy', 'Philosophy'),
+        ('Physics', 'Physics'),
+        ('Political Science', 'Political Science'),
+        ('Psychology', 'Psychology'),
+        ('Public Relations', ' Public Relations'),
+        ('Religion and Theology', 'Religion and Theology'),
+        ('Shakespeare Studies', 'Shakespeare Studies'),
+        ('Sociology', 'Sociology'),
+        ('Sport', 'Sport'),
+        ('Teacher', 'Teacher'),
+        ('Technology', 'Technology'),
+        ('Theatre', 'Theatre'),
+        ('Tourism', 'Tourism'),
+        ('Trade', 'Trade'),
+        ('Web design', 'Web design'),
+        ('West European Studies', 'West European Studies'),
+        ('Other', 'Other')
+
+    )
     profile_id = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='user_profile',
     on_delete=models.CASCADE)
     image = models.ImageField(upload_to=user_directory_path)
     headline = models.CharField(max_length=30)
     about = models.TextField()
+    subject_one =  models.CharField(max_length=250,choices=subject_choice, default='subject choice')
+    subject_two =  models.CharField(max_length=250, choices=subject_choice, default='subject choice')
+    subject_three =  models.CharField(max_length=250, choices=subject_choice, default='subject choice')
 
     def __str__(self):
         return str(self.profile_id)
 
 
 class Rating(models.Model):
-    rating_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='rating')
-    reviews = models.IntegerField(default=0)
-    rating = models.IntegerField(default=0)
-    num_of_orders_completed = models.IntegerField(default=0)
-
-    def __str__(self):
-        return str(self.reviews)
-
+    pass
 
     
 class Bids(models.Model):

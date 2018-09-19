@@ -22,6 +22,8 @@ urlpatterns = [
     path('writers/', views.Writers.as_view(), name='writers'),
     path('reviews/',  views.Reviews.as_view(), name='reviews'),
     path('services/', include(services_patterns)),
-    path('about/', views.About.as_view(), name='about')
+    path('about/', views.About.as_view(), name='about'),
+    path('becoming-a-writer/', views.WriterView.as_view(), name='become-a-writer'),
+    path('blog/', views.Blog.as_view(), name='blog')
 
 ]
