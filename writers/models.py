@@ -106,6 +106,7 @@ class WritersProfile(models.Model):
     full_name = models.CharField(max_length=50, null=True)
     headline = models.CharField(max_length=30)
     about = models.TextField()
+    country = models.CharField(max_length=250)
     subject_one =  models.CharField(max_length=250,choices=subject_choice, default='subject choice')
     subject_two =  models.CharField(max_length=250, choices=subject_choice, default='subject choice')
     subject_three =  models.CharField(max_length=250, choices=subject_choice, default='subject choice')

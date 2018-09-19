@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-from .forms import WriterSignupForm, ProfileForm
+from .forms import WriterSignupForm, ProfileForm, EssayTestForm
 from .models import WritersProfile
 
     
@@ -45,7 +45,7 @@ def update_profile(request):
         instance.profile_id = request.user
         instance.save()
         messages.success(request, 'Your profile set up was successfully')
-        return redirect()
+        return redirect(reverse(''))
     
     else:
         form =  ProfileForm()
@@ -53,7 +53,17 @@ def update_profile(request):
             'form': form
         })
 
+@login_required()
+def write_an_essay(request):
+    form = EssayTestForm(request.POST)
+    if request.method == "POST" and form.is_valid() :
+        pass
+    else:
+        form =  EssayTestForm()
+    return render(request, 'writers/take_a_essay.html', context={
+        'form': form
+    })
 
 @login_required()
-def set_up_payment_system(request):
+def answer_question(request):
     pass

@@ -4,6 +4,7 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from django.urls import reverse
+from django.core.validators import MinValueValidator
 
 class Wallet(models.Model):
     wallet_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -170,18 +171,54 @@ class Order(models.Model):
         ('School', 'School'),
         ('University', 'University'),
         ('Dictorate', 'Dictorate'),
+    )
+    page_choice = (
+        ('1 page / 275 words', '1 page / 275 words'),
+        ('2 pages / 550 words', '2 pages / 550 words'),
+        ('3 pages / 825 words', '3 pages / 825 words'),
+        ('4 pages / 1100 words', '4 pages / 1100 words'),
+        ('5 pages / 1375 words', '5 pages / 1375 words'),
+        ('6 pages / 1650 words', '6 pages / 1650 words'),
+        ('7 pages / 1925 words', '7 pages / 1925 words'),
+        ('9 pages / 2200 words', '9 pages / 2200 words'),
+        ('10 pages / 2750 words', '10 pages / 2750 words'),
+        ('11 pages / 3025 words', '11 pages / 3025 words'),
+        ('12 pages / 3300 words', '12 pages / 3300 words'),
+        ('13 pages / 3575 words', '13 pages / 3575 words'),
+        ('14 pages / 3850 words', '14 pages / 3850 words'),
+        ('15 pages/ 4125 words', '15 pages/ 4125 words'),
+        ('16 pages / 4400 words', '16 pages / 4400 words'),
+        ('17 pages / 4675  words', '17 pages / 4675  words'),
+        ('18 pages / 4950 words', '18 pages / 4950 words'),
+        ('19 pages / 5225 words', '19 pages / 5225 words'),
+        ('20 pages / 5500 words', '20 pages / 5500 words'),
+        ('21 pages / 5775 words', '21 pages / 5775 words'),
+        ('22 pages / 6050 words', '22 pages / 6050 words'),
+        ('23 pages / 6325 words', '23 pages / 6325 words'),
+        ('24 pages / 6600  words', '24 pages / 6600  words'),
+        ('25 pages / 6875 words', '25 pages / 6875 words'),
+        ('26 pages / 7150 words', '26 pages / 7150 words'),
+        ('27 pages / 7425 words', '27 pages / 7425   words'),
+        ('28 pages / 7700 words', '28 pages / 7700 words'),
+        ('29 pages / 7975 words', '29 pages / 7975 words'),
+        ('30 pages / 8250  words', '30 pages / 8250  words'),
+        
+    
 
 
     )
 
 
+    
+
+
 
     order_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     topic = models.CharField(max_length=250)
-    description = models.TextField()
+    description = models.TextField(validators=[MinValueValidator(limit_value=20, message='Too Short')])
     order_uuid = models.IntegerField(unique=True)
     order_type = models.CharField(max_length=250, choices=order_type, default='essay order')
-    pages  = models.CharField(max_length=250)
+    pages  = models.CharField(max_length=250, choices=page_choice, default='page choice')
     publication_date = models.DateField(default=timezone.now)
     service =  models.CharField(max_length=250, choices=service_choice, default='essay service')
     deadline = models.DateTimeField()

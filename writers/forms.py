@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
+from django.core.validators import ValidationError
+
 
 from .models import WritersProfile
 
@@ -25,3 +27,10 @@ class ProfileForm(forms.ModelForm):
         'subject_two', 'subject_three', 'about')
 
 
+class EssayTestForm(forms.Form):
+    test = forms.CharField(widget=forms.Textarea())
+
+    def clean_test(self):
+        if len(self.cleaned_data['test']) == 250:
+            raise ValidationError('Too Short')
+        return self.cleaned_data['test']
