@@ -52,7 +52,7 @@
               <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SERVICE</a>
               <ul class="dropdown-menu">
                 <li class="nav-item"><a class="nav-link" href="{% url 'essay_writing' %}">Essay Writing</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'admission_essay' %}"">Admission Essay</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'admission_essay' %}">Admission Essay</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'custom_writing' %}">Custom Essay</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'dissatation_writing' %}">Disstertation Essay</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'research' %}">Research Paper</a></li>
@@ -62,16 +62,8 @@
             </li> 								
             <li class="nav-item"><a class="nav-link" href="{% url 'reviews' %}">REVIEWS</a>
             <li class="nav-item"><a class="nav-link" href="{% url 'faq' %}">FAQ</a>
-            <li class="nav-item submenu dropdown">
-              <a href="{% url 'about' %}" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About us</a>
-              <ul class="dropdown-menu">
-                <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">Essay Writing</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">Admission Essay</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">Custom Essay</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">Disstertation Essay</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">Research Paper</a></li>
-              </ul>
-            </li> 
+            <li class="nav-item active"><a class="nav-link" href="{% url 'account_login' %}">About Us</a></li> 
+ 
             <li class="nav-item submenu dropdown">
               <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
               <ul class="dropdown-menu">
