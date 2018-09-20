@@ -188,14 +188,15 @@ ACCOUNT_FORMS = {'signup': 'accounts.forms.SignUpForm', 'login': 'accounts.forms
 
 
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-STATIC_ROOT = os.path.join(DIR, 'static')
+#STATIC_ROOT = os.path.join(DIR, 'static')
 
 
 LOGIN_REDIRECT_URL = '/customer/home'
 
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login'
+
 
 
 EMAIL_HOST = 'smtp.sendgrid.net'
@@ -209,4 +210,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
 STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
 
-ACCOUNT_LOGOUT_ON_GET =False
+ACCOUNT_LOGOUT_ON_GET =True
