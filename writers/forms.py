@@ -21,8 +21,43 @@ class WriterSignupForm(SignupForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = WritersProfile
-        fields = ('image', 'headline', 'subject_one',
-        'subject_two', 'subject_three', 'about')
+        fields = ('full_name', 'headline', 'about', 'image', 'paypal_id')
+        widgets = {
+            'full_name': forms.TextInput(attrs={
+                'class': "form-control",
+                'label': 'form-label',
+                'placeholder': 'Full Name'
+            }), 
+
+            'headline': forms.TextInput(attrs={
+                'class': "form-control",
+                'label': 'form-label',
+                'placeholder': 'Headline'
+             }), 
+
+             'about': forms.Textarea(attrs={
+                'class': "form-control",
+                'label': 'form-label',
+                'placeholder': 'about'
+             }),
+
+             'paypal_id': forms.TextInput(attrs={
+                'class': "form-control",
+                'label': 'form-label',
+                'placeholder': 'paypal id'
+             }),
+             'image': forms.FileInput(attrs={
+                'class': "form-control",
+                'label': 'form-label',
+                'placeholder': 'image'
+
+             }),
+
+        }
+
+       
+
+        
 
 
 class EssayTestForm(forms.Form):

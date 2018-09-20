@@ -107,12 +107,7 @@ class WritersProfile(models.Model):
     headline = models.CharField(max_length=30)
     about = models.TextField()
     is_approved = models.BooleanField(default=False)
-    country = models.CharField(max_length=250)
-    subject_one =  models.CharField(max_length=250,choices=subject_choice, default='subject choice')
-    subject_two =  models.CharField(max_length=250, choices=subject_choice, default='subject choice')
-    subject_three =  models.CharField(max_length=250, choices=subject_choice, default='subject choice')
-    payment_method = models.CharField(max_length=50, default='Paypal', editable=False)
-    paypal_id = models.CharField(max_length=50, null=True)
+    paypal_id = models.CharField(max_length=50)
 
     def __str__(self):
         return str(self.profile_id)

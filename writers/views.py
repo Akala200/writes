@@ -32,11 +32,15 @@ def signup(request):
 
 @login_required()
 def home(request):
-    return render(request, 'writers/view/instruction.html')
+    return render(request, 'writersnew/intro.html')
 
-@login_required()
-def all_orders(request):
-    return render(request, 'writers/view/all_orders.html')
+class AllOrders(LoginRequiredMixin, TemplateView):
+    template_name = 'writersnew/orders/all_orders.html'
+    paginate_by = 5
+
+    def get_context_data(self):
+        pass
+
 
 @login_required()
 def bidding_orders(request):
@@ -63,11 +67,11 @@ def create_profile(request):
         instance.profile_id = request.user
         instance.save()
         messages.success(request, 'Your profile set up was successfully')
-        return redirect(reverse('writers:all_orders'))
+        return redirect(reverse('writers:home'))
     
     else:
         form =  ProfileForm()
-        return render(request, 'writers/home.html', context= {
+        return render(request, 'writersnew/add_profile.html', context= {
             'form': form
         })
 
@@ -80,11 +84,11 @@ def update_profile(request):
         instance.profile_id = request.user
         instance.save()
         messages.success(request, 'Your profile set up was successfully')
-        return redirect(reverse(''))
+        return redirect(reverse('writers:home'))
     
     else:
         form =  ProfileForm()
-        return render(request, 'writers/home.html', context = {
+        return render(request, 'writersnew/update_profile.html', context = {
             'form': form
         })
 
