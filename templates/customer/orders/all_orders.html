@@ -246,7 +246,7 @@
                                                             </button>
                                                             <div class="dropdown-menu">
                                                                 <a class="dropdown-item" href="{% url 'customer:assign_writers' %}"><span><i class="fas fa-user-plus"></i></span>        Assign A Writer</a>
-                                                                <button class="dropdown-item" data-toggle="modal" data-target="#cancel"><span><i class="far fa-times-circle"></i></span>Cancel</button>
+                                                                <button class="dropdown-item" data-toggle="modal" data-target="#cancel" href="{% url 'customer:cancel_an_order' order.order_uuid %}"><span><i class="far fa-times-circle"></i></span>Cancel</button>
                                                             </div>
                                                         </div>
                                                     </div>
