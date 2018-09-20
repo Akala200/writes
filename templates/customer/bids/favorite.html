@@ -73,7 +73,7 @@
                                                                         </button>
                                                                         <div class="dropdown-menu">
                                                                             <a class="dropdown-item" href="{% url 'customer:assign_writers' %}"><span><i class="far fa-handshake" style="color: green"></i></span> Invite Writer</a>
-                                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#cancel"><span><i class="fas fa-certificate" style="color:red"></i></span>  Remove from favorites</a>
+                                                                            <a class="dropdown-item" href="{% url 'customer:remove_from_favorite' fav.favorite_writers.id %}" data-toggle="modal" data-target="#cancel"><span><i class="fas fa-certificate" style="color:red"></i></span>  Remove from favorites</a>
                                                                     </div>
                                                                  </div>
                                                             </div>

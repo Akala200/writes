@@ -212,6 +212,10 @@ class ShortListedList(LoginRequiredMixin, ListView):
     paginate_by = 10
     template_name = 'customer/bids/shortlisted.html'
 
+    def get_queryset(self):
+        queryset = self.model.objects.filter(short_id=self.kwargs['order_uuid']).all()
+        return queryset
+
    
 
 class CompletedBids(LoginRequiredMixin, ListView):
@@ -249,7 +253,8 @@ class Invited(LoginRequiredMixin, ListView):
 
 @login_required()
 def new_bids(request):
-    new_bids = Bids.objects.all().exclude(approved=True)
+    new_bids = Bids.objects.all().exclude(Q(approved=True), Q(shortlisted=True),
+    Q(declined=True))
     return render(request, 'customer/bids/new_bids.html')
 
 
@@ -292,8 +297,6 @@ class FavoriteWriter(LoginRequiredMixin, ListView):
         queryset =  self.model.objects.filter(user=self.request.user).all()
         return queryset
 
-    def get_context_data(self, *args, **kwargs):
-        pass
 
 
 
@@ -330,8 +333,11 @@ def shortlist_a_writer(request):
     pass
 
 @login_required()
-def decline_a_bid():
-    pass
+def decline_a_bid(request, bid_id):
+    decline = Bids.objects.filter(bid_id=bidding_id).update(declined=True)
+    return redirect(reverse('customer:index'))
+
+    
 
 
 def view_all_writers(request):

@@ -5,23 +5,28 @@ from django.urls import reverse_lazy, reverse
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
+from django.contrib.auth.backends import ModelBackend
 
+ 
 from .forms import WriterSignupForm, ProfileForm, EssayTestForm
 from .models import WritersProfile
 
     
 
 def signup(request):
-    form =  WriterSignupForm(request.POST)
-    if request.method == "POST" and form.is_valid():
-        form.save()
+    if request.user.is_authenticated:
         return redirect(reverse('writers:home'))
     else:
-        form =  WriterSignupForm()
-        return render(request, 'writers/accounts/signup.html', context = {
-            'form': form
-        })
-
+        form =  WriterSignupForm(request.POST)
+        if request.method == "POST" and form.is_valid():
+            form.save(request)
+            login(request, form.cleaned_data['email'])
+            return redirect(reverse('writers:home'))
+        else:
+            form =  WriterSignupForm()
+            return render(request, 'writers/accounts/signup.html', context={
+                'form': form })
 
 @login_required()
 def home(request):

@@ -11,7 +11,7 @@
 					<img src=" {% static 'img/logo.jpg' %} " alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" method="POST" action="{% url 'account_login' %}">
+				<form class="login100-form validate-form" method="POST" action="{% url 'logged_in_users' %}">
 					{% csrf_token %}
 					<span class="login100-form-title">
 						<h2 id="login-title" style="color: #bc2bff;">Member Login</h2>

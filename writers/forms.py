@@ -4,12 +4,11 @@ from django.contrib.auth import get_user_model
 from django.core.validators import ValidationError
 
 
+from allauth.account.forms import SignupForm
+
 from .models import WritersProfile
 
-class WriterSignupForm(UserCreationForm):
-    class Meta:
-        model = get_user_model()
-        fields = ('email', 'password')
+class WriterSignupForm(SignupForm):
 
     def __init__(self, *args, **kwargs):
         super(WriterSignupForm, self).__init__(*args, **kwargs)
@@ -17,15 +16,6 @@ class WriterSignupForm(UserCreationForm):
         self.fields['password1'].widget.attrs.update({'class': 'input100', 'placeholder': 'Password'})
         self.fields['password2'].widget.attrs.update({'class': 'input100', 'placeholder': 'Confirm-password'})
         self.fields['email'].error_messages['required'] = 'This email exist with an account already'
-
-
-    def save(self, commit=True):
-        instance = super(WriterSignupForm, self).save(commit=False)
-        if not instance.is_writer:
-            instance.is_writer = True
-            if commit:
-                instance.save()
-            return instance
 
 
 class ProfileForm(forms.ModelForm):

@@ -37,7 +37,7 @@
 				<img src="{% static 'img/logo.jpg' %}" alt="IMG">
 			</div>
 
-			<form class="login100-form validate-form" method="POST" action="{% url 'account_signup' %}">
+			<form class="login100-form validate-form" method="POST" action="{% url 'writers:writer-signup' %}">
 				{% csrf_token %}
 				<span class="login100-form-title">
 					<h2 id="login-title" style="color: #bc2bff;">Writer Signup</h2>

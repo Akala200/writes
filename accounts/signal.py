@@ -5,7 +5,6 @@ from django.conf import settings
 
 
 
-
 @receiver(user_logged_in)
 def user_online_status(request, user, **kwargs):
     user.login_status = True
