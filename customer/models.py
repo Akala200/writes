@@ -64,7 +64,37 @@ class Order(models.Model):
         ('3 source', '3 source'),
         ('4 source', '4 source'),
         ('5 source', '5 source'),
-        ('7 source', '7 source')
+        ('6 source', '6 source'),
+        ('8 source', '8 source'),
+        ('9 source', '9 source'),
+        ('10 source', '10 source'),
+        ('11 source', '11 source'),
+        ('12 source', '12 source'),
+        ('13 source', '13 source'),
+        ('14 source', '14 source'),
+        ('15 source', '15 source'),
+        ('16 source', '16 source'),
+        ('17 source', '17 source'),
+        ('18 source', '18 source'),
+        ('19 source', '19 source'),
+        ('20 source', '20 source'),
+        ('21 source', '21 source'),
+        ('22 source', '22 source'),
+        ('23 source', '23 source'),
+        ('24 source', '24 source'),
+        ('25 source', '25 source'),
+        ('26 source', '26 source'),
+        ('27 source', '27 source'),
+        ('28 source', '28 source'),
+        ('29 source', '29 source'),
+        ('39 source', '30 source')
+
+
+
+
+
+
+
 
     )
 
