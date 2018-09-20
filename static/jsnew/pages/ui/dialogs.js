@@ -50,14 +50,14 @@ function showSuccessMessage() {
 function showConfirmMessage() {
     swal({
         title: "Are you sure?",
-        text: "You will not be able to recover this imaginary file!",
+        text: "You will not be able to recover this order",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: "Yes, delete order!",
         closeOnConfirm: false
     }, function () {
-        swal("Deleted!", "Your imaginary file has been deleted.", "success");
+        swal("Deleted!", "Your order has been deleted.", "success");
     });
 }
 
@@ -83,8 +83,8 @@ function showCancelMessage() {
 
 function showWithCustomIconMessage() {
     swal({
-        title: "Sweet!",
-        text: "Here's a custom image.",
+        title: "Well Done",
+        text: "Order Place Successfull",
         imageUrl: "../../images/thumbs-up.png"
     });
 }
