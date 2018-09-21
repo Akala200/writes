@@ -30,97 +30,107 @@
                  </div>
                  <div class="col-lg-9">
                      
-                            <form action="{% url 'customer:place_an_order' %}" method="POST"  class="form-horizontal" id="form-submit">
-                                    {% csrf_token %}
-
-                                    <div class="row">
-
-                             <div class="col-lg-5">
-                                    <div class="row form-group" style="margin-bottom: 35px;">
-                                            <div class="col-lg-12">
-                                     
-                                                    {{form.order_type}}
-
-                                                    
-                    
-                                            </div>
+                        <div class="body">
+                                <form id="form_validation" method="POST" style="padding-right:200px; padding-left:200px;">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                                <select class="form-control show-tick">
+                                                        <option value="">-- Please select --</option>
+                                                        <option value="10">10</option>
+                                                        <option value="20">20</option>
+                                                        <option value="30">30</option>
+                                                        <option value="40">40</option>
+                                                        <option value="50">50</option>
+                                                    </select>
+                                                </div>
                                         </div>
-                                        <div class="row form-group" style="margin-bottom: 35px;">
-                                                <div class="col-lg-12">
-                                                   {{ form.pages }}
-                                                </div>
-                                            </div>
-                                            <div class="row form-group" style="margin-bottom: 35px;">
-                                                    <div class="col-lg-12">
-                                                       {{ form.service }}
-                                                    </div>
-                                                </div>
-                                                <!--
-                                                <div class="row form-group" style="margin-bottom: 35px;">
-                                                        <div class="col-lg-12">
-                                                           
-                    
+                                        <div class="form-group form-float">
+                                                <div class="form-line">
+                                                        <select class="form-control show-tick">
+                                                                <option value="">-- Please select --</option>
+                                                                <option value="10">10</option>
+                                                                <option value="20">20</option>
+                                                                <option value="30">30</option>
+                                                                <option value="40">40</option>
+                                                                <option value="50">50</option>
+                                                            </select>
                                                         </div>
-                                                    </div>
-                                                
-                                                <div class="form-group row">
-                                                    <label for="example-date-input" class="col-2 col-form-label">Date</label>
-                                                    <div class="col-10">
-                                                            {{ form.deadline }}
-                                                    </div>
-                                                  </div>
-                                                -->
-
-                                                    <div class="row form-group" style="margin-bottom: 35px;">
-                                                            <div class="col-lg-12">
-                                                                {{ form.sources }}
-                                    
-                                                            </div>
+                                                </div>
+                                                <div class="form-group form-float">
+                                                        <div class="form-line">
+                                                                <select class="form-control show-tick">
+                                                                        <option value="">-- Please select --</option>
+                                                                        <option value="10">10</option>
+                                                                        <option value="20">20</option>
+                                                                        <option value="30">30</option>
+                                                                        <option value="40">40</option>
+                                                                        <option value="50">50</option>
+                                                                    </select>
+                                                                </div>
                                                         </div>
-                                                        <div class="row form-group" style="margin-bottom: 35px;">
-                                                                <div class="col-lg-12">
-                                                                    {{ form.style }}
-                                                            
-                                                                </div>
-                                                            </div>
-                                                            <div class="row form-group" style="margin-bottom: 35px;">
-                                                                    <div class="col-lg-12">
-                                                                        {{ form.subject }}
-                                                                     
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row form-group" style="margin-bottom: 35px;">
-                                                                        <div class="col-lg-12">
-                                                                         {{ form.level }}
+                                                        <div class="form-group form-float">
+                                                                <div class="form-line">
+                                                                        <select class="form-control show-tick">
+                                                                                <option value="">-- Please select --</option>
+                                                                                <option value="10">10</option>
+                                                                                <option value="20">20</option>
+                                                                                <option value="30">30</option>
+                                                                                <option value="40">40</option>
+                                                                                <option value="50">50</option>
+                                                                            </select>
                                                                         </div>
-                                                                    </div>
-
-                             </div>
-                             <div class="col-lg-7">
-                                    <div class="row">
-                                       <div class="form-group">
-                                           {{ form.topic }}
-                               
-                                       </div>
-                                    </div>
-                                    <div class="row">
-                                       <div class="row form-group">
-                                           <div class="col-lg-12">
-                                               {{ form.description }}
-                                              
-                                           </div>
-                                       </div>
-                                    </div>
-                                    <div class="row" style="margin-top: 61px">
-                                        <div class="col-lg-12">
-                                           <button class="au-btn au-btn-icon au-btn--blue float-left" type="submit" id="form-submit">
-                                               <i class="zmdi zmdi-plus"></i>Place New Order
-                                           </button>
-                                        </div>
-                                    </div>
-                             </div>
-                            </div>
-                         </form>
+                                                                </div>
+                                                                <div class="form-group form-float">
+                                                                        <div class="form-line">
+                                                                                <select class="form-control show-tick">
+                                                                                        <option value="">-- Please select --</option>
+                                                                                        <option value="10">10</option>
+                                                                                        <option value="20">20</option>
+                                                                                        <option value="30">30</option>
+                                                                                        <option value="40">40</option>
+                                                                                        <option value="50">50</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                        </div>
+                                                                        <div class="form-group form-float">
+                                                                                <div class="form-line">
+                                                                                        <select class="form-control show-tick">
+                                                                                                <option value="">-- Please select --</option>
+                                                                                                <option value="10">10</option>
+                                                                                                <option value="20">20</option>
+                                                                                                <option value="30">30</option>
+                                                                                                <option value="40">40</option>
+                                                                                                <option value="50">50</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                </div>
+                                                                                <div class="form-group form-float">
+                                                                                        <div class="form-line">
+                                                                                                <select class="form-control show-tick">
+                                                                                                        <option value="">-- Please select --</option>
+                                                                                                        <option value="10">10</option>
+                                                                                                        <option value="20">20</option>
+                                                                                                        <option value="30">30</option>
+                                                                                                        <option value="40">40</option>
+                                                                                                        <option value="50">50</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                        <div class="form-group form-float">
+                                                                                                <div class="form-line">
+                                                                                                    <input type="text" class="form-control" name="name" required>
+                                                                                                    <label class="form-label">Topic</label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group form-float">
+                                                                                                    <div class="form-line">
+                                                                                                        <input type="text" class="form-control" name="minmaxlength" maxlength="1000" minlength="20" required>
+                                                                                                        <label class="form-label">Description</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <button class="btn btn-primary waves-effect" data-type="with-custom-icon">PLACE ORDER</button>
+    
+                                </form>
                         </div>
                      </div>
                     
