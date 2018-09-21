@@ -24,6 +24,7 @@
             </div>
             <div class="body">
                 <div class="table-responsive">
+                    {% if writers %}
                     {% for writer in writers %}
                         <div class="row">
 
@@ -33,7 +34,7 @@
                                     <div class="review-block">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <img src="images/user.png" class="img-rounded">
+                                                <img src="{{ writer.image.url }}" class="img-rounded">
                                                 <div class="review-block-name"><a href="#">{{ writer.full_name }}</a></div>
                                                 <div class="review-block-date">{{ writer.profile_id.last_seen }}</div>
                                             </div>
@@ -110,6 +111,9 @@
                             
                 </div>
                 {% endfor %}
+                {% else %}
+                <p>No available writers</p>
+                {% endif %}
             </div>
         </div>
     </div>

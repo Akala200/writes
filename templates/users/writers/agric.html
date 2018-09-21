@@ -1,3 +1,6 @@
+{% extends 'index/base.html' %}
+{% load static %}
+{% block content %}
 <section class="content">
         <div class="container-fluid">
                 <div class="block-header">
@@ -37,7 +40,7 @@
                                     <div class="review-block">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <img src="images/user.png" class="img-rounded">
+                                                <img src="{% static 'images/user.png' %}" class="img-rounded">
                                                 <div class="review-block-name"><a href="#">Johnson Chuwku</a></div>
                                                 <div class="review-block-date">1 day ago</div>
                                             </div>
@@ -98,10 +101,10 @@
                                                                             <li><a href="javascript:void(0);"><div class="demo-google-material-icon"> <i class="material-icons">person_add</i> <span class="icon-name"></span> </div>
                                                                                 Accept bid</a></li>
                                                                         <li><a href="javascript:void(0);">
-                                                                            <div class="demo-google-material-icon"><div class="demo-google-material-icon"> <i class="material-icons">add_circle_outline</i> <span class="icon-name"></span></div>
+                                                                            <div class="demo-google-material-icon"> <i class="material-icons">add_circle_outline</i> <span class="icon-name"></span></div>
                                                                             Shortlist Writer</a></li>
                                                                             <li><a href="javascript:void(0);">
-                                                                                <div class="demo-google-material-icon"> <i class="material-icons">cancel</i> <span class="icon-name">cancel</span> </div>
+                                                                                <div class="demo-google-material-icon"> <i class="material-icons">cancel</i> <span class="icon-name"></span> </div>
                                                                                 Cancel</a></li>
                                                                     </ul>
                                                                 </div>
@@ -148,3 +151,4 @@ Default Size -->
         
 
 
+{% endblock content  %}
