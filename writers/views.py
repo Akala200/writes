@@ -15,8 +15,8 @@ from .models import WritersProfile
     
 
 def signup(request):
-    if request.user.is_authenticated:
-        return redirect(reverse('writers:home'))
+    if request.user.is_authenticated and request.user.is_writer:
+        return redirect(reverse('writers:all_orders'))
     else:
         form =  WriterSignupForm(request.POST)
         if request.method == "POST" and form.is_valid():
@@ -61,7 +61,7 @@ def personal(request):
 
 @login_required()
 def create_profile(request):
-    form = ProfileForm(request.POST)
+    form = ProfileForm(request.POST, request.FILES)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.profile_id = request.user
@@ -76,18 +76,29 @@ def create_profile(request):
         })
 
 
+class UpdateProfile(LoginRequiredMixin, UpdateView):
+    form_class = ProfileForm()
+    template_name = 'writersnew/update_profile.html'
+    model = WritersProfile
+
+
+
 @login_required()
 def update_profile(request):
-    form = ProfileForm(request.POST, instance=request.user)
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.profile_id = request.user
-        instance.save()
-        messages.success(request, 'Your profile set up was successfully')
-        return redirect(reverse('writers:home'))
+    user = get_user_model().objects.get(email=request.user)
+    form = ProfileForm(request.POST, request.FILES, instance=user)
+    
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your profile set up was successfully')
+            return redirect(reverse('writers:home'))
+
+        else:
+            return HttpResponseBadRequest('bad news')
     
     else:
-        form =  ProfileForm()
+        form =  ProfileForm(instance=user)
         return render(request, 'writersnew/update_profile.html', context = {
             'form': form
         })

@@ -102,7 +102,7 @@ class WritersProfile(models.Model):
     )
     profile_id = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='user_profile',
     on_delete=models.CASCADE)
-    image = models.ImageField(upload_to=user_directory_path)
+    image = models.ImageField(upload_to='profile_image')
     full_name = models.CharField(max_length=50, null=True)
     headline = models.CharField(max_length=30)
     about = models.TextField()

@@ -17,7 +17,7 @@
                                  
                                         </div>
                                         <div class="body">
-                                            <form id="form_validation" method="POST" action="{% url 'writers:update_profile' %}">
+                                            <form id="form_validation" method="POST" action="{% url 'writers:update_profile' %}" enctype="multipart/form-data">
                                                 {% csrf_token %}
                                                 <div class="form-group form-float">
                                                     <div class="form-line">

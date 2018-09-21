@@ -193,7 +193,7 @@ ACCOUNT_FORMS = {'signup': 'accounts.forms.SignUpForm', 'login': 'accounts.forms
 #STATIC_ROOT = os.path.join(DIR, 'static')
 
 
-LOGIN_REDIRECT_URL = '/customer/home'
+LOGIN_REDIRECT_URL = '/home'
 
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login'
 

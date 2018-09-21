@@ -28,7 +28,7 @@ def create_portfolio_for_new_user(sender, created, instance, **kwargs):
 @receiver(post_save, sender=Order)
 def live_dashboard_update(sender, created, instance, **kwargs):
     if created:
-        search_writers = WritersProfile.objects.filter(Q(is_approved=True), Q(subject_one=instance.subject))
+        search_writers = WritersProfile.objects.filter(Q(is_approved=True))
         if search_writers:
             pusher.trigger(u'order', u'send', {
                 u'order_id': instance.order_uuid,

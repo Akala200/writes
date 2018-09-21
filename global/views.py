@@ -3,6 +3,7 @@ import json
 from django.views.generic import TemplateView
 from django.db.models import Max
 from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_list_or_404
 from django.http  import JsonResponse
 from django.core import serializers
@@ -75,6 +76,12 @@ class WriterView(TemplateView):
 
 class Blog(TemplateView):
     template_name = 'pages/blog.html'
+
+
+class HomeView(LoginRequiredMixin, TemplateView):
+    template_name = 'index/index.html'
+
+
 
 
 

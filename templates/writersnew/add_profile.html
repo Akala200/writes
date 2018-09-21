@@ -64,7 +64,7 @@
                  
                         </div>
                         <div class="body">
-                            <form id="form_validation" method="POST" action="{% url 'writers:create-profile' %}">
+                            <form id="form_validation" method="POST" action="{% url 'writers:create-profile' %}" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <div class="form-group form-float">
                                     <div class="form-line">

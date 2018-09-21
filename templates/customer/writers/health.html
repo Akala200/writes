@@ -2,90 +2,109 @@
 {% extends 'customer/base.html' %}
 {% load static %}
 {% block content %}
-<div class="main-content" style="background-color: #fff;">
-    <div class="section__content section__content--p30">
+<section class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="overview-wrap">
-                        <h2 class="title-1" style="margin-top: 50px;margin-bottom: 50px;">Place Orders</h2>
-                    </div>
+                <div class="block-header">
+                    <h2>DASHBOARD</h2>
                 </div>
+    
+                <!-- Widgets -->
+                <div class="row clearfix">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="info-box bg-orange hover-expand-effect">
+                                    <div class="icon">
+                                     <a href=""><i class="material-icons">person_add</i></a>
+                                    </div>
+                                    <div class="content">
+                                        <div class="text">PLACE AN ORDER</div>
+                                    </div>
+                                </div>
+                        </div>
+                </div>
+                </div>
+<div class="container-fluid">
+         
+<!-- Exportable Table -->
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                    <h2>
+                      All WRITER
+                    </h2>
             </div>
-        </div>
-             <div class="row">
-                 <div class="col-lg-4">
-                      <!-- TOP CAMPAIGN-->
-                      {% include 'customer/bids/base.html' %}
-                    <!--  END TOP CAMPAIGN-->
-                 </div>
-                 <div class="col-lg-8 write-col">
-                        <div class="row write-frame" style="padding: 20px;margin-right: 20px;">
-                            <div class="card">
-                                <h5 class="card-header mr-auto" style="float: left">Adekunle Sampuel  <span class="badge badge-success" style="margin-left: 10px; font-size: 15px;"> Bid:  $300 </span></h5>
-                                <div class="card-body">
-                                  <div class="row">
-                                        <div class="col-md-2">
-                                            <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid writer-img"/>
-                                        </div>
-                                        <div class="col-lg-10">
-                                            <div class="row">
-                                                <div class="col-lg-3">
-                                                    <p><b>Orders</b></p>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <p><b>Reviews</b></p>
-                                                </div>   
-                                                <div class="col-lg-3">
-                                                    <p><b>Rating</b></p>
-                                                </div>
-                                                 <div class="col-lg-3">
-                                                    <p><b>completion</b></p>
-                                                </div>   
+            <div class="body">
+                <div class="table-responsive">
+                        <div class="row">
+                            <div>
+                                <div class="col-sm-9">
+                                    <hr/>
+                                    <div class="review-block">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <img src="images/user.png" class="img-rounded">
+                                                <div class="review-block-name"><a href="#">Johnson Chuwku</a></div>
+                                                <div class="review-block-date">1 day ago</div>
                                             </div>
-                                            <div class="row">
-                                                    <div class="col-lg-3">
-                                                        <p>234</p>
+                                            <div class="col-sm-9">
+                                                <div class="review-block-rate">
+                                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    </button>
+                                                    <div>
+                                                        <h4>3.0</h4>
                                                     </div>
-                                                    <div class="col-lg-3">
-                                                        <p> 20</p>
-                                                    </div>   
-                                                    <div class="col-lg-3">
-                                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                                    </div>
-                                                    <div class="col-lg-3">
-                                                        <div class="progress mb-3">
-                                                        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 80%" aria-valuenow="5"
-                                                         aria-valuemin="0" aria-valuemax="40"></div>
-                                                    </div>
-                                                    </div>   
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-lg-4">
+                                                <div class="review-block-description row">
+                                                    <div class="col-lg-3 col-md-3">
+                                                        <div class="progress">
+                                                            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;" data-toggle="tooltip" data-placement="top" title="Completion Rate">
+                                                            75%
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-lg-4"></div>
-                                                    <div class="col-lg-4">
-                                                            <div class="table-data-feature">
-                                                                    <div class="dropdown">
-                                                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                                                         Action
-                                                                        </button>
-                                                                        <div class="dropdown-menu">
-                                                                            <a class="dropdown-item" href="{% url 'customer:assign_writers' %}"><span><i class="far fa-handshake" style="color: green"></i></span>  Accept Bid</a>
-                                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#cancel"><span><i class="far fa-id-card"></i></span>  Shortlist</a>
-                                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#cancel"><span><i class="far fa-times-circle"></i></span>     Decline Bid</a>
-                                                                        </div>
-                                                                    </div>
+                                                    <div class="col-lg-3 col-md-3"><b>450 Orders Completed</b></div>
+                                                    <div class="col-lg-3 col-md-3"><b>450 Reviews</b></div>
+                                                    <div class="col-lg-3 col-md-3">
+                                                            <div class="btn-group">
+                                                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        ACTION <span class="caret"></span>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu">
+                                                                            <li><a href="javascript:void(0);"><div class="demo-google-material-icon"> <i class="material-icons">person_add</i> <span class="icon-name"></span> </div>
+                                                                                Hire A Writer</a></li>
+                                                                        <li><a href="javascript:void(0);">                                     <div class="demo-google-material-icon"> <i class="material-icons">thumb_up</i> <span class="icon-name"></span> </div>
+                                                                            Add To Favorite</a></li>
+                                                                    </ul>
                                                                 </div>
                                                     </div>
                                                 </div>
+                                            </div>
                                         </div>
-                                  </div>
-                                </div>
-                              </div>
+                                        <hr/>
+                                    </div>
                                 </div>
                             </div>
-                 </div>
+                </div>
             </div>
+        </div>
     </div>
+</div>
+<!-- #END# Exportable Table -->
+</div>
+</section>
+<!-- #END# Widgets -->
+<!-- CPU Usage -->
     {% endblock content %}

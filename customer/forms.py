@@ -21,79 +21,58 @@ class PlaceAnOrderForm(forms.ModelForm):
         exclude =  ('order_id', 'order_uuid', 'deadline', 'publication_date')
         widgets = {
             'order_type': forms.Select(attrs={
-                'class' : 'form-control-sm form-control',
-                'height': '45px',
-                'border-radius': '7px',
-                'option': 'type',
+                'class' : 'form-control show-tick',
+         
             
             }),
                 'pages': forms.Select(attrs={
-                    'class': 'form-control-sm form-control',
+                    'class': 'form-control show-tick',
                     'placeholder': '1 page / 275 words',
                 
                 }),
                 'service': forms.Select(attrs={
-                'class' : 'form-control-sm form-control',
-                'height': '45px',
-                'border-radius': '7px',
-                'value': 'type' 
+                'class' : 'form-control show-tick',
+               
                     
                 }),
                 'sources': forms.Select(attrs={
-                'class' : 'form-control-sm form-control',
-                'height': '45px',
-                'border-radius': '7px',
-                'value': 'type' 
+                'class' : 'form-control show-tick',
+               
                     
                 }),
                 'deadline' : forms.Select(attrs={
-                'class' : 'form-control-sm form-control',
-                'height': '45px',
-                'border-radius': '7px',
-                'value': 'type' 
+                'class' : 'form-control show-tick',
+               
                     
                 }),
                 'subject':  forms.Select(attrs={
-                'class' : 'form-control-sm form-control',
-                'height': '45px',
-                'border-radius': '7px',
-                'value': 'type' 
+                'class' : 'form-control show-tick',
+               
 
                  }),
 
                 'style':  forms.Select(attrs={
-                'class' : 'form-control-sm form-control',
-                'height': '45px',
-                'border-radius': '7px',
-                'value': 'type' 
+                'class' : 'form-control show-tick',
+               
 
                  }),
                 'level':  forms.Select(attrs={
-                'class' : 'form-control-sm form-control',
-                'height': '45px',
-                'border-radius': '7px',
-                'value': 'type' 
+                'class' : 'form-control show-tick',
+               
 
                  }),
 
                  'topic': forms.TextInput(attrs={
-                     'width': '335px',
-                     'height': '55px',
-                     'border-radius': '10px',
                      'class': 'form-control',
                      'placeholder': 'Topic'
 
                  }),
                  
                  'description': forms.Textarea(attrs={
-                     'width': '335px',
-                     'border-radius': '10px',
-                     'class': 'form-control',
-                     'placeholder': 'Description',
-                     'margin-top': '0px',
-                     'margin-bottom': '0px',
-                     'height': '400px',
-                     'border-radius': '10px'
+                     'class':  'form-control',
+                     'placeholder': 'Description'
+
+                     
 
                  })
             

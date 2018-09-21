@@ -39,7 +39,7 @@ class Index(LoginRequiredMixin, ListView):
     model = Order
     context_object_name = 'orders'
     paginate_by = 10
-    template_name = 'customer/orders/all_orders.html'
+    template_name = 'users/user_oders.html'
 
     def get_queryset(self):
         queryset = self.model.objects.filter(order_id=self.request.user).order_by('-deadline').all()
@@ -87,7 +87,7 @@ def place_an_order(request):
             messages.error(request, 'Failed to create an order')
             form = PlaceAnOrderForm()
 
-    return render(request, 'customer/orders/place_orders.html', context={
+    return render(request, 'users/place_order.html', context={
         'form': form
     })
 
@@ -185,7 +185,7 @@ def update_order(request, order_uuid):
         form = PlaceAnOrderForm(instance=order)
 
 
-    return render(request, 'customer/orders/edit_assignment.html', context={
+    return render(request, 'users/edit_order.html', context={
         'form': form, 'order': order
     })
 
