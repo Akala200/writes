@@ -29,10 +29,11 @@
                                 <div class="col-sm-9">
                                     <hr/>
                                     <div class="review-block">
+                                            {% for fav in favorite %}
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                {% for fav in favorite %}
-                                                <img src="{% static 'images/user.png' %}" class="img-rounded">
+                                                
+                                                <img src="{{ fav.favorite_writers.user_profile.image.url }}" class="img-rounded">
                                                 <div class="review-block-name"><a href="#">{{ fav.favorite_writers.user_profile.full_name }}</a></div>
                                                 <div class="review-block-date">{{ fav.favorite_writers.last_seen }}</div>
                                             </div>
@@ -75,16 +76,20 @@
                                                                     <ul class="dropdown-menu">
                                                                             <li><a href="javascript:void(0);"><div class="demo-google-material-icon"> <i class="material-icons">person_add</i> <span class="icon-name"></span> </div>
                                                                                 Hire A Writer</a></li>
-                                                                        <li><a href="{% url 'customer:remove_from_favorite' %}">                                                                         <div class="demo-google-material-icon"> <i class="material-icons">thumbs_up_down</i> <span class="icon-name"></span></div>
+                                                                        <li><a href="{% url 'customer:remove_from_favorite' fav.favorite_writers.pk %}">                                                                         
+                                                                            <div class="demo-google-material-icon"> <i class="material-icons">thumbs_up_down</i> <span class="icon-name"></span></div>
+                                                                            
 
                                                                             Remove From Favorite</a></li>
                                                                     </ul>
                                                                 </div>
                                                     </div>
                                                 </div>
-                                                {% endfor %}
+                                                
                                             </div>
+                                           
                                         </div>
+                                        {% endfor %}
                                         <hr/>
                                     </div>
                                 </div>

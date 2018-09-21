@@ -1,5 +1,5 @@
 <!-- MAIN CONTENT-->
-{% extends 'user/index/base.html' %}
+{% extends 'index/base.html' %}
 {% load static %}
 {% block content %}
 <section class="content">
@@ -9,18 +9,7 @@
                 </div>
     
                 <!-- Widgets -->
-                <div class="row clearfix">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="info-box bg-orange hover-expand-effect">
-                                    <div class="icon">
-                                     <a href=""><i class="material-icons">person_add</i></a>
-                                    </div>
-                                    <div class="content">
-                                        <div class="text">PLACE AN ORDER</div>
-                                    </div>
-                                </div>
-                        </div>
-                </div>
+                {% include 'users/header.html' %}
                 </div>
 <div class="container-fluid">
          
@@ -35,7 +24,9 @@
             </div>
             <div class="body">
                 <div class="table-responsive">
+                    {% for writer in writers %}
                         <div class="row">
+
                             <div>
                                 <div class="col-sm-9">
                                     <hr/>
@@ -43,8 +34,8 @@
                                         <div class="row">
                                             <div class="col-sm-3">
                                                 <img src="images/user.png" class="img-rounded">
-                                                <div class="review-block-name"><a href="#">Johnson Chuwku</a></div>
-                                                <div class="review-block-date">1 day ago</div>
+                                                <div class="review-block-name"><a href="#">{{ writer.full_name }}</a></div>
+                                                <div class="review-block-date">{{ writer.profile_id.last_seen }}</div>
                                             </div>
                                             <div class="col-sm-9">
                                                 <div class="review-block-rate">
@@ -84,10 +75,29 @@
                                                                     </button>
                                                                     <ul class="dropdown-menu">
                                                                             <li><a href="javascript:void(0);"><div class="demo-google-material-icon"> <i class="material-icons">person_add</i> <span class="icon-name"></span> </div>
-                                                                                Hire A Writer</a></li>
-                                                                        <li><a href="javascript:void(0);">                                     <div class="demo-google-material-icon"> <i class="material-icons">thumb_up</i> <span class="icon-name"></span> </div>
+
+                                                                                
+                                                                                Hire A Writer</a>
+                                                                            </li>
+                                                                           
+                                                                        {% if  not writer.favorite_writer.is_fav %}
+                                                                               
+                                                                        <li><a href="{% url 'customer:add_to_favorite' writer.id %}">                 
+                                                                            <div class="demo-google-material-icon"><i class="material-icons">thumb_up</i> <span class="icon-name"></span> </div>
                                                                             Add To Favorite</a></li>
+
+                                                                        {% else %}
+                                                                        <li><a href="{% url 'customer:remove_from_favorite' writer.pk %}">
+                                                                                <div class="demo-google-material-icon"> <i class="material-icons">thumbs_up_down</i> <span class="icon-name"></span>
+                                                                                    Remove From Favorite</div></a></li>
+
+
+                                                                                    
+                                                                        {% endif %}
+                                                                                   
                                                                     </ul>
+                                                                    
+
                                                                 </div>
                                                     </div>
                                                 </div>
@@ -97,7 +107,9 @@
                                     </div>
                                 </div>
                             </div>
+                            
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>

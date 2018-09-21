@@ -291,7 +291,8 @@ class AdditionalFiles(models.Model):
 
 class FavouriteWriters(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='favorite_writer')
-    favorite_writers = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='favorite_writers')
+    favorite_writers = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='favorite_writers', null=True)
+    is_fav = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.user)

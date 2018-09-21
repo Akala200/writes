@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect, reverse
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import get_user_model
 from django.views.generic import UpdateView
 from django.db.models import F, Q
 from django.http import HttpResponseBadRequest
@@ -24,7 +25,7 @@ from .models import (
 
 )
 
-from writers.models import Bids
+from writers.models import Bids, WritersProfile
 
 import django_tables2 as tables
 
@@ -53,9 +54,6 @@ class Index(LoginRequiredMixin, ListView):
     def get_queryset(self):
         queryset = Order.objects.filter(order_id=self.request.user).order_by('-deadline').all()
         return queryset
-
-    
-
 
 
 @login_required()
@@ -329,7 +327,10 @@ def resubmit_order(request, order_uuid):
 
 @login_required()
 def add_to_favorite(request, writer_id):
-    add_writer = FavouriteWriters.objects.create(user=request.user, favorite_writers=writer_id)
+    writer_check = get_user_model().objects.filter(pk=writer_id)
+    add_writer = FavouriteWriters.objects.create(user=request.user)
+    add_writer.favorite_writers= writer_check
+    add_writer.save()
     return messages.success(request, 'Writer added to your favorite list')
     
 
@@ -345,12 +346,151 @@ def decline_a_bid(request, bid_id):
 
     
 
-
-def view_all_writers(request):
-    return render(request, 'customer/writers/all_writers.html')
+class ViewAllWriters(LoginRequiredMixin, ListView):
+    template_name = 'users/writers/all_writers.html'
+    model = WritersProfile
+    context_object_name = 'writers'
+    
 
 
 def remove_from_favorite(request, writer_id):
     writer = get_object_or_404(FavouriteWriters, favorite_writers=writer_id)
     writer.delete()
     return redirect(reverse('customer:favorite_writers'))
+
+
+
+class AgricWriters(LoginRequiredMixin, ListView):
+    template_name = ''
+    model = ''
+    context_object_name = 'writers'
+    
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(subject=self.kwargs['']).all().order_by('')
+        return queryset
+
+
+class AgricWriters(LoginRequiredMixin, ListView):
+    template_name = ''
+    model = ''
+    context_object_name = 'writers'
+    
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(subject=self.kwargs['']).all().order_by('')
+        return queryset
+
+
+class AgricWriters(LoginRequiredMixin, ListView):
+    template_name = ''
+    model = ''
+    context_object_name = 'writers'
+    
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(subject=self.kwargs['']).all().order_by('')
+        return queryset
+
+
+class AgricWriters(LoginRequiredMixin, ListView):
+    template_name = ''
+    model = ''
+    context_object_name = 'writers'
+    
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(subject=self.kwargs['']).all().order_by('')
+        return queryset
+
+
+
+class AgricWriters(LoginRequiredMixin, ListView):
+    template_name = ''
+    model = ''
+    context_object_name = 'writers'
+    
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(subject=self.kwargs['']).all().order_by('')
+        return queryset
+
+class AgricWriters(LoginRequiredMixin, ListView):
+    template_name = ''
+    model = ''
+    context_object_name = 'writers'
+    
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(subject=self.kwargs['']).all().order_by('')
+        return queryset
+
+
+
+class AgricWriters(LoginRequiredMixin, ListView):
+    template_name = ''
+    model = ''
+    context_object_name = 'writers'
+    
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(subject=self.kwargs['']).all().order_by('')
+        return queryset
+
+
+
+class AgricWriters(LoginRequiredMixin, ListView):
+    template_name = ''
+    model = ''
+    context_object_name = 'writers'
+    
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(subject=self.kwargs['']).all().order_by('')
+        return queryset
+
+
+class AgricWriters(LoginRequiredMixin, ListView):
+    template_name = ''
+    model = ''
+    context_object_name = 'writers'
+    
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(subject=self.kwargs['']).all().order_by('')
+        return queryset
+
+class AgricWriters(LoginRequiredMixin, ListView):
+    template_name = ''
+    model = ''
+    context_object_name = 'writers'
+    
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(subject=self.kwargs['']).all().order_by('')
+        return queryset
+
+
+class AgricWriters(LoginRequiredMixin, ListView):
+    template_name = ''
+    model = ''
+    context_object_name = 'writers'
+    
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(subject=self.kwargs['']).all().order_by('')
+        return queryset
+
+
+class AgricWriters(LoginRequiredMixin, ListView):
+    template_name = ''
+    model = ''
+    context_object_name = 'writers'
+    
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(subject=self.kwargs['']).all().order_by('')
+        return queryset
+
+
+
