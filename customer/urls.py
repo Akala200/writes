@@ -29,7 +29,7 @@ urlpatterns = [
     path('cancel-order/<int:order_uuid>/', views.cancel_an_order, name='cancel_an_order'),
     path('resubmit-order/<int:order_uuid>/', views.resubmit_order, name='resubmit_order'),
     path('view-writers/', views.ViewAllWriters.as_view(), name='view_all_writers'),
-    path('remove-writer/<int:writer_id>/', views.remove_from_favorite, name='remove_from_favorite'),
+    path('remove-writer/<str:writer_id>/', views.remove_from_favorite, name='remove_from_favorite'),
     path('decline-bid/<int:bid_id>', views.decline_a_bid, name='decline_a_bid'),
     path('add-favorite/<int:writer_id>/', views.add_to_favorite, name='add_to_favorite')
 
