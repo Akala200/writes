@@ -1,0 +1,88 @@
+<ul class="list">
+        <li class="header">Dashboard</li>
+        <li>
+                <a href="javascript:void(0);" class="menu-toggle active">
+                        <i class="material-icons">home</i>
+                        <span>My Orders</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="{% url 'customer:bidding_order' %}">
+                            <span>Bidding Order</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>In Progress</span>
+                        </a>
+                    </li>
+                    <li>
+                            <a href="{% url 'customer:completed_order' %}">
+                                <span>Completed</span>
+                            </a>
+                        </li>
+                    <li>
+                            <a href="{% url 'customer:cancelled_order' %}">
+                                <span>Cancelled</span>
+                            </a>
+                        </li>
+                        <li>
+                                <a href="{% url 'customer:expired_order' %}">
+                                    <span>Expired</span>
+                                </a>
+                            </li>
+                </ul>
+            </li>
+        <li>
+            <a href="{% url 'customer:place_an_order' %}" >
+                <i class="material-icons">shopping_cart</i>
+                <span>Place An Order</span>
+            </a>
+        </li>
+        
+        <li>
+                <a href="javascript:void(0);" class="menu-toggle active">
+                        <i class="material-icons">layers</i>
+                        <span>Writers</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="{% url 'customer:view_all_writers' %}">
+                            <span>All Writers</span>
+                        </a>
+                    </li>
+                    <li>
+                            <a href="{% url 'customer:favorite_writers' %}">
+                                <span>Favorite Writers</span>
+                            </a>
+                        </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <span>Agriculture</span>
+                        </a>
+                    </li>
+                    <li>
+                            <a href="javascript:void(0);">
+                                <span>Culture</span>
+                            </a>
+                        </li>
+                    <li>
+                            <a href="javascript:void(0);">
+                                <span>Economic</span>
+                            </a>
+                        </li>
+                        <li>
+                                <a href="javascript:void(0);">
+                                    <span>Lifestyle</span>
+                                </a>
+                            </li>
+                </ul>
+            </li>
+            
+                <a href="{% url 'blog' %}">
+                    <i class="material-icons">widgets</i>
+                    <span>Blogs</span>
+                </a>
+            
+    
+    </ul>

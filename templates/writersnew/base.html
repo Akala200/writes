@@ -8,18 +8,13 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>ESSAY KITTEN</title>
     <!-- Favicon-->
-<<<<<<< HEAD
-    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
-=======
     <link rel="icon" href="favicon.ico" type="image/x-icon">
->>>>>>> 4a4ce43022dee6dfd17cf3e434ef7e0a1d2fe6e3
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
-<<<<<<< HEAD
     <link href="{% static 'plugins/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
 
     <!-- Waves Effect Css -->
@@ -27,44 +22,15 @@
 
     <!-- Animation Css -->
     <link href="{% static 'plugins/animate-css/animate.css' %}" rel="stylesheet" />
-    
-
-    <!-- JQuery DataTable Css -->
-    <link href="{% static 'plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css' %}" rel="stylesheet">
-
- 
-    <!-- Waves Effect Css -->
-    <link href="{% static 'plugins/node-waves/waves.css' %}" rel="stylesheet" />
-
-    <!-- Animation Css -->
-    <link href="{% static 'plugins/animate-css/animate.css' %}" rel="stylesheet" />
-
-    <!-- Sweetalert Css -->
-    <link href="{% static 'plugins/sweetalert/sweetalert.css' %}" rel="stylesheet" />
-
-    <!-- Custom Css -->
-    <link href="{% static 'cssnew/style.css' %}" rel="stylesheet">
-
-    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="{% static 'cssnew/themes/all-themes.css' %}" rel="stylesheet" />
-=======
-    <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Waves Effect Css -->
-    <link href="plugins/node-waves/waves.css" rel="stylesheet" />
-
-    <!-- Animation Css -->
-    <link href="plugins/animate-css/animate.css" rel="stylesheet" />
 
     <!-- Morris Chart Css-->
-    <link href="plugins/morrisjs/morris.css" rel="stylesheet" />
+    <link href="{% static 'plugins/morrisjs/morris.css' %}" rel="stylesheet" />
 
     <!-- Custom Css -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="css/themes/all-themes.css" rel="stylesheet" />
->>>>>>> 4a4ce43022dee6dfd17cf3e434ef7e0a1d2fe6e3
+    <link href="{% static 'css/themes/all-themes.css' %}" rel="stylesheet" />
 </head>
 
 <body class="theme-red">
@@ -301,11 +267,7 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-<<<<<<< HEAD
-                    <img src="{% static 'images/user.png' %}" width="48" height="48" alt="User" />
-=======
                     <img src="images/user.png" width="48" height="48" alt="User" />
->>>>>>> 4a4ce43022dee6dfd17cf3e434ef7e0a1d2fe6e3
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
@@ -313,18 +275,10 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-<<<<<<< HEAD
-                            <li><a href="{% url 'writers:update_profile' %}"><i class="material-icons">person</i>Profile</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
-=======
                             <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>                       
                             <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Favorite Writers</a></li>
->>>>>>> 4a4ce43022dee6dfd17cf3e434ef7e0a1d2fe6e3
                             <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                            <li><a href="{% url 'account_logout' %}"><i class="material-icons">input</i>Sign Out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -368,7 +322,7 @@
                             </ul>
                         </li>
                     <li>
-                        <a href="pages/typography.html">
+                        <a href="javascript:void(0);" >
                             <i class="material-icons">shopping_cart</i>
                             <span>Place An Order</span>
                         </a>
@@ -434,68 +388,58 @@
             <!-- #Footer -->
         </aside>
         <!-- #END# Left Sidebar -->
-<<<<<<< HEAD
-    
-    
-    {% block content %}
-    {% endblock content %}
-
-
-
-=======
         <!-- Right Sidebar -->
     </section>
 
    
->>>>>>> 4a4ce43022dee6dfd17cf3e434ef7e0a1d2fe6e3
 
           
             <!-- #END# Widgets -->
             <!-- CPU Usage -->
            
     <!-- Jquery Core Js -->
-    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
 
     <!-- Bootstrap Core Js -->
-    <script src="plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.js' %}"></script>
 
     <!-- Select Plugin Js -->
-    <script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <script src="{% static 'plugins/bootstrap-select/js/bootstrap-select.js' %}"></script>
 
     <!-- Slimscroll Plugin Js -->
-    <script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <script src="{% static 'plugins/jquery-slimscroll/jquery.slimscroll.js' %}"></script>
 
     <!-- Waves Effect Plugin Js -->
-    <script src="plugins/node-waves/waves.js"></script>
+    <script src="{% static 'plugins/node-waves/waves.js' %}"></script>
 
     <!-- Jquery CountTo Plugin Js -->
-    <script src="plugins/jquery-countto/jquery.countTo.js"></script>
+    <script src="{% static 'plugins/jquery-countto/jquery.countTo.js' %}"></script>
 
     <!-- Morris Plugin Js -->
-    <script src="plugins/raphael/raphael.min.js"></script>
-    <script src="plugins/morrisjs/morris.js"></script>
+    <script src="{% static 'plugins/raphael/raphael.min.js' %}"></script>
+    <script src="{% static 'plugins/morrisjs/morris.js' %}"></script>
 
     <!-- ChartJs -->
-    <script src="plugins/chartjs/Chart.bundle.js"></script>
+    <script src="plugins/chartjs/Chart.bundle.' %}"></script>
 
     <!-- Flot Charts Plugin Js -->
-    <script src="plugins/flot-charts/jquery.flot.js"></script>
-    <script src="plugins/flot-charts/jquery.flot.resize.js"></script>
-    <script src="plugins/flot-charts/jquery.flot.pie.js"></script>
-    <script src="plugins/flot-charts/jquery.flot.categories.js"></script>
-    <script src="plugins/flot-charts/jquery.flot.time.js"></script>
+    <script src="{% static 'plugins/flot-charts/jquery.flot.js' %}"></script>
+    <script src="{% static 'plugins/flot-charts/jquery.flot.resize.js' %}"></script>
+    <script src="{% static 'plugins/flot-charts/jquery.flot.pie.js' %}"></script>
+    <script src="{% static 'plugins/flot-charts/jquery.flot.categories.js' %}"></script>
+    <script src="{% static 'plugins/flot-charts/jquery.flot.time.js' %}"></script>
 
     <!-- Sparkline Chart Plugin Js -->
-    <script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
+    <script src="{% static 'plugins/jquery-sparkline/jquery.sparkline.js' %}"></script>
 
     <!-- Custom Js -->
-    <script src="js/admin.js"></script>
-    <script src="js/pages/index.js"></script>
-    <script src="js/pages/ui/tooltips-popovers.js"></script>
+    <script src="{% static 'jsnew/admin.js' %}"></script>
+    <script src="{% static 'jsnew/pages/index.js' %}"></script>
+    <script src="{% static 'jsnew/pages/ui/tooltips-popovers.js' %}"></script>
 
 
     <!-- Demo Js -->
-    <script src="js/demo.js"></script>
+    <script src="{% static 'jsnew/demo.js' %}"></script>
     
     <!-- Jquery Core Js -->
     <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
@@ -539,13 +483,7 @@
     <script src="{% static 'jsnew/pages/ui/dialogs.js' %}"></script>
 
     <!-- Demo Js -->
-<<<<<<< HEAD
     <script src="{% static 'jsnew/demo.js' %}"></script>
-
-    <!-- Demo Js -->
-=======
-    <script src="/js/demo.js"></script>
->>>>>>> 4a4ce43022dee6dfd17cf3e434ef7e0a1d2fe6e3
 </body>
 
 </html>

@@ -26,6 +26,9 @@ from .models import (
 
 from writers.models import Bids
 
+import django_tables2 as tables
+
+
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -35,26 +38,29 @@ def generated_unique_id():
     return ran
 
 
+class OrderTable(tables.Table):
+    class Meta:
+        model = Order
+
+
+
 class Index(LoginRequiredMixin, ListView):
     model = Order
     context_object_name = 'orders'
-    paginate_by = 10
+
     template_name = 'users/user_oders.html'
 
     def get_queryset(self):
-        queryset = self.model.objects.filter(order_id=self.request.user).order_by('-deadline').all()
+        queryset = Order.objects.filter(order_id=self.request.user).order_by('-deadline').all()
         return queryset
 
-    def get_context_data(self, *args, **kwargs):
-        context = super(Index, self).get_context_data(*args, **kwargs)
-        context['form'] = CancelOrderForm()
-        return context
+    
 
 
 
 @login_required()
 def bidding_order(request):
-    return render(request, 'customer/orders/bidding_orders.html')
+    return render(request, '')
 
 @login_required()
 def cancelled_order(request):
@@ -288,7 +294,7 @@ def add_additional_file(request, order_uuid):
 
 
 class FavoriteWriter(LoginRequiredMixin, ListView):
-    template_name = 'customer/bids/favorite.html'
+    template_name = 'users/writers/favorite.html'
     model = FavouriteWriters
     paginate_by = 10
     context_object_name = 'favorite'
