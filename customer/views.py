@@ -45,7 +45,7 @@ class OrderTable(tables.Table):
 
 
 
-class Index(LoginRequiredMixin, TemplateView, ListView):
+class Index(LoginRequiredMixin, ListView):
     model = Order
     context_object_name = 'orders'
 
@@ -327,10 +327,10 @@ def resubmit_order(request, order_uuid):
 
 @login_required()
 def add_to_favorite(request, writer_id):
-    writer_check = get_user_model().objects.filter(pk=writer_id)
-    add_writer = FavouriteWriters.objects.create(user=request.user)
-    add_writer.favorite_writers= writer_check
-    add_writer.save()
+    writer_check = get_user_model().objects.get(user_profile__pk=writer_id)
+    add = FavouriteWriters.objects.create(user=request.user, favorite_writers=writer_check,
+    is_fav=True)
+
     return messages.success(request, 'Writer added to your favorite list')
     
 
@@ -341,7 +341,7 @@ def shortlist_a_writer(request):
 
 @login_required()
 def decline_a_bid(request, bid_id):
-    decline = Bids.objects.filter(bid_id=bidding_id).update(declined=True)
+    decline = Bids.objects.filter(bid_id=bid_id).update(declined=True)
     return redirect(reverse('customer:index'))
 
     

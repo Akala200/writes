@@ -17,9 +17,9 @@
 						<h2 id="login-title" style="color: #bc2bff;">Member Login</h2>
 					</span>
 					{% if form.errors %}
-					<p class="text-warning"> Your username and/or password didn't match </p>
+					<p style="color: #bc2bff;"> Your username and/or password didn't match </p>
 					{% endif %}
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<div class="wrap-input100 val idate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						{{ form.login }}
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -29,6 +29,7 @@
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
 						{{ form.password }}
+						{{ form.password.error }}
 			
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
