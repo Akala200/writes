@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Tabs | Bootstrap Based Admin Template - Material Design</title>
+    <title>Normal Tables | Bootstrap Based Admin Template - Material Design</title>
     <!-- Favicon-->
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
@@ -18,25 +18,8 @@
     <!-- Waves Effect Css -->
     <link href="../../plugins/node-waves/waves.css" rel="stylesheet" />
 
-    
-    <!-- Range Slider Css -->
-    <link href="../../plugins/ion-rangeslider/css/ion.rangeSlider.css" rel="stylesheet" />
-    <link href="../../plugins/ion-rangeslider/css/ion.rangeSlider.skinFlat.css" rel="stylesheet" />
-
     <!-- Animation Css -->
     <link href="../../plugins/animate-css/animate.css" rel="stylesheet" />
-
-    
-    <!-- Waves Effect Css -->
-    <link href="../../plugins/node-waves/waves.css" rel="stylesheet" />
-
-    <!-- Animation Css -->
-    <link href="../../plugins/animate-css/animate.css" rel="stylesheet" />
-
-    <!-- Sweetalert Css -->
-    <link href="../../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
-
-    
 
     <!-- Custom Css -->
     <link href="../../css/style.css" rel="stylesheet">
@@ -377,7 +360,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">swap_calls</i>
                             <span>User Interface (UI)</span>
@@ -441,7 +424,7 @@
                             <li>
                                 <a href="../../pages/ui/sortable-nestable.html">Sortable & Nestable</a>
                             </li>
-                            <li class="active">
+                            <li>
                                 <a href="../../pages/ui/tabs.html">Tabs</a>
                             </li>
                             <li>
@@ -481,13 +464,13 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">view_list</i>
                             <span>Tables</span>
                         </a>
                         <ul class="ml-menu">
-                            <li>
+                            <li class="active">
                                 <a href="../../pages/tables/normal-tables.html">Normal Tables</a>
                             </li>
                             <li>
@@ -808,16 +791,16 @@
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>TABS</h2>
+                <h2>NORMAL TABLES</h2>
             </div>
-            <!-- Example Tab -->
-            <div class="row">
+            <!-- Basic Table -->
+            <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
-                                EXAMPLE TAB
-                                <small>Add quick, dynamic tab functionality to transition through panes of local content</small>
+                                BASIC TABLES
+                                <small>Basic example without any additional modification classes</small>
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -832,209 +815,142 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="body">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
-                                <li role="presentation" class="active"><a href="#home" data-toggle="tab">ORDER DETAILS</a></li>
-                                <li role="presentation"><a href="#profile" data-toggle="tab">DESCRIPTIONS</a></li>
-                                <li role="presentation"><a href="#messages" data-toggle="tab">MESSAGES</a></li>
-                                <li role="presentation"><a href="#upload" data-toggle="tab">UPLOAD ADDITIONAL FILE</a></li>
-                                <li role="presentation"><a href="#pay" data-toggle="tab">PAY WRITER</a></li>
-                                <li role="presentation"><a href="#download" data-toggle="tab">DOWNLOAD ASSIGNMENT</a></li>
-
-
-
-                            </ul>
-
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane fade in active" id="home">
-                                    <div class="row clearfix" style="margin-top:30px;">
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                                <div class="info-box">
-                                                    <div class="content">
-                                                        <div class="text"><b>TOPIC</b></div>
-                                                        <p>What is good</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                                <div class="info-box">
-                                                    <div class="content">
-                                                            <div class="text"><b>TYPE</b></div>
-                                                            <p>Harvard</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                                <div class="info-box">
-                                                    <div class="content">
-                                                            <div class="text"><b>SERVICE</b></div>
-                                                            <p>Editing</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                                <div class="info-box">
-                                                    <div class="content">
-                                                            <div class="text"><b>SOURCE</b></div>
-                                                            <p>20</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row clearfix" style="margin-top:30px;">
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                                    <div class="info-box">
-                                                        <div class="content">
-                                                                <div class="text"><b>STYLE</b></div>
-                                                                <p>APA</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                                    <div class="info-box">
-                                                        <div class="content">
-                                                            <div class="text"><b>SUBJECT</b></div>
-                                                        <p>ART</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                                    <div class="info-box">
-                                                        <div class="content">
-                                                           <div class="text"><b>LEVEL</b></div>
-                                                        <p>University</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                                    <div class="info-box">
-                                                        <div class="content">
-                                                                <div class="text"><b>PAGE</b></div>
-                                                                <p>20</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="profile">
-                                    <b>Profile Content</b>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit mediocritatem an. Pri ut tation electram moderatius.
-                                        Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent aliquid
-                                        pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere gubergren
-                                        sadipscing mel.
-                                    </p>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="messages">
-                                        <div class="media">
-                                                <div class="media-left">
-                                                    <a href="javascript:void(0);">
-                                                        <img class="media-object" src="http://placehold.it/64x64" width="64" height="64">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading">Media heading</h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                                                    ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra
-                                                    turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis
-                                                    in faucibus.
-                                                </div>
-                                            </div>
-                                            <div class="media">
-                                                    <div class="media-body">
-                                                        <h4 class="media-heading">Media heading</h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                                                        ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra
-                                                        turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis
-                                                        in faucibus.
-                                                    </div>
-                                                    <div class="media-left">
-                                                            <a href="javascript:void(0);">
-                                                                <img class="media-object" src="http://placehold.it/64x64" width="64" height="64">
-                                                            </a>
-                                                        </div>
-                                                </div>
-                                                <div class="row clearfix">
-                                                        <div class="col-sm-12">
-                                                            <div class="form-group">
-                                                                <div class="form-line">
-                                                                    <textarea rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="button-demo">
-                                                            <button type="button" class="btn btn-success waves-effect">SEND MESSAGE</button>
-                                                        </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="upload">
-                                    <b>Add additional file</b>
-                                    <div class="custom-file row">
-                                            <div class="col-lg-12">
-                                                    <input type="file" class="custom-file-input" id="customFile" style="margin-top: 30px;" aria-required="true">
-                                                </div>
-                                                <div class="col-lg-12">
-                                                        <button type="button" class="btn btn-primary">
-                                                                Upload
+                        <div class="body table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Topic</th>
+                                        <th>Deadline</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="#"></a>734687</td>
+                                        <td>Economics</td>
+                                        <td>20/09/2018</td>
+                                        <td><span class="badge" style="font-size:14px; background-color: grey;">Expired</span></td>
+                                        <td>
+                                                <div class="btn-group">
+                                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            ACTION <span class="caret"></span>
                                                         </button>
-                                                </div>
-                                    </div>
-                                            
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="pay">
-                                        <b>Place Payment</b>
-                                        <div class="row">
-                                        <div class="irs-demo col-lg-12">
-                                                <p style="margin-top: 20px;">Set what percentage to pay</p>
-                                                <input type="text" id="range_01" value="" />
-                                        </div>
-                                            <div class="col-lg-12">
-                                                    <a href="#" type="button" class="btn btn-primary waves-effect m-r-20" data-toggle="modal" data-target="#confirm">
-                                                            PLACE PAYMENT
-                                                    </a>
-                                            </div> 
-                                        </div>  
-                                        
-                                        <!-- Small Size -->
-            <div class="modal fade" id="confirm" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-sm" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="smallModalLabel">Confirm Placed Payment</h4>
-                        </div>
-                        <div class="modal-body">
-                           Are you sure you want to continue
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button"  data-color="green" class="btn bg-green waves-effect">PLACE PAYEMENT</button>
-                            <button type="button" data-color="red" class="btn bg-red waves-effect" data-dismiss="modal">CANCEL</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-                                    </div>
-
-                                    <div role="tabpanel" class="tab-pane fade" id="download">
-                                        <div class="custom-file row" style="margin-top: 30px;">
-                                                
-                                                    <div class="col-lg-12 text-center">
-                                                            <button type="file" class="btn btn-primary">
-                                                                    DOWNLOAD ASSIGNMENT
-                                                            </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="javascript:void(0);">
+                                                                    <div class="demo-google-material-icon"> <i class="material-icons">autorenew</i> <span class="icon-name"></span> </div>Resubmit</a></li>
+                                                        </ul>
                                                     </div>
-                                        </div>
-                                                
-                                    </div>
-                            </div>
+                    
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#"></a>734687</td>
+                                        <td>Economics</td>
+                                        <td>20/09/2018</td>
+                                        <td> <span class="badge bg-orange" style="font-size: 14px;">In progress</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        ACTION <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="javascript:void(0);"><span>
+                                                                <div class="demo-google-material-icon"><i class="material-icons">insert_drive_file</i> <span class="icon-name"></span></div>
+                                                        </span>View Order</a></li>
+                              
+                                                    </ul>
+                                                </div>
+                
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#"></a>734687</td>
+                                        <td>Economics</td>
+                                        <td>20/09/2018</td>
+                                        <td><span class="badge bg-cyan waves-effect" type="button">Offer <span class="badge">100</span></span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    ACTION <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="javascript:void(0);"><span>
+                                                            <div class="demo-google-material-icon"> <i class="material-icons">account_circle</i> <span class="icon-name"></span></div>
+                                                    </span>Assign Writer</a></li>
+                                                    <li><a href="javascript:void(0);"  data-type="confirm">
+                                                            <div class="demo-google-material-icon"> <i class="material-icons">highlight_off</i> <span class="icon-name"></span></div>Cancel</a></li>
+                                                </ul>
+                                            </div>
+                
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#"></a>734687</td>
+                                        <td>Economics</td>
+                                        <td>20/09/2018</td>
+                                        <td><span class="badge bg-green" style="font-size:14px;">Completed</span></td>                                                
+                                        <td>
+                                            <div class="btn-group">
+                                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        ACTION <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="javascript:void(0);"><span>
+                                                            <div class="demo-google-material-icon"><i class="material-icons">insert_drive_file</i> <span class="icon-name"></span></div>
+                                                    </span>View Order</a></li>
+                                                    </ul>
+                                                </div>
+                
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#"></a>734687</td>
+                                        <td>Economics</td>
+                                        <td>20/09/2018</td>
+                                        <td><span class="badge bg-red" style="font-size:14px;">Cancelled</span></td>
+                                        <td>
+                                                <div class="btn-group">
+                                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            ACTION <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="javascript:void(0);">
+                                                                    <div class="demo-google-material-icon"> <i class="material-icons">autorenew</i> <span class="icon-name"></span> </div>Resubmit</a></li>
+                                                        </ul>
+                                                    </div>
+                    
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+                        <nav>
+                            <ul class="pagination">
+                                <li class="disabled">
+                                    <a href="javascript:void(0);">
+                                        <i class="material-icons">chevron_left</i>
+                                    </a>
+                                </li>
+                                <li class="active"><a href="javascript:void(0);">1</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">2</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">3</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">4</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">5</a></li>
+                                <li>
+                                    <a href="javascript:void(0);" class="waves-effect">
+                                        <i class="material-icons">chevron_right</i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
-            <!-- #END# Example Tab -->
-            <!-- Tabs With Only Icon Title -->
-            
+            <!-- #END# Basic Table -->
+            <!-- #END# With Material Design Colors -->
         </div>
     </section>
 
@@ -1054,31 +970,7 @@
     <script src="../../plugins/node-waves/waves.js"></script>
 
     <!-- Custom Js -->
-    -- RangeSlider Plugin Js -->
-    <script src="../../plugins/ion-rangeslider/js/ion.rangeSlider.js"></script>
-
-    <!-- Custom Js -->
     <script src="../../js/admin.js"></script>
-    <script src="../../js/pages/ui/range-sliders.js"></script>
-
-    <!-- Demo Js -->
-    <script src="../../plugins/sweetalert/sweetalert.min.js"></script>
-
-    <!-- Custom Js -->
-    <script src="../../js/admin.js"></script>
-    <script src="../../plugins/bootstrap-select/js/bootstrap-select.js"></script>
-
-    <!-- Slimscroll Plugin Js -->
-    <script src="../../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-
-    <!-- Waves Effect Plugin Js -->
-    <script src="../../plugins/node-waves/waves.js"></script>
-
-    <!-- SweetAlert Plugin Js -->
-    <script src="../../plugins/sweetalert/sweetalert.min.js"></script>
-
-    <!-- Custom Js -->
-    <script src="../../js/pages/ui/dialogs.js"></script>
 
     <!-- Demo Js -->
     <script src="../../js/demo.js"></script>
