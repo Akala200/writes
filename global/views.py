@@ -98,7 +98,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
                 context['orders'] = paginate.page(paginate.num_pages)
         else:
             from writers.models import WritersProfile
-            context['writers'] = WritersProfile.objects.call()
+            context['writers'] = WritersProfile.objects.all()
 
         return context
 

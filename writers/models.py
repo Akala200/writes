@@ -107,6 +107,7 @@ class WritersProfile(models.Model):
     headline = models.CharField(max_length=30)
     about = models.TextField()
     is_approved = models.BooleanField(default=False)
+    profile_set = models.BooleanField(default=False)
     paypal_id = models.CharField(max_length=50)
 
     def __str__(self):

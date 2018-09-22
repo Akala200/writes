@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, TemplateView, FormView, UpdateView
+from django.views.generic import CreateView, TemplateView, ListView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseBadRequest
 from django.urls import reverse_lazy, reverse
@@ -10,7 +10,7 @@ from django.contrib.auth.backends import ModelBackend
 
  
 from .forms import WriterSignupForm, ProfileForm, EssayTestForm
-from .models import WritersProfile
+from .models import WritersProfile, Bids
 
     
 
@@ -18,7 +18,7 @@ def signup(request):
     if request.user.is_authenticated and request.user.is_writer:
         return redirect(reverse('writers:all_orders'))
     else:
-        form =  WriterSignupForm(request.POST)
+        form =  WriterSignupForm(request.POST, instance=request.user)
         if request.method == "POST" and form.is_valid():
             form.save(request)
             user = authenticate(request, username=form.cleaned_data['email'], password=form.cleaned_data['password1'])
@@ -26,7 +26,7 @@ def signup(request):
                 login(request, user)
                 return redirect(reverse('writers:home'))
         else:
-            form =  WriterSignupForm()
+            form =  WriterSignupForm(instance=request.user)
             return render(request, 'writers/accounts/signup.html', context={
                 'form': form })
 
@@ -34,13 +34,14 @@ def signup(request):
 def home(request):
     return render(request, 'writersnew/intro.html')
 
-class AllOrders(LoginRequiredMixin, TemplateView):
+class AllOrders(LoginRequiredMixin, ListView):
     template_name = 'writersnew/orders/all_orders.html'
     paginate_by = 5
+    queryset = Bids
 
-    def get_context_data(self):
-        pass
-
+    def get_queryset(self):
+        queryset = self.queryset.objects.filter(bidders=self.request.user)
+        return queryset
 
 @login_required()
 def bidding_orders(request):

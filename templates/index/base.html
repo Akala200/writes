@@ -197,7 +197,7 @@
                     </li>
                     <!-- #END# Notifications -->
                     <!-- Tasks -->
-                    <li style="margin-left: 15px;"><a href="javascript:void(0);"><i class="material-icons">input</i></a></li>
+                    
                     <!-- #END# Tasks -->
                 </ul>
             </div>
@@ -233,6 +233,8 @@
             <div class="menu">
                 {% if not request.user.is_writer %}
                 {% include 'index/user_navbar.html' %}
+                {% else %}
+                {% include 'index/writers_nav.html' %}
                 {% endif %}
    
             </div>

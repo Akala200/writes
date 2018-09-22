@@ -1,8 +1,10 @@
 {% extends 'index/base.html' %}
 {% block content %}
-{% if  request.user.is_writer %}
-{% include 'writersnew\orders\all_orders.html' %}
-{% else %}
+{% if  request.user.is_writer and request.user.user_profile.is_approved %}
+{% include 'writersnew/orders/all_orders.html' %}
+{% elif not request.user.is_writer %}
 {% include 'users/orders/all_user_orders.html' %}
+{% else %}
+{% include 'writersnew/intro.html' %}
 {% endif %}
 {% endblock %}
