@@ -48,8 +48,8 @@ class OrderTable(tables.Table):
 class Index(LoginRequiredMixin, ListView):
     model = Order
     context_object_name = 'orders'
-
-    template_name = 'users/user_oders.html'
+    paginate_by = 2
+    template_name = 'users/orders/all_user_orders.html'
 
     def get_queryset(self):
         queryset = Order.objects.filter(order_id=self.request.user).order_by('-deadline').all()

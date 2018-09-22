@@ -7,6 +7,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_list_or_404
 from django.http  import JsonResponse
 from django.core import serializers
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 from writers.models import WritersProfile, Rating
 
@@ -80,6 +82,26 @@ class Blog(TemplateView):
 
 class HomeView(LoginRequiredMixin, TemplateView):
     template_name = 'index/index.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(HomeView, self).get_context_data(*args, **kwargs)
+        page = self.request.GET.get("page", 1)
+        if not self.request.user.is_writer:
+            from customer.models import Order
+            order = Order.objects.filter(order_id=self.request.user).all()
+            paginate = Paginator(order, 2)
+            try:
+                context['orders'] = paginate.page(page)
+            except PageNotAnInteger:
+                context['orders'] = paginate.page(1)
+            except EmptyPage:
+                context['orders'] = paginate.page(paginate.num_pages)
+        else:
+            from writers.models import WritersProfile
+            context['writers'] = WritersProfile.objects.call()
+
+        return context
+
 
 
 

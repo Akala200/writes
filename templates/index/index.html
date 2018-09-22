@@ -3,6 +3,6 @@
 {% if  request.user.is_writer %}
 {% include 'writersnew\orders\all_orders.html' %}
 {% else %}
-{% include 'users\user_oders.html' %}
+{% include 'users/orders/all_user_orders.html' %}
 {% endif %}
 {% endblock %}
