@@ -9,7 +9,9 @@ from django.core.validators import MinLengthValidator
 class Wallet(models.Model):
     wallet_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     description = models.CharField(max_length=50)
-    status = models.BooleanField(default=False)
+    is_pending = models.BooleanField(default=False)
+    approved = models.BooleanField(default=False)
+    declined = models.BooleanField(default=False)
     credit = models.DecimalField(max_digits=20, decimal_places=2)
     date = models.DateTimeField(auto_now_add=True)
 

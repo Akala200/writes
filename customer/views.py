@@ -49,7 +49,7 @@ class OrderTable(tables.Table):
 class Index(LoginRequiredMixin, ListView):
     model = Order
     context_object_name = 'orders'
-    paginate_by = 2
+    paginate_by = 10
     template_name = 'users/orders/all_user_orders.html'
 
     def get_queryset(self):
@@ -95,7 +95,7 @@ def place_an_order(request):
             messages.error(request, 'Failed to create an order')
             form = PlaceAnOrderForm()
 
-    return render(request, 'users/place_order.html', context={
+    return render(request, 'users/orders/place_orders.html', context={
         'form': form
     })
 
@@ -112,7 +112,8 @@ def view_transactions(request):
     wallet = Wallet.objects.filter(wallet_id=request.user).order_by('-date')
     wallet_balance = WalletBalance.objects.get(balance_id=request.user)
     context = {'wallet': wallet, 'wallet_balance': wallet_balance}
-    return render(request, 'customer/wallet/wallet.html', context=context)
+    
+    return render(request, 'users/wallet/wallet.html', context=context)
 
 @login_required()
 def process_payment(request):
@@ -133,11 +134,11 @@ def process_payment(request):
             return render(request, 'customer/card_error.html')
         
         except stripe.error.AuthenticationError:
-            return render(request, 'customer/auth_error.html')
+            return render(request, 'users/wallet/auth_error.html')
 
         except stripe.error.InvalidRequestError:
             
-            return render(request, 'customer/wallet/error.html')
+            return render(request, 'ursers/wallet/error.html')
 
         else:
             payment_data = Wallet.objects.create(
@@ -152,7 +153,7 @@ def process_payment(request):
             
             return redirect(reverse('customer:view_transactions'))
             
-    return render(request, 'customer/wallet/fund_wallet.html', context={'form': form,
+    return render(request, 'users/wallet/fund_wallet.html', context={'form': form,
     'stripe_key': stripe_key, 'amount': request.POST.get('amount')})
         
 
@@ -325,7 +326,7 @@ def resubmit_order(request, order_uuid):
         form = PlaceAnOrderForm(instance=order)
 
 
-    return render(request, 'customer/orders/edit_assignment.html', context={
+    return render(request, 'users/orders/place_orders.html', context={
         'form': form, 'order': order
     })
 
