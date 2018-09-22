@@ -1,3 +1,5 @@
+
+
 {% extends 'index/base.html' %}
 {% block content %}
 
@@ -5,7 +7,7 @@
         <div class="container-fluid">
                 {% include 'users/header.html' %}
             <div class="block-header">
-                <h2>Completed Orders</h2>
+                <h2>Expired Orders</h2>
             </div>
            
             <!-- Basic Table -->
@@ -30,27 +32,22 @@
                                         <td><a href="#"></a>{{ order.order_uuid }}</td>
                                         <td>{{ order.topic }}</td>
                                         <td>{{ order.deadline }}</td>
-                                        {% if order.completed %}
+                                      
    
-                                    <td><span class="badge bg-green" style="font-size:14px;">Completed</span></td>                                                
+                                        {% if order.expired %}
+                                        <td><span class="badge" style="font-size:14px; background-color: grey;">Expired</span></td>
                                         <td>
-                                            <div class="btn-group">
-                                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        ACTION <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="javascript:void(0);"><span>
-                                                            <div class="demo-google-material-icon"><i class="material-icons">insert_drive_file</i> <span class="icon-name"></span></div>
-                                                    </span>View Order</a></li>
-                                                    </ul>
-                                                </div>
-                                       
-                
-                                    </td>
-                                    {% else %}
-                                    <p>No order</p>
-                                   
-                                    
+                                                <div class="btn-group">
+                                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            ACTION <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="javascript:void(0);">
+                                                                    <div class="demo-google-material-icon"> <i class="material-icons">autorenew</i> <span class="icon-name"></span> </div>Resubmit</a></li>
+                                                        </ul>
+                                                    </div>
+                    
+                                        </td>
                                     
                                     {% endif %}
                                 

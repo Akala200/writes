@@ -77,7 +77,7 @@
                                                                     <ul class="dropdown-menu">
                                                                             <li><a href="javascript:void(0);"><div class="demo-google-material-icon"> <i class="material-icons">person_add</i> <span class="icon-name"></span> </div>
                                                                                 Hire A Writer</a></li>
-                                                                        <li><a href="#">                                                                         <div class="demo-google-material-icon"> <i class="material-icons">thumbs_up_down</i> <span class="icon-name"></span></div>
+                                                                        <li><a href="{% url 'customer:remove_from_favorite' fav.favorite_writers.pk %}">                                                                         <div class="demo-google-material-icon"> <i class="material-icons">thumbs_up_down</i> <span class="icon-name"></span></div>
 
                                                                             Remove From Favorite</a></li>
                                                                     </ul>

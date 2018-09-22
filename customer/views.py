@@ -4,7 +4,7 @@ from decimal import Decimal
 
 import stripe
 
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, resolve_url
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -17,6 +17,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, ListView
+
 
 from .forms import PaymentForm, PlaceAnOrderForm, CancelOrderForm
 from .models import (
@@ -57,21 +58,24 @@ class Index(LoginRequiredMixin, ListView):
 
 
 @login_required()
-def bidding_order(request):
-    return render(request, '')
+def order_in_progress(request):
+    order = Order.objects.filter(order_id=request.user, in_progress=True).all()
+    return render(request, 'users/orders/in_progress.html', context={'orders':  order })
 
 @login_required()
 def cancelled_order(request):
     cancelled = Order.objects.filter(Q(order_id=request.user), Q(cancelled=True))
-    return render(request, 'customer/orders/canceled_orders.html', context={'orders':  cancelled }) 
+    return render(request, 'users/orders/cancelled.html', context={'orders':  cancelled }) 
 
 @login_required()
 def completed_order(request):
-    return render(request, 'customer/orders/completed_orders.html')
+    order = Order.objects.filter(order_id=request.user, completed=True).all()
+    return render(request, 'users/orders/completed_orders.html', context={'orders': order})
 
 @login_required()
 def expired_order(request):
-    return render(request, 'customer/orders/expired_order.html')
+    order = Order.objects.filter(order_id=request.user, expired=True).all()
+    return render(request, 'users/orders/expired_order.html', context={'orders': order})
 
 @login_required()
 def place_an_order(request):
@@ -97,11 +101,9 @@ def place_an_order(request):
 
 @login_required()
 def cancel_an_order(request, order_uuid):
-    form = CancelOrderForm(request.POST)
-    if form.is_valid() and request.method == 'POST':
-        cancel_order = Order.objects.filter(order_uuid=order_uuid).update(cancelled=True)
-        messages.success(request, 'Order cancelled successfully')
-        return redirect(reverse('customer:index'))
+    cancel_order = Order.objects.filter(order_uuid=order_uuid).update(cancelled=True)
+    messages.success(request, 'Order cancelled successfully')
+    return redirect(reverse('customer:index'))
 
 
 
@@ -193,9 +195,12 @@ def update_order(request, order_uuid):
         'form': form, 'order': order
     })
 
-@login_required()
-def assign_writers(request):
-    return render(request, 'customer/bids/assign_writer.html')
+
+
+class AssignWriters(LoginRequiredMixin,  ListView):
+    template_name = 'users/writers/all_writers.html'
+    model = WritersProfile
+    context_object_name = 'writers'
 
 
 class DeclinedBids(LoginRequiredMixin, ListView):
@@ -327,11 +332,12 @@ def resubmit_order(request, order_uuid):
 
 @login_required()
 def add_to_favorite(request, writer_id):
+    url = request.META.get('HTTP_REFERER')
     writer_check = get_user_model().objects.get(user_profile__pk=writer_id)
     add = FavouriteWriters.objects.create(user=request.user, favorite_writers=writer_check,
     is_fav=True)
 
-    return messages.success(request, 'Writer added to your favorite list')
+    return redirect(resolve_url(url))
     
 
 
@@ -354,8 +360,7 @@ class ViewAllWriters(LoginRequiredMixin,  ListView):
 
 
 def remove_from_favorite(request, writer_id):
-    writer = get_object_or_404(FavouriteWriters, favorite_writers=writer_id)
-    writer.delete()
+    writer = FavouriteWriters.objects.filter(favorite_writers=writer_id).delete()
     return redirect(reverse('customer:favorite_writers'))
 
 

@@ -253,6 +253,7 @@ class Order(models.Model):
     sources = models.CharField(max_length=250, choices=source_choice, default='essay sources')
     completed = models.BooleanField(default=False)
     cancelled = models.BooleanField(default=False)
+    in_progress = models.BooleanField(default=False)
     expired = models.BooleanField(default=False)
     style  = models.CharField(max_length=250, choices=style_choice, default='essay style')
     subject = models.CharField(max_length=250, choices=subject_choice, default='essay subject')

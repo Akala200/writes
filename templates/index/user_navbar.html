@@ -7,7 +7,7 @@
                 </a>
                 <ul class="ml-menu">
                         <li>
-                                <a href="#">
+                                <a href="{% url 'customer:index' %}">
                                     <span>All Orders</span>
                                 </a>
                             </li>
@@ -17,22 +17,22 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="{% url 'customer:order_in_progress' %}">
                             <span>In Progress</span>
                         </a>
                     </li>
                     <li>
-                            <a href="#">
+                            <a href="{% url 'customer:completed_order' %}">
                                 <span>Completed</span>
                             </a>
                         </li>
                     <li>
-                            <a href="#">
+                            <a href="{% url 'customer:cancelled_order' %}">
                                 <span>Cancelled</span>
                             </a>
                         </li>
                         <li>
-                                <a href="#">
+                                <a href="{% url 'customer:expired_order' %}">
                                     <span>Expired</span>
                                 </a>
                             </li>
