@@ -26,6 +26,7 @@
     <!-- Animation Css -->
     <link href="../../plugins/animate-css/animate.css" rel="stylesheet" />
 
+
     
     <!-- Waves Effect Css -->
     <link href="../../plugins/node-waves/waves.css" rel="stylesheet" />
@@ -40,6 +41,7 @@
 
     <!-- Custom Css -->
     <link href="../../css/style.css" rel="stylesheet">
+    <link href="../../css/rating.css">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../../css/themes/all-themes.css" rel="stylesheet" />
@@ -1056,15 +1058,37 @@
                                     </div>
 
                                     <div role="tabpanel" class="tab-pane fade" id="download">
+                                        <form class="rating" id="form_advanced_validation">
+
+                                                <div class="custom-file row" style="margin-top: 30px;">
+                                                
+                                                        <div class="col-lg-4">
+                                                                <p  style="font-size: 20px;"><b>Rate Writer:  </b><input type="number" name="your_awesome_parameter" id="rating-inline" class="rating" data-clearable="remove" data-inline/></p>
+                                                        </div>
+                                                        <div class="col-lg-8">
+                                                                <div class="form-group form-float">
+                                                                        <div class="form-line">
+                                                                            <input type="text" class="form-control" name="minmaxlength" maxlength="10" minlength="3" required>
+                                                                            <label class="form-label">Min. 30 characters</label>
+                                                                        </div>
+                                                                    </div>
+                                                    </div>
+                                            </div>
+                                            
                                         <div class="custom-file row" style="margin-top: 30px;">
                                                 
-                                                    <div class="col-lg-12 text-center">
+                                                    <div class="col-lg-3">
                                                             <button type="file" class="btn btn-primary">
                                                                     DOWNLOAD ASSIGNMENT
                                                             </button>
                                                     </div>
+                                                    <div class="col-lg-3">
+                                                        <button type="file" class="btn btn-primary">
+                                                               RATE/REVIEW
+                                                        </button>
+                                                </div>
                                         </div>
-                                                
+                                    </form>   
                                     </div>
                             </div>
                         </div>
@@ -1078,6 +1102,11 @@
     </section>
 
     <!-- Jquery Core Js -->
+    <script>
+    $(':radio').change(function() {
+  console.log('New star rating: ' + this.value);
+});
+    </script>
     <script src="../../plugins/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core Js -->
@@ -1121,6 +1150,8 @@
 
     <!-- Demo Js -->
     <script src="../../js/demo.js"></script>
+    <script src="../../js/rating2.js"></script>
+
 </body>
 
 </html>
