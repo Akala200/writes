@@ -10,10 +10,25 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-                   
+                         
                         <div class="body">
                             <form id="form_validation" method="POST" style="padding-right:200px; padding-left:200px;" action="{% url 'customer:update_order' %}">
                                 {% csrf_token %}
+                                {% if form.errors %}
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <div class="alert alert-danger">
+                                            <strong>{{ error|escape }}</strong>
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
+                                {% for error in form.non_field_errors %}
+                                    <div class="alert alert-danger">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                    
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         {{form.order_type}}

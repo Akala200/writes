@@ -12,7 +12,7 @@
                     <div class="card">
                    
                         <div class="body">
-                            <form id="form_validation" method="POST" style="padding-right:200px; padding-left:200px;" action="{% url 'customer:place_an_order' %}">
+                            <form id="form_validation" method="POST" style="padding-right:200px; padding-left:200px;" action="{% url 'customer:update_order' order.order_uuid %}">
                                 {% csrf_token %}
                                 <div class="form-group form-float">
                                     <div class="form-line">

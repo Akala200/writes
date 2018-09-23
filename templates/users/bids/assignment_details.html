@@ -7,7 +7,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                         <div class="info-box bg-orange hover-expand-effect">
                             <div class="icon">
-                             <a href=""><i class="material-icons">mode_edit</i></a>
+                             <a href="{% url 'customer:update_order' bid.order_uuid %}"><i class="material-icons">mode_edit</i></a>
                             </div>
                             <div class="content">
                                 <div class="text">Edit Assignment</div>
@@ -108,11 +108,8 @@
                                             </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="profile">
-<<<<<<< HEAD
                                     
-=======
-                                    <b>Profile Content</b>
->>>>>>> 22364d1ae73970bd8065a1fff895fd87e0ea21c6
+                                    
                                     <p>
                                        {{ bid.description }}
                                     </p>

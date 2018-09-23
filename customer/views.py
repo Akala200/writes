@@ -194,6 +194,7 @@ def update_order(request, order_uuid):
         
     else:
         form = PlaceAnOrderForm(instance=order)
+        
 
 
     return render(request, 'users/orders/update_order.html', context={
