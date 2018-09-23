@@ -1,108 +1,102 @@
+<!DOCTYPE html>
+<html>
 
-{% extends 'account/base.html' %}
-{% load static %}
-{% load i18n %}
-{% load account socialaccount %}
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Sign Up | Bootstrap Based Admin Template - Material Design</title>
+    <!-- Favicon-->
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
-{% block navbar %}
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-image: -webkit-linear-gradient(0deg, #bc2bff 0%, #7249fb 100%);" id="mainNav">
-		<div class="container">
-		  <a class="navbar-brand js-scroll-trigger" href="#page-top"></a>
-		  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-color:  #fff;">
-			<span class="navbar-toggler-icon"></span>
-		  </button>
-		  <div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav ml-auto">
-			  <li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="{% url 'index' %}">Home</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="{% url 'account_login' %}">Login</a>
-			  </li>
-			</ul>
-		  </div>
-		</div>
-				</nav>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
-	{% endblock %}
-	
-{% block content %} 
+    <!-- Bootstrap Core Css -->
+    <link href="../../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
+    <!-- Waves Effect Css -->
+    <link href="../../plugins/node-waves/waves.css" rel="stylesheet" />
 
+    <!-- Animation Css -->
+    <link href="../../plugins/animate-css/animate.css" rel="stylesheet" />
 
-<div class="limiter">
-	<div class="container-login100">
-		<div class="wrap-login100">
-			<div class="login100-pic js-tilt" data-tilt>
-				<img src="{% static 'img/logo.jpg' %}" alt="IMG">
-			</div>
+    <!-- Custom Css -->
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
 
-			<form class="login100-form validate-form" method="POST" action="{% url 'account_signup' %}">
-				{% csrf_token %}
-				<span class="login100-form-title">
-					<h2 id="login-title" style="color: #bc2bff;">Signup</h2>
-				</span>
-				{% if form.errors %}
-				{% for error in form.errors %}
-				<p style="color: #bc2bff;"> {{ error }} </p>
-				{% endfor  %}
-					{% endif %}
+<body class="signup-page">
+    <div class="signup-box">
+        <div class="logo">
+            <a href="javascript:void(0);">Admin<b>BSB</b></a>
+            <small>Admin BootStrap Based - Material Design</small>
+        </div>
+        <div class="card">
+            <div class="body">
+                <form id="sign_up" method="POST">
+                    <div class="msg">Register a new membership</div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="namesurname" placeholder="Name Surname" required autofocus>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">email</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">lock</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="password" class="form-control" name="password" minlength="6" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">lock</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="password" class="form-control" name="confirm" minlength="6" placeholder="Confirm Password" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="terms" id="terms" class="filled-in chk-col-pink">
+                        <label for="terms">I read and agree to the <a href="javascript:void(0);">terms of usage</a>.</label>
+                    </div>
 
-				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-					{{ form.email }}
-					<span class="focus-input100"></span>
-					<span class="symbol-input100">
-						<i class="fa fa-envelope" aria-hidden="true"></i>
-					</span>
-				</div>
+                    <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">SIGN UP</button>
 
-				<div class="wrap-input100 validate-input" data-validate = "Password is required" id="password1">
-						{{ form.password1 }}
-					<span class="focus-input100"></span>
-					<span class="symbol-input100">
-						<i class="fa fa-lock" aria-hidden="true"></i>
-					</span>
-				</div>
+                    <div class="m-t-25 m-b--5 align-center">
+                        <a href="sign-in.html">You already have a membership?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-				<div class="wrap-input100 validate-input" data-validate = "Confirm your password" id="password2">
-						{{ form.password2 }}
-					<span class="focus-input100"></span>
-					<span class="symbol-input100">
-						<i class="fa fa-lock" aria-hidden="true"></i>
-					</span>
-				</div>
-				
-				<div class="container-login100-form-btn">
-					<button class="login100-form-btn">
-						Signup
-					</button>
-				</div>					
-				
-				<div class="text-center w-full p-t-42 p-b-22">
-					<span class="txt1">
-						Or login with
-					</span>
-				</div>
-					<a href="{% provider_login_url 'facebook' method='oauth2' %}"  class="btn-face m-b-10" style="float:  left;">
-					<i class="fab fa-facebook-f"></i>
-					Facebook
-				</a>
+    <!-- Jquery Core Js -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
 
-						<a href="{% provider_login_url 'google' method='oauth2' %}" class="btn-google m-b-10" >
-					
-					<img src="{% static 'img/icon-google.png' %}" alt="GOOGLE">
-					Google
-				</a>
+    <!-- Bootstrap Core Js -->
+    <script src="../../plugins/bootstrap/js/bootstrap.js"></script>
 
-				<div class="text-center p-t-136">
-					<a class="txt2" href="{% url 'account_login' %}">
-						Already have an account
-						<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-					</a>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
+    <!-- Waves Effect Plugin Js -->
+    <script src="../../plugins/node-waves/waves.js"></script>
 
-	{% endblock content %}
+    <!-- Validation Plugin Js -->
+    <script src="../../plugins/jquery-validation/jquery.validate.js"></script>
+
+    <!-- Custom Js -->
+    <script src="../../js/admin.js"></script>
+    <script src="../../js/pages/examples/sign-up.js"></script>
+</body>
+
+</html>
