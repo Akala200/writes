@@ -19,7 +19,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, ListView
 
 
-from .forms import PaymentForm, PlaceAnOrderForm, CancelOrderForm
+from .forms import PaymentForm, PlaceAnOrderForm, CancelOrderForm,  AdditionalFileForm
 from .models import (
     Wallet, WalletBalance, Order, FavouriteWriters,
     Hired, AdditionalFiles, ShortListed
@@ -159,10 +159,15 @@ def process_payment(request):
 
 @login_required()
 def order_details(request, order_uuid):
+    form =   AdditionalFileForm()
+
     order_id = get_object_or_404(Order, order_uuid=order_uuid)
+    files = AdditionalFiles.objects.filter(user=order_uuid).all()
 
     return render(request, 'users/bids/assignment_details.html', context={
-        'bid':  order_id
+        'bid':  order_id,
+        'form': form,
+        'files': files
     })
 
 
@@ -239,24 +244,21 @@ class CompletedBids(LoginRequiredMixin,  ListView):
 
 @login_required()
 def hired_before(request):
-    return render(request, 'customer/bids/hired_before.html')
+    hire = Hired.objects.all()
+    return render(request, 'users/bids/hired_before.html', context={'hire':hire})
 
 
-@login_required()
-def invited_writers(request):
-    return render(request, 'customer/bids/invite_writers.html')
 
 class Invited(LoginRequiredMixin,  ListView):
     model = Order
     context_object_name = 'invite'
     paginate_by = 10
-    template_name = 'customer/bids/invited.html'
+    template_name = 'users/bids/invited.html'
 
-    """
+
     def get_queryset(self):
         queryset = self.model.objects.filter(order_uuid=self.request.user).all()
         return queryset
-    """
 
 
 
@@ -264,14 +266,14 @@ class Invited(LoginRequiredMixin,  ListView):
 def new_bids(request):
     new_bids = Bids.objects.all().exclude(Q(approved=True), Q(shortlisted=True),
     Q(declined=True))
-    return render(request, 'customer/bids/new_bids.html')
-
+    return render(request, 'users/bids/new_bids.html')
 
 
 
 @login_required()
 def view_all_bids(request):
-    return render(request, 'customer/bids/view_all_bids.html')
+    bid = Bids.objects.all()
+    return render(request, 'customer/bids/view_all_bids.html', context={'bid': bid})
 
 
 @login_required
@@ -282,18 +284,19 @@ def additional_files(request, order_uuid):
 
 @login_required
 def add_additional_file(request, order_uuid):
-    form = AdditionalFileForm(request.POST)
+    url = request.META.get('HTTP_REFERER')
+    form = AdditionalFileForm(request.POST, request.FILES)
 
-    if form.is_valid() and request.method == 'POST':
+    if  request.method == 'POST' and  form.is_valid():
+        order = Order.objects.get(order_uuid=order_uuid)
         instance = form.save(commit=False)
-        instance.user = order_uuid
+        instance.user = order
         instance.save()
         messages.success(request, 'File submitted sucessfully')
-        return redirect(reverse(instance.get_absolute_url()))
+        return redirect(resolve_url(url))
 
     else:
-        files = AdditionalFiles.objects.filter(user=order_uuid).all()
-        return render(request, 'customer/bids/additonal_files.html')
+        return redirect(resolve_url(url))
 
 
 class FavoriteWriter(LoginRequiredMixin,  ListView):

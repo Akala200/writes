@@ -43,7 +43,7 @@ class PlaceAnOrderForm(forms.ModelForm):
                 }),
                 'deadline' : forms.DateTimeInput(attrs={
                 'class' : 'datetimepicker form-control',
-                'placeholder': 'Please choose date & time...'
+                'placeholder': 'Please Choose deadline'
                
                     
                 }),
@@ -107,6 +107,15 @@ class  AdditionalFileForm(forms.ModelForm):
     class Meta:
         model = AdditionalFiles
         fields = ['files']
+        widgets = {
+            'files' : forms.FileInput(attrs={
+                'class': 'custom-file-input',
+
+            })
+            
+            
+           
+        }
  
     
 
