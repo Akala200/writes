@@ -1,6 +1,6 @@
 {% extends 'index/base.html' %}
+{% load static %}
 {% block content %}
-
     <section class="content">
         <div class="container-fluid">
                 {% include 'users/header.html' %}
@@ -23,11 +23,11 @@
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
-                                </thead>
+                                </thead> 
                                 {% for order in orders %}
                                 <tbody>
                                     <tr>
-                                        <td><a href="#"></a>{{ order.order_uuid }}</td>
+                                        <td><a href="{% url 'customer:order_detail'  order.order_uuid %}">{{ order.order_uuid }}</a></td>
                                         <td>{{ order.topic }}</td>
                                         <td>{{ order.deadline }}</td>
                                         {% if order.expired %}

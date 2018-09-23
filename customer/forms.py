@@ -18,10 +18,11 @@ class PlaceAnOrderForm(forms.ModelForm):
          self.fields['order_type'].widget
     class Meta:
         model = Order
-        exclude =  ('order_id', 'order_uuid', 'deadline', 'publication_date')
+        exclude =  ('order_id', 'order_uuid',  'publication_date')
         widgets = {
             'order_type': forms.Select(attrs={
                 'class' : 'form-control show-tick',
+                'required': 'please select choice'
          
             
             }),
@@ -40,13 +41,15 @@ class PlaceAnOrderForm(forms.ModelForm):
                
                     
                 }),
-                'deadline' : forms.Select(attrs={
-                'class' : 'form-control show-tick',
+                'deadline' : forms.DateTimeInput(attrs={
+                'class' : 'datetimepicker form-control',
+                'placeholder': 'Please choose date & time...'
                
                     
                 }),
                 'subject':  forms.Select(attrs={
                 'class' : 'form-control show-tick',
+
                
 
                  }),
@@ -69,8 +72,8 @@ class PlaceAnOrderForm(forms.ModelForm):
                  }),
                  
                  'description': forms.Textarea(attrs={
-                     'class':  'form-control',
-                     'placeholder': 'Description'
+                     'class':  'form-control no-resize',
+                     'placeholder': 'Description should be more than 20 words'
 
                      
 

@@ -53,7 +53,7 @@ class Index(LoginRequiredMixin, ListView):
     template_name = 'users/orders/all_user_orders.html'
 
     def get_queryset(self):
-        queryset = Order.objects.filter(order_id=self.request.user).order_by('-deadline').all()
+        queryset = Order.objects.filter(order_id=self.request.user).order_by('publication_date').all()
         return queryset
 
 
@@ -85,7 +85,6 @@ def place_an_order(request):
             instance = form.save(commit=False)
             instance.order_id = request.user
             instance.order_uuid = generated_unique_id()
-            instance.deadline = timezone.now()
             form.save()
             messages.success(request, 'Your Order was created successfully')
             return redirect(reverse('customer:index'))
@@ -162,7 +161,7 @@ def process_payment(request):
 def order_details(request, order_uuid):
     order_id = get_object_or_404(Order, order_uuid=order_uuid)
 
-    return render(request, 'customer/bids/assignment_details.html', context={
+    return render(request, 'users/bids/assignment_details.html', context={
         'bid':  order_id
     })
 
@@ -192,7 +191,7 @@ def update_order(request, order_uuid):
         form = PlaceAnOrderForm(instance=order)
 
 
-    return render(request, 'users/edit_order.html', context={
+    return render(request, 'users/orders/update_order.html', context={
         'form': form, 'order': order
     })
 

@@ -17,7 +17,7 @@
                        
                     </div>
                  <div class="body" style="padding-left:150px; padding-right: 150px;">
-                    <form method="POST" action="{% url 'customer:place_an_order' %}">
+                    <form action="{% url 'customer:update_order' order.order_uuid %}" method="POST">
                         {% csrf_token %}
                         <div class="row clearfix">
                             <div class="col-sm-6">
@@ -94,7 +94,7 @@
                             <div class="row clearfix text-center">
                                     <div class="col-lg-12">
                                             <button type="submit" style="font-size: 18px;" class="btn btn-primary waves-effect m-r-20">
-                                                    PLACE ORDER
+                                                    EDIT ORDER
                                             </button>
                                     </div> 
                                 </div>
