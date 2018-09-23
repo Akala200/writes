@@ -258,15 +258,37 @@
                                     </div>
 
                                     <div role="tabpanel" class="tab-pane fade" id="download">
+                                        <form class="rating" id="form_advanced_validation">
+
+                                                <div class="custom-file row" style="margin-top: 30px;">
+                                                
+                                                        <div class="col-lg-4">
+                                                                <p  style="font-size: 20px;"><b>Rate Writer:  </b><input type="number" name="your_awesome_parameter" id="rating-inline" class="rating" data-clearable="remove" data-inline/></p>
+                                                        </div>
+                                                        <div class="col-lg-8">
+                                                                <div class="form-group form-float">
+                                                                        <div class="form-line">
+                                                                            <input type="text" class="form-control" name="minmaxlength" maxlength="10" minlength="3" required>
+                                                                            <label class="form-label">Min. 30 characters</label>
+                                                                        </div>
+                                                                    </div>
+                                                    </div>
+                                            </div>
+                                            
                                         <div class="custom-file row" style="margin-top: 30px;">
                                                 
-                                                    <div class="col-lg-12 text-center">
+                                                    <div class="col-lg-3">
                                                             <button type="file" class="btn btn-primary">
                                                                     DOWNLOAD ASSIGNMENT
                                                             </button>
                                                     </div>
+                                                    <div class="col-lg-3">
+                                                        <button type="file" class="btn btn-primary">
+                                                               RATE/REVIEW
+                                                        </button>
+                                                </div>
                                         </div>
-                                                
+                                    </form>   
                                     </div>
                             </div>
                         </div>
@@ -279,4 +301,61 @@
         </div>
     </section>
 
+<<<<<<< HEAD
 {% endblock content %}
+=======
+    <!-- Jquery Core Js -->
+    <script>
+    $(':radio').change(function() {
+  console.log('New star rating: ' + this.value);
+});
+    </script>
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="../../plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="../../plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="../../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="../../plugins/node-waves/waves.js"></script>
+
+    <!-- Custom Js -->
+    -- RangeSlider Plugin Js -->
+    <script src="../../plugins/ion-rangeslider/js/ion.rangeSlider.js"></script>
+
+    <!-- Custom Js -->
+    <script src="../../js/admin.js"></script>
+    <script src="../../js/pages/ui/range-sliders.js"></script>
+
+    <!-- Demo Js -->
+    <script src="../../plugins/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Custom Js -->
+    <script src="../../js/admin.js"></script>
+    <script src="../../plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="../../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="../../plugins/node-waves/waves.js"></script>
+
+    <!-- SweetAlert Plugin Js -->
+    <script src="../../plugins/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Custom Js -->
+    <script src="../../js/pages/ui/dialogs.js"></script>
+
+    <!-- Demo Js -->
+    <script src="../../js/demo.js"></script>
+    <script src="../../js/rating2.js"></script>
+
+</body>
+
+</html>
+>>>>>>> 95d9ca7b0fc71b040000d0f6644e0685f2281695
