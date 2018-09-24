@@ -262,6 +262,17 @@ class Invited(LoginRequiredMixin,  ListView):
         return queryset
 
 
+@login_required()
+def invite_writers(request, order_uuid, writer_id):
+    order_id = get_object_or_404(Order, order_uuid=order_uuid)
+    writer_id = get_object_or_404(WritersProfile, pk=writer_id)
+    from .utils import invite_writers
+    invite = 
+
+
+
+
+
 
 @login_required()
 def new_bids(request):
@@ -280,7 +291,7 @@ def view_all_bids(request):
 @login_required
 def additional_files(request, order_uuid):
     order_id = AdditionalFiles.objects.filter(user=order_uuid).all()
-    return render(request, context={'order': order_id, 'order_id': order_uuid})
+    return render(request, 'te', context={'order': order_id, 'order_id': order_uuid})
 
 
 @login_required

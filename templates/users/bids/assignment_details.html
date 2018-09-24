@@ -1,4 +1,8 @@
 {% extends 'index/base.html' %}
+{% load static %}
+{% block navbar %}
+{% include 'index/bids_nav.html' %}
+{% endblock navbar %}
 {% block content %}
 
     <section class="content">
@@ -350,8 +354,6 @@
 
     <!-- Demo Js -->
     <script src="../../js/demo.js"></script>
-    <script src="../..js/rating2.js"></script>
+    <script src="{% static 'jsnew/rating2.js' %}"></script>
 
-</body>
-
-</html>
+{% endblock content %}

@@ -94,6 +94,7 @@
             </div>
             <!-- #User Info -->
             <!-- Menu -->
+            {% block navbar %}
             <div class="menu">
                 {% if not request.user.is_writer %}
                 {% include 'index/user_navbar.html' %}
@@ -102,6 +103,7 @@
                 {% endif %}
    
             </div>
+            {% endblock navbar %}
             <!-- #Menu -->
             <!-- Footer -->
             <div class="legal">
