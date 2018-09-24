@@ -1,6 +1,16 @@
 {% extends 'index/base.html' %}
+{% load static %}
+
 
 {% block content %}
+<link href="{% static 'plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css' %}" rel="stylesheet" />
+
+<!-- Wait Me Css -->
+<link href="{% static 'plugins/waitme/waitMe.css' %}" rel="stylesheet" />
+
+<!-- Bootstrap Select Css -->
+<link href="{% static 'plugins/bootstrap-select/css/bootstrap-select.css' %}" rel="stylesheet" />
+
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
@@ -99,9 +109,32 @@
         </div>
         <!-- #END# Select -->
         </div>
+      
+    </section>
+    <script src="{% static 'jsnew/pages/forms/basic-form-elements.js' %}"></script>
+    <script src="{% static 'jsnew/pages/forms/form-validation.js' %}"></script>
+    <script src="{% static 'plugins/jquery-validation/jquery.validate.js' %}"></script>
+
+    <!-- JQuery Steps Plugin Js -->
+    <script src="{% static 'plugins/jquery-steps/jquery.steps.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap-select/js/bootstrap-select.js' %}"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="{% static 'plugins/jquery-slimscroll/jquery.slimscroll.js' %}"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="{% static 'plugins/node-waves/waves.js' %}"></script>
+
+    <!-- Autosize Plugin Js -->
+    <script src="{% static 'plugins/autosize/autosize.js' %}"></script>
+
+    <!-- Moment Plugin Js -->
+    <script src="{% static 'plugins/momentjs/moment.js' %}"></script>
+
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="{% static 'plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js' %}"></script>
 
      
-    </section>
     {% endblock content %}
 
    
