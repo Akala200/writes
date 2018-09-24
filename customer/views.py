@@ -22,7 +22,7 @@ from django.views.generic import TemplateView, ListView
 from .forms import PaymentForm, PlaceAnOrderForm, CancelOrderForm,  AdditionalFileForm
 from .models import (
     Wallet, WalletBalance, Order, FavouriteWriters,
-    Hired, AdditionalFiles, ShortListed
+    Hired, AdditionalFiles, ShortListed, InvitedWriters
 
 )
 
@@ -53,7 +53,7 @@ class Index(LoginRequiredMixin, ListView):
     template_name = 'users/orders/all_user_orders.html'
 
     def get_queryset(self):
-        queryset = Order.objects.filter(order_id=self.request.user).order_by('publication_date').all()
+        queryset = Order.objects.filter(order_id=self.request.user).all()
         return queryset
 
 
@@ -85,6 +85,7 @@ def place_an_order(request):
             instance = form.save(commit=False)
             instance.order_id = request.user
             instance.order_uuid = generated_unique_id()
+            
             form.save()
             messages.success(request, 'Your Order was created successfully')
             return redirect(reverse('customer:index'))
@@ -137,14 +138,14 @@ def process_payment(request):
 
         except stripe.error.InvalidRequestError:
             
-            return render(request, 'ursers/wallet/error.html')
+            return render(request, 'users/wallet/error.html')
 
         else:
             payment_data = Wallet.objects.create(
                 wallet_id = request.user,
                 credit = amount,
                 description = description,
-                status = True
+                approved = True
     
             )
             update_user_balance = WalletBalance.objects.filter(balance_id=request.user).update(balance=F('balance') + Decimal(amount))
@@ -188,6 +189,7 @@ def update_order(request, order_uuid):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.order_id = request.user
+            
             instance.save()
             messages.success(request, 'Order was Updated')
             return redirect(reverse('customer:order_detail', kwargs={'order_uuid': instance.order_uuid}))
@@ -251,27 +253,28 @@ def hired_before(request):
 
 
 class Invited(LoginRequiredMixin,  ListView):
-    model = Order
+    model = InvitedWriters
     context_object_name = 'invite'
     paginate_by = 10
     template_name = 'users/bids/invited.html'
 
 
     def get_queryset(self):
-        queryset = self.model.objects.filter(order_uuid=self.request.user).all()
+        queryset = self.model.objects.filter(user=self.kwargs['order_uuid']).all()
         return queryset
 
 
 @login_required()
 def invite_writers(request, order_uuid, writer_id):
+    url = request.META.get('HTTP_REFERER')
     order_id = get_object_or_404(Order, order_uuid=order_uuid)
     writer_id = get_object_or_404(WritersProfile, pk=writer_id)
-    from .utils import invite_writers
-    invite = 
-
-
-
-
+    from .utils import invite_writer
+    context = {'order_id': order_id}
+    invite = invite_writer(writer_id.profile_id.email, context)
+    InvitedWriters.objects.create(user=order_id, invitees=writer_id)
+    return redirect(resolve_url(url))
+    
 
 
 @login_required()
@@ -290,7 +293,8 @@ def view_all_bids(request):
 
 @login_required
 def additional_files(request, order_uuid):
-    order_id = AdditionalFiles.objects.filter(user=order_uuid).all()
+    order_id =  url = request.META.get('HTTP_REFERER')
+    AdditionalFiles.objects.filter(user=order_uuid).all()
     return render(request, 'te', context={'order': order_id, 'order_id': order_uuid})
 
 
@@ -332,6 +336,7 @@ def resubmit_order(request, order_uuid):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.order_id = request.user
+            
             instance.save()
             messages.success(request, 'Order submited')
             return redirect(reverse('customer:order_detail', kwargs={'order_uuid': instance.order_uuid}))

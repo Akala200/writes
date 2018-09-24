@@ -20,7 +20,7 @@ class PlaceAnOrderForm(forms.ModelForm):
          self.fields['order_type'].widget
     class Meta:
         model = Order
-        exclude =  ('order_id', 'order_uuid',  'publication_date')
+        exclude =  ('order_id', 'order_uuid',  'publication_date', 'deadline')
         widgets = {
             'order_type': forms.Select(attrs={
                 'class' : 'form-control show-tick',
@@ -43,13 +43,9 @@ class PlaceAnOrderForm(forms.ModelForm):
                
                     
                 }),
-                'deadline' : forms.DateTimeInput(attrs={
-                    'class': 'datetimepicker form-control',
-                    'placeholder': 'Specify deadline'
-        
-                })
+         
 
-                ,
+               
                     
                
                 'subject':  forms.Select(attrs={
