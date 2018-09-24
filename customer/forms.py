@@ -1,5 +1,7 @@
 from django import forms
 
+
+
 from .models import Wallet, Order, AdditionalFiles
 
 
@@ -42,11 +44,14 @@ class PlaceAnOrderForm(forms.ModelForm):
                     
                 }),
                 'deadline' : forms.DateTimeInput(attrs={
-                'class' : 'datetimepicker form-control',
-                'placeholder': 'Please Choose deadline'
-               
+                    'class': 'datetimepicker form-control',
+                    'format': "data-date-format=DD-MM-YYYY HH:mm:ss"
+        
+                })
+
+                ,
                     
-                }),
+               
                 'subject':  forms.Select(attrs={
                 'class' : 'form-control show-tick',
 
