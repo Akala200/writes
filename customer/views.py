@@ -200,7 +200,7 @@ def update_order(request, order_uuid):
     return render(request, 'users/orders/update_order.html', context={
         'form': form, 'order': order
     })
-
+ 
 
 
 class AssignWriters(LoginRequiredMixin,  ListView):
@@ -245,7 +245,7 @@ class CompletedBids(LoginRequiredMixin,  ListView):
 
 @login_required()
 def hired_before(request):
-    hire = Hired.objects.all()
+    hire = Hired.objects.filter(user=request.user).all()
     return render(request, 'users/bids/hired_before.html', context={'hire':hire})
 
 

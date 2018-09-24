@@ -1,4 +1,7 @@
 {% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+
 <!DOCTYPE html>
 <html>
 
@@ -23,7 +26,7 @@
     <link href="{% static 'plugins/animate-css/animate.css' %}" rel="stylesheet" />
 
     <!-- Custom Css -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'cssnew/style.css' %}" rel="stylesheet">
 </head>
 
 <body class="signup-page">
@@ -69,8 +72,16 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="checkbox" name="terms" id="terms" class="filled-in chk-col-pink">
-                        <label for="terms">I read and agree to the <a href="javascript:void(0);">terms of usage</a>.</label>
+                        <a href="{% provider_login_url 'facebook' method='oauth2' %}"  class="btn-face m-b-10" style="float:  left;">
+                            <i class="fab fa-facebook-f"></i>
+                            Facebook
+                        </a>
+        
+                                <a href="{% provider_login_url 'google' method='oauth2' %}" class="btn-google m-b-10" >
+                            
+                            <img src="{% static 'img/icon-google.png' %}" alt="GOOGLE">
+                            Google
+                        </a>
                     </div>
 
                     <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">SIGN UP</button>
@@ -96,7 +107,7 @@
     <script src="{% static 'plugins/jquery-validation/jquery.validate.js' %}"></script>
 
     <!-- Custom Js -->
-    <script src="{% static '/jsnew/admin.js' %}"></script>
+    <script src="{% static 'jsnew/admin.js' %}"></script>
     <script src="{% static 'jsnew/pages/examples/sign-up.js' %}"></script>
 </body>
 

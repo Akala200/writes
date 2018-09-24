@@ -5022,6 +5022,30 @@ section.content {
     -ms-box-shadow: none !important;
     box-shadow: none !important; }
 
+.btn-face,
+.btn-google {
+  font-family: Raleway-Bold;
+  font-size: 16px;
+      line-height: 1.2;
+    
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: calc((100% - 10px) / 2);
+      height: 40px;
+      border-radius: 3px;
+      border: 1px solid #e6e6e6;
+    
+      -webkit-transition: all 0.4s;
+      -o-transition: all 0.4s;
+      -moz-transition: all 0.4s;
+      transition: all 0.4s;
+    }
+
 .input-group.input-group-sm .input-group-addon i {
   font-size: 14px; }
 
