@@ -45,7 +45,7 @@ class PlaceAnOrderForm(forms.ModelForm):
                 }),
                 'deadline' : forms.DateTimeInput(attrs={
                     'class': 'datetimepicker form-control',
-                    'format': "data-date-format=DD-MM-YYYY HH:mm:ss"
+                    'placeholder': 'Specify deadline'
         
                 })
 
