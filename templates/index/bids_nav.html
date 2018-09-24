@@ -1,8 +1,29 @@
-<div class="menu">
-        <ul class="list">
-            <li class="header">Dashboard</li>
-           
-        
+
+<ul class="list">
+    <li class="header">Dashboard</li>
+   
+
+        <li>
+            <a href="javascript:void(0);" class="menu-toggle active">
+                    <i class="material-icons">layers</i>
+                    <span>Assignment</span>
+            </a>
+            <ul class="ml-menu">
+                <li>
+                    <a href="{% url 'customer:view_all_writers' %}">
+                        <span>Assignment details</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'customer:favorite_writers' %}">
+                        <span>Invite Writers</span>
+                    </a>
+                </li>
+                <li>
+                        <a href="{% url 'customer:favorite_writers' %}">
+                            <span>Favorite</span>
+                        </a>
+                    </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle active">
                             <i class="material-icons">layers</i>

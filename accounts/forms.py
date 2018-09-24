@@ -16,7 +16,7 @@ class SignUpForm(SignupForm):
         self.fields['email'].widget.attrs.update({'class': 'input100', 'placeholder': 'Email'})
         self.fields['password1'].widget.attrs.update({'class': 'input100', 'placeholder': 'Password'})
         self.fields['password2'].widget.attrs.update({'class': 'input100', 'placeholder': 'Confirm-password'})
-        self.fields['email'].error_messages['required'] = 'This email exist with an account already'
+        
 
     def signup(self, request, user):
         user.is_writer = True

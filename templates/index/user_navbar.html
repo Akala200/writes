@@ -1,5 +1,4 @@
 <ul class="list">
-        <li style="margin-left: 15px;"><a href="javascript:void(0);"><i class="material-icons">:Logout</i></a></li>
         <li class="header">Dashboard</li>
         <li>
                 <a href="javascript:void(0);" class="menu-toggle active">
@@ -147,6 +146,13 @@
                     <span>Blogs</span>
                 </a>
             </li>
+
+            <li>
+                    <a href="{% url 'account_logout' %}">
+                        <i class="material-icons">arrow_back</i>
+                        <span>Logout</span>
+                    </a>
+                </li>
             
     
     </ul>

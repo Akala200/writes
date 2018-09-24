@@ -5,38 +5,325 @@
 
 {% block content %}
 
+<style>
+  body {
+    background: #2f323b;
+    font-family: 'Roboto', sans-serif;
+    color: #949ba2;
+}
 
+.row {
+  margin: 30px;
+}
+.font-bold {
+    font-weight: 600;
+}
+.c-white, h3 {
+    color: #FFFFFF;
+}
+
+.panel {
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    color: #949ba2;
+    border-radius: 3px;
+}
+
+.panel .panel-body {
+    padding: 5px 15px 15px 15px;
+}
+
+.panel.panel-filled .panel-body {
+    padding-top: 10px;
+}
+
+.panel .panel-footer {
+    background-color: transparent;
+    border: none;
+}
+
+.panel > .panel-heading {
+    color: #ffffff;
+}
+
+.panel-tools {
+    display: inline-block;
+    float: right;
+    margin-top: 0;
+    padding: 0;
+    position: relative;
+}
+
+.panel-tools a {
+    margin-left: 2px;
+    color: #949ba2;
+    cursor: pointer;
+}
+
+.panel-tools a:hover {
+    color: #ffffff;
+}
+
+.panel.panel-c-white {
+    border-left: 3px solid #949ba2;
+}
+
+.panel.panel-c-accent {
+    border-left: 3px solid #f6a821;
+}
+
+.panel.panel-c-primary {
+    border-left: 3px solid #0F83C9;
+}
+
+.panel.panel-c-warning {
+    border-left: 3px solid #f7af3e;
+}
+
+.panel.panel-c-info {
+    border-left: 3px solid #56C0E0;
+}
+
+.panel.panel-c-success {
+    border-left: 3px solid #1bbf89;
+}
+
+.panel.panel-c-danger {
+    border-left: 3px solid #DB524B;
+}
+
+.panel.panel-b-accent {
+    background-color: #f6a821;
+    color: #ffffff;
+}
+
+.panel.panel-b-white {
+    background-color: white;
+    color: #61686f;
+}
+
+.panel.panel-b-white .panel-heading {
+    color: #61686f;
+}
+
+.panel.panel-b-white .panel-footer {
+    color: #61686f;
+}
+
+.panel.panel-filled {
+    background-color: rgba(68, 70, 79, 0.5);
+}
+
+.support-question a {
+    color: #949ba2;
+}
+
+.support-question a:hover {
+    text-decoration: none;
+}
+
+.support-question a:focus {
+    text-decoration: none;
+}
+
+.support-question:hover {
+    background-color: rgba(68, 70, 79, 0.7);
+}
+
+.support-question.active {
+    border-left: 3px solid #f6a821;
+}
+
+.support-question.active .panel-body {
+    padding-left: 13px;
+}
+
+</style>
 <header class="review text-center  d-flex">
     <div class="container my-auto">
             <h1 style="color: #424b59;">Frequently Asked Questions at EssayPro</h1>
     </div>
   </header>
   <section class="section s-10">
-        <div class="container l-0">
-          <div class="row">
-          <div class="col-lg-6 s-10__content s-10__content-block">
-            <h3 class="h--sm">High-quality Essay Writing Service</h3>
-            <p class="p--sm">We are an essay writing service for students that offers custom essay help at an affordable price. Our company incorporates an accessible website, professional support team and highly skilled writers; this trio can only be provided by the best and most reliable writing service on the market. In addition to paper writing, we present editing and proofreading work upon inquiry.</p>
-            <p class="p--sm">We provide students with even the most urgent writing assignments. It is our prerogative to accommodate high quality along the way. We make it a priority to satisfy any college paper assistance the customer might request.</p>
-          </div>
-          <div class="col-lg-6 s-10__content s-10__content-block">                     
-            <h3 class="h--sm">Write My Essay</h3>
-            <p class="p--sm">If you are looking for reviews, we have included an open feedback section within the core of the website. Feel free to explore the assessments of work we provided by other users. Our company values your feedback and uses it as a tool for measuring growth and development; doing these helps us meet your needs for future requests. If you are having doubts, check out our Reviews page to see what other customers have to say about EssayPro</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6 s-10__content s-10__content-block">
-            <h3 class="h--sm">High-quality Essay Writing Service</h3>
-            <p class="p--sm">We are an essay writing service for students that offers custom essay help at an affordable price. Our company incorporates an accessible website, professional support team and highly skilled writers; this trio can only be provided by the best and most reliable writing service on the market. In addition to paper writing, we present editing and proofreading work upon inquiry.</p>
-            <p class="p--sm">We provide students with even the most urgent writing assignments. It is our prerogative to accommodate high quality along the way. We make it a priority to satisfy any college paper assistance the customer might request.</p>
-            </div>
-            <div class="col-lg-6 s-10__content s-10__content-block">
-              <h3 class="h--sm">Write My Essay</h3>
-              <p class="p--sm">Our website’s system is very user-friendly, with automatic functions to maintain a soothing experience. Our integrated helper team will answer any questions you might have along the way. Furthermore, our service is entirely legal and legitimate.</p>
-              <p class="p--sm">If you are looking for reviews, we have included an open feedback section within the core of the website. Feel free to explore the assessments of work we provided by other users. Our company values your feedback and uses it as a tool for measuring growth and development; doing these helps us meet your needs for future requests. If you are having doubts, check out our Reviews page to see what other customers have to say about EssayPro</p>
-            </div>
-          </div>
+    <div class="row">
+
+      <div class="col-md-4">
+    
+        <div class="panel-group">
+    
+          <ul class="list-unstyled">
+            <li class="panel panel-filled support-question active">
+              <a href="#answer1" data-toggle="tab" aria-expanded="true">
+                <div class="panel-body">
+                  <p class="font-bold c-white">Support question 1</p>
+                  <p>
+                    Various versions have evolved over the years, sometimes by accident, sometimes on purpose.
+                  </p>
+                </div>
+              </a>
+            </li>
+            <li class="panel panel-filled support-question">
+              <a href="#answer2" data-toggle="tab" aria-expanded="false">
+                <div class="panel-body">
+                  <p class="font-bold c-white">Support question 2</p>
+                  <p>
+                    Have evolved over the years, sometimes by accident, sometimes.
+                  </p>
+                </div>
+              </a>
+            </li>
+            <li class="panel panel-filled support-question">
+              <a href="#answer3" data-toggle="tab" aria-expanded="false">
+                <div class="panel-body">
+                  <p class="font-bold c-white">Support question 3</p>
+                  <p>
+                    Various have evolved over the years, sometimes by accident.
+                  </p>
+                </div>
+              </a>
+            </li>
+            <li class="panel panel-filled support-question">
+              <a href="#answer4" data-toggle="tab" aria-expanded="false">
+                <div class="panel-body">
+                  <p class="font-bold c-white">Support question 4</p>
+                  <p>
+                    Versions have evolved over the years, sometimes by accident, sometimes on purpose
+                  </p>
+                </div>
+              </a>
+            </li>
+          </ul>
+    
         </div>
+    
+      </div>
+      <div class="col-md-8">
+    
+        <div class="panel">
+          <div class="panel-body">
+            <div class="tab-content">
+              <div id="answer1" class="tab-pane active">
+                <h3>
+                                            Question 1
+                                        </h3>
+                <p>
+                  Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+                </p>
+                <ul>
+                  <li>Lorem ipsum dolor sit amet, comes from</li>
+                  <li>There are many variations of passages of Lorem Ipsum available</li>
+                  <li>All the Lorem Ipsum generators on the Internet</li>
+                </ul>
+                <p class="font-bold c-white">
+                  Contrary to popular belief, Lorem Ipsum is not
+                </p>
+                <p>
+                  McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                </p>
+                <p>
+                  It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
+                  content here', making it look like readable English.
+                </p>
+                <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes
+                  by accident, sometimes on purpose (injected humour and the like).
+                </p>
+    
+              </div>
+    
+              <div id="answer2" class="tab-pane">
+                <h3>
+                                            Question 2
+                                        </h3>
+                <p>
+                  Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+                </p>
+                <ul>
+                  <li>Lorem ipsum dolor sit amet, comes from</li>
+                  <li>There are many variations of passages of Lorem Ipsum available</li>
+                  <li>All the Lorem Ipsum generators on the Internet</li>
+                  <li>Lorem ipsum dolor sit amet, comes from</li>
+                  <li>All the Lorem Ipsum generators on the Internet</li>
+                  <li>There are many variations of passages of Lorem Ipsum</li>
+                  <li>All the Lorem Ipsum generators on the Internet</li>
+                </ul>
+                <p class="font-bold c-white">
+                  Contrary to popular belief, Lorem Ipsum is not
+                </p>
+                <p>
+                  McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                </p>
+                <p>
+                  McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                </p>
+    
+              </div>
+              <div id="answer3" class="tab-pane">
+                <h3>
+                                            Question 3
+                                        </h3>
+                <p>
+                  Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+                </p>
+                <ul>
+                  <li>Lorem ipsum dolor sit amet, comes from</li>
+                  <li>There are many variations of passages of Lorem Ipsum available</li>
+                  <li>All the Lorem Ipsum generators on the Internet</li>
+                </ul>
+                <p class="font-bold c-white">
+                  Contrary to popular belief, Lorem Ipsum is not
+                </p>
+                <p>
+                  McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                </p>
+                <p>
+                  It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
+                  content here', making it look like readable English.
+                </p>
+                <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes
+                  by accident, sometimes on purpose (injected humour and the like).
+                </p>
+    
+              </div>
+              <div id="answer4" class="tab-pane">
+                <h3>
+                                            Question 4
+                                        </h3>
+                <p>
+                  Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+                </p>
+                <ul>
+                  <li>Lorem ipsum dolor sit amet, comes from</li>
+                  <li>There are many variations of passages of Lorem Ipsum available</li>
+                  <li>All the Lorem Ipsum generators on the Internet</li>
+                  <li>Lorem ipsum dolor sit amet, comes from</li>
+                  <li>All the Lorem Ipsum generators on the Internet</li>
+                  <li>There are many variations of passages of Lorem Ipsum</li>
+                  <li>All the Lorem Ipsum generators on the Internet</li>
+                </ul>
+                <p class="font-bold c-white">
+                  Contrary to popular belief, Lorem Ipsum is not
+                </p>
+                <p>
+                  McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                </p>
+                <p>
+                  McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                </p>
+    
+              </div>
+            </div>
+    
+    
+          </div>
+    
+        </div>
+    
+      </div>
+    </div>
+      </div>
+    </div>
         </section>
 
 
