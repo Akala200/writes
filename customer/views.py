@@ -376,6 +376,9 @@ class ViewAllWriters(LoginRequiredMixin,  ListView):
     template_name = 'users/writers/all_writers.html'
     model = WritersProfile
     context_object_name = 'writers'
+
+    def queryset(self):
+        query = WritersProfile.objects.exclude(is_approved=False).all()
     
 
 
