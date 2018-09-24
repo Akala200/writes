@@ -4208,12 +4208,13 @@ background-color: #fff;
 }
 
 .feature_item .f_icon img {
-  position: absolute;
+  /*position: absolute; */
   bottom: 0px;
   left: 50%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
+  margin-left: 40px;
 }
 
 .feature_item h4 {
