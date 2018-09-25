@@ -1,5 +1,7 @@
 from django import forms
 
+from bootstrap_datepicker.widgets import DatePicker
+
 
 
 from .models import Wallet, Order, AdditionalFiles
@@ -20,7 +22,7 @@ class PlaceAnOrderForm(forms.ModelForm):
          self.fields['order_type'].widget
     class Meta:
         model = Order
-        exclude =  ('order_id', 'order_uuid',  'publication_date', 'deadline')
+        exclude =  ('order_id', 'order_uuid',  'publication_date')
         widgets = {
             'order_type': forms.Select(attrs={
                 'class' : 'form-control show-tick',
@@ -43,6 +45,9 @@ class PlaceAnOrderForm(forms.ModelForm):
                
                     
                 }),
+
+
+                    
          
 
                

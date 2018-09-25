@@ -213,25 +213,35 @@ class AssignWriters(LoginRequiredMixin,  ListView):
 
 class DeclinedBids(LoginRequiredMixin, ListView):
     model = Bids
-    context_object_name = 'bids'
+    context_object_name = 'declinedbids'
     paginate_by = 10
-    template_name = 'customer/bids/declined.html'
-    """
+    template_name = 'users/bids/declined.html'
+
     def get_queryset(self):
         queryset = self.model.objects.filter(Q(bidding_id=self.kwargs['order_uuid']), Q(declined=True))
         return queryset
-    """
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super(DeclinedBids, self).get_context_data(*args, **kwargs)
+        context['bid'] = self.kwargs['order_uuid']
+        return context
 
 
 class ShortListedList(LoginRequiredMixin, ListView):
     model = ShortListed
     context_object_name = 'shortlist'
     paginate_by = 10
-    template_name = 'customer/bids/shortlisted.html'
+    template_name = 'users/bids/shortlisted.html'
 
     def get_queryset(self):
         queryset = self.model.objects.filter(short_id=self.kwargs['order_uuid']).all()
         return queryset
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ShortListedList, self).get_context_data(*args, **kwargs)
+        context['bid'] = self.kwargs['order_uuid']
+        return context
+
 
    
 

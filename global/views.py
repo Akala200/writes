@@ -8,10 +8,10 @@ from django.shortcuts import render, get_list_or_404
 from django.http  import JsonResponse
 from django.core import serializers
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.exceptions import ObjectDoesNotExist
 
 
 from writers.models import WritersProfile, Rating
-
 
 
 
@@ -86,7 +86,15 @@ class HomeView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super(HomeView, self).get_context_data(*args, **kwargs)
         page = self.request.GET.get("page", 1)
-        if not self.request.user.is_writer:
+        try:
+            self.request.user.user_profile.is_writer
+            from writers.models import WritersProfile
+            context['writers'] = WritersProfile.objects.all()
+
+        except ObjectDoesNotExist:
+           pass
+            
+        else:
             from customer.models import Order
             order = Order.objects.filter(order_id=self.request.user).all()
             paginate = Paginator(order, 2)
@@ -96,10 +104,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
                 context['orders'] = paginate.page(1)
             except EmptyPage:
                 context['orders'] = paginate.page(paginate.num_pages)
-        else:
-            from writers.models import WritersProfile
-            context['writers'] = WritersProfile.objects.all()
-
+           
         return context
 
 

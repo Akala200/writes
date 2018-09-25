@@ -109,6 +109,7 @@ class WritersProfile(models.Model):
     is_approved = models.BooleanField(default=False)
     profile_set = models.BooleanField(default=False)
     paypal_id = models.CharField(max_length=50)
+    is_writer = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.profile_id)
@@ -126,6 +127,7 @@ class Bids(models.Model):
     approved = models.BooleanField(default=False)
     shortlisted = models.BooleanField(default=False)
     completed = models.BooleanField(default=False)
+   
 
     def __str__(self):
         return str(self.bidding_id)

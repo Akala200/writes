@@ -95,10 +95,10 @@
             <!-- Menu -->
             {% block navbar %}
             <div class="menu">
-                {% if not request.user.is_writer %}
-                {% include 'index/user_navbar.html' %}
-                {% else %}
+                {% if  request.user.user_profile.is_writer %}
                 {% include 'index/writers_nav.html' %}
+                {% else %}
+                {% include 'index/user_navbar.html' %}
                 {% endif %}
    
             </div>
@@ -134,6 +134,7 @@
 
     <!-- Select Plugin Js -->
     <script src="{% static 'plugins/bootstrap-select/js/bootstrap-select.js' %}"></script>
+   
 
 
     <!-- Slimscroll Plugin Js -->

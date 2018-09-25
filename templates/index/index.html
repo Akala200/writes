@@ -1,8 +1,8 @@
 
-{% if  request.user.is_writer and request.user.user_profile.is_approved %}
+{% if  request.user.user_profile.is_writer and request.user.user_profile.is_approved %}
 {% include 'writersnew/orders/all_orders.html' %}
-{% elif not request.user.is_writer %}
-{% include 'users/orders/all_user_orders.html' %}
-{% else %}
+{% elif   request.user.user_profile.is_writer and not request.user.user_profile.is_approved %}
 {% include 'writersnew/intro.html' %}
+{% else %}
+{% include 'users/orders/all_user_orders.html' %}
 {% endif %}
