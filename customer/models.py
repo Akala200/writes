@@ -251,7 +251,7 @@ class Order(models.Model):
     pages  = models.CharField(max_length=250, choices=page_choice, default='page choice')
     publication_date = models.DateField(default=timezone.now)
     service =  models.CharField(max_length=250, choices=service_choice, default='essay service')
-    deadline = models.DateTimeField()
+    deadline = models.DateTimeField(blank=True, null=True)
     sources = models.CharField(max_length=250, choices=source_choice, default='essay sources')
     completed = models.BooleanField(default=False)
     cancelled = models.BooleanField(default=False)
@@ -277,7 +277,7 @@ class Order(models.Model):
 class InvitedWriters(models.Model):
     user = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='invited_writers')
     invitees = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='invitees')
-
+    invited = models.BooleanField(default=False)
 
 class AdditionalFiles(models.Model):
     user = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='additional_filesc')

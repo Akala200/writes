@@ -32,6 +32,7 @@
         <div class="card">
             <div class="body">
                     <form id="forgot_password" method="POST">
+                        {% csrf_token %}
                             <div class="msg">
                                 Enter Prefered Amount
                             </div>
@@ -40,7 +41,7 @@
                                     <i class="material-icons">attach_money</i>
                                 </span>
                                 <div class="form-line">
-                                    <input type="number" class="form-control" name="email" placeholder="Enter Amount" required autofocus>
+                                    {{ form.amount }}
                                 </div>
                             </div>
         

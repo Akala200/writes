@@ -22,6 +22,7 @@
         <!-- main css -->
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     </head>
     <body data-spy="scroll" data-target="#mainNav" data-offset="70">
 
@@ -65,9 +66,8 @@
             <li class="nav-item active"><a class="nav-link" href="{% url 'account_login' %}">About Us</a></li> 
  
             <li class="nav-item submenu dropdown">
-              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+              <a href="{% url 'blog' %}" class="nav-link" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
               <ul class="dropdown-menu">
-                <li class="nav-item"><a class="nav-link" href="{% url 'blog' %}">Blog</a></li>
               </ul>
             </li> 
             <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">LOGIN</a></li>
@@ -90,6 +90,7 @@
        
     <footer class="footer-area p_120">
         <div class="container">
+                <h1 class="section-heading">Order A Custom Academic Paper!</h1>
             <div class="row">
                 <div class="col-lg-3  col-md-6 col-sm-6">
                     <div class="single-footer-widget tp_widgets">
@@ -102,15 +103,18 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-5 col-md-6 col-sm-6">
+                <div class="col-lg-5 col-md-6 col-sm-6">	
                     <div class="single-footer-widget news_widgets">
-                        <h6 class="footer_title">Newsletter</h6>
-                        <p>You can trust us. we only send promo offers, not a single spam.</p>		
                         <div id="mc_embed_signup">
                             <form target="_blank">
                                 <div class="input-group d-flex flex-row">
-                                    <input name="EMAIL" placeholder="Your email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
-                                    <button class="btn sub-btn">Get Started</button>		
+                                        <a href="#" class="dropdown-toggle main_btn btn-header" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Global</a>
+                                        <ul class="dropdown-menu">
+                                          <li class="nav-item"><a class="nav-link" href="#">United Kingdom</a></li>
+                                          <li class="nav-item"><a class="nav-link" href="#"> Australia</a></li>
+                                          <li class="nav-item"><a class="nav-link" href="#">UAE</a></li>
+                                          <li class="nav-item"><a class="nav-link" href="#">Canada</a></li>
+                                        </ul>
                                 </div>									
                                 <div class="mt-10 info"></div>
                             </form>
