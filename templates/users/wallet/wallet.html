@@ -85,62 +85,63 @@
     </nav>
     <!-- #Top Bar -->
     <section>
-        <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
-            <!-- #User Info -->
-            <!-- Menu -->
-            <div class="menu">
-                <ul class="list">
-                    <li class="header">Dashboard</li>
-                    <li>
-                            <a href="javascript:void(0);" class="menu-toggle active">
-                                    <i class="material-icons">home</i>
-                                    <span>My Orders</span>
-                            </a>
-                            <ul class="ml-menu">
+            <!-- Left Sidebar -->
+            <aside id="leftsidebar" class="sidebar">
+                <!-- #User Info -->
+                <div class="user-info">
+                    <div class="image">
+                    </div>
+                    <div class="info-container">
+                        <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
+                        <div class="email">john.doe@example.com</div>
+                    </div>
+                </div>
+                <!-- Menu -->
+                <div class="menu">
+                    <ul class="list">
+                        <li class="header">Dashboard</li>
+                        <li>
+                                <a href="javascript:void(0);" class="menu-toggle active">
+                                        <i class="material-icons">home</i>
+                                        <span>My Orders</span>
+                                </a>
+                                <ul class="ml-menu">
+                                        <li>
+                                                <a href="{% url 'customer:index' %}">
+                                                    <span>All Orders</span>
+                                                </a>
+                                            </li>
                                     <li>
-                                            <a href="{% url 'customer:index' %}">
-                                                <span>All Orders</span>
-                                            </a>
-                                        </li>
-                                <li>
-                                    <a href="{% url 'customer:expired_order' %}">
-                                        <span>Bidding Orders</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'customer:order_in_progress' %}">
-                                        <span>In Progress</span>
-                                    </a>
-                                </li>
-                                <li>
-                                        <a href="{% url 'customer:completed_order' %}">
-                                            <span>Completed</span>
-                                        </a>
-                                    </li>
-                                <li>
-                                        <a href="{% url 'customer:cancelled_order' %}">
-                                            <span>Cancelled</span>
+                                        <a href="{% url 'customer:expired_order' %}">
+                                            <span>Bidding Orders</span>
                                         </a>
                                     </li>
                                     <li>
-                                            <a href="{% url 'customer:expired_order' %}">
-                                                <span>Expired</span>
+                                        <a href="{% url 'customer:order_in_progress' %}">
+                                            <span>In Progress</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                            <a href="{% url 'customer:completed_order' %}">
+                                                <span>Completed</span>
                                             </a>
                                         </li>
-                            </ul>
-                        </li>
-                    <li>
-                        <a href="{% url 'customer:place_an_order' %}" >
-                            <i class="material-icons">shopping_cart</i>
-                            <span>Place An Order</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                            <a href="javascript:void(0);" class="menu-toggle active">
-                                    <i class="material-icons">layers</i>
-                                    <span>Writers</span>
+                                    <li>
+                                            <a href="{% url 'customer:cancelled_order' %}">
+                                                <span>Cancelled</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                                <a href="{% url 'customer:expired_order' %}">
+                                                    <span>Expired</span>
+                                                </a>
+                                            </li>
+                                </ul>
+                            </li>
+                        <li>
+                            <a href="{% url 'customer:place_an_order' %}" >
+                                <i class="material-icons">shopping_cart</i>
+                                <span>Place An Order</span>
                             </a>
                             <ul class="ml-menu">
                                 <li>
@@ -177,118 +178,177 @@
                                 <a href="{% url 'account_logout' %}">
                                     <i class="material-icons">arrow_back</i>
                                     <span>Logout</span>
-                                </a>
-                            </li>
+                        </li>
                         
+                        <li>
+                                <a href="javascript:void(0);" class="menu-toggle active">
+                                        <i class="material-icons">layers</i>
+                                        <span>Writers</span>
+                                </a>
+                                <ul class="ml-menu">
+                                    <li>
+                                        <a href="{% url 'customer:view_all_writers' %}">
+                                            <span>All Writers</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                            <a href="{% url 'customer:favorite_writers' %}">
+                                                <span>Favorite Writers</span>
+                                            </a>
+                                        </li>
+                                    <li>
+                                        <a href="{% url 'customer:agric' %}">
+                                            <span>Agriculture</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                            <a href="{% url 'customer:culture' %}">
+                                                <span>Culture</span>
+                                            </a>
+                                        </li>
+                                    <li>
+                                            <a href="{% url 'customer:economic' %}">
+                                                <span>Economic</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                                <a href="{% url 'customer:lifestyle' %}">
+                                                    <span>Lifestyle</span>
+                                                </a>
+                                            </li>
+                                </ul>
+                            </li>
                 
-                </ul>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </aside>
-        <!-- #END# Right Sidebar -->
-    </section>
-
-    
-
-<section class="content">
-    <div class="container-fluid">
-        <div class="block-header">
-            <h2>Wallet</h2>
-        </div>
-
-        <!-- Widgets -->
-        <div class="row clearfix">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box bg-orange hover-expand-effect">
-                            <div class="icon">
-                             <a href="{% url 'customer:process_payment' %}"><i class="material-icons">payment</i></a>
-                            </div>
-                            <div class="content">
-                                <div class="text">Fund Wallet</div>
-                            </div>
-                        </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box bg-green hover-expand-effect">
-                <div class="icon">
-                    <i class="material-icons">monetization_on</i> 
-                </div>
-                <div class="content">
-                    <div class="text"><h2>{{ wallet_balance.balance }}</h2></div>
-                </div>
-            </div>
-</div>
-        <!-- #END# Widgets -->
-        <!-- CPU Usage -->
-
-         <!-- Basic Table -->
-         <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>
-                            Transactions
-                        </h2>
-                    </div>
-                    <div class="body table-responsive">
-
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>AMOUNT</th>
-                                    <th>DESCRIPTION</th>
-                                    <th>DATE</th>
-                                    <th>STATUS</th>
-                                </tr>
-                            </thead>
-                            {% for fund in wallet %}
-                            <tbody>
-                               
-                                <tr>
-                                    <td>{{ fund.credit }}</td>
-                                    <td>{{ fund.description }}</td>
-                                    <td>{{ fund.date }}</td>
-                                    {% if fund.is_pending %}
-                                    <td><p style="color:#FF9800;"><b>Pending</b></p></td>   
-                                    {% elif fund.approved %}    
-                                    <td><p style="color:#4CAF50"><b>Approved</b></p></td>  
-                                    {% elif fund.declined %}
-                                    <td><p  style="color:#F44336"><b>Declined</b></p></td>   
-                                    {% endif %}                                   
-                                </tr>
-                                
-                            </tbody>
-                            {% endfor %}
-                        </table>
-                    </div>
-                    <nav>
-                        <ul class="pagination">
-                            <li class="disabled">
-                                <a href="javascript:void(0);">
-                                    <i class="material-icons">chevron_left</i>
-                                </a>
-                            </li>
-                            <li class="active"><a href="javascript:void(0);">1</a></li>
-                            <li><a href="javascript:void(0);" class="waves-effect">2</a></li>
-                            <li><a href="javascript:void(0);" class="waves-effect">3</a></li>
-                            <li><a href="javascript:void(0);" class="waves-effect">4</a></li>
-                            <li><a href="javascript:void(0);" class="waves-effect">5</a></li>
                             <li>
-                                <a href="javascript:void(0);" class="waves-effect">
-                                    <i class="material-icons">chevron_right</i>
+                                    <a href="{% url 'customer:view_transactions' %}" >
+                                            <i class="material-icons">account_balance_wallet</i>
+                                        <span>Wallet</span>
+                                    </a>
+                            </li>
+                            
+                            <li>
+                                <a href="{% url 'blog' %}">
+                                    <i class="material-icons">widgets</i>
+                                    <span>Blogs</span>
                                 </a>
                             </li>
-                        </ul>
-                    </nav>
+                
+                            <li>
+                                    <a href="{% url 'account_logout' %}">
+                                        <i class="material-icons">arrow_back</i>
+                                        <span>Logout</span>
+                                    </a>
+                                </li>
+                            
+                    
+                    </ul>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <!-- #END# Right Sidebar -->
+        </section>
+    
+        
+    
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2>Wallet</h2>
+            </div>
+    
+            <!-- Widgets -->
+            <div class="row clearfix">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="info-box bg-orange hover-expand-effect">
+                                <div class="icon">
+                                 <a href="{% url 'customer:process_payment' %}"><i class="material-icons">payment</i></a>
+                                </div>
+                                <div class="content">
+                                    <div class="text">Fund Wallet</div>
+                                </div>
+                            </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-green hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">monetization_on</i> 
+                    </div>
+                    <div class="content">
+                        <div class="text"><h2>{{ wallet_balance.balance }}</h2></div>
+                    </div>
+                </div>
+    </div>
+            <!-- #END# Widgets -->
+            <!-- CPU Usage -->
+    
+             <!-- Basic Table -->
+             <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                Transactions
+                            </h2>
+                        </div>
+                        <div class="body table-responsive">
+    
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>AMOUNT</th>
+                                        <th>DESCRIPTION</th>
+                                        <th>DATE</th>
+                                        <th>STATUS</th>
+                                    </tr>
+                                </thead>
+                                {% for fund in wallet %}
+                                <tbody>
+                                   
+                                    <tr>
+                                        <td>{{ fund.credit }}</td>
+                                        <td>{{ fund.description }}</td>
+                                        <td>{{ fund.date }}</td>
+                                        {% if fund.is_pending %}
+                                        <td><p style="color:#FF9800;"><b>Pending</b></p></td>   
+                                        {% elif fund.approved %}    
+                                        <td><p style="color:#4CAF50"><b>Approved</b></p></td>  
+                                        {% elif fund.declined %}
+                                        <td><p  style="color:#F44336"><b>Declined</b></p></td>   
+                                        {% endif %}                                   
+                                    </tr>
+                                    
+                                </tbody>
+                                {% endfor %}
+                            </table>
+                        </div>
+                        <nav>
+                            <ul class="pagination">
+                                <li class="disabled">
+                                    <a href="javascript:void(0);">
+                                        <i class="material-icons">chevron_left</i>
+                                    </a>
+                                </li>
+                                <li class="active"><a href="javascript:void(0);">1</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">2</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">3</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">4</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">5</a></li>
+                                <li>
+                                    <a href="javascript:void(0);" class="waves-effect">
+                                        <i class="material-icons">chevron_right</i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
+            </div>
         </div>
-        </div>
-    </div>
-    </section>
-   
+        </section>
+        
     <!-- Jquery Core Js -->
     <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
 
