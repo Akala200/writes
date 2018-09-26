@@ -131,14 +131,38 @@ def process_payment(request):
                 source = token
             )
         except stripe.error.CardError:
-            return render(request, 'customer/card_error.html')
+            payment_data = Wallet.objects.create(
+                wallet_id = request.user,
+                credit = amount,
+                description = "Failed to process payment",
+                declined = True
+    
+            )
+            return redirect(reverse('customer:view_transactions'))
         
         except stripe.error.AuthenticationError:
-            return render(request, 'users/wallet/auth_error.html')
+            payment_data = Wallet.objects.create(
+                wallet_id = request.user,
+                credit = amount,
+                description = "Failed to process payment",
+                declined = True
+    
+            )
+            return redirect(reverse('customer:view_transactions'))
+    
 
         except stripe.error.InvalidRequestError:
+            payment_data = Wallet.objects.create(
+                wallet_id = request.user,
+                credit = amount,
+                description = "Failed to process payment",
+                declined = True
+    
+            )
+    
+
             
-            return render(request, 'users/wallet/error.html')
+            return redirect(reverse('customer:view_transactions'))
 
         else:
             payment_data = Wallet.objects.create(
@@ -414,8 +438,10 @@ class Economic(LoginRequiredMixin, TemplateView):
 class LifeStyle(LoginRequiredMixin, TemplateView):
     template_name = 'users/writers/social.html'
     
-    
 
+@login_required()
+def place_order_for_a_writer(request, writer_id):
+    pass
 
 
 

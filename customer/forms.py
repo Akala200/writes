@@ -10,7 +10,6 @@ from .models import Wallet, Order, AdditionalFiles
 class PaymentForm(forms.Form):
     amount = forms.DecimalField(max_digits=20, widget=forms.TextInput(attrs={
         'class': 'form-control',
-        'placeholder': '$'
     }))
 
 
@@ -46,11 +45,6 @@ class PlaceAnOrderForm(forms.ModelForm):
                     
                 }),
 
-
-                    
-         
-
-               
                     
                
                 'subject':  forms.Select(attrs={
@@ -59,6 +53,15 @@ class PlaceAnOrderForm(forms.ModelForm):
                
 
                  }),
+
+                 'deadline': DatePicker(
+                     options={
+                         "format": "mm/dd/yyyy",
+                         "autoclose": True},
+                         attrs={
+                             'class': 'form-control'
+                         }
+                         ),
 
                 'style':  forms.Select(attrs={
                 'class' : 'form-control show-tick',
