@@ -43,8 +43,13 @@
 					<h2 id="login-title" style="color: #bc2bff;">Signup</h2>
 				</span>
 				{% if form.errors %}
-				{% for error in form.errors %}
-					<p class="text-warning" style="margin-bottom: 20px;margin-left: 10px;color: red;">{{ error }} </p>
+				{% for error in form.non_field_errors %}
+					<div class="alert alert=-error"><strong>
+					{{ error|escape }} </strong></div> 
+					{% endfor %}
+					{% for error in form.errors %}
+					<div class="alert alert=-error"><strong>
+					{{ error|escape }} </strong></div> 
 					{% endfor %}
 					{% endif %}
 
@@ -58,6 +63,7 @@
 
 				<div class="wrap-input100 validate-input" data-validate = "Password is required" id="password1">
 						{{ form.password1 }}
+	
 					<span class="focus-input100"></span>
 					<span class="symbol-input100">
 						<i class="fa fa-lock" aria-hidden="true"></i>
@@ -66,6 +72,7 @@
 
 				<div class="wrap-input100 validate-input" data-validate = "Confirm your password" id="password2">
 						{{ form.password2 }}
+				
 					<span class="focus-input100"></span>
 					<span class="symbol-input100">
 						<i class="fa fa-lock" aria-hidden="true"></i>

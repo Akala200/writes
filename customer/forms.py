@@ -1,5 +1,7 @@
 from django import forms
 
+from bootstrap_datepicker.widgets import DatePicker
+
 
 
 from .models import Wallet, Order, AdditionalFiles
@@ -8,7 +10,6 @@ from .models import Wallet, Order, AdditionalFiles
 class PaymentForm(forms.Form):
     amount = forms.DecimalField(max_digits=20, widget=forms.TextInput(attrs={
         'class': 'form-control',
-        'placeholder': '$'
     }))
 
 
@@ -20,7 +21,7 @@ class PlaceAnOrderForm(forms.ModelForm):
          self.fields['order_type'].widget
     class Meta:
         model = Order
-        exclude =  ('order_id', 'order_uuid',  'publication_date', 'deadline')
+        exclude =  ('order_id', 'order_uuid',  'publication_date')
         widgets = {
             'order_type': forms.Select(attrs={
                 'class' : 'form-control show-tick',
@@ -43,9 +44,7 @@ class PlaceAnOrderForm(forms.ModelForm):
                
                     
                 }),
-         
 
-               
                     
                
                 'subject':  forms.Select(attrs={
@@ -54,6 +53,15 @@ class PlaceAnOrderForm(forms.ModelForm):
                
 
                  }),
+
+                 'deadline': DatePicker(
+                     options={
+                         "format": "mm/dd/yyyy",
+                         "autoclose": True},
+                         attrs={
+                             'class': 'form-control'
+                         }
+                         ),
 
                 'style':  forms.Select(attrs={
                 'class' : 'form-control show-tick',

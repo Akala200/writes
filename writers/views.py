@@ -21,8 +21,10 @@ def signup(request):
         form =  WriterSignupForm(request.POST)
         if request.method == "POST" and form.is_valid():
             form.save(request)
+          
             user = authenticate(request, username=form.cleaned_data['email'], password=form.cleaned_data['password1'])
             if user:
+                create_profile = WritersProfile.objects.create(profile_id=user, is_writer=True)
                 login(request, user)
                 return redirect(reverse('writers:home'))
         else:

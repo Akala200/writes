@@ -3,6 +3,10 @@
 
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'contrib/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'contrib/font-awesome.min.css' %}">
+<script src="{% static 'contrib/bootstrap.js' %}"></script>
+
 <link href="{% static 'plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css' %}" rel="stylesheet" />
 
 <!-- Wait Me Css -->
@@ -24,12 +28,16 @@
                         <h2>
                            Insert The Neccesary Details
                         </h2>
+                        
                        
                     </div>
+                  
                  <div class="body" style="padding-left:150px; padding-right: 150px;">
+              
                     <form method="POST" action="{% url 'customer:place_an_order' %}">
                         {% csrf_token %}
                         <div class="row clearfix">
+                            
                             <div class="col-sm-6">
                                 {{ form.order_type }}
                             </div>
@@ -63,15 +71,12 @@
                             <div class="col-sm-6">
                                     {{ form.level }}
                             </div>
-                            <div class="col-sm-6">
-                                    {{ form.level }}
-                            </div>
+                         
                         </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <div class="form-line">
-                                        {{ form.deadline }}
-                                    </div>
+                                   {{ form.deadline }}
+                                
                                 </div>
                             </div>
                     
@@ -132,9 +137,19 @@
     <script src="{% static 'plugins/momentjs/moment.js' %}"></script>
 
     <!-- Bootstrap Material Datetime Picker Plugin Js -->
-    <script src="{% static 'plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js' %}"></script>
+    
 
      
     {% endblock content %}
 
    
+    {% if form.errors %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert=error"><strong>
+        {{ error|escape }} </strong></div> 
+        {% endfor %}
+        {% for error in form.errors %}
+        <div class="alert alert=error"><strong>
+        {{ error|escape }} </strong></div> 
+        {% endfor %}
+        {% endif %}
