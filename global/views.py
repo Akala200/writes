@@ -97,7 +97,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
         else:
             from customer.models import Order
             order = Order.objects.filter(order_id=self.request.user).all()
-            paginate = Paginator(order, 2)
+            paginate = Paginator(order, 10)
             try:
                 context['orders'] = paginate.page(page)
             except PageNotAnInteger:

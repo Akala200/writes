@@ -53,7 +53,7 @@ class Index(LoginRequiredMixin, ListView):
     template_name = 'users/orders/all_user_orders.html'
 
     def get_queryset(self):
-        queryset = Order.objects.filter(order_id=self.request.user).all()
+        queryset = Order.objects.filter(order_id=self.request.user).order_by('-deadline')
         return queryset
 
 
@@ -234,6 +234,9 @@ class AssignWriters(LoginRequiredMixin,  ListView):
     model = WritersProfile
     context_object_name = 'writers'
 
+    def get_queryset(self):
+        query = WritersProfile.objects.exclude(is_approved=False).all()
+        return query
     def get_context_data(self, *args, **kwargs):
         context = super(AssignWriters, self).get_context_data(*args, **kwargs)
         context['order_id'] = self.kwargs['order_uuid']
@@ -418,6 +421,7 @@ class ViewAllWriters(LoginRequiredMixin,  ListView):
 
     def queryset(self):
         query = WritersProfile.objects.exclude(is_approved=False).all()
+        return query
     
 
 
