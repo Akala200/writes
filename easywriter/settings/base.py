@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     'accounts',
     'blog',
     'writers',
-    'customer'
+    'customer',
+    'datetimewidget'
 
 ]
 

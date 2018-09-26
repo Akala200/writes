@@ -1,6 +1,6 @@
 from django import forms
 
-from bootstrap_datepicker.widgets import DatePicker
+from datetimewidget.widgets import DateTimeWidget
 
 
 
@@ -54,14 +54,8 @@ class PlaceAnOrderForm(forms.ModelForm):
 
                  }),
 
-                 'deadline': DatePicker(
-                     options={
-                         "format": "mm/dd/yyyy",
-                         "autoclose": True},
-                         attrs={
-                             'class': 'form-control'
-                         }
-                         ),
+                 'deadline':  DateTimeWidget(attrs={'class':'form-control'}, usel10n = True, bootstrap_version=3),
+                    
 
                 'style':  forms.Select(attrs={
                 'class' : 'form-control show-tick',
