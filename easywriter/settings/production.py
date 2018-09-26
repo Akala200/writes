@@ -5,7 +5,9 @@ import dj_database_url
 from decouple import config
 
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+STATIC_ROOT = os.path.join(DIR, 'static')
 
 
 
