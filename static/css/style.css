@@ -4700,6 +4700,13 @@ h1, h2, h3, h4, h5, h6, p {
         }
       }
 
+      @media (max-width: 350px){
+        #for{
+          margin-left: -25px;
+      }
+      }
+
+      
 
       
 /*  TESTIMONIALS
