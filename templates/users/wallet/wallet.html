@@ -73,7 +73,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="index.html">ESSAY KITTEN</a>
+                <a class="navbar-brand" href="{% url 'customer:index' %}">ESSAY KITTEN</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -153,26 +153,9 @@
                                             <span>Favorite Writers</span>
                                         </a>
                                     </li>
-                                <li>
-                                    <a href="{% url 'customer:agric' %}">
-                                        <span>Agriculture</span>
-                                    </a>
-                                </li>
-                                <li>
-                                        <a href="{% url 'customer:culture' %}">
-                                            <span>Culture</span>
-                                        </a>
-                                    </li>
-                                <li>
-                                        <a href="{% url 'customer:economic' %}">
-                                            <span>Economic</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                            <a href="{% url 'customer:lifestyle' %}">
-                                                <span>Lifestyle</span>
-                                            </a>
-                                        </li>
+                               
+                                
+                                 
                             </ul>
                         </li>
             
