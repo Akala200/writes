@@ -54,7 +54,7 @@ class PlaceAnOrderForm(forms.ModelForm):
 
                  }),
 
-                 'deadline':  DateTimeWidget(attrs={'class':'form-control'}, usel10n = True, bootstrap_version=3),
+                 'deadline':  DateTimeWidget(attrs={'class':'datepicker form-control'}, usel10n = True, bootstrap_version=3),
                     
 
                 'style':  forms.Select(attrs={

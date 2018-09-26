@@ -98,7 +98,7 @@
                                                     ACTION <span class="caret"></span>
                                                 </button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a href="{% url 'customer:assign_writers' %}"><span>
+                                                    <li><a href="{% url 'customer:assign_writers' order.order_uuid  %}"><span>
                                                             <div class="demo-google-material-icon"> <i class="material-icons">account_circle</i> <span class="icon-name"></span></div>
                                                     </span>Assign Writer</a></li>
                                                     <li><a href="{% url 'customer:cancel_an_order' order.order_uuid %}"  data-type="confirm">

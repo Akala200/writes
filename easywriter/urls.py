@@ -15,6 +15,6 @@ urlpatterns = [
     path('uk/', include('united_kingdom.urls', namespace='uk')),
     path('uae/', include('uae.urls', namespace='uae')),
     path('blog/', include('blog.urls')),
-    path('customer/', include('customer.urls', namespace='customer'))
+    path('customer/', include('customer.urls', namespace='customer')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

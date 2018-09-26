@@ -251,7 +251,7 @@ class Order(models.Model):
     pages  = models.CharField(max_length=250, choices=page_choice, default='page choice')
     publication_date = models.DateField(default=timezone.now)
     service =  models.CharField(max_length=250, choices=service_choice, default='essay service')
-    deadline = models.DateTimeField(null=True, blank=True)
+    deadline = models.DateTimeField()
     sources = models.CharField(max_length=250, choices=source_choice, default='essay sources')
     completed = models.BooleanField(default=False)
     cancelled = models.BooleanField(default=False)

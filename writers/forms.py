@@ -23,7 +23,7 @@ class WriterSignupForm(SignupForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = WritersProfile
-        fields = ('full_name', 'headline', 'about', 'image', 'paypal_id')
+        fields = ('full_name', 'headline', 'about', 'image', 'paypal_id', 'subject')
         widgets = {
             'full_name': forms.TextInput(attrs={
                 'class': "form-control",
@@ -55,6 +55,7 @@ class ProfileForm(forms.ModelForm):
 
              }),
 
+             'subject': forms.Select()
         }
 
        

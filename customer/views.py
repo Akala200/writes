@@ -86,7 +86,7 @@ def place_an_order(request):
             instance.order_id = request.user
             instance.order_uuid = generated_unique_id()
             
-            form.save()
+            instance.save()
             messages.success(request, 'Your Order was created successfully')
             return redirect(reverse('customer:index'))
 
@@ -233,6 +233,11 @@ class AssignWriters(LoginRequiredMixin,  ListView):
     template_name = 'users/writers/all_writers.html'
     model = WritersProfile
     context_object_name = 'writers'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(AssignWriters, self).get_context_data(*args, **kwargs)
+        context['order_id'] = self.kwargs['order_uuid']
+        return context
 
 
 class DeclinedBids(LoginRequiredMixin, ListView):

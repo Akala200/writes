@@ -2,6 +2,8 @@ from django.db import models
 from django.conf import settings
 from customer.models import Order
 
+from multiselectfield import MultiSelectField
+
 def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
     return 'user_{0}/{1}'.format(instance.user.id, filename)
@@ -110,6 +112,7 @@ class WritersProfile(models.Model):
     profile_set = models.BooleanField(default=False)
     paypal_id = models.CharField(max_length=50)
     is_writer = models.BooleanField(default=False)
+    subject = MultiSelectField(choices=subject_choice, max_choices=3)
 
     def __str__(self):
         return str(self.profile_id)

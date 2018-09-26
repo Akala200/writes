@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 
 from . import views
 
@@ -23,7 +23,7 @@ urlpatterns = [
     path('shortlisted/<int:order_uuid>/', views.ShortListedList.as_view(), name='short_listed'),
     path('view-all-bids/', views.view_all_bids, name='view_all_bigs'),
     path('additional-files/<int:order_uuid>/', views.additional_files, name='additional_files'),
-    path('assign-writers/', views.AssignWriters.as_view(), name='assign_writers'),
+    path('assign-writers/<int:order_uuid>/', views.AssignWriters.as_view(), name='assign_writers'),
     path('add-files/<int:order_uuid>/', views.add_additional_file, name='add_files'),
     path('view-favorite/', views.FavoriteWriter.as_view(), name='favorite_writers'),
     path('cancel-order/<int:order_uuid>/', views.cancel_an_order, name='cancel_an_order'),
@@ -35,7 +35,8 @@ urlpatterns = [
     path('writer-topic/', views.Culture.as_view(), name='culture'),
     path('writer-topic1/', views.AgricWriters.as_view(), name='agric'),
     path('writer-topic2/', views.Economic.as_view(), name='economic'),
-    path('writer-topic3/', views.LifeStyle.as_view(), name='lifestyle')
+    path('writer-topic3/', views.LifeStyle.as_view(), name='lifestyle'),
+  
 
 
 

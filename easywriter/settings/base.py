@@ -26,11 +26,14 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
+    'datetimewidget',
+    'multiselectfield',
+    'ravepay',
     'accounts',
     'blog',
     'writers',
     'customer',
-    'datetimewidget'
+  
 
 ]
 
@@ -195,6 +198,10 @@ ACCOUNT_FORMS = {'signup': 'accounts.forms.SignUpForm', 'login': 'accounts.forms
 LOGIN_REDIRECT_URL = '/home'
 
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login'
+
+
+RAVEPAY_PUBLIC_KEY = config('RAVE_PUBLIC_KEY')
+RAVEPAY_SECRET_KEY = config('RAVE_SECRET_KEY')
 
 
 

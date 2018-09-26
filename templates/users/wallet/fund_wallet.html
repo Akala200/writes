@@ -1,4 +1,5 @@
 {% load static %}
+{% load ravepay %}
 <!DOCTYPE html>
 <html>
 
@@ -31,7 +32,7 @@
        
         <div class="card">
             <div class="body">
-                    <form id="forgot_password" method="POST">
+                    <form id="forgot_password" method="POST" >
                         {% csrf_token %}
                             <div class="msg">
                                 Enter Prefered Amount
@@ -45,15 +46,11 @@
                                 </div>
                             </div>
         
-                            <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key= "{{ stripe_key }}"
-          data-amount="{{ amount }}"
-          data-name="essay kitten"
-          data-description="Example charge"
-          data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-          data-locale="auto">
-        </script>
+                            
+                        
+                            <a class="flwpug_getpaid" data-PBFPubKey="FLWPUBK-682af7904c8c93186bce443bb8f56700-X" data-txref="rave-dash-1537975857" data-amount="100" data-customer_email="user@example.com"></a>	
+
+                            <script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
         
                         </form>
             </div>
