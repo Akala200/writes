@@ -8739,6 +8739,15 @@ html.ie11 .bs-searchbox .form-control {
       right: 65px;
     }
   }
+
+  @media screen and (max-width: 755px) {
+    #form22{
+      padding-left:50px;
+      padding-right: 50px;
+      padding-top: 50px;
+    }
+  }
+
   #frame .content .message-input .wrap .attachment:hover {
     opacity: 1;
   }

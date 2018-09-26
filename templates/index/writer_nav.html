@@ -1,0 +1,38 @@
+<li>
+        <a href="javascript:void(0);" class="menu-toggle active">
+                <i class="material-icons">layers</i>
+                <span>Writers</span>
+        </a>
+        <ul class="ml-menu">
+            <li>
+                <a href="{% url 'customer:view_all_writers' %}">
+                    <span>All Writers</span>
+                </a>
+            </li>
+            <li>
+                    <a href="{% url 'customer:favorite_writers' %}">
+                        <span>Favorite Writers</span>
+                    </a>
+                </li>
+            <li>
+                <a href="{% url 'customer:agric' %}">
+                    <span>Agriculture</span>
+                </a>
+            </li>
+            <li>
+                    <a href="{% url 'customer:culture' %}">
+                        <span>Culture</span>
+                    </a>
+                </li>
+            <li>
+                    <a href="{% url 'customer:economic' %}">
+                        <span>Economic</span>
+                    </a>
+                </li>
+                <li>
+                        <a href="{% url 'customer:lifestyle' %}">
+                            <span>Lifestyle</span>
+                        </a>
+                    </li>
+        </ul>
+    </li>
