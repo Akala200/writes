@@ -15,7 +15,7 @@ from .models import WritersProfile, Bids
     
 
 def signup(request):
-    if request.user.is_authenticated and request.user.is_writer:
+    if request.user.is_authenticated and request.user.user_profile.is_writer:
         return redirect(reverse('writers:all_orders'))
     else:
         form =  WriterSignupForm(request.POST)
