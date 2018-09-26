@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login , get_user_model, authenticate
 from django.contrib.auth.backends import ModelBackend
-
+from django.core.exceptions import ObjectDoesNotExist
  
 from .forms import WriterSignupForm, ProfileForm, EssayTestForm
 from .models import WritersProfile, Bids
@@ -15,22 +15,24 @@ from .models import WritersProfile, Bids
     
 
 def signup(request):
-    if request.user.is_authenticated and request.user.user_profile.is_writer:
-        return redirect(reverse('writers:all_orders'))
+    try:
+        if request.user.is_authenticated and request.user.user_profile.is_writer:
+            return redirect(reverse('writers:all_orders'))
+    except ObjectDoesNotExist:
+        pass
+    except request.user.is_authenticated:
+        pass
+    form =  WriterSignupForm(request.POST)
+    if request.method == "POST" and form.is_valid():
+        form.save(request)
+        user = authenticate(request, username=form.cleaned_data['email'], password=form.cleaned_data['password1'])
+        if user:
+            WritersProfile.objects.create(profile_id=user, is_writer=True)
+            login(request, user)
+            return redirect(reverse('writers:home'))
     else:
-        form =  WriterSignupForm(request.POST)
-        if request.method == "POST" and form.is_valid():
-            form.save(request)
-          
-            user = authenticate(request, username=form.cleaned_data['email'], password=form.cleaned_data['password1'])
-            if user:
-                create_profile = WritersProfile.objects.create(profile_id=user, is_writer=True)
-                login(request, user)
-                return redirect(reverse('writers:home'))
-        else:
-            form =  WriterSignupForm()
-            return render(request, 'writers/accounts/signup.html', context={
-                'form': form })
+        form =  WriterSignupForm()
+        return render(request, 'writers/accounts/signup.html', context={'form': form })
 
 @login_required()
 def home(request):
