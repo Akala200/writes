@@ -16,12 +16,14 @@ django-datetime-widget==0.9.3
 django-debug-toolbar==1.9.1
 django-multiselectfield==0.1.8
 django-ranged-response==0.2.0
+-e git+https://github.com/gbozee/django-ravepay.git@cc9fba3440457ee2941bee2db464520eb00ad98e#egg=django_ravepay
 django-recaptcha==1.4.0
 django-render-block==0.5
 django-simple-captcha==0.5.9
 django-tables2==2.0.1
 django-templated-email==2.2.0
 django-xff==1.2.0
+future==0.16.0
 gunicorn==19.8.1
 idna==2.7
 isort==4.3.4
