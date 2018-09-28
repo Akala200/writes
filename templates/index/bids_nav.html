@@ -1,29 +1,8 @@
-
-<ul class="list">
-    <li class="header">Dashboard</li>
-   
-
-        <li>
-            <a href="javascript:void(0);" class="menu-toggle active">
-                    <i class="material-icons">layers</i>
-                    <span>Assignment</span>
-            </a>
-            <ul class="ml-menu">
-                <li>
-                    <a href="{% url 'customer:view_all_writers' %}">
-                        <span>Assignment details</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'customer:favorite_writers' %}">
-                        <span>Invite Writers</span>
-                    </a>
-                </li>
-                <li>
-                        <a href="{% url 'customer:favorite_writers' %}">
-                            <span>Favorite</span>
-                        </a>
-                    </li>
+<div class="menu">
+        <ul class="list">
+            <li class="header">Dashboard</li>
+           
+        
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle active">
                             <i class="material-icons">layers</i>
@@ -31,47 +10,49 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="{% url 'customer:view_all_writers' %}">
+                                <a href="javascript:void(0);">
+                            
                                 <span>Assignment details</span>
-                            </a>
+                                </a>
+                        
                         </li>
                         <li>
-                                <a href="{% url 'customer:favorite_writers' %}">
+                                <a href="{% url 'customer:favorite_writers'%}">
                                     <span>Favorite</span>
                                 </a>
                             </li>
                         <li>
-                            <a href="{% url 'customer:agric' %}">
+                            <a href="{% url 'customer:hired_before' order %}">
                                 <span>Hired Before</span>
                             </a>
                         </li>
                         <li>
-                                <a href="{% url 'customer:culture' %}">
+                                <a href="{% url 'customer:invited' order %}">
                                     <span>Invited</span>
                                 </a>
                             </li>
                         <li>
-                                <a href="{% url 'customer:economic' %}">
+                            <a href="{% url 'customer:assign_writers' order %}">
                                     <span>Assign A Writer</span>
                                 </a>
                             </li>
                             <li>
-                                    <a href="{% url 'customer:lifestyle' %}">
+                                    <a href="#">
                                         <span>New Bids</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'customer:short_listed' bid.order_uuid %}">
+                                    <a href="{% url 'customer:short_listed' order %}">
                                         <span>Shortlisted</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="{% url 'customer:declined' order %}">
                                         <span>Declined</span>
                                     </a>
                                 </li>
                                 <li>
-                                        <a href="#">
+                                        <a href="{% url 'customer:additional_files' order %}">
                                             <span>Additional Files</span>
                                         </a>
                                     </li>
@@ -85,7 +66,12 @@
                         </a>
                 </li>
                 
-          
+                <li>
+                    <a href="{% url 'blog' %}">
+                        <i class="material-icons">widgets</i>
+                        <span>Blogs</span>
+                    </a>
+                </li>
                 
         
         </ul>

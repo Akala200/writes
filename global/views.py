@@ -88,13 +88,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
         page = self.request.GET.get("page", 1)
         try:
             self.request.user.user_profile.is_writer
-            from writers.models import WritersProfile
-            context['writers'] = WritersProfile.objects.all()
-
         except ObjectDoesNotExist:
-           pass
-            
-        else:
             from customer.models import Order
             order = Order.objects.filter(order_id=self.request.user).all()
             paginate = Paginator(order, 10)
@@ -104,6 +98,13 @@ class HomeView(LoginRequiredMixin, TemplateView):
                 context['orders'] = paginate.page(1)
             except EmptyPage:
                 context['orders'] = paginate.page(paginate.num_pages)
+            
+        else:
+            from writers.models import WritersProfile
+            context['writers'] = WritersProfile.objects.all()
+
+            
+
            
         return context
 

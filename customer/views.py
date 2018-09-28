@@ -187,12 +187,11 @@ def order_details(request, order_uuid):
     form =   AdditionalFileForm()
 
     order_id = get_object_or_404(Order, order_uuid=order_uuid)
-    files = AdditionalFiles.objects.filter(user=order_uuid).all()
-
+   
     return render(request, 'users/bids/assignment_details.html', context={
         'bid':  order_id,
         'form': form,
-        'files': files
+        'order': order_id.order_uuid
     })
 
 
@@ -230,7 +229,7 @@ def update_order(request, order_uuid):
 
 
 class AssignWriters(LoginRequiredMixin,  ListView):
-    template_name = 'users/writers/all_writers.html'
+    template_name = 'users/bids/assign_writer.html'
     model = WritersProfile
     context_object_name = 'writers'
 
@@ -240,7 +239,7 @@ class AssignWriters(LoginRequiredMixin,  ListView):
         
     def get_context_data(self, *args, **kwargs):
         context = super(AssignWriters, self).get_context_data(*args, **kwargs)
-        context['order_id'] = self.kwargs['order_uuid']
+        context['order'] = self.kwargs['order_uuid']
         return context
 
 
@@ -256,7 +255,7 @@ class DeclinedBids(LoginRequiredMixin, ListView):
     
     def get_context_data(self, *args, **kwargs):
         context = super(DeclinedBids, self).get_context_data(*args, **kwargs)
-        context['bid'] = self.kwargs['order_uuid']
+        context['order'] = self.kwargs['order_uuid']
         return context
 
 
@@ -272,7 +271,7 @@ class ShortListedList(LoginRequiredMixin, ListView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(ShortListedList, self).get_context_data(*args, **kwargs)
-        context['bid'] = self.kwargs['order_uuid']
+        context['order'] = self.kwargs['order_uuid']
         return context
 
 
@@ -289,9 +288,9 @@ class CompletedBids(LoginRequiredMixin,  ListView):
         return queryset
 
 @login_required()
-def hired_before(request):
+def hired_before(request, order_uuid):
     hire = Hired.objects.filter(user=request.user).all()
-    return render(request, 'users/bids/hired_before.html', context={'hire':hire})
+    return render(request, 'users/bids/hired_before.html', context={'hire':hire, 'order': order_uuid})
 
 
 
@@ -302,9 +301,15 @@ class Invited(LoginRequiredMixin,  ListView):
     template_name = 'users/bids/invited.html'
 
 
+
     def get_queryset(self):
         queryset = self.model.objects.filter(user=self.kwargs['order_uuid']).all()
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super(Invited, self).get_context_data(**kwargs)
+        context['order'] = self.kwargs['order_uuid']
+        return context
 
 
 @login_required()
@@ -335,10 +340,14 @@ def view_all_bids(request):
 
 
 @login_required
-def additional_files(request, order_uuid):
-    order_id =  url = request.META.get('HTTP_REFERER')
-    AdditionalFiles.objects.filter(user=order_uuid).all()
-    return render(request, 'te', context={'order': order_id, 'order_id': order_uuid})
+def additional_files(request, order_uuid=None):
+    if order_uuid is not None:
+        AdditionalFiles.objects.filter(user=order_uuid).all()
+        order = Order.objects.get(order_uuid=order_uuid)
+        return render(request, 'te', context={'order': order_uuid, 'order_id': order})
+    return render(request, '', context={
+        'order': order_uuid
+    })
 
 
 @login_required
@@ -364,10 +373,23 @@ class FavoriteWriter(LoginRequiredMixin,  ListView):
     paginate_by = 10
     context_object_name = 'favorite'
 
+
     def get_queryset(self):
         queryset =  self.model.objects.filter(user=self.request.user).all()
         return queryset
 
+
+
+class FavoriteWriterBids(LoginRequiredMixin,  ListView):
+    template_name = 'users/writers/favorite_writers.html'
+    model = FavouriteWriters
+    paginate_by = 10
+    context_object_name = 'favorite'
+
+
+    def get_queryset(self):
+        queryset =  self.model.objects.filter(user=self.request.user).all()
+        return queryset
 
 
 
@@ -405,7 +427,7 @@ def add_to_favorite(request, writer_id):
 
 
 @login_required()
-def shortlist_a_writer(request):
+def shortlist_a_bid(request):
     pass
 
 @login_required()
@@ -427,7 +449,7 @@ class ViewAllWriters(LoginRequiredMixin,  ListView):
 
 
 def remove_from_favorite(request, writer_id):
-    writer = FavouriteWriters.objects.filter(favorite_writers=writer_id).delete()
+    FavouriteWriters.objects.filter(favorite_writers=writer_id).delete()
     return redirect(reverse('customer:favorite_writers'))
 
 
