@@ -31,7 +31,8 @@ urlpatterns = [
     path('view-writers/', views.ViewAllWriters.as_view(), name='view_all_writers'),
     path('remove-writer/<int:writer_id>/', views.remove_from_favorite, name='remove_from_favorite'),
     path('decline-bid/<int:order_uuid>', views.decline_a_bid, name='decline_a_bid'),
-    path('add-favorite/<int:writer_id>/', views.add_to_favorite, name='add_to_favorite')
+    path('add-favorite/<int:writer_id>/', views.add_to_favorite, name='add_to_favorite'),
+    path('favorite-writers/<int:order_uuid>/', views.FavoriteWriterBids.as_view(), name='favorites')
 
 
 ]

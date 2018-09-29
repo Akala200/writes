@@ -7,20 +7,19 @@ import stripe
 from django.shortcuts import render, redirect, reverse, resolve_url
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import get_user_model
-from django.views.generic import UpdateView
 from django.db.models import F, Q
-from django.http import HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, FormView
 
 
-from .forms import PaymentForm, PlaceAnOrderForm, CancelOrderForm,  AdditionalFileForm
+from .forms import (PaymentForm, PlaceAnOrderForm, CancelOrderForm,  
+AdditionalFileForm, RatingForm )
 from .models import (
+
     Wallet, WalletBalance, Order, FavouriteWriters,
     Hired, AdditionalFiles, ShortListed, InvitedWriters
 
@@ -381,7 +380,7 @@ class FavoriteWriter(LoginRequiredMixin,  ListView):
 
 
 class FavoriteWriterBids(LoginRequiredMixin,  ListView):
-    template_name = 'users/writers/favorite_writers.html'
+    template_name = 'users/bids/favorite_writers.html'
     model = FavouriteWriters
     paginate_by = 10
     context_object_name = 'favorite'
@@ -390,6 +389,11 @@ class FavoriteWriterBids(LoginRequiredMixin,  ListView):
     def get_queryset(self):
         queryset =  self.model.objects.filter(user=self.request.user).all()
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super(FavoriteWriterBids , self).get_context_data(**kwargs)
+        context['order'] = self.kwargs['order_uuid']
+        return context
 
 
 
@@ -475,5 +479,15 @@ class LifeStyle(LoginRequiredMixin, TemplateView):
 def place_order_for_a_writer(request, writer_id):
     pass
 
+ 
+class RateWriter(LoginRequiredMixin, FormView):
+    form_class = RatingForm
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.rating_id = self.request.user
+        instance.rater = self.kwargs['writer_id']
+        instance.save()
+        return redirect(resolve(self.request.META.get('HTTP_REFERRAL')))
 
 

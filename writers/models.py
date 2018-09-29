@@ -119,7 +119,10 @@ class WritersProfile(models.Model):
 
 
 class Rating(models.Model):
-    pass
+    rating_id =  models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='reviews', null=True)
+    review = models.CharField(max_length=250)
+    rating = models.IntegerField()
+    
 
     
 class Bids(models.Model):

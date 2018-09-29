@@ -6,6 +6,8 @@ from datetimewidget.widgets import DateTimeWidget
 
 from .models import Wallet, Order, AdditionalFiles
 
+from writers.models import Rating
+
 
 class PaymentForm(forms.Form):
     amount = forms.DecimalField(max_digits=20, widget=forms.TextInput(attrs={
@@ -121,6 +123,12 @@ class  AdditionalFileForm(forms.ModelForm):
            
         }
  
+class RatingForm(forms.ModelForm):
+    class Meta:
+        model = Rating
+        exclude = ('rating_id',)
+
+
     
 
 
