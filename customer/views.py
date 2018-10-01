@@ -339,14 +339,10 @@ def view_all_bids(request):
 
 
 @login_required
-def additional_files(request, order_uuid=None):
-    if order_uuid is not None:
-        AdditionalFiles.objects.filter(user=order_uuid).all()
-        order = Order.objects.get(order_uuid=order_uuid)
-        return render(request, 'te', context={'order': order_uuid, 'order_id': order})
-    return render(request, '', context={
-        'order': order_uuid
-    })
+def additional_files(request, order_uuid):
+    files = AdditionalFiles.objects.filter(user=order_uuid).all()
+    return render(request, 'users/bids/additional_files.html', context={'order': order_uuid, 'file': files})
+    
 
 
 @login_required
@@ -482,12 +478,13 @@ def place_order_for_a_writer(request, writer_id):
  
 class RateWriter(LoginRequiredMixin, FormView):
     form_class = RatingForm
+    
 
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.rating_id = self.request.user
         instance.rater = self.kwargs['writer_id']
         instance.save()
-        return redirect(resolve(self.request.META.get('HTTP_REFERRAL')))
+        return redirect(resolve_url(self.request.META.get('HTTP_REFERRAL')))
 
 

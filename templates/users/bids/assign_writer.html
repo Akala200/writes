@@ -3,6 +3,7 @@
 {% include 'index/bids_nav.html' %}
 {% endblock navbar %}
 {% block content %}
+{% load static %}
 <section class="content">
         <div class="container-fluid">
                 <div class="block-header">
@@ -42,7 +43,7 @@
                                     <div class="review-block">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <img src="images/user.png" class="img-rounded">
+                                                <img src="{% static 'images/user.png' %}" class="img-rounded">
                                                 <div class="review-block-name"><a href="#">Johnson Chuwku</a></div>
                                                 <div class="review-block-date">1 day ago</div>
                                             </div>

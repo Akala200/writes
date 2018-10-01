@@ -80,22 +80,23 @@ def create_profile(request):
             'form': form
         })
 
-
-class UpdateProfile(LoginRequiredMixin, UpdateView):
-    form_class = ProfileForm()
-    template_name = 'writersnew/update_profile.html'
+class UpdateInfo(LoginRequiredMixin, UpdateView):
+    form_class = ProfileForm
     model = WritersProfile
-
+    pk_url_kwarg = 'writer_id'
+    template_name = 'writersnew/update_profile.html'
+    success_url = reverse_lazy('writers:home')
 
 
 @login_required()
 def update_profile(request):
     user = get_user_model().objects.get(email=request.user)
-    form = ProfileForm(request.POST, request.FILES, instance=user)
+    form = ProfileForm(request.POST, request.FILES, instance=request.user.user_profile)
     
     if request.method == "POST":
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.profile_id = request.user
             messages.success(request, 'Your profile set up was successfully')
             return redirect(reverse('writers:home'))
 

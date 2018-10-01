@@ -20,7 +20,7 @@ class PlaceAnOrderForm(forms.ModelForm):
        
     def __init__(self, *args, **kwargs):
          super(PlaceAnOrderForm, self).__init__(*args, **kwargs)
-         self.fields['order_type'].widget
+
     class Meta:
         model = Order
         exclude =  ('order_id', 'order_uuid',  'publication_date')
@@ -46,8 +46,7 @@ class PlaceAnOrderForm(forms.ModelForm):
                
                     
                 }),
-
-                    
+ 
                
                 'subject':  forms.Select(attrs={
                 'class' : 'form-control show-tick',
