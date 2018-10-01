@@ -43,9 +43,11 @@
                                 <div class="col-sm-9">
                                     <hr/>
                                     <div class="review-block">
+                                            {% for invite in invited_writer %}
                                         <div class="row">
+                                            
                                             <div class="col-sm-3">
-                                                <img src="images/user.png" class="img-rounded">
+                                                <img src="{{ invite.invitee.image.url }}" class="img-rounded">
                                                 <div class="review-block-name"><a href="#">Johnson Chuwku</a></div>
                                                 <div class="review-block-date">1 day ago</div>
                                             </div>
@@ -71,18 +73,30 @@
                                                                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                         ACTION <span class="caret"></span>
                                                                     </button>
+                                                                    {% if invite.invitee.favorite_writers.is_fav %}
                                                                     <ul class="dropdown-menu">
                                                                             
-                                                                        <li><a href="javascript:void(0);">
+                                                                        <li><a href="{% url 'add_to_favorite' invite.invitee.profile_id %}">
                                                                             <div class="demo-google-material-icon"> <i class="material-icons">thumb_up</i> <span class="icon-name"></span> </div>
                                                                             Add To Favorite</a>
                                                                         </li>
                                                                     </ul>
+                                                                    {% else %}
+                                                                    <ul class="dropdown-menu">
+                                                                            
+                                                                            <li><a href="{% url 'remove_from_favorite' invite.invitee.profile_id %}">
+                                                                                <div class="demo-google-material-icon"> <i class="material-icons">thumb_up</i> <span class="icon-name"></span> </div>
+                                                                                Remove From Favorite</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                        {% endif %}
                                                                 </div>
+
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        {% endfor %}
                                         <hr/>
                                     </div>
                                 </div>

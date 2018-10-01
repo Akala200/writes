@@ -21,11 +21,11 @@ AdditionalFileForm, RatingForm )
 from .models import (
 
     Wallet, WalletBalance, Order, FavouriteWriters,
-    Hired, AdditionalFiles, ShortListed, InvitedWriters
+    Hired, AdditionalFiles, ShortListed
 
 )
 
-from writers.models import Bids, WritersProfile
+from writers.models import Bids, WritersProfile, InvitedWriters
 
 import django_tables2 as tables
 
@@ -295,7 +295,7 @@ def hired_before(request, order_uuid):
 
 class Invited(LoginRequiredMixin,  ListView):
     model = InvitedWriters
-    context_object_name = 'invite'
+    context_object_name = 'invited_writer'
     paginate_by = 10
     template_name = 'users/bids/invited.html'
 
@@ -486,5 +486,3 @@ class RateWriter(LoginRequiredMixin, FormView):
         instance.rater = self.kwargs['writer_id']
         instance.save()
         return redirect(resolve_url(self.request.META.get('HTTP_REFERRAL')))
-
-
