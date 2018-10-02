@@ -111,9 +111,9 @@ class CancelOrderForm(forms.Form):
 class  AdditionalFileForm(forms.ModelForm):
     class Meta:
         model = AdditionalFiles
-        fields = ['files']
+        exclude = ['user']
         widgets = {
-            'files' : forms.FileInput(attrs={
+            '' : forms.FileInput(attrs={
                 'class': 'custom-file-input',
 
             })

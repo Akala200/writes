@@ -32,7 +32,10 @@ urlpatterns = [
     path('remove-writer/<int:writer_id>/', views.remove_from_favorite, name='remove_from_favorite'),
     path('decline-bid/<int:order_uuid>', views.decline_a_bid, name='decline_a_bid'),
     path('add-favorite/<int:writer_id>/', views.add_to_favorite, name='add_to_favorite'),
-    path('favorite-writers/<int:order_uuid>/', views.FavoriteWriterBids.as_view(), name='favorites')
+    path('favorite-writers/<int:order_uuid>/', views.FavoriteWriterBids.as_view(), name='favorites'),
+    path('bidding-order/<int:order_uuid>/', views.bidding_order, name='bidding-order'),
+    path('delete-file/<int:file_id>/', views.delete_uploaded_file, name='delete_file'),
+    path('hired-writer/<int:order_uuid>/', views.hired_writer, name='hired_writer')
 
 
 ]

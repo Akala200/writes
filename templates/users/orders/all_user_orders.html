@@ -26,10 +26,24 @@
                                 </thead> 
                                 {% for order in orders %}
                                 <tbody>
-                                    <tr>
-                                        <td><a href="{% url 'customer:order_detail'  order.order_uuid %}">{{ order.order_uuid }}</a></td>
+                                        
+                                       
+                                    <tr> 
+                                            
+                                        {% if not order.expired %}
+                                        <td>
+                                            <a  href="{% url 'customer:order_detail'  order.order_uuid %}">{{ order.order_uuid }}</a>  </td>
+                                       
                                         <td>{{ order.topic }}</td>
                                         <td>{{ order.deadline }}</td>
+                                        {% else %}
+                                        <td>
+                                                <a class="btn disabled" href="{% url 'customer:order_detail'  order.order_uuid %}">{{ order.order_uuid }}</a>  </td>
+                                           
+                                            <td>{{ order.topic }}</td>
+                                            <td>{{ order.deadline }}</td>
+                                            {% endif %}
+                                    
                                         {% if order.expired %}
                                         <td><span class="badge" style="font-size:14px; background-color: grey;">Expired</span></td>
                                         <td>
