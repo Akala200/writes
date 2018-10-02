@@ -1,8 +1,11 @@
 {% extends 'index/base.html' %}
 {% load static %}
 {% block navbar %}
-{% include 'index/bids_nav.html' %}
-{% endblock navbar %}
+<div  class="menu">
+        {% include 'index/assignment_nav.html' %}
+
+</div>
+{% endblock %}
 {% block content %}
 
     <section class="content">

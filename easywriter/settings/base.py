@@ -10,7 +10,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = [ 'essay-kitten.herokuapp.com', '127.0.0.1', 'essay--kitten.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'essay---kitten.herokuapp.com', 'www.essaykitten.com']
 
 
 INSTALLED_APPS = [

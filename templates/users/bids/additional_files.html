@@ -21,6 +21,7 @@
                         
                         <div class="body table-responsive">
                                 <table class="table table-bordered js-sweetalert">
+                                
                                         <thead>
                                             <tr>
                                                     <th>File Name</th>
@@ -28,43 +29,26 @@
                                                     <th>ACTION</th>
                                             </tr>
                                         </thead>
-                                      {% for f in files %}
+                                        {% for f in files %}
                                         <tbody>
+                                           
+                                                
                                                
                                                 <tr>
-                                                        <td><a href="#">{{ f.files }}</a></td>
-                                                        <td><button type="button" class="btn btn-success waves-effect">DOWNLOAD</button></td>
+                                                        <td><a href="#">{{ f.file_upload.name }}</a></td>
+                                                        <td><a type="button" class="btn btn-danger waves-effect" href="{% url 'customer:delete_file' f.pk %}">DELETE</a></td>
                                                     </tr>
-                                                        <tr>
-                                                                <td><a href="#"></a>Optional</td>
-                                                                <td><button type="button" class="btn btn-success waves-effect">DOWNLOAD</button></td>
-                                            
-                                                            </tr>
-                                                            <tr>
-                                                                    <td><a href="#"></a>Optional</td>
-                                                                    <td><button type="button" class="btn btn-success waves-effect">DOWNLOAD</button></td>
-                                                                </tr>
-                                                                <tr>
-                                                                        <td><a href="#"></a>Optional</td>
-                                                                        <td><button type="button" class="btn btn-success waves-effect">DOWNLOAD</button></td>
-                                                    
-                                                                    </tr>
-                                                                    <tr>
-                                                                            <td><a href="#"></a>Optional</td>
-                                                                            <td><button type="button" class="btn btn-success waves-effect">DOWNLOAD</button></td>
-        
-                                                                        </tr>
-                                                                        <tr>
-                                                                                <td><a href="#"></a>Optional</td>
-                                                                                <td><button type="button" class="btn btn-success waves-effect">DOWNLOAD</button></td>
-                                                                               
-                                                                            </tr>
+                                                       
                                                                             
-                                       
+                                                                            
+                                                                           
                                         </tbody>
                                         {% endfor %}
+
+                                       
                                       
                                     </table>
+                                    
                         </div>
                         
                     </div>

@@ -286,11 +286,10 @@ class Order(models.Model):
 
 
 class AdditionalFiles(models.Model):
+    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='additional_filesc')
-    files = models.FileField(upload_to='addtion_files')
+    file_upload = models.FileField(upload_to='addtion_files')
 
-    def get_absolute_url(self):
-        return reverse('customer:additional_files',  kwargs= {'order_uuid': self.user})
     
     
     def __str__(self):

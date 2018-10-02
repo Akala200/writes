@@ -9,6 +9,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.db.models import F, Q
+from django.http import HttpResponseBadRequest
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
@@ -342,26 +343,26 @@ def view_all_bids(request):
 
 @login_required
 def additional_files(request, order_uuid):
-    files = AdditionalFiles.objects.filter(user=order_uuid).all()
-    return render(request, 'users/bids/additional_files.html', context={'order': order_uuid, 'file': files})
+    order = get_object_or_404(Order, order_uuid=order_uuid)
+    files = AdditionalFiles.objects.filter(user=order)
+    
+    return render(request, 'users/bids/additional_files.html', context={'order': order_uuid, 'files': files})
     
 
 
 @login_required
 def add_additional_file(request, order_uuid):
-    url = request.META.get('HTTP_REFERER')
     form = AdditionalFileForm(request.POST, request.FILES)
-
     if  request.method == 'POST' and  form.is_valid():
-        order = Order.objects.get(order_uuid=order_uuid)
+        order = get_object_or_404(Order, order_uuid=order_uuid)
         instance = form.save(commit=False)
         instance.user = order
         instance.save()
         messages.success(request, 'File submitted sucessfully')
-        return redirect(resolve_url(url))
+        return redirect(reverse('customer:additional_files', kwargs={'order_uuid': order_uuid}))
 
     else:
-        return redirect(resolve_url(url))
+        return HttpResponseBadRequest('something bad happened')
 
 
 class FavoriteWriter(LoginRequiredMixin,  ListView):
@@ -402,8 +403,7 @@ def resubmit_order(request, order_uuid):
     if request.method == "POST":
         if form.is_valid():
             instance = form.save(commit=False)
-            instance.order_id = request.user
-            
+            instance.cancelled = False
             instance.save()
             messages.success(request, 'Order submited')
             return redirect(reverse('customer:order_detail', kwargs={'order_uuid': instance.order_uuid}))
@@ -412,7 +412,7 @@ def resubmit_order(request, order_uuid):
         form = PlaceAnOrderForm(instance=order)
 
 
-    return render(request, 'users/orders/place_orders.html', context={
+    return render(request, 'users/orders/resubmit_order.html', context={
         'form': form, 'order': order
     })
 
@@ -501,3 +501,32 @@ class RateWriter(LoginRequiredMixin, FormView):
         instance.rater = self.kwargs['writer_id']
         instance.save()
         return redirect(resolve_url(self.request.META.get('HTTP_REFERRAL')))
+
+    
+@login_required()
+def bidding_order(request, order_uuid):
+    form =   AdditionalFileForm()
+    order_id = get_object_or_404(Order, order_uuid=order_uuid)
+    
+    return render(request, 'users/bids/bidding_detail.html', context={
+        'bid':  order_id,
+        'form': form,
+        'order': order_id.order_uuid
+        })
+
+
+
+@login_required()
+def delete_uploaded_file(request, file_id):
+    url = request.META.get('HTTP_REFERER')
+    AdditionalFiles.objects.filter(id=file_id).delete()
+    return redirect(resolve_url(url))
+
+
+@login_required()
+def hired_writer(request, order_uuid):
+    order_id = get_object_or_404(Order, order_uuid=order_uuid)
+
+    return render(request, 'users/bids/hiredwriter.html', context={
+        'order': order_id.order_uuid
+    })
