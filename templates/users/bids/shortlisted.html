@@ -6,87 +6,149 @@
 {% endblock navbar %}
 {% block content %}
 
-<section class="content">
-    <div class="container-fluid">
-            <div class="block-header">
-                <h2>DASHBOARD</h2>
-            </div>
+<style>
+.checked{
+    color: gold;
+}
+</style>
 
-            <!-- Widgets -->
-            <div class="row clearfix">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <div class="info-box bg-orange hover-expand-effect">
-                                <div class="icon">
-                                 <a href=""><i class="material-icons">person_add</i></a>
+<section class="content">
+        <div class="container-fluid">
+                <div class="block-header">
+                </div>
+    
+                <!-- Widgets -->
+                <div class="row clearfix">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="info-box bg-orange hover-expand-effect">
+                                    <div class="icon">
+                                     <a href="" id="assign"><i class="material-icons">person_add</i></a>
+                                    </div>
+                                    <div class="content">
+                                        <div class="text">Hire A Writer</div>
+                                    </div>
                                 </div>
-                                <div class="content">
-                                    <div class="text">PLACE AN ORDER</div>
-                                </div>
-                            </div>
-                    </div>
-            </div>
-            </div>
+                        </div>
+                </div>
+                </div>
 <div class="container-fluid">
-     
+         
 <!-- Exportable Table -->
 <div class="row clearfix">
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <div class="card">
-        <div class="header">
-                <h2>
-                  All WRITER
-                </h2>
-        </div>
-        <div class="body">
-            <div class="table-responsive">
-                    <div class="row">
-                        <div>
-                            <div class="col-sm-9">
-                                <hr/>
-                                <div class="review-block">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <img src="images/user.png" class="img-rounded">
-                                            <div class="review-block-name"><a href="#">Johnson Chuwku</a></div>
-                                            <div class="review-block-date">1 day ago</div>
-                                        </div>
-                                        <div class="col-sm-9">
-                                            <div class="review-block-rate">
-                                                    <input type="number" name="your_awesome_parameter" id="rating-readonly" class="rating" data-clearable="remove" value="2" data-readonly/></p>
-                                                <div>
-                                                    <h4>3.0</h4>
-                                                </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                    <h2>
+                      SHORTLISTED BIDS
+                    </h2>
+            </div>
+            <div class="body">
+                <div class="table-responsive" style="padding: 50px;">
+                        <div class="row">
+                            <div>
+                                <div class="col-sm-9">
+                                    <hr/>
+                                    <div class="review-block">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                    <img src="{% static 'images/user.png' %}" class="img-rounded">
+                                                    <div class="review-block-name" style="margin-top: 25px;"><a href="#">Johnson Chuwku</a></div>
+                                                <div class="review-block-date">1 day ago</div>
                                             </div>
-                                            <div class="review-block-description row">
-                                                <div class="col-lg-3 col-md-3">
-                                                    <div class="progress">
-                                                        <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;" data-toggle="tooltip" data-placement="top" title="Completion Rate">
-                                                        75%
+                                            <div class="col-sm-9">
+                                                <div class="review-block-rate">
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+
+                                                    <div class="row" style="margin-top: 10px;">
+                                                        <h4 class="col-lg-1 col-md-1 col-sm-1 col-xs-1">3.0</h4>
+                                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">                  
+                                                                <a href="#" style="padding: 7px 7px 2px 7px; margin-left: 14px; position: relative;display: block;">
+                                                                     <i class="material-icons">textsms</i>
+                                                                        <span class="label-count" style="
+                                                                        color: #fff;
+                                                                        background-color: blue;
+                                                                    ">7</span>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">                  
+                                                                <a href="#" style="padding: 7px 7px 2px 7px; margin-left: 14px; position: relative;display: block;">
+                                                                    <span class="badge bg-teal">$500</span>
+                                                                </a>
+                                                            </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="review-block-description row">
+                                                    <div class="col-lg-3 col-md-3">
+                                                        <div class="progress">
+                                                            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;" data-toggle="tooltip" data-placement="top" title="Completion Rate">
+                                                            75%
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-3"><b>450 Orders Completed</b></div>
-                                                <div class="col-lg-3 col-md-3"><b>450 Reviews</b></div>
-                                                <div class="col-lg-3 col-md-3">
-                                                        <div class="btn-group">
-                                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                    ACTION <span class="caret"></span>
-                                                                </button>
-                                                                <ul class="dropdown-menu">
-                                                                        <li><a href="javascript:void(0);"><div class="demo-google-material-icon"> <i class="material-icons">person_add</i> <span class="icon-name"></span> </div>
-                                                                            Invite Writer</a>
-                                                                        </li>
-                                                                    <li><a href="javascript:void(0);">                                     
-                                                                    <div class="demo-google-material-icon"> <i class="material-icons">thumb_up</i> <span class="icon-name"></span> </div>
-                                                                        Add To Favorite</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
+                                                    <div class="col-lg-3 col-md-3"><b>450 Orders Completed</b></div>
+                                                    <div class="col-lg-3 col-md-3"><b>450 Reviews</b></div>
+                                                    <div class="col-lg-3 col-md-3">
+                                                           
+                                                            <div class="btn-group">
+                                                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        ACTION <span class="caret"></span>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu">
+                                                                            <li><a href="javascript:void(0);" id="assign"><div class="demo-google-material-icon"> <i class="material-icons">person_add</i> <span class="icon-name"></span> </div>
+                                                                                Accept bid</a></li>
+                                                                        <li><a href="javascript:void(0);">
+                                                                            <div class="demo-google-material-icon"><i class="material-icons">add_circle_outline</i> <span class="icon-name"></span></div>
+                                                                            Unshortlist Bids</a></li>
+                                                                            <li><a href="javascript:void(0);">
+                                                                                <div class="demo-google-material-icon"> <i class="material-icons">cancel</i></div>
+                                                                                Decline Bid</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <hr/>
                                     </div>
-                                    <hr/>
                                 </div>
                             </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Exportable Table -->
+</div>
+</section>
+
+<div class="modal fade" id="assign" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="smallModalLabel">Balance  <span class="badge bg-light-green">$00:00</span> </h4>
+                </div>
+                <div class="modal-body">
+                   You do not have enough in your account
+                   Kindly fund your account
+                </div>
+                <div class="modal-footer">
+                    <a type="button" class="btn btn-success waves-effect">FUND ACCOUNT</a>
+                    <a type="button" class="btn btn-danger waves-effect" data-dismiss="modal">CANCEL</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+Default Size -->
+
+        
+
+
+
 {% endblock content %}
