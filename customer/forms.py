@@ -6,6 +6,8 @@ from datetimewidget.widgets import DateTimeWidget
 
 from .models import Wallet, Order, AdditionalFiles
 
+from writers.models import Rating
+
 
 class PaymentForm(forms.Form):
     amount = forms.DecimalField(max_digits=20, widget=forms.TextInput(attrs={
@@ -18,7 +20,7 @@ class PlaceAnOrderForm(forms.ModelForm):
        
     def __init__(self, *args, **kwargs):
          super(PlaceAnOrderForm, self).__init__(*args, **kwargs)
-         self.fields['order_type'].widget
+
     class Meta:
         model = Order
         exclude =  ('order_id', 'order_uuid',  'publication_date')
@@ -44,8 +46,7 @@ class PlaceAnOrderForm(forms.ModelForm):
                
                     
                 }),
-
-                    
+ 
                
                 'subject':  forms.Select(attrs={
                 'class' : 'form-control show-tick',
@@ -121,6 +122,12 @@ class  AdditionalFileForm(forms.ModelForm):
            
         }
  
+class RatingForm(forms.ModelForm):
+    class Meta:
+        model = Rating
+        exclude = ('rating_id',)
+
+
     
 
 

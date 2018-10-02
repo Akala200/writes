@@ -1,6 +1,9 @@
 <!-- MAIN CONTENT-->
 {% extends 'index/base.html' %}
 {% load static %}
+{% block navbar %}
+{% include 'index/bids_nav.html' %}
+{% endblock navbar %}
 {% block content %}
 <section class="content">
         <div class="container-fluid">

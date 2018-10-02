@@ -6,6 +6,10 @@ from django.utils import timezone
 from django.urls import reverse
 from django.core.validators import MinLengthValidator
 
+from .utils import invite_writer
+
+
+
 class Wallet(models.Model):
     wallet_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     description = models.CharField(max_length=50)
@@ -272,12 +276,14 @@ class Order(models.Model):
     def get_absolute_url(self):
         return reverse('customer:order_detail',  kwargs= {'order_uuid': self.order_uuid})
 
+    def mail_writers(self, reciepent):
+        context_object = {
+            'order_uuid': self.order_uuid
+        }
+        return invite_writer(reciepent, **context_object)
 
 
-class InvitedWriters(models.Model):
-    user = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='invited_writers')
-    invitees = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='invitees')
-    invited = models.BooleanField(default=False)
+
 
 class AdditionalFiles(models.Model):
     user = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='additional_filesc')

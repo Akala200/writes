@@ -119,7 +119,18 @@ class WritersProfile(models.Model):
 
 
 class Rating(models.Model):
-    pass
+    rating_id =  models.ForeignKey(WritersProfile, on_delete=models.CASCADE, related_name='reviews', null=True)
+    review = models.CharField(max_length=250)
+    rating = models.IntegerField()
+
+
+
+    
+class InvitedWriters(models.Model):
+    user = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='invited_writers')
+    invitees = models.ForeignKey(WritersProfile, on_delete=models.CASCADE, related_name='invitees')
+    invited = models.BooleanField(default=False)
+    
 
     
 class Bids(models.Model):

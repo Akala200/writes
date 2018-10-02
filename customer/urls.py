@@ -16,7 +16,7 @@ urlpatterns = [
     path('order-detail/<int:order_uuid>/', views.order_details, name='order_detail'),
     path('edit/<int:order_uuid>/', views.update_order, name='update_order'),
     path('declined/<int:order_uuid>/', views.DeclinedBids.as_view(), name='declined'),
-    path('hired/', views.hired_before, name='hired_before'),
+    path('hired/<int:order_uuid>/', views.hired_before, name='hired_before'),
     path('invite-writer/<int:order_uuid/<int:writer_id>', views.invite_writers, name='invite_writers'),
     path('invited/<int:order_uuid>/', views.Invited.as_view(), name='invited'),
     path('new-bids/', views.new_bids, name='new_bids'),
@@ -29,9 +29,10 @@ urlpatterns = [
     path('cancel-order/<int:order_uuid>/', views.cancel_an_order, name='cancel_an_order'),
     path('resubmit-order/<int:order_uuid>/', views.resubmit_order, name='resubmit_order'),
     path('view-writers/', views.ViewAllWriters.as_view(), name='view_all_writers'),
-    path('remove-writer/<str:writer_id>/', views.remove_from_favorite, name='remove_from_favorite'),
-    path('decline-bid/<int:bid_id>', views.decline_a_bid, name='decline_a_bid'),
-    path('add-favorite/<int:writer_id>/', views.add_to_favorite, name='add_to_favorite')
+    path('remove-writer/<int:writer_id>/', views.remove_from_favorite, name='remove_from_favorite'),
+    path('decline-bid/<int:order_uuid>', views.decline_a_bid, name='decline_a_bid'),
+    path('add-favorite/<int:writer_id>/', views.add_to_favorite, name='add_to_favorite'),
+    path('favorite-writers/<int:order_uuid>/', views.FavoriteWriterBids.as_view(), name='favorites')
 
 
 ]
