@@ -2,76 +2,66 @@
         <ul class="list">
             <li class="header">Dashboard</li>
            
-        
+
+            <li>
+                <a href="#">
+                    <span>New Bids</span>
+                </a>
+            </li>
+
                 <li>
-                    <a href="javascript:void(0);" class="menu-toggle active">
-                            <i class="material-icons">layers</i>
-                            <span>Assignment</span>
-                    </a>
-                    <ul class="ml-menu">
-                        <li>
-                                <a href="javascript:void(0);">
-                            
-                                <span>Assignment details</span>
-                                </a>
-                        
-                        </li>
-                        <li>
-                                <a href="{% url 'customer:favorites' order %}">
-                                    <span>Favorite</span>
-                                </a>
-                            </li>
-                        <li>
-                            <a href="{% url 'customer:hired_before' order %}">
-                                <span>Hired Before</span>
-                            </a>
-                        </li>
-                        <li>
-                                <a href="{% url 'customer:invited' order %}">
-                                    <span>Invited</span>
-                                </a>
-                            </li>
-                        <li>
-                            <a href="{% url 'customer:assign_writers' order %}">
-                                    <span>Assign A Writer</span>
-                                </a>
-                            </li>
-                            <li>
-                                    <a href="#">
-                                        <span>New Bids</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'customer:short_listed' order %}">
-                                        <span>Shortlisted</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'customer:declined' order %}">
-                                        <span>Declined</span>
-                                    </a>
-                                </li>
-                                <li>
-                                        <a href="{% url 'customer:additional_files' order %}">
-                                            <span>Additional Files</span>
-                                        </a>
-                                    </li>
-                    </ul>
-                </li>
-        
-                <li>
-                        <a href="{% url 'customer:view_transactions' %}" >
-                                <i class="material-icons">account_balance_wallet</i>
-                            <span>Wallet</span>
+                        <a href="javascript:void(0);">
+                    
+                        <span>Assignment details</span>
                         </a>
+                
+                </li>
+
+                <li>
+                    <a href="{% url 'customer:favorites' order %}">
+                       <span>Favorite</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'customer:hired_before' order %}">
+                        <span>Hired Before</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'customer:invited' order %}">
+                        <span>Invited</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'customer:assign_writers' order %}">
+                        <span>Assign A Writer</span>
+                    </a>
+                </li>
+                           
+                <li>
+                    <a href="{% url 'customer:short_listed' order %}">
+                        <span>Shortlisted</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'customer:declined' order %}">
+                        <span>Declined</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'customer:additional_files' order %}">
+                        <span>Additional Files</span>
+                    </a>
+                </li>       
+                <li>
+                    <a href="{% url 'customer:view_transactions' %}" >
+                        <i class="material-icons">account_balance_wallet</i>
+                        <span>Wallet</span>
+                    </a>
                 </li>
                 
-                <li>
-                    <a href="{% url 'blog' %}">
-                        <i class="material-icons">widgets</i>
-                        <span>Blogs</span>
-                    </a>
-                </li>
+                
                 
         
         </ul>

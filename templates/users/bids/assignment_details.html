@@ -29,10 +29,8 @@
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
                                 <li role="presentation" class="active"><a href="#home" data-toggle="tab">ORDER DETAILS</a></li>
                                 <li role="presentation"><a href="#profile" data-toggle="tab">DESCRIPTIONS</a></li>
-                                <li role="presentation"><a href="#messages" data-toggle="tab">MESSAGES</a></li>
+                                <li role="presentation"><a href="#messages" data-toggle="tab" disabled>MESSAGES HIRED WRITER</a></li>
                                 <li role="presentation"><a href="#upload" data-toggle="tab">UPLOAD ADDITIONAL FILE</a></li>
-                                <li role="presentation"><a href="#pay" data-toggle="tab">PAY WRITER</a></li>
-                                <li role="presentation"><a href="#download" data-toggle="tab">DOWNLOAD ASSIGNMENT</a></li>
 
 
 
@@ -118,6 +116,8 @@
                                        {{ bid.description }}
                                     </p>
                                 </div>
+
+                                
                                 <div role="tabpanel" class="tab-pane fade" id="messages">
                                         <div class="media">
                                                 <div class="media-left">
@@ -183,117 +183,9 @@
                                 </div>
 
                                 
-                                <div role="tabpanel" class="tab-pane fade" id="pay">
-                                        <b>Place Payment</b>
-                                        <div class="row">
-                                        <div class="irs-demo col-lg-12">
-                                                <p style="margin-top: 20px;">Set what percentage to pay</p>
-                                                <input type="text" id="range_01" value="" />
-                                        </div>
-                                            <div class="col-lg-4">
-                                                    <a href="#" type="button" class="btn btn-primary waves-effect m-r-20" data-toggle="modal" data-target="#confirm">
-                                                            PLACE PAYMENT
-                                                    </a>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                    <a href="#" type="button" class="btn btn-primary waves-effect m-r-20" data-toggle="modal" data-target="#end">
-                                                            END CONTRACT
-                                                    </a>
-                                            </div> 
-                                            <div class="col-lg-4">
-                                                    <a href="#" type="button" class="btn btn-primary waves-effect m-r-20" data-toggle="modal" data-target="#cancel">
-                                                            CANCEL
-                                                    </a>
-                                            </div> 
-                                        </div>  
-                                        
-                                        <!-- Small Size -->
-            <div class="modal fade" id="confirm" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-sm" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="smallModalLabel">Confirm Placed Payment</h4>
-                        </div>
-                        <div class="modal-body">
-                           Are you sure you want to continue
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button"  data-color="green" class="btn bg-green waves-effect">PLACE PAYEMENT</button>
-                            <button type="button" data-color="red" class="btn bg-red waves-effect" data-dismiss="modal">CANCEL</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                
 
-            <div class="modal fade" id="end" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-sm" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="smallModalLabel">Confirm Termination</h4>
-                            </div>
-                            <div class="modal-body">
-                               Are you sure you want to End Contract
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button"  data-color="green" class="btn bg-green waves-effect">END CONTRACT</button>
-                                <button type="button" data-color="red" class="btn bg-red waves-effect" data-dismiss="modal">CANCEL</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="modal fade" id="cancel" tabindex="-1" role="dialog">
-                        <div class="modal-dialog modal-sm" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title" id="smallModalLabel">Cancel Order</h4>
-                                </div>
-                                <div class="modal-body">
-                                   Are you sure you want to Cancel Contract
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button"  data-color="green" class="btn bg-green waves-effect">YES</button>
-                                    <button type="button" data-color="red" class="btn bg-red waves-effect" data-dismiss="modal">NO</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            
-                                    </div>
-
-                                    <div role="tabpanel" class="tab-pane fade" id="download">
-                                        <form class="rating" id="form_advanced_validation">
-
-                                                <div class="custom-file row" style="margin-top: 30px;">
-                                                
-                                                        <div class="col-lg-4">
-                                                                <p  style="font-size: 20px;"><b>Rate Writer:  </b><input type="number" name="your_awesome_parameter" id="rating-inline" class="rating" data-clearable="remove" data-inline/></p>
-                                                        </div>
-                                                        <div class="col-lg-8">
-                                                                <div class="form-group form-float">
-                                                                        <div class="form-line">
-                                                                            <input type="text" class="form-control" name="minmaxlength" maxlength="10" minlength="3" required>
-                                                                            <label class="form-label">Min. 30 characters</label>
-                                                                        </div>
-                                                                    </div>
-                                                    </div>
-                                            </div>
-                                            
-                                        <div class="custom-file row" style="margin-top: 30px;">
-                                                
-                                                    <div class="col-lg-3">
-                                                            <button type="file" class="btn btn-primary">
-                                                                    DOWNLOAD ASSIGNMENT
-                                                            </button>
-                                                    </div>
-                                                    <div class="col-lg-3">
-                                                        <button type="file" class="btn btn-primary">
-                                                               RATE/REVIEW
-                                                        </button>
-                                                </div>
-                                        </div>
-                                    </form>   
-                                    </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -305,55 +197,7 @@
         </div>
     </section>
 
-    <!-- Jquery Core Js -->
-    <script>
-    $(':radio').change(function() {
-  console.log('New star rating: ' + this.value);
-});
-    </script>
-    <script src="../../plugins/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core Js -->
-    <script src="../../plugins/bootstrap/js/bootstrap.js"></script>
-
-    <!-- Select Plugin Js -->
-    <script src="../../plugins/bootstrap-select/js/bootstrap-select.js"></script>
-
-    <!-- Slimscroll Plugin Js -->
-    <script src="../../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-
-    <!-- Waves Effect Plugin Js -->
-    <script src="../../plugins/node-waves/waves.js"></script>
-
-    <!-- Custom Js -->
-    -- RangeSlider Plugin Js -->
-    <script src="../../plugins/ion-rangeslider/js/ion.rangeSlider.js"></script>
-
-    <!-- Custom Js -->
-    <script src="../../js/admin.js"></script>
-    <script src="../../js/pages/ui/range-sliders.js"></script>
-
-    <!-- Demo Js -->
-    <script src="../../plugins/sweetalert/sweetalert.min.js"></script>
-
-    <!-- Custom Js -->
-    <script src="../../js/admin.js"></script>
-    <script src="../../plugins/bootstrap-select/js/bootstrap-select.js"></script>
-
-    <!-- Slimscroll Plugin Js -->
-    <script src="../../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-
-    <!-- Waves Effect Plugin Js -->
-    <script src="../../plugins/node-waves/waves.js"></script>
-
-    <!-- SweetAlert Plugin Js -->
-    <script src="{% static 'sweetalert/sweetalert.min.js' %}"></script>
-
-    <!-- Custom Js -->
-    <script src="../../js/pages/ui/dialogs.js"></script>
-
-    <!-- Demo Js -->
-    <script src="../../js/demo.js"></script>
     <script src="{% static 'jsnew/rating2.js' %}"></script>
 
 {% endblock content %}
