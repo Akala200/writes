@@ -5,6 +5,12 @@
 {% include 'index/bids_nav.html' %}
 {% endblock navbar %}
 {% block content %}
+
+<style>
+    .checked{
+        color: gold;
+    }
+</style>
 <section class="content">
         <div class="container-fluid">
                 <div class="block-header">
@@ -33,7 +39,7 @@
         <div class="card">
             <div class="header">
                     <h2>
-                      All WRITER
+                     PREVIOUSLY HIRED WRITERS
                     </h2>
             </div>
             <div class="body">
@@ -45,13 +51,18 @@
                                     <div class="review-block">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <img src="images/user.png" class="img-rounded">
+                                                <img src="{% static 'images/user.png' %}" class="img-rounded">
                                                 <div class="review-block-name"><a href="#">Johnson Chuwku</a></div>
                                                 <div class="review-block-date">1 day ago</div>
                                             </div>
                                             <div class="col-sm-9">
                                                 <div class="review-block-rate">
-                                                        <input type="number" name="your_awesome_parameter" id="rating-readonly" class="rating" data-clearable="remove" value="2" data-readonly/></p>
+                                                        
+                                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
                                                     <div>
                                                         <h4>3.0</h4>
                                                     </div>
