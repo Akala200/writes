@@ -141,9 +141,9 @@
 }
 
 </style>
-<header class="review text-center  d-flex">
+<header class="review text-center  d-flex" style="margin-top: 200px;">
     <div class="container my-auto">
-            <h1 style="color: #424b59;">Frequently Asked Questions at EssayPro</h1>
+            <h1 style="color: #fff; margin-bottom: 20px;">Frequently Asked Questions at EssayPro</h1>
     </div>
   </header>
   <section>
@@ -153,9 +153,9 @@
     
         <div class="panel-group">
     
-          <ul class="list-unstyled">
+          <ul class="nav flex-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <li class="panel panel-filled support-question active">
-              <a href="#answer1" data-toggle="tab" aria-expanded="true">
+              <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#answer1" role="tab" aria-controls="v-pills-home" aria-selected="true">
                 <div class="panel-body">
                   <p class="font-bold c-white">Support question 1</p>
                   <p>
@@ -165,7 +165,7 @@
               </a>
             </li>
             <li class="panel panel-filled support-question">
-              <a href="#answer2" data-toggle="tab" aria-expanded="false">
+              <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#answer2" role="tab" aria-controls="v-pills-profile" aria-selected="false">
                 <div class="panel-body">
                   <p class="font-bold c-white">Support question 2</p>
                   <p>
@@ -175,7 +175,7 @@
               </a>
             </li>
             <li class="panel panel-filled support-question">
-              <a href="#answer3" data-toggle="tab" aria-expanded="false">
+              <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#answer3" role="tab" aria-controls="v-pills-messages" aria-selected="false">
                 <div class="panel-body">
                   <p class="font-bold c-white">Support question 3</p>
                   <p>
@@ -185,7 +185,7 @@
               </a>
             </li>
             <li class="panel panel-filled support-question">
-              <a href="#answer4" data-toggle="tab" aria-expanded="false">
+              <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#answer4" role="tab" aria-controls="v-pills-messages" aria-selected="false">
                 <div class="panel-body">
                   <p class="font-bold c-white">Support question 4</p>
                   <p>
@@ -203,8 +203,8 @@
     
         <div class="panel">
           <div class="panel-body">
-            <div class="tab-content">
-              <div id="answer1" class="tab-pane active">
+            <div class="tab-content" id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="answer1" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <h3>
                                             Question 1
                                         </h3>
@@ -232,7 +232,7 @@
     
               </div>
     
-              <div id="answer2" class="tab-pane">
+              <div class="tab-pane fade show active" id="answer2" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <h3>
                                             Question 2
                                         </h3>
@@ -259,7 +259,7 @@
                 </p>
     
               </div>
-              <div id="answer3" class="tab-pane">
+              <div class="tab-pane fade show active" id="answer3" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <h3>
                                             Question 3
                                         </h3>
@@ -286,7 +286,7 @@
                 </p>
     
               </div>
-              <div id="answer4" class="tab-pane">
+              <div class="tab-pane fade show active" id="answer4" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <h3>
                                             Question 4
                                         </h3>

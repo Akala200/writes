@@ -4625,6 +4625,14 @@ margin-left: 50px;
     line-height: 26px;
 }
 }
+
+
+@media (max-width: 700px){
+  #cal{
+    margin-top: 30px;
+  }
+  }
+
 .p--sm {
     color: #424b59;
     font-weight: 300;
