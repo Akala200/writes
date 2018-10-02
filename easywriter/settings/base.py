@@ -8,9 +8,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 
 
-DEBUG = config('DEBUG', cast=bool)
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'essay---kitten.herokuapp.com', 'essaykitten.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'essay---kitten.herokuapp.com', 'www.essaykitten.com']
 
 
 INSTALLED_APPS = [
