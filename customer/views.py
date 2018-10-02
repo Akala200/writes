@@ -30,6 +30,9 @@ from writers.models import Bids, WritersProfile, InvitedWriters
 import django_tables2 as tables
 
 
+from .utils import invite_writer
+
+
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -316,9 +319,8 @@ def invite_writers(request, order_uuid, writer_id):
     url = request.META.get('HTTP_REFERER')
     order_id = get_object_or_404(Order, order_uuid=order_uuid)
     writer_id = get_object_or_404(WritersProfile, pk=writer_id)
-    from .utils import invite_writer
-    context = {'order_id': order_id}
-    invite = invite_writer(writer_id.profile_id.email, context)
+    context = {'order_uuid': order_id}
+    invite = invite_writer(writer_id.profile_id.email, **context)
     InvitedWriters.objects.create(user=order_id, invitees=writer_id)
     return redirect(resolve_url(url))
     
@@ -473,8 +475,21 @@ class LifeStyle(LoginRequiredMixin, TemplateView):
 
 @login_required()
 def place_order_for_a_writer(request, writer_id):
-    pass
+    form = PlaceAnOrderForm(request.POST)
+    if form.is_valid() and request.method == "POST":
+        instance = form.save(commit=False) 
+        instance.order_id = request.user
+        instance.order_uuid = generated_unique_id()
+        instance.save()        
+        writer = get_object_or_404(WritersProfile, pk=writer_id)
+        instance.mail_writers(writer.profile_id.email)
+        messages.success(request, 'Your Order was created successfully')
+        return redirect(reverse('customer:index'))
 
+    form = PlaceAnOrderForm()
+    return  render(request, 'place_order_for_a_writer.html', context={
+        'form': form
+    })
  
 class RateWriter(LoginRequiredMixin, FormView):
     form_class = RatingForm

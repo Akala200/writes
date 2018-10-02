@@ -1,7 +1,9 @@
 from django.conf import settings
-from templated_email import send_templated_mail
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
+
 
 def invite_writer(recipent, **context):
-    invite = send_templated_mail(template_name='invite_writer', from_email=settings.EMAIL_HOST_USER,
-    recipient_list=[recipent], context=context)
-    return invite
+    invite = render_to_string('user/invite_writers.html', context=context)
+    return send_mail(subject='Invitation to place a bid for an Order', message=invite, 
+    from_email=settings.EMAIL_HOST_USER, recipient_list=[recipent])

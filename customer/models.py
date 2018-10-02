@@ -6,6 +6,8 @@ from django.utils import timezone
 from django.urls import reverse
 from django.core.validators import MinLengthValidator
 
+from .utils import invite_writer
+
 
 
 class Wallet(models.Model):
@@ -273,6 +275,12 @@ class Order(models.Model):
 
     def get_absolute_url(self):
         return reverse('customer:order_detail',  kwargs= {'order_uuid': self.order_uuid})
+
+    def mail_writers(self, reciepent):
+        context_object = {
+            'order_uuid': self.order_uuid
+        }
+        return invite_writer(reciepent, **context_object)
 
 
 
