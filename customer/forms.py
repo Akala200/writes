@@ -10,8 +10,18 @@ from writers.models import Rating
 
 
 class PaymentForm(forms.Form):
-    amount = forms.DecimalField(max_digits=20, widget=forms.TextInput(attrs={
+    amount = forms.CharField(max_length=20, widget=forms.TextInput(attrs={
         'class': 'form-control',
+    }))
+
+
+class RateForm(forms.Form):
+    rate = forms.IntegerField(widget=forms.TextInput(attrs={
+        'class': 'rating rating-loading',
+        'data-min': 0,
+        'data-max': 5,
+        'data-step': 0.1,
+        'value': 0
     }))
 
 
@@ -33,7 +43,7 @@ class PlaceAnOrderForm(forms.ModelForm):
             }),
                 'pages': forms.Select(attrs={
                     'class': 'form-control show-tick',
-                    'placeholder': '1 page / 275 words',
+                    'placeholder': 'Select Pages',
                 
                 }),
                 'service': forms.Select(attrs={

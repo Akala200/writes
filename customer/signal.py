@@ -5,7 +5,7 @@ from django.db.models import Q
 
 from pusher import Pusher
 
-from .models import WalletBalance, Order
+from .models import WalletBalance, Order, Offers
 from writers.models import WritersProfile
 
 
@@ -24,7 +24,7 @@ def create_portfolio_for_new_user(sender, created, instance, **kwargs):
     if created:
         wallet = WalletBalance.objects.create(balance_id=instance)
 
-
+"""
 @receiver(post_save, sender=Order)
 def live_dashboard_update(sender, created, instance, **kwargs):
     if created:
@@ -40,7 +40,11 @@ def live_dashboard_update(sender, created, instance, **kwargs):
         else:
             return "Not Done"
       
-    
+"""
+@receiver(post_save, sender=Order)
+def create_oofers(sender, created, instance, **kwargs):
+    if created:
+        Offers.objects.create(offer_id=instance)
 
 
 

@@ -29,20 +29,32 @@
                                         
                                        
                                     <tr> 
+                                            {% if  cancelled %}
                                             
-                                        {% if not order.expired %}
-                                        <td>
-                                            <a  href="{% url 'customer:order_detail'  order.order_uuid %}">{{ order.order_uuid }}</a>  </td>
                                        
+                                        <td>
+                                                
+                                               
+                                               
+                                            {{ order.order_uuid }}
+                                           
+                                           
+                                             
+                                            
+
+                                            
+                                         </td>
+                                         {% else %}
+                                         <td>
+                                                <a  href="{% url 'customer:order_detail'  order.order_uuid %}">{{ order.order_uuid }}</a>
+                                         </td>
+                                  
+
+                                         {% endif %}
                                         <td>{{ order.topic }}</td>
                                         <td>{{ order.deadline }}</td>
-                                        {% else %}
-                                        <td>
-                                                <a class="btn disabled" href="{% url 'customer:order_detail'  order.order_uuid %}">{{ order.order_uuid }}</a>  </td>
-                                           
-                                            <td>{{ order.topic }}</td>
-                                            <td>{{ order.deadline }}</td>
-                                            {% endif %}
+                                        
+                                       
                                     
                                         {% if order.expired %}
                                         <td><span class="badge" style="font-size:14px; background-color: grey;">Expired</span></td>
@@ -66,7 +78,7 @@
                                                         ACTION <span class="caret"></span>
                                                     </button>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="javascript:void(0);"><span>
+                                                        <li><a href="{% url 'customer:order_detail' order.order_uuid %}"><span>
                                                                 <div class="demo-google-material-icon"><i class="material-icons">insert_drive_file</i> <span class="icon-name"></span></div>
                                                         </span>View Order</a></li>
                               
@@ -82,7 +94,7 @@
                                                         ACTION <span class="caret"></span>
                                                     </button>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="javascript:void(0);"><span>
+                                                        <li><a href="{% url 'customer:order_detail' order.order_uuid %}"><span>
                                                             <div class="demo-google-material-icon"><i class="material-icons">insert_drive_file</i> <span class="icon-name"></span></div>
                                                     </span>View Order</a></li>
                                                     </ul>
@@ -104,7 +116,7 @@
                     
                                         </td>
                                         {% else %}
-                                        <td><span class="badge bg-cyan waves-effect" type="button">Offer <span class="badge">0</span></span>
+                                        <td><span class="badge bg-cyan waves-effect" type="button">Offer <span class="badge">{{ offers }}</span></span>
                                         </td>
                                         <td>
                                             <div class="btn-group">

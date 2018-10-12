@@ -13,7 +13,8 @@ urlpatterns = [
     path('new-orders/', views.new_orders, name='new_orders'),
     path('personal/', views.personal, name='personal'),
     path('create-profile/', views.create_profile, name='create-profile'),
-    path('update-profile/', views.update_profile, name='update_profile')
+    path('update-profile/', views.update_profile, name='update_profile'),
+    path('user-detail/<str:writer_name>/', views.writer_profile_detail, name='writer_profile_detail')
 
 
 ]

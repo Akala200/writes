@@ -18,18 +18,7 @@
                 </div>
     
                 <!-- Widgets -->
-                <div class="row clearfix">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="info-box bg-orange hover-expand-effect">
-                                    <div class="icon">
-                                     <a href="" id="assign"><i class="material-icons">person_add</i></a>
-                                    </div>
-                                    <div class="content">
-                                        <div class="text">Hire A Writer</div>
-                                    </div>
-                                </div>
-                        </div>
-                </div>
+               
                 </div>
 <div class="container-fluid">
          
@@ -50,10 +39,11 @@
                                     <hr/>
                                     <div class="review-block">
                                         <div class="row">
+                                            {% for short in shortlist_bid %}
                                             <div class="col-sm-3">
                                                     <img src="{% static 'images/user.png' %}" class="img-rounded">
-                                                    <div class="review-block-name" style="margin-top: 25px;"><a href="#">Johnson Chuwku</a></div>
-                                                <div class="review-block-date">1 day ago</div>
+                                                    <div class="review-block-name" style="margin-top: 25px;"><a href="#">{{ short.bidders.user_profile.full_name }}</a></div>
+                                                <div class="review-block-date">{{ short.bidders.user_profile.profile_id.last_login }}</div>
                                             </div>
                                             <div class="col-sm-9">
                                                 <div class="review-block-rate">
@@ -100,20 +90,18 @@
                                                                         ACTION <span class="caret"></span>
                                                                     </button>
                                                                     <ul class="dropdown-menu">
-                                                                            <li><a href="javascript:void(0);" id="assign"><div class="demo-google-material-icon"> <i class="material-icons">person_add</i> <span class="icon-name"></span> </div>
-                                                                                Accept bid</a></li>
-                                                                        <li><a href="javascript:void(0);">
+                                                                           
+                                                                        <li><a href="{% url 'customer:remove_from_shortlist' short.pk order %}">
                                                                             <div class="demo-google-material-icon"><i class="material-icons">add_circle_outline</i> <span class="icon-name"></span></div>
                                                                             Unshortlist Bids</a></li>
-                                                                            <li><a href="javascript:void(0);">
-                                                                                <div class="demo-google-material-icon"> <i class="material-icons">cancel</i></div>
-                                                                                Decline Bid</a></li>
+                                                                           
                                                                     </ul>
                                                                 </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        {% endfor %}
                                         <hr/>
                                     </div>
                                 </div>

@@ -33,7 +33,7 @@
         <div class="card">
             <div class="header">
                     <h2>
-                      All WRITER
+                      Invited WRITER
                     </h2>
             </div>
             <div class="body">
@@ -43,12 +43,13 @@
                                 <div class="col-sm-9">
                                     <hr/>
                                     <div class="review-block">
-                                            {% for invite in invited_writer %}
+                                           
                                         <div class="row">
+                                                {% for invite in invited_writer %}
                                             
                                             <div class="col-sm-3">
                                                 <img src="{{ invite.invitee.image.url }}" class="img-rounded">
-                                                <div class="review-block-name"><a href="#">Johnson Chuwku</a></div>
+                                                <div class="review-block-name"><a href="#">{{ invite.invitee.user_profile.full_name }}</a></div>
                                                 <div class="review-block-date">1 day ago</div>
                                             </div>
                                             <div class="col-sm-9">
@@ -73,28 +74,28 @@
                                                                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                         ACTION <span class="caret"></span>
                                                                     </button>
-                                                                    {% if invite.invitee.favorite_writers.is_fav %}
+                                                                    {% if invite.invitee.user_profile.profile_id.favorite_writers.is_fav %}
                                                                     <ul class="dropdown-menu">
                                                                             
-                                                                        <li><a href="{% url 'add_to_favorite' invite.invitee.profile_id %}">
+                                                                        <li><a href="#">
                                                                             <div class="demo-google-material-icon"> <i class="material-icons">thumb_up</i> <span class="icon-name"></span> </div>
                                                                             Add To Favorite</a>
                                                                         </li>
-                                                                    </ul>
-                                                                    {% else %}
-                                                                    <ul class="dropdown-menu">
-                                                                            
-                                                                            <li><a href="{% url 'remove_from_favorite' invite.invitee.profile_id %}">
+                                                                        {% else %}
+                                                                        <li><a href="#">
                                                                                 <div class="demo-google-material-icon"> <i class="material-icons">thumb_up</i> <span class="icon-name"></span> </div>
                                                                                 Remove From Favorite</a>
                                                                             </li>
-                                                                        </ul>
+                                                                    </ul>
+                                                                   
+                                                                 
                                                                         {% endif %}
                                                                 </div>
 
                                                     </div>
                                                 </div>
                                             </div>
+                                            
                                         </div>
                                         {% endfor %}
                                         <hr/>

@@ -2,14 +2,15 @@ import random
 import json
 from decimal import Decimal
 
-import stripe
+import paypalrestsdk
+
 
 from django.shortcuts import render, redirect, reverse, resolve_url
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.db.models import F, Q
-from django.http import HttpResponseBadRequest
+from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
@@ -18,34 +19,29 @@ from django.views.generic import TemplateView, ListView, FormView
 
 
 from .forms import (PaymentForm, PlaceAnOrderForm, CancelOrderForm,  
-AdditionalFileForm, RatingForm )
+AdditionalFileForm, RatingForm, RateForm )
 from .models import (
 
     Wallet, WalletBalance, Order, FavouriteWriters,
-    Hired, AdditionalFiles, ShortListed
+    Hired, AdditionalFiles
 
 )
 
 from writers.models import Bids, WritersProfile, InvitedWriters
 
-import django_tables2 as tables
-
 
 from .utils import invite_writer
 
 
-
-stripe.api_key = settings.STRIPE_SECRET_KEY
+paypalrestsdk.configure({
+  "mode": "sandbox", # sandbox or live
+  "client_id": "AU3T5D2sAeqacb1Hmp6jJybSun7vJFNpC8YiG_WJEfFiISZeu1Fb-5hd_oQLzF9uubScMTdAhUsBaSws",
+  "client_secret": "EDydVe55CAAhArVT6WbTcJz8O8c0xOKjCVKSUx1Ooc7EwG0VukBKvLDJopg6VmA65G6BbfsSLTUHmFtu" })
 
 
 def generated_unique_id():
     ran = ''.join(str(random.randint(2, 8)) for x in range(6))
     return ran
-
-
-class OrderTable(tables.Table):
-    class Meta:
-        model = Order
 
 
 
@@ -58,6 +54,17 @@ class Index(LoginRequiredMixin, ListView):
     def get_queryset(self):
         queryset = Order.objects.filter(order_id=self.request.user).order_by('-deadline')
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super(Index, self).get_context_data(**kwargs)
+        context['cancelled'] = False
+        for query in self.get_queryset():
+            context['offers'] = query.offer_id.offers
+            if query.cancelled:
+                print(True)
+                context['cancelled'] = True
+                
+        return context
 
 
 @login_required()
@@ -120,80 +127,105 @@ def view_transactions(request):
 
 @login_required()
 def process_payment(request):
-    stripe_key = settings.STRIPE_PUBLIC_KEY
+
     form = PaymentForm(request.POST)
     if request.method == "POST" and form.is_valid():
         amount = form.cleaned_data['amount']
-        token = request.POST.get('stripeToken')
-        description = 'Payed with Card'
-        try:
-            charge = stripe.Charge.create(
-                amount = amount,
-                currency = 'usd',
-                description = description,
-                source = token
-            )
-        except stripe.error.CardError:
-            payment_data = Wallet.objects.create(
-                wallet_id = request.user,
-                credit = amount,
-                description = "Failed to process payment",
-                declined = True
-    
-            )
-            return redirect(reverse('customer:view_transactions'))
-        
-        except stripe.error.AuthenticationError:
-            payment_data = Wallet.objects.create(
-                wallet_id = request.user,
-                credit = amount,
-                description = "Failed to process payment",
-                declined = True
-    
-            )
-            return redirect(reverse('customer:view_transactions'))
-    
-
-        except stripe.error.InvalidRequestError:
-            payment_data = Wallet.objects.create(
-                wallet_id = request.user,
-                credit = amount,
-                description = "Failed to process payment",
-                declined = True
-    
-            )
-    
-
-            
-            return redirect(reverse('customer:view_transactions'))
-
+        payment = paypalrestsdk.Payment({
+            "intent": "sale",
+             "payer": {
+                 "payment_method": "paypal"},
+                 "redirect_urls": {
+                     "return_url": request.build_absolute_uri(reverse('customer:execute_payment')),
+                     "cancel_url": request.build_absolute_uri(reverse('customer:cancel_payment'))},
+                     "transactions": [{
+                         "item_list": {
+                             "items": [{
+                                 "name": "item",
+                                 "sku": "item",
+                                 "price": amount,
+                                 "currency": "USD",
+                                 "quantity": 1}]},
+                                 "amount": {
+                                     "total": amount,
+                                     "currency": "USD"},
+                                     "description": "This is the payment transaction description."}
+            ]})
+        if payment.create():
+            for link in payment.links:
+                if link.rel == "approval_url":
+                    request.session['amount'] = amount
+                    approval_url = str(link.href)
+                    return redirect(approval_url)
         else:
-            payment_data = Wallet.objects.create(
-                wallet_id = request.user,
-                credit = amount,
-                description = description,
-                approved = True
-    
-            )
-            update_user_balance = WalletBalance.objects.filter(balance_id=request.user).update(balance=F('balance') + Decimal(amount))
-
-            
-            return redirect(reverse('customer:view_transactions'))
-            
+            print(payment.error)
     return render(request, 'users/wallet/fund_wallet.html', context={'form': form,
-    'stripe_key': stripe_key, 'amount': request.POST.get('amount')})
+   'amount': request.POST.get('amount')})
+
+
+@login_required()
+def execute_payment(request):
+    amount  = request.session.get('amount', '')
+    payerID = request.GET.get('PayerID', None)
+    paymentID = request.GET.get('paymentId', None)
+    if payerID is None and paymentID is None:
+        return redirect(reverse('customer:view_transactions'))
+
+    payment = paypalrestsdk.Payment.find(paymentID)
+    if payment.execute({"payer_id":  payerID}):
+        Wallet.objects.create(
+            wallet_id=request.user,
+            description = 'Payment Via Paypal',
+            approved = True,
+            credit  = Decimal(amount)
+        )
+
+        WalletBalance.objects.filter(balance_id=request.user).update(balance=F('balance') + Decimal(amount))
+        del request.session['amount']
+        return redirect(reverse('customer:view_transactions'))
         
+    else:
+        Wallet.objects.create(
+            wallet_id=request.user,
+            description = 'Payment Failed',
+            declined = True,
+            credit  = Decimal(amount)
+            )
+        del request.session['amount']
+        return redirect(reverse('customer:view_transactions'))
+        
+
+@login_required()
+def cancel_payment(request):
+    amount = request.session.get('amount',  '')
+    if amount != '':
+        Wallet.objects.create(
+            wallet_id=request.user,
+            description = 'Payment Failed',
+            declined = True,
+            credit  = Decimal(amount)
+            )
+        del request.session['amount']
+        return redirect(reverse('customer:view_transactions'))
 
 
 @login_required()
 def order_details(request, order_uuid):
-    form =   AdditionalFileForm()
-
     order_id = get_object_or_404(Order, order_uuid=order_uuid)
+  
+    bids  = Bids.objects.filter(bidding_id=order_id).order_by('-date_created')
+
+    for bid in bids:
+        if bid.approved:
+            form = RateForm()
+            return render(request, 'users/bids/hiredwriter.html', context={
+                'order': order_id.order_uuid,
+                'form':  form
+                })
+
    
-    return render(request, 'users/bids/assignment_details.html', context={
-        'bid':  order_id,
-        'form': form,
+    return render(request, 'users/bids/all_bids.html', context={
+        'bids':  bids,
         'order': order_id.order_uuid
     })
 
@@ -248,12 +280,13 @@ class AssignWriters(LoginRequiredMixin,  ListView):
 
 class DeclinedBids(LoginRequiredMixin, ListView):
     model = Bids
-    context_object_name = 'declinedbids'
+    context_object_name = 'declined_bids'
     paginate_by = 10
     template_name = 'users/bids/declined.html'
 
     def get_queryset(self):
-        queryset = self.model.objects.filter(Q(bidding_id=self.kwargs['order_uuid']), Q(declined=True))
+        order_uuid = Order.objects.get(order_uuid=self.kwargs['order_uuid'])
+        queryset = self.model.objects.filter(Q(bidding_id=order_uuid), Q(declined=True))
         return queryset
     
     def get_context_data(self, *args, **kwargs):
@@ -263,13 +296,15 @@ class DeclinedBids(LoginRequiredMixin, ListView):
 
 
 class ShortListedList(LoginRequiredMixin, ListView):
-    model = ShortListed
-    context_object_name = 'shortlist'
+    model = Bids
+    context_object_name = 'shortlist_bid'
     paginate_by = 10
     template_name = 'users/bids/shortlisted.html'
 
     def get_queryset(self):
-        queryset = self.model.objects.filter(short_id=self.kwargs['order_uuid']).all()
+        order_uuid = Order.objects.get(order_uuid=self.kwargs['order_uuid'])
+        queryset = self.model.objects.filter(bidding_id=order_uuid, 
+        shortlisted=True).all()
         return queryset
 
     def get_context_data(self, *args, **kwargs):
@@ -277,6 +312,14 @@ class ShortListedList(LoginRequiredMixin, ListView):
         context['order'] = self.kwargs['order_uuid']
         return context
 
+
+
+def remove_from_shortlist(request, bid_id, order_uuid):
+
+    decline = Bids.objects.filter(pk=bid_id).update(shortlisted=False)
+    return redirect(reverse('customer:order_detail', kwargs={
+        'order_uuid': order_uuid
+    }))
 
    
 
@@ -290,10 +333,22 @@ class CompletedBids(LoginRequiredMixin,  ListView):
         queryset = self.model.objects.filter(Q(order_uuid=self.request.user), Q(completed=True))
         return queryset
 
-@login_required()
-def hired_before(request, order_uuid):
-    hire = Hired.objects.filter(user=request.user).all()
-    return render(request, 'users/bids/hired_before.html', context={'hire':hire, 'order': order_uuid})
+
+class HiredBefored(LoginRequiredMixin,  ListView):
+    model = Hired
+    context_object_name = 'hired'
+    paginate_by = 10
+    template_name = 'users/bids/hired_before.html'
+
+
+    def get_queryset(self):
+        queryset = self.model.objects.filter(user=self.request.user).all()
+        return queryset
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(HiredBefored, self).get_context_data(*args, **kwargs)
+        context['order'] = self.kwargs['order_uuid']
+        return context
 
 
 
@@ -304,9 +359,9 @@ class Invited(LoginRequiredMixin,  ListView):
     template_name = 'users/bids/invited.html'
 
 
-
     def get_queryset(self):
-        queryset = self.model.objects.filter(user=self.kwargs['order_uuid']).all()
+        order = Order.objects.get(order_uuid=self.kwargs['order_uuid'])
+        queryset = self.model.objects.filter(user=order).all()
         return queryset
 
     def get_context_data(self, **kwargs):
@@ -329,6 +384,7 @@ def invite_writers(request, order_uuid, writer_id):
 
 @login_required()
 def new_bids(request):
+    
     new_bids = Bids.objects.all().exclude(Q(approved=True), Q(shortlisted=True),
     Q(declined=True))
     return render(request, 'users/bids/new_bids.html')
@@ -402,8 +458,10 @@ def resubmit_order(request, order_uuid):
     form = PlaceAnOrderForm(request.POST, instance=order)
     if request.method == "POST":
         if form.is_valid():
+            order.delete()
             instance = form.save(commit=False)
-            instance.cancelled = False
+            instance.order_id = request.user
+            instance.order_uuid = generated_unique_id()    
             instance.save()
             messages.success(request, 'Order submited')
             return redirect(reverse('customer:order_detail', kwargs={'order_uuid': instance.order_uuid}))
@@ -423,19 +481,26 @@ def add_to_favorite(request, writer_id):
     writer_check = get_user_model().objects.get(user_profile__pk=writer_id)
     add = FavouriteWriters.objects.create(user=request.user, favorite_writers=writer_check,
     is_fav=True)
-
     return redirect(resolve_url(url))
+    
     
 
 
 @login_required()
-def shortlist_a_bid(request):
-    pass
+def shortlist_a_bid(request, bid_id, order_uuid):
+    
+    decline = Bids.objects.filter(pk=bid_id).update(shortlisted=True)
+    return redirect(reverse('customer:short_listed', kwargs={
+        'order_uuid': order_uuid
+    }))
 
 @login_required()
-def decline_a_bid(request, bid_id):
-    decline = Bids.objects.filter(bid_id=bid_id).update(declined=True)
-    return redirect(reverse('customer:index'))
+def decline_a_bid(request, bid_id, order_uuid):
+   
+    decline = Bids.objects.filter(pk=bid_id).update(declined=True)
+    return redirect(reverse('customer:declined', kwargs={
+        'order_uuid': order_uuid
+    }))
 
     
 
@@ -451,8 +516,9 @@ class ViewAllWriters(LoginRequiredMixin,  ListView):
 
 
 def remove_from_favorite(request, writer_id):
+    url = request.META.get('HTTP_REFERER')
     FavouriteWriters.objects.filter(favorite_writers=writer_id).delete()
-    return redirect(reverse('customer:favorite_writers'))
+    return redirect(resolve_url(url))
 
 
 

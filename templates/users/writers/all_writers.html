@@ -1,6 +1,7 @@
 <!-- MAIN CONTENT-->
 {% extends 'index/base.html' %}
 {% load static %}
+{% load humanize %} 
 {% block navbar %}
 <div class="menu">
     <ul class="list">
@@ -77,7 +78,12 @@
                                             <div class="col-sm-3">
                                                 <img src="{% static 'images/yong.jpg' %}" class="rounded-circle img-fluid" style="max-width: 55%; height: auto; margin-bottom: 20px;">
                                                 <div class="review-block-name"><a href="#" style="font-size: 15px;">{{ writer.full_name }}</a></div>
-                                                <div class="review-block-date">last login {{ writer.profile_id.last_login }}</div>
+                                                {% if writer.profile_id.login_status %}
+                                                <div class="review-block-date">Online</div>
+                                                {% else %}
+
+                                                <div class="review-block-date">last seen {{ writer.profile_id.last_login|naturaltime }}</div>
+                                                {% endif %}
                                             </div>
                                             <div class="col-sm-9">
                                                 <div class="review-block-rate">
@@ -115,46 +121,53 @@
                                                                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                         ACTION <span class="caret"></span>
                                                                     </button>
-                                                                    {% if  writer.favorite_writer.is_fav %}
+                                                                    
+                                                                    
                                                                     <ul class="dropdown-menu">
+                                                                            {% if  writer.favorite_writer.is_fav %}
+                                                                           
                                                                             <li><a href="javascript:void(0);"><div class="demo-google-material-icon"> <i class="material-icons">person_add</i> <span class="icon-name"></span> </div>
 
                                                                                 
                                                                                 Hire A Writer</a>
+
+
                                                                             </li>
-                                                                           
-                                                                       
-                                                                               
+                                                                            
+                                                                            
+                                                                                    
                                                                         <li><a href="{% url 'customer:remove_from_favorite' writer.id %}">
-                                                                            <div class="demo-google-material-icon"> <i class="material-icons">thumbs_up_down</i> <span class="icon-name"></span>
-                                                                                Remove From Favorite</div></a></li>
-                              
-                                                                        
-                                                                    </ul>
-                                                                     {% else %}
-                                                                     <ul class="dropdown-menu">
+                                                                                <div class="demo-google-material-icon"> <i class="material-icons">thumbs_up_down</i> <span class="icon-name"></span></div>Remove from Favorite</a>
+                                                                           
+                                                                        </li>  
+                                                                        {% else %}
                                                                         <li><a href="javascript:void(0);"><div class="demo-google-material-icon"> <i class="material-icons">person_add</i> <span class="icon-name"></span> </div>
 
-                                                                            
+                                                                                
                                                                             Hire A Writer</a>
+
+
                                                                         </li>
-                                                                       
-                                                                   
-                                                                           
-                                                                        <li><a href="{% url 'customer:add_to_favorite' writer.id %}">                 
-                                                                            <div class="demo-google-material-icon"><i class="material-icons">thumb_up</i> <span class="icon-name"></span> </div>
-                                                                            Add To Favorite</a></li>
-                                                                               
-
-                                                                   
-                                                                    
-
-
+                                                                        
+                                                                        
                                                                                 
                                                                     
+                                                                       
+                                                                     
+                                                                       
+                                                                       
+                                                                        
+                                                                        <li><a href="{% url 'customer:add_to_favorite' writer.id %}">                 
+                                                                                <div class="demo-google-material-icon"><i class="material-icons">thumb_up</i> <span class="icon-name"></span> </div>
+                                                                                Add To Favorite</a></li>
                                                                     
-                                                                </ul>
+
+                                                                            
+                                                                    </ul>
+                                            
                                                                 {% endif %}
+
+                                                               
 
                                                                         
                                                                     

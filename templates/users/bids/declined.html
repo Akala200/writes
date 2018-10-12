@@ -12,18 +12,7 @@
                 </div>
     
                 <!-- Widgets -->
-                <div class="row clearfix">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="info-box bg-orange hover-expand-effect">
-                                    <div class="icon">
-                                     <a href=""><i class="material-icons">person_add</i></a>
-                                    </div>
-                                    <div class="content">
-                                        <div class="text">PLACE AN ORDER</div>
-                                    </div>
-                                </div>
-                        </div>
-                </div>
+               
                 </div>
 <div class="container-fluid">
          
@@ -33,7 +22,7 @@
         <div class="card">
             <div class="header">
                     <h2>
-                      All WRITER
+                     Declined Bids
                     </h2>
             </div>
             <div class="body">
@@ -43,11 +32,14 @@
                                 <div class="col-sm-9">
                                     <hr/>
                                     <div class="review-block">
+                                            
                                         <div class="row">
+                                                {% for decline in declined_bids %}
+                                            
                                             <div class="col-sm-3">
                                                 <img src="images/user.png" class="img-rounded">
-                                                <div class="review-block-name"><a href="#">Johnson Chuwku</a></div>
-                                                <div class="review-block-date">1 day ago</div>
+                                                <div class="review-block-name"><a href="#">{{ decline.bidders.user_profile.full_name }}</a></div>
+                                                <div class="review-block-date"></div>
                                             </div>
                                             <div class="col-sm-9">
                                                 <div class="review-block-rate">
@@ -68,9 +60,15 @@
                                                     <div class="col-lg-3 col-md-3"><b>450 Reviews</b></div>
                                                     <div class="col-lg-3 col-md-3">
                                                             <div class="btn-group">
-                                                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    {% if   decline.declined %}
+                                                                    <button type="button" class="btn btn-primary dropdown-toggle disabled" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                         ACTION <span class="caret"></span>
                                                                     </button>
+                                                                    {% else %}
+                                                                    <button type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                            ACTION <span class="caret"></span>
+                                                                        </button>
+                                                                        {% endif %}
                                                                     <ul class="dropdown-menu">
                                                                         <li><a href="javascript:void(0);"><div class="demo-google-material-icon"> <i class="material-icons">refresh</i> <span class="icon-name"></span> </div>
                                                                           Resubmit Order</a></li>
@@ -79,7 +77,9 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            
                                         </div>
+                                        {% endfor %}
                                         <hr/>
                                     </div>
                                 </div>

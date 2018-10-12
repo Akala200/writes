@@ -34,36 +34,18 @@
    
                                     <td><span class="badge bg-green" style="font-size:14px;">Completed</span></td>                                                
                                         <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    ACTION <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                        <li><a href="javascript:void(0);">  
-                                                        <div class="demo-google-material-icon"><i class="material-icons">attach_money</i> <span class="icon-name"></span></div>
-                                                            Pay Writer</a></li>
-                                                    <li><a href="javascript:void(0);">
-                                                            <div class="demo-google-material-icon"> <i class="material-icons">content_paste</i> <span class="icon-name"></span></div>                       
-                                                            End Contract</a>
-                                                    </li>
-                                                        <li><a href="javascript:void(0);"> 
-                                                                <div class="demo-google-material-icon"> <i class="material-icons">highlight_off</i> <span class="icon-name"></span></div>
-                                                            Cancel Contract</a>
-                                                        </li>
-                                                        <li><a href="javascript:void(0);"> 
-                                                                <div class="demo-google-material-icon"><i class="material-icons">grade</i><span class="icon-name"></span></div>
-                                                            Rate Writer</a>
-                                                        </li>
-                                                        <li><a href="javascript:void(0);">
-                                                            <div class="demo-google-material-icon"> <i class="material-icons">thumb_up</i> <span class="icon-name"></span> </div>
-                                                            Add To Favorite</a>
-                                                        </li>
-                                                        <li><a href="javascript:void(0);"> 
-                                                                <div class="demo-google-material-icon"><i class="material-icons">person_add</i><span class="icon-name"></span></div>
-                                                            Place Order</a>
-                                                        </li>
-                                                </ul>
-                                            </div>
+                                                <div class="btn-group">
+                                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            ACTION <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="{% url 'customer:order_detail' order.order_uuid %}"><span>
+                                                                    <div class="demo-google-material-icon"><i class="material-icons">insert_drive_file</i> <span class="icon-name"></span></div>
+                                                            </span>View Order</a></li>
+                                                
+                                                        </ul>
+                                                    </div>
+                                            
                                        
                 
                                     </td>

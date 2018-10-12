@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseBadRequest
 from django.urls import reverse_lazy, reverse
 from django.contrib import messages
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login , get_user_model, authenticate
 from django.contrib.auth.backends import ModelBackend
@@ -123,3 +123,11 @@ def write_an_essay(request):
 @login_required()
 def answer_question(request):
     pass
+
+
+@login_required()
+def writer_profile_detail(request, writer_name):
+    writer_info  = get_object_or_404(WritersProfile, full_name=writer_name)
+    return render(request, '', context={
+        'detail': writer_info 
+    })

@@ -1,4 +1,8 @@
+import uuid
+
 from django.db import models
+
+from django.db.models import F
 from django.conf import settings
 from customer.models import Order
 
@@ -137,11 +141,21 @@ class Bids(models.Model):
     bidding_id = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='bid_order', null=True)
     bidders = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='bidders',null=True)
     declined = models.BooleanField(default=False)
+    date_created = models.DateTimeField(auto_now=True)
     in_progress = models.BooleanField(default=False)
     approved = models.BooleanField(default=False)
     shortlisted = models.BooleanField(default=False)
     completed = models.BooleanField(default=False)
-   
+    amount = models.FloatField(default=0.0)
+ 
+    def save(self, **kwargs):
+        from customer.models import Offers
+        offer = Offers.objects.get(offer_id=self.bidding_id)
+        if offer.offers == 1:
+            return super().save(**kwargs)
+        else:
+            Offers.objects.filter(offer_id=self.bidding_id).update(offers=F('offers')+ 1)
+            return super().save(**kwargs)
 
     def __str__(self):
         return str(self.bidding_id)

@@ -96,12 +96,6 @@ class Order(models.Model):
         ('39 source', '30 source')
 
 
-
-
-
-
-
-
     )
 
     style_choice = (
@@ -268,7 +262,7 @@ class Order(models.Model):
 
     class Meta:
         get_latest_by = 'publication_date'
-
+        
     
     def __str__(self):
         return str(self.order_id)
@@ -288,7 +282,7 @@ class Order(models.Model):
 class AdditionalFiles(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='additional_filesc')
-    file_upload = models.FileField(upload_to='addtion_files')
+    file_upload = models.FileField(upload_to='addition_files')
 
     
     
@@ -313,10 +307,12 @@ class Hired(models.Model):
         return str(self.user)
 
 
-class ShortListed(models.Model):
-    short_id = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='short_id')
-    writer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='writer')
+class Offers(models.Model):
+    offer_id = models.OneToOneField(Order, on_delete=models.CASCADE, related_name='offer_id')
+    offers = models.IntegerField(default=0)
 
+    def __str__(self):
+        return str(self.offer_id)
 
 
 

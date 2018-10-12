@@ -1,6 +1,7 @@
-<!-- MAIN CONTENT-->
+
 {% extends 'index/base.html' %}
 {% load static %}
+{% load humanize %}
 {% block navbar %}
 {% include 'index/bids_nav.html' %}
 {% endblock navbar %}
@@ -18,18 +19,7 @@
                 </div>
     
                 <!-- Widgets -->
-                <div class="row clearfix">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="info-box bg-orange hover-expand-effect">
-                                    <div class="icon">
-                                     <a href=""><i class="material-icons">person_add</i></a>
-                                    </div>
-                                    <div class="content">
-                                        <div class="text">PLACE AN ORDER</div>
-                                    </div>
-                                </div>
-                        </div>
-                </div>
+             
                 </div>
 <div class="container-fluid">
          
@@ -50,15 +40,22 @@
                                     <hr/>
                                     <div class="review-block">
                                         <div class="row">
+                                            {% for hire_writers in hired %}
                                             <div class="col-sm-3">
                                                 <img src="{% static 'images/user.png' %}" class="img-rounded">
-                                                <div class="review-block-name"><a href="#">Johnson Chuwku</a></div>
-                                                <div class="review-block-date">1 day ago</div>
+                                                <div class="review-block-name"><a href="{% url 'writers:writer_profile_detail' hire_writers.hired.user_profile.full_name %}">{{ hire_writers.hired.user_profile.full_name }}</a></div>
+                                                {% if hire_writers.hired.user_profile.profile_id.login_status %}
+                                            <div class="review-block-date">Online</div>
+                                            {% else %}
+
+                                            <div class="review-block-date">{{ hire_writers.hired.user_profile.profile_id.last_login|naturaltime }}</div>
+                                            {% endif %}
+                                
                                             </div>
                                             <div class="col-sm-9">
                                                 <div class="review-block-rate">
                                                         
-                                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
                                                 <span class="fa fa-star checked"></span>
                                                 <span class="fa fa-star checked"></span>
                                                 <span class="fa fa-star checked"></span>
@@ -82,6 +79,7 @@
                                                                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                         ACTION <span class="caret"></span>
                                                                     </button>
+                                                                    {% if not hire_writers.hired.favorite_writers.is_fav %}
                                                                     <ul class="dropdown-menu">
                                                                             <li><a href="javascript:void(0);"><div class="demo-google-material-icon"> <i class="material-icons">person_add</i> <span class="icon-name"></span> </div>
                                                                                 Invite Writer</a>
@@ -91,11 +89,23 @@
                                                                             Add To Favorite</a>
                                                                         </li>
                                                                     </ul>
+                                                                    {% else %}
+                                                                    <ul class="dropdown-menu">
+                                                                            <li><a href="javascript:void(0);"><div class="demo-google-material-icon"> <i class="material-icons">person_add</i> <span class="icon-name"></span> </div>
+                                                                                Invite Writer</a>
+                                                                            </li>
+                                                                        <li><a href="javascript:void(0);">                                     
+                                                                        <div class="demo-google-material-icon"> <i class="material-icons">thumb_up</i> <span class="icon-name"></span> </div>
+                                                                            Remove Favorite</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                    {% endif %}
                                                                 </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        {% endfor %}
                                         <hr/>
                                     </div>
                                 </div>
