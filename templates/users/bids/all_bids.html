@@ -12,16 +12,8 @@
 
             <!-- Widgets -->
             <div class="row clearfix">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <div class="info-box bg-orange hover-expand-effect">
-                                <div class="icon">
-                                 <a href="" id="assign"><i class="material-icons">person_add</i></a>
-                                </div>
-                                <div class="content">
-                                    <div class="text">Hire A Writer</div>
-                                </div>
-                            </div>
-                    </div>
+                    
+                   
             </div>
             </div>
 <div class="container-fluid">
@@ -44,8 +36,8 @@
                                 <div class="review-block">
                                     
                                     <div class="row">
-                                        {% if bids %}
-                                        {% for bid in  bids %}
+                                        {% if bid_item %}
+                                        {% for bid in  bid_item %}
                                         <div class="col-sm-3">
                                             <img src="images/user.png" class="img-rounded">
                                             <div class="review-block-name"><a href="#">{{ bid.bidders.user_profile.full_name }}</a></div>
@@ -53,7 +45,7 @@
                                             <div class="review-block-date">Online</div>
                                             {% else %}
 
-                                            <div class="review-block-date">{{ bid.bidders.user_profile.profile_id.last_login|naturaltime }}</div>
+                                            <div class="review-block-date">last seen {{ bid.bidders.user_profile.profile_id.last_login|naturaltime }}</div>
                                             {% endif %}
                                         </div>
                                         <div class="col-sm-9">
@@ -118,22 +110,22 @@
                                                                 
 
                                                                 <ul class="dropdown-menu">
-                                                                        <li><a href="javascript:void(0);" id="assign"><div class="demo-google-material-icon"> <i class="material-icons">person_add</i> <span class="icon-name"></span> </div>
+                                                                        <li><a><div class="demo-google-material-icon"> <i class="material-icons">person_add</i> <span class="icon-name"></span> </div>
                                                                             Accept bid</a></li>
                                                                             {% if not bid.shortlisted %}
-                                                                            <li><a href="{% url 'customer:shortlist_a_bid' bid.pk order %}">
+                                                                            <li  class="shortlist"> <a>
                                                                                     <div class="demo-google-material-icon"> <i class="material-icons">add_circle_outline</i> <span class="icon-name"></span></div>
                                                                                     Shortlist Bid</a></li>
                                                                             {% else %}
                                                                             
-                                                                            <li><a href="{% url 'customer:remove_from_shortlist' bid.pk order %}">
+                                                                            <li class="unshortlist"><a>
                                                                                 <div class="demo-google-material-icon"><i class="material-icons">add_circle_outline</i> <span class="icon-name"></span></div>
                                                                                 Unshortlist Bids</a></li>
                                                                                 {% endif %}
 
                                                                        
                                                                     
-                                                                        <li><a href="{% url 'customer:decline_a_bid' bid.pk order %}">
+                                                                        <li class="declined"><a>
                                                                             <div class="demo-google-material-icon"> <i class="material-icons">cancel</i> <span class="icon-name"></span> </div>
                                                                             Decline Bid</a></li>
                                                                 </ul>
@@ -146,8 +138,10 @@
                                     </div>
                                     {% endfor %}
                                     {% else %}
-                                    <span> available bid</span>
+                                    <div class="row">
+                                    <span> No available bid</span>
                                     {% endif %}
+                                    </div>
                                     <hr/>
                                 </div>
                             </div>
@@ -162,23 +156,106 @@
 </section>
 
 <div class="modal fade" id="assign" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="smallModalLabel">Balance  <span class="badge bg-light-green">$00:00</span> </h4>
-            </div>
-            <div class="modal-body">
-               You do not have enough in your account
-               Kindly fund your account
-            </div>
-            <div class="modal-footer">
-                <a type="button" class="btn btn-success waves-effect">FUND ACCOUNT</a>
-                <a type="button" class="btn btn-danger waves-effect" data-dismiss="modal">CANCEL</a>
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="smallModalLabel">Balance  <span class="badge bg-light-green">$ {{ request.user.wallet_balance.balance }}</span> </h4>
+                </div>
+                <div class="modal-body">
+                   You do not have enough fund in your account
+                   Kindly fund your account
+                </div>
+                <div class="modal-footer">
+                    <a type="button" class="btn btn-success waves-effect" href="{% url 'customer:process_payment' %}">FUND ACCOUNT</a>
+                    <a type="button" class="btn btn-danger waves-effect" data-dismiss="modal">CANCEL</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+{% for bid in  bid_item %}
+    
 
+<script>
+    $(function(){
+        $(".shortlist").click(function(){
+            $.ajax({
+             type: "GET",
+             url: "{% url 'customer:shortlist_a_bid_ajax' %}",
+             data: {'bid_id': "{{ bid.pk }}" },
+              success:function(data) {
+                  if (data.is_shortlisted){
+                    location.reload();
+
+                  }
+              
+
+              //do something with 'response'
+             }
+            });
+    })});
+</script>
+
+<script>
+        $(function(){
+            $(".unshortlist").click(function(){
+                $.ajax({
+                 type: "GET",
+                 url: "{% url 'customer:remove_from_shortlist_ajax' %}",
+                 data: {'bid_id': "{{ bid.pk }}" },
+                  success:function(data) {
+                      if (data.not_shortlisted){
+                        location.reload();
+    
+                      }
+                  
+    
+                  //do something with 'response'
+                 }
+                });
+        })});
+    </script>
+
+<script>
+        $(function(){
+            $(".declined").click(function(){
+                $.ajax({
+                 type: "GET",
+                 url: "{% url 'customer:decline_a_bid_ajax' %}",
+                 data: {'bid_id': "{{ bid.pk }}",
+                 'order_uuid': "{{  bid.bidding_id.order_uuid }}" },
+                  success:function(data) {
+                      if (data.declined){
+                        location.reload();
+    
+                      }
+                  
+    
+                  //do something with 'response'
+                 }
+                });
+        })});
+    </script>
+    <script>
+            $(function(){
+                $(".accept_a_bid").click(function(){
+                    $.ajax({
+                     type: "GET",
+                     url: "{% url 'customer:accept_bid_order' %}",
+                     data: {'bid_id': "{{ bid.pk }}",
+                     'order_uuid': "{{  bid.bidding_id.order_uuid }}" },
+                      success:function(data) {
+                          if (data.insufficient_fund === false){
+                            $("#assign").modal('show')
+        
+                          }
+                      
+        
+                      //do something with 'response'
+                     }
+                    });
+            })});
+        </script>
+{% endfor %}
 
     
 

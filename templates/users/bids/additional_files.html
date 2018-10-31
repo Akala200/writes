@@ -1,6 +1,12 @@
 {% extends 'index/base.html' %}
 {% block navbar %}
+{% if bids.approved and  bids.in_progress %}
+<div  class="menu">
+{% include 'index/assignment_nav.html' %}
+</div>
+{% else %}
 {% include 'index/bids_nav.html' %}
+{% endif %}
 {% endblock navbar %}
 {% block content %}
 {% load static %}
@@ -35,7 +41,7 @@
                                                 
                                                
                                                 <tr>
-                                                        <td><a href="#">{{ f.file_upload.name }}</a></td>
+                                                        <td><a href="{{ f.file_upload.url }}" download="{{ f.file_upload.url }}">{{ f.file_upload.name }}</a></td>
                                                         <td><a type="button" class="btn btn-danger waves-effect" href="{% url 'customer:delete_file' f.pk %}">DELETE</a></td>
                                                     </tr>
                                                        

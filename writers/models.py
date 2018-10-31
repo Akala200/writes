@@ -1,4 +1,6 @@
 import uuid
+import random
+from decimal import Decimal
 
 from django.db import models
 
@@ -114,6 +116,7 @@ class WritersProfile(models.Model):
     about = models.TextField()
     is_approved = models.BooleanField(default=False)
     profile_set = models.BooleanField(default=False)
+
     paypal_id = models.CharField(max_length=50)
     is_writer = models.BooleanField(default=False)
     subject = MultiSelectField(choices=subject_choice, max_choices=3)
@@ -138,6 +141,7 @@ class InvitedWriters(models.Model):
 
     
 class Bids(models.Model):
+    id  = models.AutoField(max_length=7, primary_key=True)
     bidding_id = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='bid_order', null=True)
     bidders = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='bidders',null=True)
     declined = models.BooleanField(default=False)
@@ -146,10 +150,17 @@ class Bids(models.Model):
     approved = models.BooleanField(default=False)
     shortlisted = models.BooleanField(default=False)
     completed = models.BooleanField(default=False)
-    amount = models.FloatField(default=0.0)
+    amount = models.DecimalField(decimal_places=2, max_digits=20, default=Decimal('0.00'))
+
+
+    def generated_unique_id(self):
+        ran = ''.join(str(random.randint(2, 8)) for x in range(6))
+        return ran
+
  
     def save(self, **kwargs):
         from customer.models import Offers
+        self.id = self.generated_unique_id()
         offer = Offers.objects.get(offer_id=self.bidding_id)
         if offer.offers == 1:
             return super().save(**kwargs)
@@ -158,7 +169,27 @@ class Bids(models.Model):
             return super().save(**kwargs)
 
     def __str__(self):
-        return str(self.bidding_id)
+        return str(self.pk)
+
+
+class AssignmentFiles(models.Model):
+    id  = models.AutoField(max_length=7, primary_key=True)
+    file_id = models.ForeignKey(Bids, on_delete=models.CASCADE)
+    download_file = models.FileField(upload_to='download_assignment')
+    description = models.CharField(max_length=15, null=True)
+
+
+
+    def generated_unique_id(self):
+        ran = ''.join(str(random.randint(2, 8)) for x in range(6))
+        return ran
+
+    def save(self, **kwargs):
+        self.id = self.generated_unique_id()
+        super().save(**kwargs)
+
+    def __str__(self):
+        return str(self.id)
 
 
 

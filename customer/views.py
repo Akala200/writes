@@ -10,7 +10,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.db.models import F, Q
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
@@ -23,11 +23,11 @@ AdditionalFileForm, RatingForm, RateForm )
 from .models import (
 
     Wallet, WalletBalance, Order, FavouriteWriters,
-    Hired, AdditionalFiles
+    Hired, AdditionalFiles, Offers
 
 )
 
-from writers.models import Bids, WritersProfile, InvitedWriters
+from writers.models import Bids, WritersProfile, InvitedWriters, AssignmentFiles
 
 
 from .utils import invite_writer
@@ -52,17 +52,16 @@ class Index(LoginRequiredMixin, ListView):
     template_name = 'users/orders/all_user_orders.html'
 
     def get_queryset(self):
-        queryset = Order.objects.filter(order_id=self.request.user).order_by('-deadline')
+        queryset = Order.objects.filter(order_id=self.request.user).order_by('-publication_date')
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super(Index, self).get_context_data(**kwargs)
         context['cancelled'] = False
         for query in self.get_queryset():
-            context['offers'] = query.offer_id.offers
             if query.cancelled:
-                print(True)
                 context['cancelled'] = True
+                
                 
         return context
 
@@ -127,10 +126,22 @@ def view_transactions(request):
 
 @login_required()
 def process_payment(request):
-
-    form = PaymentForm(request.POST)
+    bid_amount = request.session.get('bid_amount', None)
+    if bid_amount is not None and 'bid_amount' in request.session:
+        form = PaymentForm(initial=json.loads(bid_amount))
+        del request.session['bid_amount']
+        request.session['hiring'] = True
+        
+        
+    else:
+        form = PaymentForm(request.POST)
+    
+            
     if request.method == "POST" and form.is_valid():
-        amount = form.cleaned_data['amount']
+        if form.initial != {}:
+            amount = form.initial['amount']
+        else:
+            amount = form.cleaned_data['amount']
         payment = paypalrestsdk.Payment({
             "intent": "sale",
              "payer": {
@@ -159,6 +170,7 @@ def process_payment(request):
                     return redirect(approval_url)
         else:
             print(payment.error)
+    print('form is invalid')
     return render(request, 'users/wallet/fund_wallet.html', context={'form': form,
    'amount': request.POST.get('amount')})
 
@@ -181,6 +193,26 @@ def execute_payment(request):
         )
 
         WalletBalance.objects.filter(balance_id=request.user).update(balance=F('balance') + Decimal(amount))
+        if request.session.get('hiring') is not None:
+            order_uuid = request.session.get('order_uuid')
+            order = json.loads(order_uuid)
+            bid_id = request.session.get('bid_id')
+            
+            Bids.objects.filter(pk=bid_id).update(
+            approved=True,
+            in_progress=True
+            )
+            Order.objects.filter(order_uuid=order['order_uuid']).update(
+                in_progress=True
+                )
+            del request.session['order_uuid']
+            del request.session['bid_id']
+            return redirect(reverse(
+                'customer:order_detail', kwargs={
+                    'order_uuid': order['order_uuid']
+                    }
+                    ))
+            
         del request.session['amount']
         return redirect(reverse('customer:view_transactions'))
         
@@ -208,25 +240,54 @@ def cancel_payment(request):
         del request.session['amount']
         return redirect(reverse('customer:view_transactions'))
 
+    
+def order_details_ajax(request, order_uuid):
+    form =   AdditionalFileForm()
+    #order_uuid = request.GET.get('order_uuid')
+    order_id = get_object_or_404(Order, order_uuid=order_uuid)
+  
+    bids  = Bids.objects.filter(bidding_id=order_id).exclude(declined=True).order_by('-date_created')
+    for bid in bids:
+        if bid.approved:
+            return render(request, 'users/bids/hiredwriter.html', context={
+                'order': order_id.order_uuid,
+                    'order_pk': order_id.pk,
+                    'form':  form,
+                    'bid_pk': bid.pk,
+                    'bid_name': bid
+                    })
+
+
 
 @login_required()
 def order_details(request, order_uuid):
+    form =   AdditionalFileForm()
+
     order_id = get_object_or_404(Order, order_uuid=order_uuid)
   
-    bids  = Bids.objects.filter(bidding_id=order_id).order_by('-date_created')
+    bids  = Bids.objects.filter(bidding_id=order_id).exclude(declined=True).order_by('-date_created')
 
-    for bid in bids:
-        if bid.approved:
-            form = RateForm()
-            return render(request, 'users/bids/hiredwriter.html', context={
-                'order': order_id.order_uuid,
-                'form':  form
-                })
+    if bids.exists:
+        for bid in bids:
+            if bid.approved:
+                form = RateForm()
+                return render(request, 'users/bids/hiredwriter.html', context={
+                    'order': order_id.order_uuid,
+                    'order_pk': order_id.pk,
+                    'form':  form,
+                    'bid_pk': bid.pk,
+                    'bid_name': bid
+                    })
+
 
    
-    return render(request, 'users/bids/all_bids.html', context={
+    return render(request, 'users/bids/assignment_details.html', context={
         'bids':  bids,
-        'order': order_id.order_uuid
+        'order': order_id.order_uuid,
+        'bid': order_id, 
+        'form': form,
+        'order_pk': order_id.pk,
+        
     })
 
 
@@ -265,16 +326,18 @@ def update_order(request, order_uuid):
 
 class AssignWriters(LoginRequiredMixin,  ListView):
     template_name = 'users/bids/assign_writer.html'
-    model = WritersProfile
-    context_object_name = 'writers'
+    model = Bids
+    context_object_name = 'bids'
 
     def get_queryset(self):
-        query = WritersProfile.objects.exclude(is_approved=False).all()
+        order = Order.objects.get(order_uuid=self.kwargs['order_uuid'])
+        query = self.model.objects.filter(bidding_id=order).exclude(declined=True).order_by('-date_created')
         return query
         
     def get_context_data(self, *args, **kwargs):
         context = super(AssignWriters, self).get_context_data(*args, **kwargs)
         context['order'] = self.kwargs['order_uuid']
+        context['bid_name'] = self.get_queryset()
         return context
 
 
@@ -312,16 +375,6 @@ class ShortListedList(LoginRequiredMixin, ListView):
         context['order'] = self.kwargs['order_uuid']
         return context
 
-
-
-def remove_from_shortlist(request, bid_id, order_uuid):
-
-    decline = Bids.objects.filter(pk=bid_id).update(shortlisted=False)
-    return redirect(reverse('customer:order_detail', kwargs={
-        'order_uuid': order_uuid
-    }))
-
-   
 
 class CompletedBids(LoginRequiredMixin,  ListView):
     model = Bids
@@ -392,23 +445,32 @@ def new_bids(request):
 
 
 @login_required()
-def view_all_bids(request):
-    bid = Bids.objects.all()
-    return render(request, 'customer/bids/view_all_bids.html', context={'bid': bid})
+def view_all_bids(request, order_uuid):
+    order_id = get_object_or_404(Order, order_uuid=order_uuid)
+    bids  = Bids.objects.filter(bidding_id=order_id).exclude(declined=True).order_by('-date_created')
+    
+    return render(request, 'users/bids/all_bids.html', context={'bid_item': bids, 'order': order_id.order_uuid})
 
 
 @login_required
 def additional_files(request, order_uuid):
     order = get_object_or_404(Order, order_uuid=order_uuid)
-    files = AdditionalFiles.objects.filter(user=order)
+    files = AdditionalFiles.objects.filter(user=order.pk)
+    try:
+        bids = Bids.objects.get(bidding_id=order)
+    except Bids.DoesNotExist:
+        return render(request, 'users/bids/additional_files.html', context={'order': order_uuid, 'files': files, 'order_pk': order.pk})
+    else:
+        return render(request, 'users/bids/additional_files.html', context={'order': order_uuid, 'files': files, 'bids': bids, 'bid_pk': bids.pk})
     
-    return render(request, 'users/bids/additional_files.html', context={'order': order_uuid, 'files': files})
     
 
+    
 
 @login_required
 def add_additional_file(request, order_uuid):
     form = AdditionalFileForm(request.POST, request.FILES)
+    url = request.META.get("HTTP_REFERRAL")
     if  request.method == 'POST' and  form.is_valid():
         order = get_object_or_404(Order, order_uuid=order_uuid)
         instance = form.save(commit=False)
@@ -485,25 +547,6 @@ def add_to_favorite(request, writer_id):
     
     
 
-
-@login_required()
-def shortlist_a_bid(request, bid_id, order_uuid):
-    
-    decline = Bids.objects.filter(pk=bid_id).update(shortlisted=True)
-    return redirect(reverse('customer:short_listed', kwargs={
-        'order_uuid': order_uuid
-    }))
-
-@login_required()
-def decline_a_bid(request, bid_id, order_uuid):
-   
-    decline = Bids.objects.filter(pk=bid_id).update(declined=True)
-    return redirect(reverse('customer:declined', kwargs={
-        'order_uuid': order_uuid
-    }))
-
-    
-
 class ViewAllWriters(LoginRequiredMixin,  ListView):
     template_name = 'users/writers/all_writers.html'
     model = WritersProfile
@@ -517,7 +560,8 @@ class ViewAllWriters(LoginRequiredMixin,  ListView):
 
 def remove_from_favorite(request, writer_id):
     url = request.META.get('HTTP_REFERER')
-    FavouriteWriters.objects.filter(favorite_writers=writer_id).delete()
+    writer_check = get_user_model().objects.get(user_profile__pk=writer_id)
+    FavouriteWriters.objects.filter(favorite_writers=writer_check).delete()
     return redirect(resolve_url(url))
 
 
@@ -553,8 +597,9 @@ def place_order_for_a_writer(request, writer_id):
         return redirect(reverse('customer:index'))
 
     form = PlaceAnOrderForm()
-    return  render(request, 'place_order_for_a_writer.html', context={
-        'form': form
+    return  render(request, 'users/orders/place_order_for_a_writer.html', context={
+        'form': form,
+        'writer_id': writer_id
     })
  
 class RateWriter(LoginRequiredMixin, FormView):
@@ -573,11 +618,16 @@ class RateWriter(LoginRequiredMixin, FormView):
 def bidding_order(request, order_uuid):
     form =   AdditionalFileForm()
     order_id = get_object_or_404(Order, order_uuid=order_uuid)
+    #order_id = Order.objects.get(order_uuid=order_uuid)
+    bid = order_id.bid_order.get(bidding_id=order_id)
+   
     
     return render(request, 'users/bids/bidding_detail.html', context={
         'bid':  order_id,
         'form': form,
-        'order': order_id.order_uuid
+        'order': order_id.order_uuid,
+        'bid_pk': bid.pk
+        
         })
 
 
@@ -592,7 +642,82 @@ def delete_uploaded_file(request, file_id):
 @login_required()
 def hired_writer(request, order_uuid):
     order_id = get_object_or_404(Order, order_uuid=order_uuid)
+    bid = order_id.bid_order.get(bidding_id=order_id)
+    print(bid.bidders.user_profile.full_name)
 
     return render(request, 'users/bids/hiredwriter.html', context={
-        'order': order_id.order_uuid
+        'order': order_id.order_uuid,
+        'bid_pk': bid.pk,
+        'bid_name' : bid
     })
+
+@login_required()
+def accept_bid_order(request):
+    bid_id = request.GET.get('bid_id')
+    order_uuid = request.GET.get('order_uuid')
+    bidding_id = get_object_or_404(Bids, pk=bid_id)
+    order = get_object_or_404(Order, order_uuid=order_uuid)
+
+    if request.user.wallet_balance.balance < bidding_id.amount:
+        from django.core.serializers.json import DjangoJSONEncoder
+        #from django.core.serializers import serializers
+        
+        request.session['bid_amount'] = json.dumps({'amount': bidding_id.amount}, cls=DjangoJSONEncoder)
+        request.session['order_uuid'] = json.dumps({'order_uuid': order_uuid}, cls=DjangoJSONEncoder)
+        request.session['bid_id'] = str(bidding_id)
+        data = {'insufficient_fund': False}
+        return JsonResponse(data)
+
+    else:
+        Bids.objects.filter(pk=bid_id).update(
+            approved=True,
+            in_progress=True
+        )
+        Order.objects.filter(order_uuid=order_uuid).update(
+            in_progress=True
+        )
+        data = {'insufficient_fund':  True}
+        return JsonResponse(data)
+
+
+@login_required()
+def download_assignment(request, order_uuid, bid_id):
+    order = get_object_or_404(Order, order_uuid=order_uuid)
+    bid = get_object_or_404(Bids, pk=bid_id)
+    download_file = AssignmentFiles.objects.filter(file_id=bid)
+
+    return render(request, 'users/bids/download_assignment.html', context={'files': download_file, 
+    'order': order.order_uuid,
+    'bid_pk': bid.pk })
+
+
+@login_required()
+def shortlist_a_bid_ajax(request):
+    if request.is_ajax():
+        bid_id = request.GET.get('bid_id')
+        Bids.objects.filter(pk=bid_id).update(shortlisted=True)
+        data = {'is_shortlisted': True}
+        
+        return JsonResponse(data)
+
+@login_required()
+def remove_from_shortlist_ajax(request):
+    if request.is_ajax():
+        bid_id = request.GET.get('bid_id')
+        Bids.objects.filter(pk=bid_id).update(shortlisted=False)
+        data = {'not_shortlisted': True}
+        return JsonResponse(data)
+   
+
+@login_required()
+def decline_a_bid_ajax(request):
+    if request.is_ajax():
+        bid_id = request.GET.get('bid_id')
+        order_uuid = request.GET.get('order_uuid', None)
+        print(order_uuid)
+        Bids.objects.filter(pk=bid_id).update(declined=True)
+        order_id = get_object_or_404(Order, order_uuid=order_uuid)
+        Offers.objects.filter(offer_id=order_id.pk).update(offers=F('offers') - 1)
+        data = {'declined': True}
+        return JsonResponse(data)
+   

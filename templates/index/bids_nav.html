@@ -4,13 +4,13 @@
            
 
             <li>
-                <a href="{% url 'customer:order_detail' order %} ">
+                <a href="{% url 'customer:view_bids' order %} ">
                     <span>All Bids</span>
                 </a>
             </li>
 
                 <li>
-                        <a href="{% url 'customer:bidding-order' order %}">
+                        <a href="{% url 'customer:order_detail' order %}">
                     
                         <span>Assignment details</span>
                         </a>
@@ -50,7 +50,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'customer:additional_files' order %}">
+                    <a href="{% url 'customer:additional_files' order  %}">
                         <span>Additional Files</span>
                     </a>
                 </li>       

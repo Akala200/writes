@@ -1,0 +1,55 @@
+
+<ul class="list">
+        <li class="header">Dashboard</li>
+        <li>
+            <a href="{% url 'writers:inprogress' bid_order %}" >
+                    <i class="material-icons">account_balance_wallet</i>
+                <span>Assignment Details</span>
+            </a>
+        </li>
+       
+        
+            <li>
+                    <a href="#" >
+                            <i class="material-icons">account_balance_wallet</i>
+                        <span>Messages</span>
+                    </a>
+            </li>
+    
+            <li>
+                <a href="#" >
+                        <i class="material-icons">account_balance_wallet</i>
+                    <span>Bid Detail</span>
+                </a>
+        </li>
+        <li >
+            <a href="#" data-toggle="modal" data-target="#paywriter" >
+                    <i class="material-icons">account_balance_wallet</i>
+                <span>Upload Assignment</span>
+            </a>
+    </li>
+    <li>
+            <a href="{% url 'writers:view_assignment'  bid_order %}" >
+                    <i class="material-icons">account_balance_wallet</i>
+                <span>View Assignment</span>
+            </a>
+    </li>
+    
+    </ul>
+    <div class="modal fade" id="paywriter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document" style="width: 400px;">
+              <div class="modal-content" style="padding: 20px;">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"> <span><i class="fas fa-exclamation-circle"></i></span>   Cancel order</h5>
+                </div>
+                <div class="modal-body">
+             
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn  btn-success col-lg-6">Submit</button>
+                  <button type="button" class="btn btn-secondary col-lg-6" data-dismiss="modal">Back</button>
+                </div>
+              </div>
+            </div>
+      
+          </div>

@@ -258,6 +258,7 @@ class Order(models.Model):
     style  = models.CharField(max_length=250, choices=style_choice, default='essay style')
     subject = models.CharField(max_length=250, choices=subject_choice, default='essay subject')
     level = models.CharField(max_length=250, choices=level_choice, default='essay level')
+    bid_placed = models.BooleanField(default=False)
     
 
     class Meta:
@@ -265,7 +266,7 @@ class Order(models.Model):
         
     
     def __str__(self):
-        return str(self.order_id)
+        return str(self.id)
 
     def get_absolute_url(self):
         return reverse('customer:order_detail',  kwargs= {'order_uuid': self.order_uuid})
@@ -312,7 +313,7 @@ class Offers(models.Model):
     offers = models.IntegerField(default=0)
 
     def __str__(self):
-        return str(self.offer_id)
+        return str(self.pk)
 
 
 

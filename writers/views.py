@@ -1,16 +1,19 @@
-from django.views.generic import CreateView, TemplateView, ListView, UpdateView
+from django.views.generic import CreateView, TemplateView, ListView, UpdateView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseBadRequest
 from django.urls import reverse_lazy, reverse
 from django.contrib import messages
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, resolve_url
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login , get_user_model, authenticate
 from django.contrib.auth.backends import ModelBackend
 from django.core.exceptions import ObjectDoesNotExist
+
+from customer.models import Wallet, WalletBalance, Order
  
-from .forms import WriterSignupForm, ProfileForm, EssayTestForm
-from .models import WritersProfile, Bids
+from .forms import WriterSignupForm, ProfileForm, EssayTestForm, UploadFile
+from .models import WritersProfile, Bids, AssignmentFiles
+
 
     
 
@@ -34,14 +37,16 @@ def signup(request):
         form =  WriterSignupForm()
         return render(request, 'writers/accounts/signup.html', context={'form': form })
 
-@login_required()
-def home(request):
-    return render(request, 'writersnew/intro.html')
 
-class AllOrders(LoginRequiredMixin, ListView):
+class Home(LoginRequiredMixin, TemplateView):
+    template_name = 'writersnew/intro.html'
+
+
+class AllBids(LoginRequiredMixin, ListView):
     template_name = 'writersnew/orders/all_orders.html'
     paginate_by = 5
     queryset = Bids
+    context_object_name = 'bids'
 
     def get_queryset(self):
         queryset = self.queryset.objects.filter(bidders=self.request.user)
@@ -131,3 +136,165 @@ def writer_profile_detail(request, writer_name):
     return render(request, '', context={
         'detail': writer_info 
     })
+
+
+
+@login_required()
+def view_transactions(request):
+    wallet = Wallet.objects.filter(wallet_id=request.user).order_by('-date')
+    wallet_balance = WalletBalance.objects.get(balance_id=request.user)
+    context = {'wallet': wallet, 'wallet_balance': wallet_balance}
+    
+    return render(request, 'writersnew/wallet/wallet.html', context=context)
+
+
+class  NewOrders(LoginRequiredMixin, ListView):
+    template_name = 'writersnew/orders/new_order.html'
+    queryset = Order
+    context_object_name = 'orders'
+
+    def get_queryset(self):
+        queryset = self.queryset.objects.filter(subject__in=self.request.user.user_profile.subject).exclude(in_progress=True).exclude(cancelled=True).exclude(
+            expired=True
+        ).order_by('-publication_date')
+        
+        return queryset
+ 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['bid_placed'] = False       
+       
+    
+        return context
+    
+
+def order_details(request, order_uuid):
+    order = Order.objects.get(order_uuid=order_uuid)
+    file = order.additional_filesc.filter(user=order)
+    
+   
+    return render(request, 'writersnew/orders/view_order_details.html', context={'bid': order, 
+    'files': file})
+
+
+class CompletedOrders(LoginRequiredMixin, ListView):
+    template_name = 'writersnew/orders/completed_order.html'
+    queryset = Bids
+    context_object_name = 'bids'
+
+    def get_queryset(self):
+        queryset = Bids.objects.filter(bidders=self.request.user, completed=True).order_by(
+            '-date_created'
+        )
+        return queryset 
+
+class ExpiredOrders(LoginRequiredMixin, ListView):
+    template_name = 'writersnew/orders/expired_order.html'
+    context_object_name = 'bids'
+    queryset = Bids
+
+    def get_queryset(self):
+        queryset =  Bids.objects.filter(bidders=self.request.user, expired=True).order_by(
+            '-date_created'
+        )
+        return queryset
+
+
+
+class CancelledOrders(LoginRequiredMixin, ListView):
+    template_name = 'writersnew/orders/cancelled.html'
+    context_object_name = 'bids'
+    queryset = Bids
+
+    def get_queryset(self):
+        queryset =  Bids.objects.filter(bidders=self.request.user, cancelled=True).order_by(
+            '-date_created'
+        )
+        return queryset
+
+
+
+class BidsProgress(LoginRequiredMixin, ListView):
+    template_name = 'writersnew/orders/in_progress.html'
+    context_object_name = 'bids'
+    queryset = Bids
+
+    def get_queryset(self):
+        queryset =  Bids.objects.filter(bidders=self.request.user, approved=True).order_by(
+            '-date_created'
+        )
+        return queryset
+
+@login_required()
+def place_a_bid(request, order_uuid):
+    order =  Order.objects.get(pk=order_uuid)
+    #order = get_object_or_404(Order, pk=order_uuid)
+    order.bid_placed = True
+    order.save()
+   
+    
+    Bids.objects.create(
+        bidding_id=order,
+        bidders=request.user,
+        amount=25.00,
+        
+    )
+    return redirect(reverse('writers:all_orders'))
+
+class BidInProgressDetaill(LoginRequiredMixin, DetailView):
+    queryset = Order
+    template_name = 'writersnew/orders/view_order_in_progress.html'
+    context_object_name = 'bid'
+
+    def get_object(self):
+        queryset = get_object_or_404(self.queryset, order_uuid=self.kwargs['pk'])
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context =  super().get_context_data(**kwargs)
+        context['files'] =  self.get_object().additional_filesc.filter(user=self.get_object())
+        context['bid_order'] = self.kwargs['pk']
+        context['bid_pk'] = get_object_or_404(Bids, bidding_id=self.get_object().pk)
+        return context
+
+class UploadedAssignmentFile(CreateView):
+    template_name=''
+    
+
+@login_required()
+def upload_assignment_file(request, bid_id):
+    url = request.META.get('HTTP_REFERRAL')
+    bid = get_object_or_404(Bids, pk=bid_id)
+    form = UploadFile(request.POST, request.FILES)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.file_id = bid
+        instance.save()
+        return redirect(resolve_url(url))
+    return redirect(resolve_url(url))
+
+class ViewAssignment(LoginRequiredMixin, ListView):
+    template_name = 'writersnew/orderS/view_files.html'
+    queryset = AssignmentFiles
+    context_object_name = 'files'
+
+    def get_queryset(self):
+        order =  get_object_or_404(Order, order_uuid=self.kwargs['pk'])
+        self.bid_id = get_object_or_404(Bids, bidding_id=order.pk)
+        
+        query = self.queryset.objects.filter(file_id=self.bid_id).order_by('-pk')
+        
+        return query
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['bid_order'] = self.kwargs['pk']
+        context['bid_pk'] = self.bid_id
+        return context
+
+@login_required()
+def delete_uploaded_file(request, file_id):
+    url = request.META.get('HTTP_REFERER')
+    AssignmentFiles.objects.filter(id=file_id).delete()
+    return redirect(resolve_url(url))

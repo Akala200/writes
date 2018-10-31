@@ -85,23 +85,16 @@
                                                 <div class="review-block-date">last seen {{ writer.profile_id.last_login|naturaltime }}</div>
                                                 {% endif %}
                                             </div>
-                                            <div class="col-sm-9">
-                                                <div class="review-block-rate">
-                                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                                    </button>
-                                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                                    </button>
-                                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                                    </button>
-                                                    <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                                    </button>
-                                                    <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                                    </button>
+                                            <div class="col-sm-9"> 
+                                                 <div class="row">
+                                                                        
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    </div>
+                                             
                                                     <div>
                                                         <h4>3.0</h4>
                                                     </div>
@@ -196,4 +189,13 @@
 </section>
 <!-- #END# Widgets -->
 <!-- CPU Usage -->
+
+
+<script src="{% static 'jsnew/pages/index.js' %}"></script>
+    
+<script src="{% static 'jsnew/pages/ui/tooltips-popovers.js' %}"></script>
+
+
+<!-- Demo Js -->
+<script src="{% static 'jsnew/demo.js' %}"></script>
     {% endblock content %}

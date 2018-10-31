@@ -6,7 +6,7 @@ from django.core.validators import ValidationError
 
 from allauth.account.forms import SignupForm
 
-from .models import WritersProfile
+from .models import WritersProfile, AssignmentFiles
 
 class WriterSignupForm(SignupForm):
 
@@ -70,3 +70,9 @@ class EssayTestForm(forms.Form):
         if len(self.cleaned_data['test']) == 250:
             raise ValidationError('Too Short')
         return self.cleaned_data['test']
+        
+
+class UploadFile(forms.ModelForm):
+    class Meta:
+        model = AssignmentFiles
+        exclude = ('file_id',)

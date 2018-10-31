@@ -40,6 +40,8 @@
       <!-- Custom Css -->
       <link href="{% static 'cssnew/style.css' %}" rel="stylesheet">
       <link href="{% static 'cssnew/rating.css' %}" rel="stylesheet">
+      <script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+  
   
       <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
       <link href="{% static 'cssnew/themes/all-themes.css' %}" rel="stylesheet" >
@@ -88,7 +90,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="{% url 'customer:index' %}">ESSAY KITTEN</a>
+                <a class="navbar-brand" href="{% url 'home' %}">ESSAY KITTEN</a>
             </div>    
         </div>
     </nav>

@@ -14,6 +14,12 @@ class PaymentForm(forms.Form):
         'class': 'form-control',
     }))
 
+    def clean(self):
+        cleaned_data = super().clean()
+        if self.initial != {}:
+            return self.initial
+        return cleaned_data
+
 
 class RateForm(forms.Form):
     rate = forms.IntegerField(widget=forms.TextInput(attrs={

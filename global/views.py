@@ -11,7 +11,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.exceptions import ObjectDoesNotExist
 
 
-from writers.models import WritersProfile, Rating
+from writers.models import WritersProfile, Rating, Bids
+from customer.models import Order
 
 
 
@@ -89,7 +90,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
         try:
             self.request.user.user_profile.is_writer
         except ObjectDoesNotExist:
-            from customer.models import Order
+            
             order = Order.objects.filter(order_id=self.request.user).all()
 
             paginate = Paginator(order, 10)
@@ -104,7 +105,10 @@ class HomeView(LoginRequiredMixin, TemplateView):
             
         else:
             from writers.models import WritersProfile
-            context['writers'] = WritersProfile.objects.all()
+            context['bids'] = Bids.objects.filter(bidders=self.request.user).order_by('-date_created')
+            for bid in context['bids']:
+                print(bid.date_created)
+                print(bid.bidding_id.order_uuid)
 
             
 

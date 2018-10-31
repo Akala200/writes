@@ -10,18 +10,7 @@
 
     <section class="content">
         <div class="container-fluid">
-            <div class="row clearfix">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="info-box bg-orange hover-expand-effect">
-                            <div class="icon">
-                             <a href="{% url 'customer:update_order' bid.order_uuid %}"><i class="material-icons">mode_edit</i></a>
-                            </div>
-                            <div class="content">
-                                <div class="text">Edit Assignment</div>
-                            </div>
-                        </div>
-        </div>
-        </div>
+          
             <!-- Example Tab -->
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -32,8 +21,7 @@
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
                                 <li role="presentation" class="active"><a href="#home" data-toggle="tab">ORDER DETAILS</a></li>
                                 <li role="presentation"><a href="#profile" data-toggle="tab">DESCRIPTIONS</a></li>
-                                <li role="presentation"><a href="#messages" data-toggle="tab" disabled>MESSAGES HIRED WRITER</a></li>
-                                <li role="presentation"><a href="#upload" data-toggle="tab">UPLOAD ADDITIONAL FILE</a></li>
+                                
 
 
 
@@ -121,67 +109,9 @@
                                 </div>
 
                                 
-                                <div role="tabpanel" class="tab-pane fade" id="messages">
-                                        <div class="media">
-                                                <div class="media-left">
-                                                    <a href="javascript:void(0);">
-                                                        <img class="media-object" src="http://placehold.it/64x64" width="64" height="64">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="media-heading">Media heading</h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                                                    ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra
-                                                    turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis
-                                                    in faucibus.
-                                                </div>
-                                            </div>
-                                            <div class="media">
-                                                    <div class="media-body">
-                                                        <h4 class="media-heading">Media heading</h4> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                                                        ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra
-                                                        turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis
-                                                        in faucibus.
-                                                    </div>
-                                                    <div class="media-left">
-                                                            <a href="javascript:void(0);">
-                                                                <img class="media-object" src="http://placehold.it/64x64" width="64" height="64">
-                                                            </a>
-                                                        </div>
-                                                </div>
-                                                <div class="row clearfix">
-                                                        <div class="col-sm-12">
-                                                            <div class="form-group">
-                                                                <div class="form-line">
-                                                                    <textarea rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="button-demo">
-                                                            <button type="button" class="btn btn-success waves-effect">SEND MESSAGE</button>
-                                                        </div>
-                                </div>
 
-                                <div role="tabpanel" class="tab-pane fade" id="upload">
-                                    <b>Add additional file</b>
-                                    <form action="{% url 'customer:add_files'  bid.order_uuid %}" method="POST" enctype="multipart/form-data">
-                                        {% csrf_token %}
-                                    <div class="custom-file row">
-                                            <div class="col-lg-12">
-                                                    {{ form.file_upload }}
-                                                </div>
-                                                <div class="col-lg-12">
-                                                        <button type="submit" class="btn btn-primary" >
-                                                                Upload
-                                                        </button>
-                                                       
 
-                                                </div>
-                                                
-                                    </div>
-                                    </form>
-                                            
-                                </div>
+        
 
                                 
                 
