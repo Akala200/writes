@@ -37,6 +37,20 @@ def signup(request):
         form =  WriterSignupForm()
         return render(request, 'writers/accounts/signup.html', context={'form': form })
 
+<<<<<<< HEAD:writers/views.py
+=======
+    def post(self, request, kwargs):
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save(commit=False) 
+            email = form.cleaned_data['email']
+            full_name = form.cleaned_data['full_name']
+            self.mail_site_admins()
+            request.session['success'] = True
+            form.save()
+        else:
+            return form
+>>>>>>> bc7096aeb3e579581087bf86975386068f4fba7f:writers/2.py
 
 class Home(LoginRequiredMixin, TemplateView):
     template_name = 'writersnew/intro.html'
