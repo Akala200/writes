@@ -1,0 +1,132 @@
+{% extends 'index/base.html' %}
+{% block content %}
+    <section class="content">
+        <div class="container-fluid">
+            
+            <!-- Basic Examples -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="body">
+                     
+             <!-- Basic Table -->
+             <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                               All Bids
+                                
+                            </h2>
+                            
+                        </div>
+                        <div class="body table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Topic</th>
+                                        <th>Deadline</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="#"></a>734687</td>
+                                        <td>Economics</td>
+                                        <td>20/09/2018</td>
+                                        <td><span class="badge" style="font-size:14px; background-color: grey;">Expired</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    ACTION <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="javascript:void(0);"><span>
+                                                            <div class="demo-google-material-icon"><i class="material-icons">insert_drive_file</i> <span class="icon-name"></span></div>
+                                                    </span>View Order</a></li>
+                          
+                                                </ul>
+                                            </div>
+                    
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#"></a>734687</td>
+                                        <td>Economics</td>
+                                        <td>20/09/2018</td>
+                                        <td> <span class="badge bg-orange" style="font-size: 14px;">Bid Accepted</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        ACTION <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="javascript:void(0);"><span>
+                                                                <div class="demo-google-material-icon"><i class="material-icons">insert_drive_file</i> <span class="icon-name"></span></div>
+                                                        </span>View Order</a></li>
+                              
+                                                    </ul>
+                                                </div>
+                
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#"></a>734687</td>
+                                        <td>Economics</td>
+                                        <td>20/09/2018</td>
+                                        <td><span class="badge bg-cyan waves-effect" style="font-size:14px;">New Bids <span class="badge">1</span></span>
+                                        </td>
+                                        <td><button class="btn btn-primary waves-effect" data-type="prompt">Place Order</button>
+
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#"></a>734687</td>
+                                        <td>Economics</td>
+                                        <td>20/09/2018</td>
+                                        <td><span class="badge bg-green" style="font-size:14px;">Completed</span></td>                                                
+                                        <td>
+                                            <div class="btn-group">
+                                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        ACTION <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="javascript:void(0);"><span>
+                                                            <div class="demo-google-material-icon"><i class="material-icons">insert_drive_file</i> <span class="icon-name"></span></div>
+                                                    </span>View Order</a></li>
+                                                    </ul>
+                                                </div>
+                
+                                    </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <nav>
+                            <ul class="pagination">
+                                <li class="disabled">
+                                    <a href="javascript:void(0);">
+                                        <i class="material-icons">chevron_left</i>
+                                    </a>
+                                </li>
+                                <li class="active"><a href="javascript:void(0);">1</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">2</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">3</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">4</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">5</a></li>
+                                <li>
+                                    <a href="javascript:void(0);" class="waves-effect">
+                                        <i class="material-icons">chevron_right</i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Basic Table -->
+        </div>
+    </section>
+
+   {% endblock content %}

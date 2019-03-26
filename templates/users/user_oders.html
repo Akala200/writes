@@ -1,0 +1,144 @@
+{% extends 'index/base.html'}
+{% block content %}
+ 
+             <section class="content">
+                    
+                    <div class="container-fluid">
+                            <div class="block-header">
+                                <h2>DASHBOARD</h2>
+                            </div>
+                            {% include 'users/header.html' %}
+                
+                            <!-- Widgets -->
+    
+                            </div>
+                        
+        <div class="container-fluid">
+            
+            <!-- Basic Examples -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="body">
+                     
+            <!-- Exportable Table -->
+            <div class="row clearfix">
+                   
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                                <h2>
+                                  ALL ORDERS
+                                </h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                    
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable js-sweetalert">
+                                        
+                                    <thead>
+                                        <tr>
+                                            <th>ORDER ID</th>
+                                            <th>TOPIC</th>
+                                            <th>DEADLINE</th>
+                                            <th>STATUS</th>
+                                            <th>ACTION</th>
+                                        </tr>
+                                    </thead>
+                                   
+                                    <tbody>
+                                            
+                                        
+                                           
+                                                    {% for order in orders %}
+                                                    <tr>
+                                                    <td><a href="#"></a>{{order.order_uuid }}</td>
+                                                    <td>{{ order.topic }}</td>
+                                                    <td>{{ order.deadline }}</td>
+                                                    {% if order.completed %}
+                                                    <td><span class="badge" style="font-size:16px; background-color: green;">Completed</span></td>                                                
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary">
+                                                     <i class="material-icons">file_download</i> <span class="icon-name"></span>Download</button>
+                                                    </td>
+                                                   
+                                                   
+
+                                                                {% elif order.cancelled %}
+                                                                <td><span class="badge" style="font-size:16px; background-color: #F44336;">Cancelled</span></td>
+                                                                <td>
+                                                                        <div class="btn-group">
+                                                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                    ACTION <span class="caret"></span>
+                                                                                </button>
+                                                                                <ul class="dropdown-menu">
+                                                                                    <li><a href="javascript:void(0);">
+                                                                                            <div class="demo-google-material-icon"> <i class="material-icons">autorenew</i> <span class="icon-name"></span> </div>Resubmit</a></li>
+                                                                                </ul>
+                                                                            </div>
+                                            
+                                                                </td>
+
+                                                        {% elif order.expired %}
+                                                            
+                                                                <td><span class="badge" style="font-size:16px; background-color: grey;">Expired</span></td>
+                                                                <td>
+                                                                        <div class="btn-group">
+                                                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                    ACTION <span class="caret"></span>
+                                                                                </button>
+                                                                                <ul class="dropdown-menu">
+                                                                                    <li><a href="javascript:void(0);">
+                                                                                            <div class="demo-google-material-icon"> <i class="material-icons">autorenew</i> <span class="icon-name"></span> </div>Resubmit</a></li>
+                                                                                </ul>
+                                                                            </div>
+                                            
+                                                                </td>
+                                                            {% else %}
+                                                            <td><button class="btn bg-cyan waves-effect" type="button">Offer <span class="badge">99+</span></button>                                                            </td>
+                                                            <td>
+                                                                    <div class="btn-group">
+                                                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                ACTION <span class="caret"></span>
+                                                                            </button>
+                                                                            <ul class="dropdown-menu">
+                                                                                <li><a href="javascript:void(0);"><span>
+                                                                                        <div class="demo-google-material-icon"> <i class="material-icons">account_circle</i> <span class="icon-name"></span></div>
+                                                                                </span>Assign Writer</a></li>
+                                                                                <li><a href="javascript:void(0);"  data-type="confirm">
+                                                                                        <div class="demo-google-material-icon"> <i class="material-icons">highlight_off</i> <span class="icon-name"></span></div>Cancel</a></li>
+                                                                            </ul>
+                                                                        </div>
+                                        
+                                                            </td>
+                                                            {% endif %}
+                                                        </tr>
+                                                            
+                                                            {% endfor %}
+                                               
+                                                
+                                             
+                                    </tbody>
+                                   
+                                
+                                </table>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           
+            </div>
+            <!-- #END# Exportable Table -->
+        </div>
+        </div>
+        
+    </section>
+            <!-- #END# Widgets -->
+            <!-- CPU Usage -->
+           
+               
+      {% endblock content}
+     
+        </nav>
+   

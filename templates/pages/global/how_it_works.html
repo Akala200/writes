@@ -1,0 +1,110 @@
+
+{% extends "base.html" %}
+
+{% load  static %}
+
+{% block content %}
+
+
+
+
+ <header class="masthead how-to-order text-center text-white d-flex">
+    <div class="container my-auto">
+            <h1>Order an Essay at EssayPro</h1>
+            <hr>
+            <p>Our essay writing service employs hundreds of qualified essay writers who specialize in different subject areas. It allows us to create a wide variety of papers on any topic and always achieve a good result. We also guarantee fast delivery 100% plagiarism free content, protection of your personal information, and low-cost and flawless quality!</p>
+    </div>
+  </header>
+
+
+  <section class="interior_area interior_two"  style="background-color: #fbfbfb;">
+    <div class="container">
+        <div class="interior_inner row">
+                <div class="col-lg-6">
+                        <img class="img-fluid" src="{% static 'img/interior.gif' %}" alt="">
+                    </div>
+            <div class="col-lg-5 offset-lg-1">
+                <div class="interior_text">
+                    <h4><span>Step One:</span> Place an order online</h4>
+                    <p>Once you have created your account at EssayPro, simply submit the assignment details such as topic, the number of pages, different sources needed, formatting style, and order deadline. It is also possible to upload any additional files to further help the essay writer with the task and imitating your writing style.                        </p>
+                    <a class="main_btn" href="{% url 'account_signup' %}">Start Now</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+
+    <section class="interior_area"  style="background-color: #fff;">
+        <div class="container">
+            <div class="interior_inner row">
+                <div class="col-lg-6">
+                    <img class="img-fluid" src="{% static 'img/wrok.gif' %}" alt="">
+                </div>
+                <div class="col-lg-5 offset-lg-1">
+                    <div class="interior_text">
+                        <h4><span>Step Two:</span> Assign/Discuss With writer</h4>
+                        <p>Pick a writer's bid that suits you best according to price, rating, number of orders completed by author, job completion, rate and customer reviews. We recommend choosing a writer that specializes in your particular essay subject.</p>
+                        <a class="main_btn" href="{% url 'account_signup' %}">Start Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="interior_area interior_two">
+            <div class="container">
+                <div class="interior_inner row">
+                        <div class="col-lg-6">
+                                <img class="img-fluid" src="{% static 'img/download2.gif' %}" alt="">
+                            </div>
+                    <div class="col-lg-5 offset-lg-1">
+                        <div class="interior_text">
+                            <h4><span>Step Three:</span>Download</h4>
+                            <p>You will either receive an email or SMS when the order is ready to download. Make sure you are completely satisfied with the paper and check all the content.</p>
+                            <a class="main_btn" href="{% url 'account_signup' %}">Start Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+   <!--================Interior Area =================-->
+   <section class="interior_area interior_two">
+    <div class="container">
+        <div class="interior_inner row">
+                <div class="col-lg-6">
+                        <img class="img-fluid" src="{% static 'img/pay.gif' %}" alt="">
+                    </div>
+            <div class="col-lg-5 offset-lg-1">
+                <div class="interior_text">
+                    <h4><span>Step Four:</span>Pay Writer</h4>
+                    <p>Make sure you are completely satisfied with the paper and check all the content. Then, kindly pay the writer for their excellent service.</p>
+                    <a class="main_btn" href="{% url 'account_signup' %}">Start Now</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<section class="interior_area">
+    <div class="container">
+        <div class="interior_inner row">
+            <div class="col-lg-6">
+                <img class="img-fluid" src="{% static 'img/rate.gif' %}" alt="">
+            </div>
+            <div class="col-lg-5 offset-lg-1">
+                <div class="interior_text">
+                    <h4><span>Step Five:</span>Rate And Review Writer</h4>
+                    <p> If you want to help others and the writer, please leave them an amazing review!</p>
+                    <a class="main_btn" href="{% url 'account_signup' %}">Start Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

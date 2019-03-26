@@ -1,0 +1,323 @@
+{% extends 'index/base.html' %}
+{% load humanize %} 
+{% load static %}
+{% block navbar %}
+<style>
+.checked{
+    color: gold;
+}
+</style>
+<div  class="menu">
+        {% include 'index/assignment_nav.html' %}
+
+</div>
+{% endblock %}
+{% block content %}
+
+             <section class="content">
+                    <div class="container-fluid">
+                            <div class="block-header">
+                            </div>
+                
+                            <!-- Widgets -->
+                        
+        <div class="container-fluid">
+                     
+            <!-- Exportable Table -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                                <h2>
+                                  All Bids
+                                </h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                    <div class="row">
+                                        <div>
+                                            <div class="col-sm-9">
+                                                <hr/>
+                                                <div class="review-block">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <img src="{% static 'images/user.png' %}" class="img-rounded">
+                                                            <div class="review-block-name"><a href="#">{{ bid_name.bidders.user_profile.full_name }}</a></div>
+                                                            {% if writer.profile_id.login_status %}
+                                                            <div class="review-block-date">Online</div>
+                                                            {% else %}
+                                                            <div class="review-block-date">last-seen {{ bid_name.bidders.user_profile.profile_id.last_login|naturaltime }}</div>
+                                                            {% endif %}
+                                                        </div>
+                                                        <div class="col-sm-9">
+                                                                <div class="row">
+                                                                        
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                </div>
+                                                                <div class="row" style="margin-top: 10px;">
+                                                                    <h4 class="col-lg-1 col-md-1 col-sm-1 col-xs-1">3.0</h4>
+                                                                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">                  
+                                                                            <a href="#" style="padding: 7px 7px 2px 7px; margin-left: 14px; position: relative;display: block;">
+                                                                                 <i class="material-icons">textsms</i>
+                                                                                    <span class="label-count" style="
+                                                                                    color: #fff;
+                                                                                    background-color: blue;
+                                                                                ">7</span>
+                                                                            </a>
+                                                                        </div>
+
+                                                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">                  
+                                                                            <a href="#" style="padding: 7px 7px 2px 7px; margin-left: 14px; position: relative;display: block;">
+                                                                                <span class="badge bg-teal">$ {{ bid_name.amount }}</span>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">                  
+                                                                                <a href="#" style="padding: 7px 7px 2px 7px; margin-left: 14px; position: relative;display: block;">
+                                                                                        <span class="badge bg-teal">In Progress</span>
+                                                                                </a>
+                                                                            </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            <div class="review-block-description row">
+                                                                <div class="col-lg-3 col-md-3">
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;" data-toggle="tooltip" data-placement="top" title="Completion Rate">
+                                                                        75%
+                                                                        </div>                                  
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-3 col-md-3"><b>450 Orders Completed</b></div>
+                                                                <div class="col-lg-3 col-md-3"><b>450 Reviews</b></div>
+                                                                <div class="col-lg-3 col-md-3">
+                                                                       
+                                                                        <div class="btn-group">
+                                                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                    ACTION <span class="caret"></span>
+                                                                                </button>
+                                                                                <ul class="dropdown-menu">
+                                                                                        <li><a href="#" data-toggle="modal" data-target="#paywriter">  
+                                                                                        <div class="demo-google-material-icon"><i class="material-icons">attach_money</i> <span class="icon-name"></span></div>
+                                                                                            Pay Writer</a></li>
+                                                                                    <li><a href="#" data-toggle="modal" data-target="#endcontract">
+                                                                                            <div class="demo-google-material-icon"> <i class="material-icons">content_paste</i> <span class="icon-name"></span></div>                       
+                                                                                            End Contract</a>
+                                                                                    </li>
+                                                                                        <li><a href="#"  data-toggle="modal" data-target="#cancelcontrac"> 
+                                                                                                <div class="demo-google-material-icon"> <i class="material-icons">highlight_off</i> <span class="icon-name"></span></div>
+                                                                                            Cancel Contract</a>
+                                                                                        </li>
+                                                                                        <li><a href="#" data-toggle="modal" data-target="#rating"> 
+                                                                                                <div class="demo-google-material-icon"><i class="material-icons">grade</i><span class="icon-name"></span></div>
+                                                                                            Rate Writer</a>
+                                                                                        </li>
+                                                                                        {% if bid.name.bidders.user_profile.profile_id.favorite_writer.is_fav  %}
+                                                                                        <li><a href="{% url 'customer:add_to_favorite' bid_name.bidders.user_profile.pk %}">
+                                                                                            <div class="demo-google-material-icon"> <i class="material-icons">thumb_up</i> <span class="icon-name"></span> </div>
+                                                                                            Add To Favorite</a>
+                                                                                        {% else %}
+                                                                                        <li><a href="{% url 'customer:remove_from_favorite' bid_name.bidders.user_profile.pk %}">
+                                                                                            <div class="demo-google-material-icon"> <i class="material-icons">thumb_up</i> <span class="icon-name"></span> </div>
+                                                                                            Remove from Favorite</a>
+                                                                                            {% endif %}
+
+                                                                                        </li>
+                                                                                        <li><a href="{% url 'customer:place_order_for_a_writer'  bid_name.bidders.user_profile.pk %}"> 
+                                                                                                <div class="demo-google-material-icon"><i class="material-icons">person_add</i><span class="icon-name"></span></div>
+                                                                                            Place Order</a>
+                                                                                        </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <hr/>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Exportable Table -->
+        </div>
+    </section>
+      <!-- Default Size -->
+      <div class="modal fade" id="rating" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Rate Writer</h4>
+                    </div>
+                    <div class="modal-body">
+                           {{ form.rate }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link waves-effect">SAVE RATING</button>
+                        <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CANCEL</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="paywriter" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="defaultModalLabel">Place Payment</h4>
+                    </div>
+                    <div class="modal-body">
+                            <form>
+                                    <div class="form-group">
+                                      <label for="price">Price: $</label>
+                                      <input type="text" class="form-control" name="price" value="400">
+                                    </div>
+                              
+                                    <div class="form-group">
+                                      <label for="quantity">
+                                        Percentage
+                                        <span class="label label-primary quantity-label">1</span>
+                                      </label>
+                                      <input type="range" class="form-control" name="quantity" value="1" min="1" max="100" step="1">
+                                    </div>
+
+                                  </form>
+                              
+                                  <div class="text-right text-giant total label label-success" style="font-size: 18px;"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success waves-effect">PLACE PAYMENT</button>
+                        <button type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">CANCEL</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="modal fade" id="endcontract" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="defaultModalLabel">Place Payment</h4>
+                        </div>
+                        <div class="modal-body">
+                                <form>
+                                        <div class="form-group">
+                                          <label for="price">Price: $</label>
+                                          <input type="text" class="form-control" name="price1" value="400">
+                                        </div>
+                                  
+                                        <div class="form-group">
+                                          <label for="quantity">
+                                            Percentage
+                                            <span class="label label-primary quantity-label1">1</span>
+                                          </label>
+                                          <input type="range" class="form-control" name="quantity1" value="1" min="1" max="100" step="1">
+                                        </div>
+    
+                                      </form>
+                                  
+                                      <div class="text-right text-giant total1 label label-success" style="font-size: 18px;"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success waves-effect">END CONTRACT</button>
+                            <button type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">CANCEL</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Widgets -->
+            <!-- CPU Usage -->
+            
+        <div class="modal fade" id="cancelcontrac" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="defaultModalLabel">Place Payment</h4>
+                        </div>
+                        <div class="modal-body">
+                                <form>
+                                        <div class="form-group">
+                                          <label for="price">Price: $</label>
+                                          <input type="text" class="form-control" name="price2" value="400">
+                                        </div>
+                                  
+                                        <div class="form-group">
+                                          <label for="quantity">
+                                            Percentage
+                                            <span class="label label-primary quantity-label2">1</span>
+                                          </label>
+                                          <input type="range" class="form-control" name="quantity2" value="1" min="1" max="100" step="1">
+                                        </div>
+    
+                                      </form>
+                                  
+                                      <div class="text-right text-giant total2 label label-success" style="font-size: 18px;"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success waves-effect">END CONTRACT</button>
+                            <button type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">CANCEL</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+   
+    <!-- Custom Js -->
+    <script src="{% static 'jsnew/admin.js' %}"></script>
+    <script src="{% static 'jsnew/slider.js' %}"></script>
+    <script src="{% static 'jsnew/endcontrac.j' %}s"></script>
+    <script src="{% static 'jsnew/cancelcontrac.js' %}"></script>
+    <script src="{% static 'jsnew/ratin.js' %}"></script>
+
+
+
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+
+    <script>
+     //Variables from HTML
+var priceInput = document.querySelector('[name=price]');
+var quantityInput = document.querySelector('[name=quantity]');
+var total = document.querySelector('.total');
+var quantityLabel = document.querySelector('.quantity-label');
+//Functions   
+function calculateCost() {
+  var price = priceInput.value;
+  var quantity = quantityInput.value;
+  var cost = price * quantity /100;
+  console.log(cost);
+  total.innerText = '$' + cost.toFixed(2);
+}
+
+function updateQuantityLabel() {
+  var quantity = quantityInput.value;
+  quantityLabel.innerText = quantity;
+}
+
+calculateCost();
+
+//Event Listeners     
+priceInput.addEventListener('input', calculateCost);
+quantityInput.addEventListener('input', calculateCost);
+quantityInput.addEventListener('input', updateQuantityLabel);
+
+    </script>
+
+
+    <script src="{% static 'jsnew/pages/index.js' %}"></script>
+    
+    <script src="{% static 'jsnew/pages/ui/tooltips-popovers.js' %}"></script>
+
+
+    <!-- Demo Js -->
+    <script src="{% static 'jsnew/demo.js' %}"></script>
+{% endblock content %}

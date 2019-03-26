@@ -1,0 +1,298 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block content %}
+<!-- MAIN CONTENT-->
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="overview-wrap">
+       
+                        <h2 class="title-1">All Orders
+                
+                            </h2>
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <li>{% if message.tags %}
+                                    {{ message }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                            {% if not orders %}
+                            <div class="col-lg-12 text-center" style="margin-top: 160px">
+                                <button class="au-btn au-btn-icon au-btn--blue">
+                                    <i class="zmdi zmdi-plus"></i>Place New Order
+                                 </button>
+                                </div>
+                            {% else %}
+
+                      
+                        <button class="au-btn au-btn-icon au-btn--blue">
+                            <i class="zmdi zmdi-plus"></i>Place New Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+             <div class="table-responsive table-responsive-data2" style="margin-top: 65px;">
+                            <table class="table table-data2">
+                                <thead>
+                                    <tr>
+                                        <th>Orders</th>
+                                        <th>Topic</th>
+                                        <th>Date</th>
+                                        <th>Offers</th>
+                                        <th>notification</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+ 
+                                    {% for order in orders %}
+                                    
+                                    <tr class="tr-shadow">
+                                    <td><a href="{{ order.get_absolute_url  }}">{{order.order_uuid }}</a></td>
+                                        
+                                    <td class="desc">{{ order.topic }}</td>
+                                    <td>{{ order.deadline }}</td>
+                                    <td>
+                                        {% if order.completed %}
+                                        <h4><span class="badge badge-success">Completed</span></h4>
+                                        </td>
+                                        <td>
+                                                <div class="noti__item js-item-menu">
+                                                    <i class="zmdi zmdi-email"></i>
+                                                            <span class="quantity">65</span>
+                                                            <div class="email-dropdown js-dropdown">
+                                                                <div class="email__title">
+                                                                    <p>You have 3 New Emails</p>
+                                                                </div>
+                                                                <div class="email__item">
+                                                                    <div class="image img-cir img-40">
+                                                                        <img src="{% static 'images/icon/avatar-06.jpg' %}" alt="Cynthia Harvey" />
+                                                                    </div>
+                                                                    <div class="content">
+                                                                        <p>Meeting about new dashboard...</p>
+                                                                        <span>Cynthia Harvey, 3 min ago</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="email__item">
+                                                                    <div class="image img-cir img-40">
+                                                                        <img src="{% static 'images/icon/avatar-05.jpg' %}" alt="Cynthia Harvey" />
+                                                                    </div>
+                                                                    <div class="content">
+                                                                        <p>Meeting about new dashboard...</p>
+                                                                        <span>Cynthia Harvey, Yesterday</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="email__item">
+                                                                    <div class="image img-cir img-40">
+                                                                        <img src="{% static 'images/icon/avatar-04.jpg' %}" alt="Cynthia Harvey" />
+                                                                    </div>
+                                                                    <div class="content">
+                                                                        <p>Meeting about new dashboard...</p>
+                                                                        <span>Cynthia Harvey, April 12,,2018</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="email__footer">
+                                                                    <a href="#">See all emails</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                            </td>
+                                        <td>
+                                                <div class="table-data-feature">
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn btn-success">
+                                                         Download File
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            {% elif order.cancelled %}
+                                        
+                                            <td>
+                                                <h4><span class="badge badge-danger">Cancelled</span></h4>
+                                            </td>
+                                            <td>
+                                                    <div class="noti__item js-item-menu">
+                                                        <i class="zmdi zmdi-email"></i>
+                                                                <span class="quantity">65</span>
+                                                                <div class="email-dropdown js-dropdown">
+                                                                    <div class="email__title">
+                                                                        <p>You have 3 New Emails</p>
+                                                                    </div>
+                                                                    <div class="email__item">
+                                                                        <div class="image img-cir img-40">
+                                                                            <img src="{% static 'images/icon/avatar-06.jpg' %}" alt="Cynthia Harvey" />
+                                                                        </div>
+                                                                        <div class="content">
+                                                                            <p>Meeting about new dashboard...</p>
+                                                                            <span>Cynthia Harvey, 3 min ago</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="email__item">
+                                                                        <div class="image img-cir img-40">
+                                                                            <img src="{% static 'images/icon/avatar-05.jpg' %}" alt="Cynthia Harvey" />
+                                                                        </div>
+                                                                        <div class="content">
+                                                                            <p>Meeting about new dashboard...</p>
+                                                                            <span>Cynthia Harvey, Yesterday</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="email__item">
+                                                                        <div class="image img-cir img-40">
+                                                                            <img src="{% static 'images/icon/avatar-04.jpg' %}" alt="Cynthia Harvey" />
+                                                                        </div>
+                                                                        <div class="content">
+                                                                            <p>Meeting about new dashboard...</p>
+                                                                            <span>Cynthia Harvey, April 12,,2018</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="email__footer">
+                                                                        <a href="#">See all emails</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                </td>
+                                            <td>
+                                                 <div class="table-data-feature">
+                                                        <div class="dropdown">
+                                                                <div class="dropdown">
+                                                                    <button type="submit" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                                         Action
+                                                                        
+                                                                        <div class="dropdown-menu">
+                                                                        <a class="dropdown-item" href="{% url 'customer:resubmit_order' order.order_uuid %}"><span><i class="fas fa-redo-alt"></i></span>Resubmit Order</a>
+                                                                        </div>
+                                                                    </button>
+
+                                                            </div>
+                                                    </div>
+                                                    </div>
+                                            </td>
+                                            {% elif order.expired %}
+
+                                            <td>
+                                                <h4><span class="badge badge-default" style="background-color:  grey;">Expired</span></h4>
+                                            </td>
+                                            <td>
+                                                    <div class="table-data-feature">
+                                                        <div class="dropdown">
+                                                            <button type="submit" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                             Action
+                                                            </button>
+                                                            <div class="dropdown-menu">
+                                                                <a class="dropdown-item" href="{% url 'customer:resubmit_order' order.order_uuid %}"><span><i class="fas fa-redo-alt"></i></span>Resubmit Order</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                        {% else %}
+                                        <td>
+                                            <h4><span class="badge badge-warning" style="background-color:  #BCDCEB !important;">offers 45</span></h4>
+                                            </td>
+                                            <td>
+                                                    <div class="noti__item js-item-menu">
+                                                        <i class="zmdi zmdi-email"></i>
+                                                                <span class="quantity">65</span>
+                                                                <div class="email-dropdown js-dropdown">
+                                                                    <div class="email__title">
+                                                                        <p>You have 3 New Emails</p>
+                                                                    </div>
+                                                                    <div class="email__item">
+                                                                        <div class="image img-cir img-40">
+                                                                            <img src="{% static 'images/icon/avatar-06.jpg' %}" alt="Cynthia Harvey" />
+                                                                        </div>
+                                                                        <div class="content">
+                                                                            <p>Meeting about new dashboard...</p>
+                                                                            <span>Cynthia Harvey, 3 min ago</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="email__item">
+                                                                        <div class="image img-cir img-40">
+                                                                            <img src="{% static 'images/icon/avatar-05.jpg' %}" alt="Cynthia Harvey" />
+                                                                        </div>
+                                                                        <div class="content">
+                                                                            <p>Meeting about new dashboard...</p>
+                                                                            <span>Cynthia Harvey, Yesterday</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="email__item">
+                                                                        <div class="image img-cir img-40">
+                                                                            <img src="{% static 'images/icon/avatar-04.jpg' %}" alt="Cynthia Harvey" />
+                                                                        </div>
+                                                                        <div class="content">
+                                                                            <p>Meeting about new dashboard...</p>
+                                                                            <span>Cynthia Harvey, April 12,,2018</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="email__footer">
+                                                                        <a href="#">See all emails</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                </td>
+                                            <td>
+                                                    <div class="table-data-feature">
+                                                        <div class="dropdown">
+                                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                             Action
+                                                            </button>
+                                                            <div class="dropdown-menu">
+                                                                <a class="dropdown-item" href="{% url 'customer:assign_writers' %}"><span><i class="fas fa-user-plus"></i></span>        Assign A Writer</a>
+                                                                <button class="dropdown-item" data-toggle="modal" data-target="#cancel"><span><i class="far fa-times-circle"></i></span>Cancel</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                
+                                                {% endif %}
+                                                
+                     
+                                    </tr>
+                                    {% endfor %}
+                                    {% endif %}
+                                </tbody>
+                               
+                              
+                            </table>
+                        </div>
+                        <!-- END DATA TABLE -->
+        </div>
+    </div>
+</div>
+
+{% for order in orders %}
+<div class="modal fade" id="cancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="width: 400px;">
+          <div class="modal-content" style="padding: 20px;">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"> <span><i class="fas fa-exclamation-circle"></i></span>   Cancel order</h5>
+            </div>
+            <div class="modal-body">
+              <form action="{% url  'customer:cancel_an_order' order.order_uuid %}" method="POST">
+                  {% csrf_token %}
+                <div class="form-group">
+                        {{ form.reason }}
+                  </div>
+                <div class="form-group">
+                  {{ form.comment }}
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn  btn-success col-lg-6">Submit</button>
+              <button type="button" class="btn btn-secondary col-lg-6" data-dismiss="modal">Back</button>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    {% endfor %}
+<!-- END MAIN CONTENT-->
+
+{% endblock content %}

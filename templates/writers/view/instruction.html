@@ -1,0 +1,71 @@
+
+{% extends 'writers/view/base.html' %}
+{% load static %}
+{% block content %}
+
+        <div class="content mt-3">
+
+            <div class="row">
+                    <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                </div>
+                                <div class="card-body">
+                                    <div class="mx-auto d-block">
+                                        <img class="rounded-circle mx-auto d-block" src="{% static 'images/admin.jpg' %}" alt="Card image cap">
+                                        <h5 class="text-sm-center mt-2 mb-1">Personal Informtion</h5>
+                                
+                                    </div>
+                                    <hr>
+                                    <div class="card-text text-sm-center">
+                                        <button class="btn btn-primary" href="{% url 'writers:personal' %}" style="width: 200px">Click</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mx-auto d-block">
+                                            <img class="rounded-circle mx-auto d-block" src="{% static 'images/admin.jpg' %}" alt="Card image cap">
+                                            <h5 class="text-sm-center mt-2 mb-1">Take A Test</h5>
+                                    
+                                        </div>
+                                        <hr>
+                                        <div class="card-text text-sm-center">
+                                                <button class="btn btn-primary" href=""" style="width: 200px">Click</button>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="mx-auto d-block">
+                                                <img class="rounded-circle mx-auto d-block" src="{% static 'images/admin.jpg' %}" alt="Card image cap">
+                                                <h5 class="text-sm-center mt-2 mb-1">Setup Payment</h5>
+                                        
+                                            </div>
+                                            <hr>
+                                            <div class="card-text text-sm-center">
+                                               <button class="btn btn-primary" style="width: 200px" href="">Click</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                
+            </div>
+
+        </div> <!-- .content -->
+    </div><!-- /#right-panel -->
+
+    <!-- Right Panel -->
+
+    {% endblock content %}

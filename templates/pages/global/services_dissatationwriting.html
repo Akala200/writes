@@ -1,0 +1,297 @@
+  {% extends 'base.html' %}
+  {% load static %}
+
+  {% block content %}
+  
+ <!--================Home Banner Area =================-->
+ <section class="home_banner_area" style="height: 500px;" id="another3">
+        <div class="banner_inner">
+            <div class="container">
+                <div class="row banner_content"style="padding-top: 0px;">
+                    <div class="col-lg-9">
+                            <h2>Dissertation Writing Service.</h2>
+                            <p style="font-size: 17px;">Hire an experienced researcher to write your thesis or dissertation for you. We are the writing service that will help you with any academic troubles! </p>
+                    </div>
+                    <div class="col-lg-3">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Home Banner Area =================-->
+
+    
+    <section class="service_feature element_service">
+            <div class="container">
+                <div class="row">
+         
+          </div>
+                <div class="row feature_inner">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature_item">
+                                <img src="{% static 'img/clock.svg' %}" alt="" style="width: 65px">
+                            <h4>Any Deadline - Any Subject</h4>
+                            <p>Our professional paper writers can complete any assignment, regardless of topic or difficulty.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature_item">
+                                <img src="{% static 'img/phone.svg' %}" alt="" style="width: 65px">
+                            <h4>Email and SMS Notifications</h4>
+                            <p>Stay informed 24/7 through order updates, new chat messages, uploaded files, etc.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature_item">
+                                <img src="{% static 'img/chat.svg' %}" alt="" style="width: 65px">
+                            <h4>Online Writer Chat</h4>
+                            <p>Communicate with your writer at any time to discuss assignment details, request edits, etc.</p>
+                        </div>
+                    </div>
+        </div>
+        <div class="row feature_inner">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature_item">
+                                <img src="{% static 'img/card.svg' %}" alt="" style="width: 65px">
+                            <h4>Detailed Writer Profiles</h4>
+                            <p>Look through writer’s rates, reviews, # of completed assignments and subject proficiency.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature_item">
+                                <img src="{% static 'img/search.svg' %}" alt="" style="width: 65px">
+                            <h4>Plagiarism Free Papers</h4>
+                            <p>EssayPro has a strict plagiarism policy. We run each paper through various plagiarism detection tools.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature_item">
+                                <img src="{% static 'img/wallet.svg' %}" alt="" style="width: 65px">
+                            <h4>Affordable Prices</h4>
+                            <p>We offer the lowest price per page in the industry at an average of $10 per page.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+          <section class="container-fluid" style="background-color: #f0f2f6;">
+              <div class="container" id="expert2">
+                  <div class="row">
+                      <div class="col-lg-7">
+                            <h2 style="color:  #7249fb;margin-bottom: 30px;margin-left: 30px;margin-top: 40px;">Meet Our Expert Writers</h2>
+                          <ul class="ul--sm _wmax-530">
+                              <li class="h--sm">
+                                  <h2>100+ Writers Always Online</h2>
+                                  <p class="p--sm">We work with hundreds of writers, most of whom are always available to take your order. Find an expert who specializes in your subject area!</p>
+                              </li>
+                              <li class="h--sm" style="margin-bottom: 60px; margin-top: 60px;">
+                                    <h2>Dissertations Written by Ph.D. Graduates</h2>
+                                    <p class="p--sm">Dissertations require a high level of skills and attentiveness. Such tasks fall into the hands of our Ph.D. graduates who have all the experience necessary to write a proper dissertation!</p>
+                                </li>
+                                <li class="h--sm" style="margin-bottom: 60px;">
+                                        <h2>Close Collaboration
+                                            </h2>
+                                        <p class="p--sm">Our writers will collaborate and chat with you online to provide the best dissertation writing services possible! Just tell us if you want to get tutoring service from us!</p>
+                                    </li>
+                                    <li class="h--sm">
+                                            <h2>Access to Scientific Sources and Analytical Software
+                                                </h2>
+                                            <p class="p--sm">Each EssayPro writer has access to numerous scientific databases, as well as analytical software, such as SPSS or Stata, which means they will be able to handle any tasks for you!</p>
+                                        </li>
+                          </ul>
+                      </div>
+                      <div class="col-lg-5">
+                          <div class="row">
+                              <img src="{% static 'img/computer1.gif' %}" id="giff" class="img-fluid">
+                          </div>
+                          <div class="row" style="margin-top: 50px;">
+                                <div class="col-lg-12 text-center">
+                                    <a class="banner_btn btn-header" id="findwriter" href="{% url 'account_signup' %}">Find A Writer</a>
+                                </div>
+                            </div>
+                      </div>
+                  </div>
+              </div>
+          </section>
+    
+
+           
+               
+          <section class="interior_area interior_two">
+                <div class="container">
+                    <div class="interior_inner row">
+                        <div class="col-lg-5 offset-lg-1">
+                            <div class="interior_text">
+                                <h4><span>Step One</span> Place an order online</h4>
+                                <p>Once you have created your account at EssayPro, simply submit the assignment details such as topic, the number of pages, different sources needed, formatting style, and order deadline. It is also possible to upload any additional files to further help the essay writer with the task and imitating your writing style.</p>
+                                <a class="main_btn" href="{% url 'account_signup'  %}">Start Now</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <img class="img-fluid" src="{% static 'img/interior.gif' %}" alt="">
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+            
+            
+                <section class="interior_area">
+                    <div class="container">
+                        <div class="interior_inner row">
+                            <div class="col-lg-6">
+                                <img class="img-fluid" src="{% static 'img/wrok.gif' %}" alt="">
+                            </div>
+                            <div class="col-lg-5 offset-lg-1">
+                                <div class="interior_text">
+                                    <h4><span>Step Two</span> Place an order online</h4>
+                                    <p>Once you have created your account at EssayPro, simply submit the assignment details such as topic, the number of pages, different sources needed, formatting style, and order deadline. It is also possible to upload any additional files to further help the essay writer with the task and imitating your writing style.</p>
+                                    <a class="main_btn" href="{% url 'account_signup' %}">Start Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            
+            
+               <!--================Interior Area =================-->
+               <section class="interior_area interior_two">
+                <div class="container">
+                    <div class="interior_inner row">
+                        <div class="col-lg-5 offset-lg-1">
+                            <div class="interior_text">
+                                <h4><span>Step Three</span> Place an order online</h4>
+                                <p>Once you have created your account at Essay Kitten, simply submit the assignment details such as topic, the number of pages, different sources needed, formatting style, and order deadline. It is also possible to upload any additional files to further help the essay writer with the task and imitating your writing style.</p>
+                                <a class="main_btn" href="{% url 'account_signup' %}">Start Now</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <img class="img-fluid" src="{% static 'img/pay.gif' %}" alt="">
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+            
+            <section class="interior_area">
+                <div class="container">
+                    <div class="interior_inner row">
+                        <div class="col-lg-6">
+                            <img class="img-fluid" src="{% static 'img/rate.gif' %}" alt="">
+                        </div>
+                        <div class="col-lg-5 offset-lg-1">
+                            <div class="interior_text">
+                                <h4><span>Step Three</span> Place an order online</h4>
+                                <p>Once you have created your account at Essay Kitten, simply submit the assignment details such as topic, the number of pages, different sources needed, formatting style, and order deadline. It is also possible to upload any additional files to further help the essay writer with the task and imitating your writing style.</p>
+                                <a class="main_btn" href="{% url 'account_signup'  %}">Start Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="interior_area interior_two">
+                <div class="container">
+                    <div class="interior_inner row">
+                        <div class="col-lg-5 offset-lg-1">
+                            <div class="interior_text">
+                                <h4><span>Step Four</span> Place an order online</h4>
+                                <p>Once you have created your account at Essay Kitten, simply submit the assignment details such as topic, the number of pages, different sources needed, formatting style, and order deadline. It is also possible to upload any additional files to further help the essay writer with the task and imitating your writing style.</p>
+                                <a class="main_btn" href="{% url 'account_signup' %}">Start Now</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <img class="img-fluid" src="{% static 'img/download2.gif' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="testimonials_area p_120">
+                    <div class="container">
+                      <div class="main_title">
+                        <h2>Customer Reviews</h2>
+                      </div>
+                      <div class="testi_slider owl-carousel row">
+                        <div class="item col-lg-6">
+                          <div class="testi_item">
+                        <div class="media">
+                          <div class="d-flex col">
+                            <img class="author_img rounded-circle" src="{% static 'img/customer3.jpg' %}" style="width: 130px; height: 150px; border-radius: 30%;" alt="">
+                          </div>
+                          <div class="media-body">
+                            <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
+                            <h4>Raye Neaves</h4>
+                          </div>
+                        </div>
+                          </div>
+                        </div>
+                        <div class="item col-lg-6">
+                          <div class="testi_item">
+                        <div class="media">
+                          <div class="d-flex col">
+                            <img class="author_img rounded-circle" src="{% static 'img/cuuz.jpg' %}" style="width: 130px; height: 150px; border-radius: 30%;" alt="">
+                          </div>
+                          <div class="media-body">
+                            <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
+                            <h4>Maile Concannons</h4>
+                          </div>
+                        </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="testi_slider owl-carousel row">
+                        <div class="item col-lg-6">
+                          <div class="testi_item">
+                        <div class="media">
+                          <div class="d-flex col">
+                            <img class="author_img rounded-circle" src="{% static 'img/profile3.png' %}" style="width: 130px; height: 150px; border-radius: 30%;" alt="">
+                          </div>
+                          <div class="media-body">
+                            <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
+                            <h4>Season Lucier</h4>
+                          </div>
+                        </div>
+                          </div>
+                        </div>
+                        <div class="item col-lg-6">
+                          <div class="testi_item">
+                        <div class="media">
+                          <div class="d-flex col">
+                            <img class="author_img rounded-circle" src="{% static 'img/third.jpg' %}" style="width: 130px; height: 150px; border-radius: 30%;" alt="">
+                          </div>
+                          <div class="media-body">
+                            <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
+                            <h4>Lita Kenan</h4>
+                          </div>
+                        </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text-center" style="margin-top: 60px;">
+                      <a class="banner_btn btn-header" href="{% url 'reviews' %}" style="border-radius: 20px;">View All</a>
+                    </div>
+                    </div>
+                  </section>
+
+          <section style="padding: 50px;" id="another">
+              <div class="container-fluid">
+                  <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <h2 class="section-heading">200+ writers are ready to help students who struggle with academic writing</h2>
+                            <p>Getting essay help from a personal tutor will help you become more confident and bold in your writing</p>
+                        </div>
+                  </div>
+                  <div class="row" style="margin-top: 50px;">
+                        <div class="col-lg-12 text-center">
+                            <a class="banner_btn btn-header" id="findwriter" href="{% url 'account_login' %}">Order Now</a>
+                        </div>
+                    </div>
+              </div>
+          </section>
+              
+          {% endblock content %}
+        
+           

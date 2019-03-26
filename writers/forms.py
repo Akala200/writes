@@ -1,23 +1,78 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
+from django.core.validators import ValidationError
 
-from .models import WritersProfile
 
-class WriterSignupForm(forms.ModelForm):
-    class Meta:
-        model = get_user_model()
-        fields = ('full_name', 'email', 'resume', 'topic_of_interest', 'resume', 'gender')
+from allauth.account.forms import SignupForm
 
-    def save(self, commit=True):
-        instance = super(WriterSignupForm, self).save(commit=False)
-        if not instance.is_writer:
-            instance.is_writer = True
-            if commit:
-                instance.save()
-            return instance
+from .models import WritersProfile, AssignmentFiles
 
-class WriterProfileForm(forms.ModelForm):
+class WriterSignupForm(SignupForm):
+
+    def __init__(self, *args, **kwargs):
+        super(WriterSignupForm, self).__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs.update({'class': 'input100', 'placeholder': 'Email'})
+        self.fields['password1'].widget.attrs.update({'class': 'input100', 'placeholder': 'Password'})
+        self.fields['password2'].widget.attrs.update({'class': 'input100', 'placeholder': 'Confirm-password'})
+
+    def signup(self, request, user):
+        user.is_writer = True
+        user.save()
+
+class ProfileForm(forms.ModelForm):
     class Meta:
         model = WritersProfile
-        fields = '__all__'
+        fields = ('full_name', 'headline', 'about', 'image', 'paypal_id')
+        widgets = {
+            'full_name': forms.TextInput(attrs={
+                'class': "form-control",
+                'label': 'form-label',
+                'placeholder': 'Full Name'
+            }), 
+
+            'headline': forms.TextInput(attrs={
+                'class': "form-control",
+                'label': 'form-label',
+                'placeholder': 'Headline'
+             }), 
+
+             'about': forms.Textarea(attrs={
+                'class': "form-control",
+                'label': 'form-label',
+                'placeholder': 'about'
+             }),
+
+             'paypal_id': forms.TextInput(attrs={
+                'class': "form-control",
+                'label': 'form-label',
+                'placeholder': 'paypal id'
+             }),
+             'image': forms.FileInput(attrs={
+                'class': "form-control",
+                'label': 'form-label',
+                'placeholder': 'image'
+
+             }),
+
+
+        }
+
+       
+
+        
+
+
+class EssayTestForm(forms.Form):
+    test = forms.CharField(widget=forms.Textarea())
+
+    def clean_test(self):
+        if len(self.cleaned_data['test']) == 250:
+            raise ValidationError('Too Short')
+        return self.cleaned_data['test']
+        
+
+class UploadFile(forms.ModelForm):
+    class Meta:
+        model = AssignmentFiles
+        exclude = ('file_id',)

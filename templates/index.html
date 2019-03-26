@@ -5,370 +5,549 @@
 
 {% block content %}
 
-<header class="masthead text-center text-white d-flex">
-    <div class="container my-auto">
-      <div class="row">
-        <div class="col-lg-6">
-          <h2 style="font-size: 45px; /* float: left; */">Essay Writing Service Hire a Writer for Help.</h2>
-          <hr>
-          <p>We’ll make the grade</p>
-          <div class="row" style="padding: 50px;">
-            <div class="col-lg-6 col-md-6" style="margin-bottom:  20px">
-                <a class="btn btn-xn start"  href="register.html">Get Started</a>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <a class="btn btn-xn start"  href="register.html">Get Started</a>              </div>
-          </div>
-        </div>
-        <div class="col-lg-6 mx-auto">
-            <div class="container">
-                <div class="row main">
-                    <div class="container">
+   <!--================Home Banner Area =================-->
+   <section class="home_banner_area" id="home">
+    <div class="banner_inner">
+<div class="container">
+  <div class="row banner_content">
+    <div class="col-lg-8 col-xs-12 col-md-12">
+      <h2>Essay Writing Service
+        <br />Hire a Writer.</h2>
+      <p style="font-size: 24px;">You think, we write.</p>
+      <a class="banner_btn btn-header" id="findwriter" href="{% url 'become-a-writer' %}">Become a writer</a>
+      <a class="banner_btn btn-header" id="signup" href="{% url 'account_signup' %}">Signup</a>
+    </div>
+    <div class="col-lg-4 col-xs-12 col-md-12" id="for">
+        <div class="container"> 
+          <div class="card bg-light
+          text-center card-form" style="max-width:280px" id="cal">
+                <div class="card-body">
+                    <h3 style="color:black">Price Calculator</h3>
+        
+                    <div class="form-group" style="line-height: -0px;">
+                        <label for="courses">Select Assignment</label>
+                        <select name="courses" id="courses" class="form-control custom-select">
+                            <option value="1" data-price="22.96">Assignment</option>
+                            <option value="2" data-price="38.54">Buisness</option>
+                            <option value="3" data-price="22.96">Case Study</option>
+                            <option value="4" data-price="38.54">Complete Disseration</option>
+                            <option value="5" data-price="22.96">Course Work</option>
+                            <option value="6" data-price="38.54">Disseration Chapter Abstract</option>
+                            <option value="7" data-price="38.54">Disseration Chapter Discussion</option>
+                            <option value="8" data-price="38.54">Disseration Chapter Introduction</option>
+                            <option value="9" data-price="38.54">Disseration Chapter Literature Review</option>
+                            <option value="10" data-price="38.54">Disseration Chapter Methodology</option>
+                            <option value="11" data-price="38.54">Disseration Chapter Results</option>
+                            <option value="12" data-price="38.54">Disseration Proposal</option>
+                            <option value="13" data-price="38.54">Disseration Service Editing</option>
+                            <option value="14" data-price="38.54">Disseration Service Proof Reading</option>
+                            <option value="15" data-price="22.96">Others</option>
+                            <option value="16" data-price="22.96">Posters</option>
+                            <option value="17" data-price="22.96">PowerPoint Presentations</option>
+                            <option value="18" data-price="22.96">Research Papers</option>
+                            <option value="19" data-price="22.96">Term Papers</option>
+                            <option value="20" data-price="38.54">Thesis</option>
+        
+                        </select>
                     </div>
+                    <div class="form-group" style="line-height: -0px;">
+                        <label for="duration">Select Urgency</label>
+                        <select name="duration" id="duration" class="form-control custom-select">
+        
+                            <option value="1">1 Day</option>
+                            <option value="2">2 Days</option>
+                            <option value="3">3 Days</option>
+                            <option value="4">4 Days</option>
+                            <option value="5">5 Days</option>
+                            <option value="6">6 Days</option>
+                            <option value="7">7 Days</option>
+                            <option value="8">8 Days</option>
+                            <option value="9">9 Days</option>
+                            <option value="10">10 Days</option>
+                            <option value="15">15 Days</option>
+                            <option value="20">20 Days</option>
+                            <option value="25">25 Days</option>
+                            <option value="30">30 Days</option>
+                            <option value="35">35 Days</option>
+                            <option value="40">40 Days</option>
+                            <option value="45">45 Days</option>
+                            <option value="50">50 Days</option>
+                            <option value="55">55 Days</option>
+                            <option value="60">60 Days</option>
+                            <option value="70">70 Days</option>
+        
+                        </select>
+                    </div>
+                    <div class="form-group" style="line-height: -0px;">
+                        <label for="class">Select Standard</label>
+                        <select name="class" id="class" class="form-control custom-select">
+                            <option value="0">Writing</option>
+                            <option value="20">Rewriting</option>
+                            <option value="43">Edting</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="line-height: -0px;">
+                        <label for="students">Select Pages</label>
+                        <select name="students" id="students" class="form-control custom-select">
+                            <option value="1">1 Pages / 250 Words</option>
+                            <option value="2">2 Pages / 500 Words</option>
+                            <option value="3">3 Pages / 750 Words</option>
+                            <option value="4">4 Pages / 1000 Words</option>
+                            <option value="5">5 Pages / 1250 Words</option>
+                            <option value="6">6 Pages / 1500 Words</option>
+                            <option value="7">7 Pages / 1750 Words</option>
+                            <option value="8">8 Pages / 2000 Words</option>
+                            <option value="9">9 Pages / 2250 Words</option>
+                            <option value="10">10 Pages / 2500 Words</option>
+                            <option value="11">11 Pages / 2750 Words</option>
+                            <option value="12">12 Pages / 3000 Words</option>
+                            <option value="13">13 Pages / 3250 Words</option>
+                            <option value="14">14 Pages / 3500 Words</option>
+                            <option value="15">15 Pages / 3750 Words</option>
+                            <option value="16">16 Pages / 4000 Words</option>
+                            <option value="17">17 Pages / 4250 Words</option>
+                            <option value="18">18 Pages / 4500 Words</option>
+                            <option value="19">19 Pages / 4750 Words</option>
+                            <option value="20">20 Pages / 5000 Words</option>
+                            <option value="21">21 Pages / 5250 Words</option>
+                            <option value="22">22 Pages / 5500 Words</option>
+                            <option value="23">23 Pages / 5750 Words</option>
+                            <option value="24">24 Pages / 6000 Words</option>
+                            <option value="25">25 Pages / 6250 Words</option>
+                            <option value="26">26 Pages / 6500 Words</option>
+                            <option value="27">27 Pages / 6750 Words</option>
+                            <option value="28">28 Pages / 7000 Words</option>
+                            <option value="29">29 Pages / 7250 Words</option>
+                            <option value="30">30 Pages / 7500 Words</option>
+                            <option value="40">40 Pages / 10000 Words</option>
+                            <option value="50">50 Pages / 12500 Words</option>
+                            <option value="60">60 Pages / 15000 Words</option>
+                            <option value="70">70 Pages / 17500 Words</option>
+                            <option value="80">80 Pages / 20000 Words</option>
+                            <option value="90">90 Pages / 22500 Words</option>
+                            <option value="100">100 Pages / 25000 Words</option>
+                            <option value="110">110 Pages / 27500 Words</option>
+                            <option value="120">120 Pages / 30000 Words</option>
+                            <option value="130">130 Pages / 32500 Words</option>
+                            <option value="140">140 Pages / 35000 Words</option>
+                            <option value="150">150 Pages / 37500 Words</option>
+                            <option value="160">160 Pages / 40000 Words</option>
+                            <option value="180">180 Pages / 45000 Words</option>
+                            <option value="200">200 Pages / 50000 Words</option>
+                            <option value="250">250 Pages / 62500 Words</option>
+                        </select>
+                    </div>
+                    <center>
+                            <strike>
+                            </strike>
+                        <h2 style="color: #000; font-size: 25px; margin-top: 30px;">$
+                            <span id="discountedPrice">discounted price</span>
+                        </h2>
+                        <input type="submit" class="btn btn-outline-dark btn-block" style="width: 150px" value="Pay Now" id="click">
+        
+                    </center>
                 </div>
-              </div>
+            </div>
+            </div> 
+            </div>
+    </div>
+  </div>
+</div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+
+<!--================Feature Area =================-->
+<section class="feature_area p_120" id="feature">
+  <div class="container">
+    <div class="main_title">
+      <h2 style="padding-left: 70px; padding-right: 70px;" id="header">Unique Features Need a high-quality custom essay?    Let EssayPro handle it for you!</h2>
+      <p style="font-size: 18px;">Our essay writers will gladly help you with:</p>
+    </div>
+    <div class="feature_inner row">
+      <div class="col-lg-3 col-md-6">
+        <div class="feature_item">
+           <p class="p1">Custom Essay (any type)</p>
+                     <p class="p1">Admission Essay</p>
+                     <p class="p1">Annotated Bibliography</p>
+                     <p class="p1">Article Review</p>
+                     <p class="p1">Book / Movie Review</p>
         </div>
       </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="feature_item">
+      <p class="p1">Business Plan</p>
+      <p class="p1">Case Study</p>
+      <p class="p1">Coursework</p>
+      <p class="p1">Creative Writing</p>
+      <p class="p1">Critical Thinking / Review</p>
     </div>
-  </header>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="feature_item">
+      <p class="p1">Literature Review</p>
+      <p class="p1">Multiple Choice Questions</p>
+      <p class="p1">Presentation or Speech</p>
+      <p class="p1">Reflective Writing</p>
+      <p class="p1">Report</p>
+    </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="feature_item">
+      <p class="p1">Research Paper</p>
+      <p class="p1">Research Proposal</p>
+      <p class="p1">Term Paper</p>
+      <p class="p1">Thesis/Dissertation</p>
+      <p class="p1">Editing and Proofreading</p>
+    </div>
+      </div>
+</div>
+<div class="row">
+  <div class="col text-center" style="margin-top: 90px;">
+    <a class="banner_btn success-border circle btn-header" href="{% url 'account_signup' %}">Order Now</a>
+  </div>
+</div>
+  </div>
+</section>
 
-  
+<section id="portfolio">
+<div class="container-fluid">
+<h2 class="section-heading text-center" style="margin-bottom: 50px; padding-top: 80px;">How to Order an Essay</h2>
+<div class="row">
+<div class="col-lg-7 col-md-7">
+  <div class="container">
+  <img src="">
+  </div>
+</div>
+<div class="col-lg-5 col-md-5" id="instructon">
+  <div class="row how" id="how1">
+  <h4>1. Submit an Order</h4>
+  <div class="col-lg-4 col-md-4">
+    <span></span>
+  </div>
+  <div class="col-lg-8 col-md-8">
+    <p>Fill in your paper requirements and place an order. You will receive price offers from our experts within a few minutes.</p>
+  </div>
+  </div>
+  <div class="row how" id="how2">
+    <h4>2. Pick a Writer</h4>
+    <div class="col-lg-4 col-md-4">
+    <span></span>
+    </div>
+    <div class="col-lg-8 col-md-8">
+      <p>Choose the most suitable essay writer by price, rating and customer reviews. Deposit the contract amount and our professor will begin to write an essay for you.</p>
+    </div>
+  </div>
+  <div class="row how" id="how3">
+    <h4>3. Download your Paper</h4>
+    <div class="col-lg-4 col-md-4">
+      <span></span>
+    </div>
+    <div class="col-lg-8 col-md-8">
+      <p>Lastly, you will receive a final draft which you may proofread and edit with your writer. When it’s finished, release funds and leave review for your professional writer.</p>
+    </div>
+    </div>
+    <div class="row how">
+    <div class="col-lg-12 col-md-12 text-center">
+      <a class="banner_btn btn-header" href="{% url  'how_it_works' %}" style="border-radius: 20px;">How It Works</a>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+</section>
 
-  <section class="bg-primary " id="about">
+
+<section class="service_feature element_service">
     <div class="container">
-      <div class="row">
-          <div class="col-lg-6 mx-auto text-center">
-              <h2 class="section-heading text-white">Need a high-quality custom essay? Let EssayPro handle it for you!</h2>
-              <hr class="light my-4">
-              <p class="text-white mb-4">Our essay writers will gladly help you with:</p>
-          </div>
-      </div>
-      <div class="row row2" >
-          <div class="col-lg-3 col-md-3">
-          <p>Custom Essay (any type)</p>
-          <p>Admission Essay</p>
-          <p>Annotated Bibliography</p>
-          <p>Article Review</p>
-          <p>Book / Movie Review</p>
-         </div>
-        <div class="col-lg-3 col-md-3">
-            <p>Business Plan</p>
-            <p>Case Study</p>
-            <p>Coursework</p>
-            <p>Creative Writing</p>
-            <p>Critical Thinking / Review</p>
-        </div>
-        <div class="col-lg-3 col-md-3">
-              <p>Literature Review</p>
-              <p>Multiple Choice Questions</p>
-              <p>Presentation or Speech</p>
-              <p>Reflective Writing</p>
-              <p>Report</p>
+        <div class="row">
+  <div class="col-lg-12 text-center">
+    <h2 class="section-heading">Features</h2>
+  </div>
+  </div>
+        <div class="row feature_inner">
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                        <img src="{% static 'img/clock.svg' %}" alt="" style="width: 65px">
+                    <h4>Any Deadline - Any Subject</h4>
+                    <p>Our professional paper writers can complete any assignment, regardless of topic or difficulty.</p>
+                </div>
             </div>
-            <div class="col-lg-3 col-md-3">
-                <p>Literature Review</p>
-                <p>Multiple Choice Questions</p>
-                <p>Presentation or Speech</p>
-                <p>Reflective Writing</p>
-                <p>Report</p>
-              </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                        <img src="{% static 'img/phone.svg' %}" alt="" style="width: 65px">
+                    <h4>Email and SMS Notifications</h4>
+                    <p>Stay informed 24/7 through order updates, new chat messages, uploaded files, etc.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                        <img src="{% static 'img/chat.svg' %}" alt="" style="width: 65px">
+                    <h4>Online Writer Chat</h4>
+                    <p>Communicate with your writer at any time to discuss assignment details, request edits, etc.</p>
+                </div>
+            </div>
+</div>
+<div class="row feature_inner">
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                        <img src="{% static 'img/card.svg' %}" alt="" style="width: 65px">
+                    <h4>Detailed Writer Profiles</h4>
+                    <p>Look through writer’s rates, reviews, # of completed assignments and subject proficiency.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                        <img src="{% static 'img/search.svg' %}" alt="" style="width: 65px">
+                    <h4>Plagiarism Free Papers</h4>
+                    <p>EssayPro has a strict plagiarism policy. We run each paper through various plagiarism detection tools.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                        <img src="{% static 'img/wallet.svg' %}" alt="" style="width: 65px">
+                    <h4>Affordable Prices</h4>
+                    <p>We offer the lowest price per page in the industry at an average of $10 per page.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Feature Area =================-->
+
+<!--================Interior Area =================-->
+<section class="interior_area" id="background" style="background-color: #cdbdd6;">
+  <div class="container">
+    <div class="interior_inner row">
+    <div class="col-lg-5">
+      <div class="interior_text">
+      <h4>EssayPro, Write My Essay!</h4>
+      <p style="font-size: 18px; color:rgb(2, 3, 5);     line-height: 1.8;">Our essay writing service fulfills every “write my essay” request with the highest level of urgency. Our team of professional writers will work on it relentlessly to ensure that its quality is on another level! No more worries about handing in mediocre papers to demanding professors.</p>
+      <a class="main_btn btn-header" href="#">We can Do That</a>
+    </div>
       </div>
-      <div class="row row3">
-        <div class="container text-center">
-            <a class="btn btn-light btn-xl js-scroll-trigger sr-button" href="#services"> PLACE AN ORDER NOW</a>
-          </div>
+      <div class="col-lg-7">
+        <div>
+          <img src="{% static 'img/reading.gif' %}" style="width:600px;" id="reading">
+        </div>
+      </div>
+         </div>
+      </div>
+</section>
+
+
+
+<section class="service_feature element_service">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h2 class="section-heading">Top Essay Writers</h2>
+      <p style="font-size: 15px; padding-left:45px; padding-right: 45px;">We employ the best professionals on the market. Their rating is based on customer reviews and rates. Our essay writers produce original high-quality papers on any topic even with the tightest deadlines.</p>
+    </div>
+    </div>
+  <div class="row feature_inner">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="feature_item">
+            <div class="single_sidebar_widget author_widget">
+              <img class="author_img rounded-circle" src="{% static 'img/profile1.png' %}" style="width: 130px;" alt="">
+              <h4>John Latz</h4>
+              <div class="social_icon">
+                <p>Orders Completed: 85</p>
+              </div>
+              <div class="br"></div>
+              <div>
+                <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+              </div>
+            </div>
       </div>
     </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="feature_item">
+        <div class="single_sidebar_widget author_widget">
+          <img class="author_img rounded-circle" src="{% static 'img/profile2.png' %}" style="width: 130px;" alt="">
+          <h4>Benjamin Logsdon</h4>
+          <div class="social_icon">
+            <p>Orders Completed: 81</p>
+          </div>
+          <div class="br"></div>
+          <div>
+            <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="feature_item">
+        <div class="single_sidebar_widget author_widget">
+          <img class="author_img rounded-circle" src="{% static 'img/lady.jpg' %}" style="width: 130px; border-radius: 30%;" alt="">          <h4>Clarine Neider</h4>
+          <div class="social_icon">
+            <p>Orders Completed: 78</p>
+          </div>
+          <div class="br"></div>
+          <div>
+            <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="feature_item">
+          <div class="single_sidebar_widget author_widget">
+            <img class="author_img rounded-circle" src="{% static 'img/lady3.jpg' %}" style="width: 130px; border-radius: 30%;" alt="">          <h4>Clarine Neider</h4>
+            <div class="social_icon">
+              <p>Orders Completed: 70</p>
+            </div>
+            <div class="br"></div>
+            <div>
+              <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+</section>
+
+
+
+<section class="container-fluid"style="padding-top: 80px; padding-bottom: 20px; height: 450px;">
+  <div class="container">
+    <div class="row">
+       <div class="col-lg-6">
+       <img src="{% static 'img/social.gif' %}" class="img-fluid">
+       </div>
+       <div class="col-lg-6">
+       <div class="row">
+         <h2 class="h--md">People Trust Us</h2>
+       </div>
+       <div class="row">
+        <p>15+ years of experience in custom writing and focus on quality makes us a reliable essay writing service on the market. We help thousands of students every year who often become our satisfied customers and fans.</p>
+       </div>
+        <div class="row">
+        <div class="col-lg-12">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+<!--================End Testimonials Area =================-->
+
+<section class="testimonials_area p_120">
+  <div class="container">
+    <div class="main_title">
+      <h2>Customer Reviews</h2>
+    </div>
+    <div class="testi_slider owl-carousel row">
+      <div class="item col-lg-6">
+        <div class="testi_item">
+      <div class="media">
+        <div class="d-flex">
+          <img class="author_img rounded-circle" src="{% static 'img/customer3.jpg' %}" style="width: 130px; height: 150px; border-radius: 30%;" alt="">
+        </div>
+        <div class="media-body">
+          <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
+          <h4>Raye Neaves</h4>
+        </div>
+      </div>
+        </div>
+      </div>
+      <div class="item col-lg-6">
+        <div class="testi_item">
+      <div class="media">
+        <div class="d-flex">
+          <img class="author_img rounded-circle" src="{% static 'img/cuuz.jpg' %}" style="width: 130px; height: 150px; border-radius: 30%;" alt="">
+        </div>
+        <div class="media-body">
+          <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
+          <h4>Maile Concannons</h4>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+    <div class="testi_slider owl-carousel row">
+      <div class="item col-lg-6">
+        <div class="testi_item">
+      <div class="media">
+        <div class="d-flex">
+          <img class="author_img rounded-circle" src="{% static 'img/profile3.png' %}" style="width: 130px; height: 150px; border-radius: 30%;" alt="">
+        </div>
+        <div class="media-body">
+          <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
+          <h4>Season Lucier</h4>
+        </div>
+      </div>
+        </div>
+      </div>
+      <div class="item col-lg-6">
+        <div class="testi_item">
+      <div class="media">
+        <div class="d-flex">
+          <img class="author_img rounded-circle" src="{% static 'img/third.jpg' %}" style="width: 130px; height: 150px; border-radius: 30%;" alt="">
+        </div>
+        <div class="media-body">
+          <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
+          <h4>Lita Kenan</h4>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center" style="margin-top: 60px;">
+    <a class="banner_btn btn-header" href="{% url 'reviews' %}" style="border-radius: 20px;">View All</a>
+  </div>
+  </div>
+</section>
+<!--================End Testimonials Area =================-->
+
+
+<section class="section" style="padding: 40px;">
+  <div class="container l-0">
+    <div class="row">
+    <div class="col-lg-6 s-10__content s-10__content-block">
+      <h3 class="h--sm">High-quality Essay Writing Service</h3>
+      <p class="p--sm">We are an essay writing service for students that offers custom essay help at an affordable price. Our company incorporates an accessible website, professional support team and highly skilled writers; this trio can only be provided by the best and most reliable writing service on the market. In addition to paper writing, we present editing and proofreading work upon inquiry.</p>
+      <p class="p--sm">We provide students with even the most urgent writing assignments. It is our prerogative to accommodate high quality along the way. We make it a priority to satisfy any college paper assistance the customer might request.</p>
+    </div>
+    <div class="col-lg-6 s-10__content s-10__content-block">                     
+      <h3 class="h--sm">Write My Essay</h3>
+      <p class="p--sm">If you are looking for reviews, we have included an open feedback section within the core of the website. Feel free to explore the assessments of work we provided by other users. Our company values your feedback and uses it as a tool for measuring growth and development; doing these helps us meet your needs for future requests. If you are having doubts, check out our Reviews page to see what other customers have to say about EssayPro</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 s-10__content s-10__content-block">
+      <h3 class="h--sm">High-quality Essay Writing Service</h3>
+      <p class="p--sm">We are an essay writing service for students that offers custom essay help at an affordable price. Our company incorporates an accessible website, professional support team and highly skilled writers; this trio can only be provided by the best and most reliable writing service on the market. In addition to paper writing, we present editing and proofreading work upon inquiry.</p>
+      <p class="p--sm">We provide students with even the most urgent writing assignments. It is our prerogative to accommodate high quality along the way. We make it a priority to satisfy any college paper assistance the customer might request.</p>
+      </div>
+      <div class="col-lg-6 s-10__content s-10__content-block">
+        <h3 class="h--sm">Write My Essay</h3>
+        <p class="p--sm">Our website’s system is very user-friendly, with automatic functions to maintain a soothing experience. Our integrated helper team will answer any questions you might have along the way. Furthermore, our service is entirely legal and legitimate.</p>
+        <p class="p--sm">If you are looking for reviews, we have included an open feedback section within the core of the website. Feel free to explore the assessments of work we provided by other users. Our company values your feedback and uses it as a tool for measuring growth and development; doing these helps us meet your needs for future requests. If you are having doubts, check out our Reviews page to see what other customers have to say about EssayPro</p>
+      </div>
+    </div>
+  </div>
   </section>
 
-
-  <section class="p-0" id="portfolio">
-    <div class="container-fluid p-0">
-        <h2 class="section-heading text-center" style="margin-bottom: 50px; padding-top: 80px;">How to Order an Essay</h2>
-      <div class="row">
-        <div class="col-lg-7 col-md-7">
-          <div class="container">
-          </div>
-        </div>
-        <div class="col-lg-5 col-md-5" id="instructon">
-          <div class="row how" id="how1">
-            <h4>1. Submit an Order</h4>
-            <div class="col-lg-4 col-md-4">
-              <span></span>
-            </div>
-            <div class="col-lg-8 col-md-8">
-                <p>Fill in your paper requirements and place an order. You will receive price offers from our experts within a few minutes.</p>
-            </div>
-          </div>
-          <div class="row how" id="how2">
-              <h4>2. Pick a Writer</h4>
-              <div class="col-lg-4 col-md-4">
-                <span></span>
-              </div>
-              <div class="col-lg-8 col-md-8">
-                  <p>Choose the most suitable essay writer by price, rating and customer reviews. Deposit the contract amount and our professor will begin to write an essay for you.</p>
-              </div>
-            </div>
-            <div class="row how" id="how3">
-                <h4>3. Download your Paper</h4>
-                <div class="col-lg-4 col-md-4">
-                  <span></span>
-                </div>
-                <div class="col-lg-8 col-md-8">
-                    <p>Lastly, you will receive a final draft which you may proofread and edit with your writer. When it’s finished, release funds and leave review for your professional writer.</p>
-                </div>
-              </div>
-              <div class="row how">
-                <div class="col-lg-12 col-md-12 text-center">
-                    <a class="btn  btn-xc sr-button" href="#">Download Now!</a>
-                </div>
-              </div>
-        </div>
-      </div>
-     </div>
-  </section>
-
-
-  <section id="services">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading">Features</h2>
-            <hr class="my-4">
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-diamond text-primary mb-3 sr-icons"></i>
-              <h5 class="mb-3">Any Deadline - Any Subject</h5>
-              <p class="mb-0">Our professional paper writers can complete any assignment, regardless of topic or difficulty.</p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-paper-plane text-primary mb-3 sr-icons"></i>
-              <h5 class="mb-3">Email and SMS Notifications</h5>
-              <p class=" mb-0">Stay informed 24/7 through order updates, new chat messages, uploaded files, etc.</p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-newspaper-o text-primary mb-3 sr-icons"></i>
-              <h5 class="mb-3">Online Writer Chat</h5>
-              <p class="text-muted mb-0">Communicate with your writer at any time to discuss assignment details, request edits, etc.</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="service-box mt-5 mx-auto">
-                  <i class="fa fa-4x fa-heart text-primary mb-3 sr-icons"></i>
-                  <h5 class="mb-3">Detailed Writer Profiles</h5>
-                  <p class="text-muted mb-0">Look through writer’s rates, reviews, # of completed assignments and subject proficiency.</p>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-6 text-center">
-                  <div class="service-box mt-5 mx-auto">
-                    <i class="fa fa-4x fa-heart text-primary mb-3 sr-icons"></i>
-                    <h5 class="mb-3">Plagiarism Free Papers</h5>
-                    <p class="text-muted mb-0">EssayPro has a strict plagiarism policy. We run each paper through various plagiarism detection tools.</p>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box mt-5 mx-auto">
-                      <i class="fa fa-4x fa-heart text-primary mb-3 sr-icons"></i>
-                      <h5 class="mb-3">Affordable Prices</h5>
-                      <p class="text-muted mb-0">We offer the lowest price per page in the industry at an average of $10 per page.</p>
-                    </div>
-                  </div>
-        </div>
-      </div>
-    </section>
-
-  <section class="container-fluid" id="background">
-      <div class="container" id="img-txt">
-        <div class="row" style="margin-bottom: 20px; font-size: 15px;">
-            <div class="col-lg-4">
-              <p style="font-weight: 800;">Our essay writing service fulfills every “write my essay” request with the highest level of urgency. Our team of professional writers will work on it relentlessly to ensure that its quality is on another level! No more worries about handing in mediocre papers to demanding professors.</p>
-            </div>
-          </div>
-
-          <div class="row">
-              <div class="col-lg-6">
-                  <a class="btn  btn-xc sr-button" href="#">We Can Do That!</a>
-                </div>
-            </div>
-      </div>
-      <div>
-    </section>
-
-  
-
-
-    <section class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                  <h2 class="section-heading">Top Essay Writers</h2>
-                  <hr class="my-4">
-                  <p>We employ the best professionals on the market. Their rating is based on customer reviews and rates. Our essay writers produce original high-quality papers on any topic even with the tightest deadlines.</p>
-                </div>
-              </div>
-          <div class="row">
-            <div class="col-lg-3">
-              <div class="waiting"></div>
-            </div>
-          </div>
-          <div class="row">
-              <div class="col-lg-12">
-                  <div class="container text-center">
-                      <a class="btn btn-light btn-xc sr-button" href="#">View All Writers</a>
-                    </div>
-              </div>
-            </div>
-        </div>
-      </section>
-
-      <section class="container-fluid s-7">
-          <div class="container">
-              <div class="row">
-                 <div class="col-lg-6">
-                   <img src=" {% static 'img/face.png' %}" class="img-fluid">
-                 </div>
-                 <div class="col-lg-6">
-                   <div class="row">
-                     <h2 class="h--md">People Trust Us</h2>
-                   </div>
-                   <div class="row">
-                      <p>15+ years of experience in custom writing and focus on quality makes us a reliable essay writing service on the market. We help thousands of students every year who often become our satisfied customers and fans.</p>
-                   </div>
-                    <div class="row">
-                      <div class="col-lg-12">
-                          <ul class="socialIcons">
-                              <li class="facebook"><a href="#"><i class="fa fa-fw fa-facebook"></i>Facebook</a></li> 
-                              <li class="twitter"><a href="#"><i class="fa fa-fw fa-twitter"></i>Twitter</a></li> 
-                              <li class="instagram"><a href="#"><i class="fa fa-fw fa-instagram"></i>Instagram</a></li> 
-                              <li class="pinterest"><a href="#"><i class="fa fa-fw fa-pinterest-p"></i>Pinterest</a></li> 
-                              <li class="steam"><a href="#"><i class="fa fa-fw fa-steam"></i>Steam</a></li> 
-                           </ul>
-                        </div>
-                    </div>
-                  </div>
-              </div>
-          </div>
-        </section>
-
-        <section id="contact">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                      <h2 class="section-heading">Customer Reviews</h2>
-                      <hr class="my-4">
-                    </div>
-                  </div>
-              <div class="row feedback">
-                
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                    <div class="container text-center">
-                        <a class="btn btn-light btn-xl sr-button" href="#">View All Writers</a>
-                      </div>
-                </div>
-                </div>
-            </div>
-          </section>
-
-          <section class="section s-10">
-            <div class="container l-0">
-              <div class="row">
-                <div class="col-lg-6 s-10__content s-10__content-block">
-                  <h3 class="h--sm">High-quality Essay Writing Service</h3>
-                  <p class="p--sm">We are an essay writing service for students that offers custom essay help at an affordable price. Our company incorporates an accessible website, professional support team and highly skilled writers; this trio can only be provided by the best and most reliable writing service on the market. In addition to paper writing, we present editing and proofreading work upon inquiry.</p>
-                  <p class="p--sm">We provide students with even the most urgent writing assignments. It is our prerogative to accommodate high quality along the way. We make it a priority to satisfy any college paper assistance the customer might request.</p>
-                </div>
-                <div class="col-lg-6 s-10__content s-10__content-block">                     
-                    <h3 class="h--sm">Write My Essay</h3>
-                    <p class="p--sm">Our website’s system is very user-friendly, with automatic functions to maintain a soothing experience. Our integrated helper team will answer any questions you might have along the way. Furthermore, our service is entirely legal and legitimate.</p>
-                    <p class="p--sm">If you are looking for reviews, we have included an open feedback section within the core of the website. Feel free to explore the assessments of work we provided by other users. Our company values your feedback and uses it as a tool for measuring growth and development; doing these helps us meet your needs for future requests. If you are having doubts, check out our Reviews page to see what other customers have to say about EssayPro</p>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-lg-6 s-10__content s-10__content-block">
-                    <h3 class="h--sm">High-quality Essay Writing Service</h3>
-                    <p class="p--sm">We are an essay writing service for students that offers custom essay help at an affordable price. Our company incorporates an accessible website, professional support team and highly skilled writers; this trio can only be provided by the best and most reliable writing service on the market. In addition to paper writing, we present editing and proofreading work upon inquiry.</p>
-                    <p class="p--sm">We provide students with even the most urgent writing assignments. It is our prerogative to accommodate high quality along the way. We make it a priority to satisfy any college paper assistance the customer might request.</p>
-                  </div>
-                  <div class="col-lg-6 s-10__content s-10__content-block">
-                      <h3 class="h--sm">Write My Essay</h3>
-                      <p class="p--sm">Our website’s system is very user-friendly, with automatic functions to maintain a soothing experience. Our integrated helper team will answer any questions you might have along the way. Furthermore, our service is entirely legal and legitimate.</p>
-                      <p class="p--sm">If you are looking for reviews, we have included an open feedback section within the core of the website. Feel free to explore the assessments of work we provided by other users. Our company values your feedback and uses it as a tool for measuring growth and development; doing these helps us meet your needs for future requests. If you are having doubts, check out our Reviews page to see what other customers have to say about EssayPro</p>
-                    </div>
-                </div>
-            </div>
-          </section>
-
-          <section id="down">
-            <div class="container-fluid" id="academic">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                      <h2 class="section-heading">Order A Custom Academic Paper!</h2>
-                      <hr class="my-4">
-                      <p class="mb-5" style="margin-bottom: 55px">Calculate the approximate cost of your paper.
-
-                        </p>
-                    </div>
-                </div>
-                <div class="row text-center">
-                  <div class="col-lg-4">
-                    <div class="form-group">
-                      <select class="form-control" id="gender1">
-                        <option>Male</option>
-                        <option>Female</option>
-                      </select>          
-                      </div>
-                  </div>
-                  <div class="col-lg-4">
-                      <div class="form-group">
-                          <select class="form-control" id="gender1">
-                            <option>Male</option>
-                            <option>Female</option>
-                          </select>          
-                          </div>
-                  </div>
-                  <div class="col-lg-4">
-                      <div class="form-group">
-                          <p> Mininmum Price: <span style="color: #fff;">$0</span></p>          
-                          </div>
-                  </div>
-                </div>
-                <div class="row text-center">
-                    <div class="col-lg-4">
-                      <div class="form-group">
-                        <select class="form-control" id="gender1">
-                          <option>Male</option>
-                          <option>Female</option>
-                        </select>          
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <select class="form-control" id="gender1">
-                              <option>Male</option>
-                              <option>Female</option>
-                            </select>          
-                            </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="form-group">
-                            <button class="btn btn-xn" id="continue" href="#">continue</button>
-                        </div>
-                    </div>
-                  </div>
-            </div>
-          </section>
+<!--================Interior Area =================-->
+          <!--================End Latest News Area =================-->
 
     {% endblock %}

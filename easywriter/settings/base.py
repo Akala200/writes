@@ -10,7 +10,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'essay---kitten.herokuapp.com', 'essay-kitten.herokuapp.com']
 
 
 INSTALLED_APPS = [
@@ -21,28 +21,47 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.humanize',
+    'corsheaders',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
+    'datetimewidget',
+    'multiselectfield',
+    'ravepay',
     'accounts',
     'blog',
-    'writers'
+    'writers',
+    'customer',
+  
 
 ]
+
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    #'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'easywriter.urls'
@@ -84,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 
 LANGUAGE_CODE = 'en-us'
@@ -110,11 +129,7 @@ DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = ( os.path.join('static'), )
 
-
-STATIC_ROOT = ''
- 
 
 
 STATICFILES_FINDERS = [
@@ -180,16 +195,39 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.SignupForm'
-ACCOUNT_FORMS = {'login': 'accounts.forms.LoginuserForm'}
 
-LOGIN_REDIRECT_URL = '/'
+#ACCOUNT_ADAPTER = 'accounts.adapter.AccountAdapter'
+
+#ACCOUNT_SIGNUP_FORM_CLASS = 'accounts.forms.SignUpForm'
+
+
+ACCOUNT_FORMS = {'signup': 'accounts.forms.SignUpForm', 'login': 'accounts.forms.LoginuserForm',
+'reset_password': 'accounts.forms.ResetuserPasswordForm'}
+
+
+
+
+
+
+LOGIN_REDIRECT_URL = '/home'
 
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login'
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'wissac23@gmail.com'
+
+RAVEPAY_PUBLIC_KEY = config('RAVE_PUBLIC_KEY')
+RAVEPAY_SECRET_KEY = config('RAVE_SECRET_KEY')
+
+
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
 EMAIL_PORT = 587
+#EMAIL_USE_TLS = True 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
+STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
+
+ACCOUNT_LOGOUT_ON_GET =True

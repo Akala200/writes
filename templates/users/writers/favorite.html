@@ -1,0 +1,149 @@
+<!-- MAIN CONTENT-->
+{% extends 'index/base.html' %}
+{% load static %}
+{% block navbar %}
+<div class="menu">
+    <ul class="list">
+<li>
+    <a href="javascript:void(0);" class="menu-toggle active">
+            <i class="material-icons">layers</i>
+            <span>Writers</span>
+    </a>
+    <ul class="ml-menu">
+        <li>
+            <a href="{% url 'customer:view_all_writers' %}">
+                <span>All Writers</span>
+            </a>
+        </li>
+        <li>
+                <a href="{% url 'customer:favorite_writers' %}">
+                    <span>Favorite Writers</span>
+                </a>
+            </li>
+       
+        
+    </ul>
+    <li>
+        <a href="{% url 'customer:view_transactions' %}" >
+                <i class="material-icons">account_balance_wallet</i>
+            <span>Wallet</span>
+        </a>
+</li>
+    
+    <li>
+        <a href="{% url 'account_logout' %}">
+            <i class="material-icons">arrow_back</i>
+            <span>Logout</span>
+        </a>
+    </li>
+
+</li>
+</ul>
+</div>
+{% endblock navbar %}
+{% block content %}
+<section class="content">
+        <div class="container-fluid">
+                <div class="block-header">
+                    <h2>DASHBOARD</h2>
+                </div>
+    
+                <!-- Widgets -->
+                {% include 'users/header.html' %}
+                </div>
+<div class="container-fluid">
+         
+<!-- Exportable Table -->
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                    <h2>
+                      All WRITER
+                    </h2>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                        <div class="row">
+                            <div>
+                                <div class="col-sm-9">
+                                    <hr/>
+                                    <div class="review-block">
+                                        {% if favorite %}
+                                        {% for fav in favorite %}
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                
+                                                <img src="{{ fav.favorite_writers.user_profile.image.url }}" class="img-rounded">
+                                                <div class="review-block-name"><a href="#">{{ fav.favorite_writers.user_profile.full_name }}</a></div>
+                                                <div class="review-block-date">{{ fav.favorite_writers.last_seen }}</div>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <div class="review-block-rate">
+                                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    </button>
+                                                    <div>
+                                                        <h4>3.0</h4>
+                                                    </div>
+                                                </div>
+                                                <div class="review-block-description row">
+                                                    <div class="col-lg-3 col-md-3">
+                                                        <div class="progress">
+                                                            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;" data-toggle="tooltip" data-placement="top" title="Completion Rate">
+                                                            75%
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3"><b>450 Orders Completed</b></div>
+                                                    <div class="col-lg-3 col-md-3"><b>450 Reviews</b></div>
+                                                    <div class="col-lg-3 col-md-3">
+                                                            <div class="btn-group">
+                                                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        ACTION <span class="caret"></span>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu">
+                                                                            <li><a href="javascript:void(0);"><div class="demo-google-material-icon"> <i class="material-icons">person_add</i> <span class="icon-name"></span> </div>
+                                                                                Hire A Writer</a></li>
+                                                                        <li><a href="{% url 'customer:remove_from_favorite' fav.favorite_writers.pk %}">                                                                         <div class="demo-google-material-icon"> <i class="material-icons">thumbs_up_down</i> <span class="icon-name"></span></div>
+
+                                                                            Remove From Favorite</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                           
+                                        </div>
+                                        {% endfor %}
+                                        {% else %}
+                                        <p>No Favorite Writers</p>
+                                        <hr/>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Exportable Table -->
+</div>
+</section>
+<!-- #END# Widgets -->
+<!-- CPU Usage -->
+    {% endblock content %}

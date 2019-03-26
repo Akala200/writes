@@ -1,0 +1,325 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>ESSAY KITTEN</title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="{% static 'plugins/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="{% static 'plugins/node-waves/waves.css' %}" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="{% static 'plugins/animate-css/animate.css' %}" rel="stylesheet" />
+
+    <!-- Morris Chart Css-->
+    <link href="{% static 'plugins/morrisjs/morris.css' %}" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="{% static 'cssnew/style.css' %}" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="{% static 'cssnew/themes/all-themes.css' %}" rel="stylesheet" />
+</head>
+
+<body class="theme-red">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon">
+            <i class="material-icons">search</i>
+        </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search">
+            <i class="material-icons">close</i>
+        </div>
+    </div>
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="{% url 'customer:index' %}">ESSAY KITTEN</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Call Search -->
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+            <!-- Left Sidebar -->
+            <aside id="leftsidebar" class="sidebar">
+                <!-- #User Info -->
+                <div class="user-info">
+                    <div class="image">
+                    </div>
+                    <div class="info-container">
+                        
+                        <div class="email">{{ request.user.email }}</div>
+                    </div>
+                </div>
+                <!-- Menu -->
+                <div class="menu">
+                    <ul class="list">
+                        <li class="header">Dashboard</li>
+                           <li>
+                            <a href="{% url 'customer:place_an_order' %}" >
+                                <i class="material-icons">shopping_cart</i>
+                                <span>Place An Order</span>
+                            </a>
+                            </li>
+                        <li>
+                                <a href="javascript:void(0);" class="menu-toggle active">
+                                        <i class="material-icons">home</i>
+                                        <span>My Orders</span>
+                                </a>
+                                <ul class="ml-menu">
+                                        <li>
+                                                <a href="{% url 'customer:index' %}">
+                                                    <span>All Orders</span>
+                                                </a>
+                                            </li>
+                                    <li>
+                                        <a href="{% url 'customer:expired_order' %}">
+                                            <span>Bidding Orders</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'customer:order_in_progress' %}">
+                                            <span>In Progress</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                            <a href="{% url 'customer:completed_order' %}">
+                                                <span>Completed</span>
+                                            </a>
+                                        </li>
+                                    <li>
+                                            <a href="{% url 'customer:cancelled_order' %}">
+                                                <span>Cancelled</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                                <a href="{% url 'customer:expired_order' %}">
+                                                    <span>Expired</span>
+                                                </a>
+                                            </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{% url 'customer:view_all_writers' %}">
+                                    <i class="material-icons">layers</i>
+                                    <span>Writers</span>
+                            </a>
+                        </li>
+                        
+                         
+
+            
+                        <li>
+                                <a href="{% url 'customer:view_transactions' %}" >
+                                        <i class="material-icons">account_balance_wallet</i>
+                                    <span>Wallet</span>
+                                </a>
+                        </li>
+                        
+                        
+            
+                        <li>
+                                <a href="{% url 'account_logout' %}">
+                                    <i class="material-icons">arrow_back</i>
+                                    <span>Logout</span>
+                    
+                        
+                            </a>
+                            </li>
+                    
+                    </ul>
+
+                        </div>
+
+            </aside>
+            <!-- #END# Right Sidebar -->
+        </section>
+    
+        
+    
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2>Wallet</h2>
+            </div>
+    
+            <!-- Widgets -->
+            <div class="row clearfix">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="info-box bg-orange hover-expand-effect">
+                                <div class="icon">
+                                 <a href="{% url 'customer:process_payment' %}"><i class="material-icons">payment</i></a>
+                                </div>
+                                <div class="content">
+                                    <div class="text">Fund Wallet</div>
+                                </div>
+                            </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-green hover-expand-effect">
+                    <div class="icon">
+                        <i class="material-icons">monetization_on</i> 
+                    </div>
+                    <div class="content">
+                        <div class="text"><h2>{{ wallet_balance.balance }}</h2></div>
+                    </div>
+                </div>
+    </div>
+            <!-- #END# Widgets -->
+            <!-- CPU Usage -->
+    
+             <!-- Basic Table -->
+             <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                Transactions
+                            </h2>
+                        </div>
+                        <div class="body table-responsive">
+    
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>AMOUNT</th>
+                                        <th>DESCRIPTION</th>
+                                        <th>DATE</th>
+                                        <th>STATUS</th>
+                                    </tr>
+                                </thead>
+                                {% for fund in wallet %}
+                                <tbody>
+                                   
+                                    <tr>
+                                        <td>${{ fund.credit }}</td>
+                                        <td>{{ fund.description }}</td>
+                                        <td>{{ fund.date }}</td>
+                                        {% if fund.is_pending %}
+                                        <td><p style="color:#FF9800;"><b>Pending</b></p></td>   
+                                        {% elif fund.approved %}    
+                                        <td><p style="color:#4CAF50"><b>Approved</b></p></td>  
+                                        {% elif fund.declined %}
+                                        <td><p  style="color:#F44336"><b>Declined</b></p></td>   
+                                        {% endif %}                                   
+                                    </tr>
+                                    
+                                </tbody>
+                                {% endfor %}
+                            </table>
+                        </div>
+                        <nav>
+                            <ul class="pagination">
+                                <li class="disabled">
+                                    <a href="javascript:void(0);">
+                                        <i class="material-icons">chevron_left</i>
+                                    </a>
+                                </li>
+                                <li class="active"><a href="javascript:void(0);">1</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">2</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">3</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">4</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">5</a></li>
+                                <li>
+                                    <a href="javascript:void(0);" class="waves-effect">
+                                        <i class="material-icons">chevron_right</i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+        
+    <!-- Jquery Core Js -->
+    <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.js' %}"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="{% static 'plugins/bootstrap-select/js/bootstrap-select.js' %}"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="{% static 'plugins/jquery-slimscroll/jquery.slimscroll.js' %}"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="{% static 'plugins/node-waves/waves.js' %}"></script>
+
+    <!-- Jquery CountTo Plugin Js -->
+    <script src="{% static 'plugins/jquery-countto/jquery.countTo.js' %}"></script>
+
+    <!-- Morris Plugin Js -->
+    <script src="{% static 'plugins/raphael/raphael.min.js' %}"></script>
+    <script src="{% static 'plugins/morrisjs/morris.js' %}"></script>
+
+    <!-- ChartJs -->
+    <script src="{% static 'plugins/chartjs/Chart.bundle.js' %}"></script>
+
+    <!-- Flot Charts Plugin Js -->
+    <script src="{% static 'plugins/flot-charts/jquery.flot.js' %}"></script>
+    <script src="{% static 'plugins/flot-charts/jquery.flot.resize.js' %}"></script>
+    <script src="{% static 'plugins/flot-charts/jquery.flot.pie.js' %}"></script>
+    <script src="{% static 'plugins/flot-charts/jquery.flot.categories.js' %}"></script>
+    <script src="{% static 'plugins/flot-charts/jquery.flot.time.js' %}"></script>
+
+    <!-- Sparkline Chart Plugin Js -->
+    <script src="{% static 'plugins/jquery-sparkline/jquery.sparkline.js' %}"></script>
+
+    <!-- Custom Js -->
+    <script src="{% static 'jsnew/admin.js' %}"></script>
+    <script src="{% static 'jsnew/pages/index.js' %}"></script>
+
+    <!-- Demo Js -->
+    <script src="{% static 'jsnew/demo.js' %}"></script>
+</body>
+
+</html>

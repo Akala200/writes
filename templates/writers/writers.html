@@ -1,0 +1,298 @@
+{% extends 'writers/base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+    <header class="bg-gradient" id="home">
+        <div class="container mt-5">
+            <h1>WELCOME TO THE LEADING PLATFORM FOR FREELANCE WRITERS</h1>
+            <p class="tagline">Competitive salaries and a constant stream of assignments guaranteed</p>
+            <a href="{% url 'writers:writer-signup'  %}" class="btn btn-primary" style="margin-top: 90px;">Become A Writer On Essay Kitten</a>
+        </div>
+    </header>
+
+    <div class="section light-bg">
+        <div class="container">
+                <div class="section-title">
+                       
+                        <h3>Writers Benefits With Essay Kitten</h3>
+                    </div>
+            <div class="row">
+                <div class="col-md-7 d-flex align-items-center">
+                    <ul class="list-unstyled ui-steps">
+                        <li class="media">
+                            <div class="circle-icon mr-4">1</div>
+                            <div class="media-body">
+                                <h5>We have the crowd</h5>
+                                <p>Hundreds of orders are available at any given time. Feel free to choose whichever ones you like</p>
+                            </div>
+                        </li>
+                        <li class="media my-4">
+                            <div class="circle-icon mr-4">2</div>
+                            <div class="media-body">
+                                <h5>Very Flexible</h5>
+                                <p>Your schedule is flexible. Work whenever it is the most convenient for you</p>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="circle-icon mr-4">3</div>
+                            <div class="media-body">
+                                <h5>Real Time Conversation </h5>
+                                <p>Communicate in real-time with your customers directly via a live chat window. No longer do you need to submit tickets and have support act as the middleman.</p>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="circle-icon mr-4">4</div>
+                            <div class="media-body">
+                                <h5>Dictate Your Price</h5>
+                                <p>When you bid for orders, you get to set the price on your services. We won’t limit your earnings in any way.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-5">
+                    <img src="{% static 'img/work.gif' %}" alt="iphone" class="img2">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- // end .section -->
+
+    <div class="section light-bg">
+            <div class="container">
+        
+                    <ul class="nav nav-tabs nav-justified" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#communication">Future Writers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#schedule">Customer</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="communication">
+                          <div id="features" class="section md-padding bg-grey">
+                              <div class="container">
+                        
+                                  <!-- Row -->
+                                  <div class="row">
+                                    <!-- why choose us content -->
+                                    <div class="col-md-6">
+                                        <div class="section-header">
+                                            <h2 class="title">Awesome! we are hiring</h2>
+                                        </div>
+                                        <ul>
+                                            <li><p>We are loooking for writers with the following minimum requirement</p></li>
+                                            <li><p>A bachelor's degree from an accredited educational institution</p></li>
+                                            <li><p>Native English speaker(US residents)</p></li>
+                                            <li><p>Access to a paypal account and MS office</p></li>
+                                        </ul>
+                                        <p>If you meet this minimum requirement, we would love it if you apply</p>
+
+                                    <div>
+                                        <a href="{% url 'writers:writer-signup'  %}" class="btn btn-primary" style="margin-top: 90px;">Signup As  A Writer</a> 
+                                    </div>  
+                                    </div>
+                                    <div class="col-md-6">                                
+                                        <img src="{% static 'img/giphy.gif' %}" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
+                                   </div>
+                                    </div>
+                                    </div>
+                        </div>
+                        </div>
+                        <div class="tab-pane fade" id="schedule">
+                                <div id="features" class="section md-padding bg-grey">
+                                        <div class="container">
+                                  
+                                            <!-- Row -->
+                                            <div class="row">
+                                              <!-- why choose us content -->
+                                              <div class="col-md-6">
+                                                  <div class="section-header">
+                                                      <h2 class="title">Customer's Benefits</h2>
+                                                  </div>
+                                                  <ul>
+                                                      <li><p>We are loooking for writers with the following minimum requirement</p></li>
+                                                      <li><p>A bachelor's degree from an accredited educational institution</p></li>
+                                                      <li><p>Native English speaker(US residents)</p></li>
+                                                      <li><p>Access to a paypal account and MS office</p></li>
+                                                  </ul>
+                                                  <p>If you meet this minimum requirement, we would love it if you apply</p>
+          
+                                              <div>
+                                                  <a href="{% url 'writers:writer-signup' %}" class="btn btn-primary" style="margin-top: 90px;">Apply Now</a> 
+                                              </div>  
+                                              </div>
+                                              <div class="col-md-6">                                
+                                                  <img src="{% static 'img/customer.gif' %}" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
+                                             </div>
+                                              </div>
+                                              </div>
+
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+    
+
+
+
+    <div class="section light-bg" id="features">
+
+
+        <div class="container">
+
+            <div class="section-title">
+                <h3>Our Platform</h3>
+            </div>
+
+
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="card features">
+                        <div class="card-body">
+                            <div class="media">
+                                <span class="ti-face-smile gradient-fill ti-3x mr-3"></span>
+                                <div class="media-body">
+                                    <h4 class="card-title">1452 Orders Available</h4>
+                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="card features">
+                        <div class="card-body">
+                            <div class="media">
+                                <span class="ti-settings gradient-fill ti-3x mr-3"></span>
+                                <div class="media-body">
+                                    <h4 class="card-title">59002 Orders Completed</h4>
+                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+    <!-- // end .section -->
+    
+    <!-- // end .section -->
+
+     <div class="section light-bg" style="
+     background-color: #fff;
+ ">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 d-flex align-items-center">
+                    <ul class="list-unstyled ui-steps">
+                        <li class="media">
+                            <div class="circle-icon mr-4">1</div>
+                            <div class="media-body">
+                                <h5>Easy Registration</h5>
+                                <p>Apply and take a short test. All it takes is oughly 15 minutes of your time.</p>
+                            </div>
+                        </li>
+                        <li class="media my-4">
+                            <div class="circle-icon mr-4">2</div>
+                            <div class="media-body">
+                                <h5>Instantly Find Tasks</h5>
+                                <p>Get immediate access to the job board, set your fees and start working on assignments you are interested in.</p>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="circle-icon mr-4">3</div>
+                            <div class="media-body">
+                                <h5>Receive Payments Every 2 Weeks</h5>
+                                <p>You get paid twice a month via the payment system of your choice.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                        <img src="{% static 'img/help.gif' %}" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0" style="
+                        margin-top: 130px;
+                    ">
+                    </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- // end .section -->
+
+    <div class="section pt-0 light-bg">
+        <div class="container" style="padding: 30px;">
+            <div class="section-title">
+                <h3>Frequently Asked Questions</h3>
+            </div>
+
+            <div class="row pt-4">
+                <div class="col-md-6">
+                    <h4 class="mb-3">Can I try before I buy?</h4>
+                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
+                    <h4 class="mb-3">What payment methods do you accept?</h4>
+                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
+
+                </div>
+                <div class="col-md-6">
+                    <h4 class="mb-3">Can I change my plan later?</h4>
+                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
+                    <h4 class="mb-3">Do you have a contract?</h4>
+                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- // end .section -->
+
+
+
+    <div class="section bg-gradient" style="height: 400px;">
+        <div class="container">
+            <div class="call-to-action">
+
+                <h2>Become A Writer Now</h2>
+                <p class="tagline">Available for all major mobile and desktop platforms. Rapidiously visualize optimal ROI rather than enterprise-wide methods of empowerment. </p>
+                <div class="my-4">
+                    <a href="{% url 'writers:writer-signup'  %}" class="btn btn-primary" style="margin-top: 40px; width: 200px;">Signup</a>                
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- // end .section -->
+
+    <!-- // end .section -->
+    <footer class="my-5 text-center">
+        <!-- Copyright removal is not prohibited! -->
+        <p class="mb-2"><small>COPYRIGHT © 2018. ALL RIGHTS RESERVED.  BY <a href="{% url 'index' %}">ESSAY KITTEN</a></small></p>
+
+        <small>
+            <a href="#" class="m-2">PRESS</a>
+            <a href="#" class="m-2">TERMS</a>
+            <a href="#" class="m-2">PRIVACY</a>
+        </small>
+    </footer>
+
+ 
+
+
+
+{% endblock %}

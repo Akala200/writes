@@ -1,96 +1,75 @@
 
 {% load static %}
 
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="{% static 'img/logo.jpg' %}" type="image/png">
+        <title>Essay Kitten</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/lightbox/simpleLightbox.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/nice-select/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/animate-css/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/popup/magnific-popup.css' %}">
+        <!-- main css -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    </head>
+    <body data-spy="scroll" data-target="#mainNav" data-offset="70">
 
-  <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Writer</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
-
-    <!-- Plugin CSS -->
-    <link href="{% static 'vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href= "{% static 'css/creative.min.css' %}" rel="stylesheet">
-
-  </head>
-
-  <body id="page-top">
+    {% block navbar %}
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #f05f40 !important;" id="mainNav">
+    <!--================Header Menu Area =================-->
+    <header class="header_area">
+        <div class="main_menu" id="mainNav" style="
+        background-image: -webkit-linear-gradient(0deg, #bc2bff 0%, #7249fb 100%);
+    ">
+          <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top"></a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-color:  #fff;">
-          <span class="navbar-toggler-icon"></span>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <a class="navbar-brand logo_h" href="{% url 'index' %}" style="color: #fff; font-size: 25px;">ESSAY KITTEN</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">Writers</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">How it works</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle js-scroll-trigger" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Services
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Essay Writing Service</a>
-                <a class="dropdown-item" href="#">Custom Essay Writing</a>
-                <a class="dropdown-item" href="#">Disstertation Writing Services</a>
-                <a class="dropdown-item" href="#">Research Paper Writing</a>
-                <a class="dropdown-item" href="#">Term Paper Writing</a>
-                <a class="dropdown-item" href="#">Write My Essay</a>
-                <a class="dropdown-item" href="#">Admission Essay Writing</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Reviews</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">FAQ</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle js-scroll-trigger" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  About us
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Essay Writing Service</a>
-                  <a class="dropdown-item" href="#">Custom Essay Writing</a>
-                  <a class="dropdown-item" href="#">Disstertation Writing Services</a>
-                  <a class="dropdown-item" href="#">Research Paper Writing</a>
-                  <a class="dropdown-item" href="#">Term Paper Writing</a>
-                  <a class="dropdown-item" href="#">Write My Essay</a>
-                  <a class="dropdown-item" href="#">Admission Essay Writing</a>
-                </div>
-              </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Blog</a>
-            </li>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+          <ul class="nav navbar-nav menu_nav ml-auto">
+            <li class="nav-item active"><a class="nav-link" href="{% url 'writers' %}">WRITER</a></li> 
+            <li class="nav-item"><a class="nav-link" href="{% url 'how_it_works' %}">HOW IT WORKS</a></li> 
+            <li class="nav-item submenu dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SERVICE</a>
+              <ul class="dropdown-menu">
+                <li class="nav-item"><a class="nav-link" href="{% url 'essay_writing' %}">Essay Writing</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'dissatation_writing' %}">Disstertation Essay</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'research' %}">Research Paper</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'term_paper' %}">Term Paper</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'write_my_essay' %}">Write My Essay</a></li>
+              </ul>
+            </li> 								
+            <li class="nav-item"><a class="nav-link" href="{% url 'reviews' %}">REVIEWS</a>
+            <li class="nav-item"><a class="nav-link" href="{% url 'faq' %}">FAQ</a>
+            <li class="nav-item active"><a class="nav-link" href="{% url 'about' %}">About Us</a></li>  
+            <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">LOGIN</a></li>
           </ul>
-          <div>
-           <a href="#"></a>
-           <a href="#"></a>
-          </div>
-        </div>
+        </div> 
       </div>
-    </nav>
+          </nav>
+        </div>
+    </header>
+    {% endblock navbar %}
 
     
     {% block content %}
@@ -99,33 +78,171 @@
     {% endblock content %}
 
 
+       
+    <footer class="footer-area p_120" style="padding: 30px;">
+        <div class="container">
+                <h1 class="section-heading">Order A Custom Academic Paper!</h1>
+            <div class="row">
+                <div class="col-lg-2  col-md-6 col-sm-6">
+                    <div class="single-footer-widget tp_widgets">
+                       <h6 class="footer_title">Top Products</h6>
+                        <ul class="list">
+                          <li><a href="{% url 'become-a-writer' %}">Become A Writer</a></li>
+                          <li><a href="#">Terms and conditions</a></li>
+                          <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">	
+                    <div class="single-footer-widget news_widgets">
+                        <div id="mc_embed_signup">
+                            <div target="_blank">
+                                <div class="input-group d-flex flex-row">
+                                        <a href="#" class="dropdown-toggle main_btn btn-header" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Global</a>
+                                        <ul class="dropdown-menu">
+                                          <li class="nav-item"><a class="nav-link" href="{% url 'uk:index' %} ">United Kingdom</a></li>
+                                          <li class="nav-item"><a class="nav-link" href="{% url 'au:index' %}"> Australia</a></li>
+                                          <li class="nav-item"><a class="nav-link" href="{% url 'uae:index' %}">UAE</a></li>
+                                          <li class="nav-item"><a class="nav-link" href="{% url 'ca:index' %}">Canada</a></li>
+                                        </ul>
+                                </div>									
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col">
+                    <div class="container h-100">
+                        <div class="row h-100 justify-content-center align-items-center">
+                          <form>
+                                <div class="row">
+                            <div class="form-group col-lg-5">
+                                  <select class="form-control custom-select">
+                                    <option value="" selected>Writing</option>
+                                    <option value="">Rewriting</option>
+                                    <option value="">Editing</option>
+                                  </select>
+                                </div>
+                              <div class="form-group  col-lg-7">
+                                  <select class="form-control custom-select">
+                                    <option value="" selected>Essay(Any)</option>
+                                    <option value="">Admission Essay</option>
+                                    <option value="">Annotated Bibliography</option>
+                                    <option value="">Article Review</option>
+                                    <option value="">Book/Movie Review</option>
+                                    <option value="">Business Plan</option>
+                                    <option value="">Case Study</option>
+                                    <option value="">Course Work</option>
+                                    <option value="">Creative Writing</option>
+                                    <option value="">Course Work</option>
+                                    <option value="">Critical Thinking/Review</option>
+                                    <option value="">Literature Review</option>
+                                    <option value="">Multiple Choice Question</option>
+                                    <option value="">Presentation or Speech</option>
+                                    <option value="">Reflextive Writing</option>
+                                    <option value="">Report</option>
+                                    <option value="">Research Paper</option>
+                                    <option value="">Research proposal</option>
+                                    <option value="">Term Paper</option>
+                                    <option value="">Thesis </option>
+                                    <option value="">Others</option>
+                                  </select>
+                                  </div>
+                              </div>
 
-   
-    
-    <section id="contact">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading">Let's Get In Touch!</h2>
-            <hr class="my-4">
-          </div>
+                              <div class="row">
+                                    <div class="form-group col-lg-5">
+                                          <select class="form-control custom-select">
+                                                <option value="" selected>6 Hours</option>
+                                                <option value="">12 Hours</option>
+                                                <option value="">1 Day</option>
+                                                <option value=""> 1 Week</option>
+                                                <option value="">2 Weeks</option>
+                                                <option value="">1  Month</option>
+                                                <option value="">2 Months</option>n>
+                                          </select>
+                                        </div>
+                                        <div class="form-group col-lg-7">
+                                                <div class="pb_select-wrap">
+                                                  <div class="col-xs-3 col-xs-offset-3">
+                                                    <div class="input-group number-spinner">
+                                                      <span class="input-group-btn">
+                                                        <button class="btn btn-default" data-dir="dwn"><span><i class="fas fa-minus"></i></span></button>
+                                                      </span>
+                                                      <input type="text" class="form-control text-center" value="1">
+                                                      <span class="input-group-btn">
+                                                        <button class="btn btn-default" data-dir="up"><span><i class="fas fa-plus"></i></span></button>
+                                                      </span>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                      </div>
+                                      <div class="row">
+                                            <div class="form-group col-lg-5">
+                                                    <h3 class="text-center" style="color:#fff;">$00:00</h3>
+                                                </div>
+                                                <div class="form-group col-lg-7">
+                                                        <div class="form-group">
+                                                                <input type="submit" class="btn btn-primary btn-lg btn-block pb_btn-pill  btn-shadow-blue" value="Continue">
+                                                              </div>
+                                                      </div>
+                                              </div>
+                          </form>   
+                        </div>  
+                      </div>
+                </div>	
+            </div>
+
+            <div class="row footer-bottom d-flex justify-content-between text-center" style="padding-left: 30px; padding-right:30px">
+                <div class="col-lg-3"><i class="fab fa-cc-paypal fa-3x" style="color: #6610f2;"></i></div>
+                <div class="col-lg-3"><i class="fab fa-cc-mastercard fa-3x" style="color: #6610f2;"></i></div>
+                <div class="col-lg-3"><i class="fab fa-cc-visa fa-3x" style="color: #6610f2;"></i></div>
+                <div class="col-lg-3"><i class="fab fa-cc-amex fa-3x" style="color: #6610f2;"></i></div>
+            </div>
+
+            <div class="row footer-bottom d-flex justify-content-between align-items-center">
+                <div class="col-lg-12 text-center">
+                <p class="footer-text m-0">
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with by <a href="index.html">Essay Kitten</a>
+</div>
+            </div>
         </div>
-      </div>
-    </section>
+    </footer>
+<!--================ End footer Area  =================-->
     
     
-    <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src=" {% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/stellar.js' %}"></script>
+    <script src="{% static 'vendors/lightbox/simpleLightbox.min.js' %}"></script>
+    <script src="{% static 'vendors/nice-select/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'vendors/isotope/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'vendors/isotope/isotope-min.js' %}"></script>
+    <script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'vendors/popup/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'js/mail-script.js' %}"></script>
+    <script src="{% static 'vendors/counter-up/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'vendors/counter-up/jquery.counterup.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+    <script src="{% static 'js/rating.js' %}"></script>
+    <script src="{% static 'js/calculate.js' %}"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-    <script src="{% static 'vendor/scrollreveal/scrollreveal.min.js' %} "></script>
-    <script src="{% static 'vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="{% static 'js/creative.min.js' %}"></script>
-
-  </body>
-
+    <script src="{% static 'js/number_spinner.js' %}"></script>
+  <!--Start of Zendesk Chat Script-->
+<script type="text/javascript">
+  window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+  d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+  _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+  $.src="https://v2.zopim.com/?62RyKFkuJG0NlveGqLw3OmuM1hxB7Vqu";z.t=+new Date;$.
+  type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+  </script>
+  <!--End of Zendesk Chat Script-->
+                 
+</body>
 </html>

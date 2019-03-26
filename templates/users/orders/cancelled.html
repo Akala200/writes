@@ -1,0 +1,105 @@
+{% extends 'index/base.html' %}
+{% block content %}
+
+    <section class="content">
+        <div class="container-fluid">
+                {% include 'users/header.html' %}
+            <div class="block-header">
+                <h2>Cancelled Orders</h2>
+            </div>
+           
+            <!-- Basic Table -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        
+                        <div class="body table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Topic</th>
+                                        <th>Deadline</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                {% for order in orders %}
+                                <tbody>
+                                    <tr>
+                                        <td><a href="#"></a>{{ order.order_uuid }}</td>
+                                        <td>{{ order.topic }}</td>
+                                        <td>{{ order.deadline }}</td>
+                                        {% if order.cancelled %}
+                                        <td><span class="badge bg-red" style="font-size:14px;">Cancelled</span></td>
+                                        <td>
+                                                <div class="btn-group">
+                                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            ACTION <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="{% url 'customer:resubmit_order' order.order_uuid %}">
+                                                                    <div class="demo-google-material-icon"> <i class="material-icons">autorenew</i> <span class="icon-name"></span> </div>Resubmit</a></li>
+                                                        </ul>
+                                                    </div>
+                    
+                                        </td>
+   
+                                        
+                                    {% endif %}
+                                
+                                    
+                                    </tr>
+                                    {% endfor %}
+   
+                                </tbody>
+                            </table>
+                        </div>
+                        {% if orders.has_other_page %}
+                        <nav>
+                           
+                            <ul class="pagination">
+                                {% if orders.has_previous %}
+                                
+                                <li class="active"><a href="?page={{ orders.previous_page_number }}">&laguo;</a></li>
+                                {% else %}
+                                <li class="disabled">
+                                        <a href="javascript:void(0);">
+                                            <i class="material-icons">chevron_left</i>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% for i in orders.paginator.page.page_range %}
+                                {% if orders.number == i %}
+                            
+                                <li class="active"><span>{{ i }} <span class="sr-only">( current )</span></span></li>
+                                {% else %}
+                                
+                                <li><a href="?page={{ i }}" class="waves-effect">{{ i }}</a></li>
+                                {% endif %}
+                                {% endfor %}
+                                {% if orders.has_next %}
+                
+                                <li><a href="?page={{ orders.next_page_number }}" class="waves-effect">&raguo;</a></li>
+                                {% else %}
+                                <li class="disabled">
+                                        <a href="javascript:void(0);">
+                                            <i class="material-icons">chevron_left</i>
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                           
+                            </ul>
+                            </nav>
+                            {% endif %}
+
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Basic Table -->
+            <!-- #END# With Material Design Colors -->
+        </div>
+    </section>
+
+
+{% endblock content %}

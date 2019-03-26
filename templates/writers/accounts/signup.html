@@ -1,0 +1,99 @@
+
+{% extends 'account/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-image: -webkit-linear-gradient(0deg, #bc2bff 0%, #7249fb 100%);" id="mainNav">
+		<div class="container">
+		  <a class="navbar-brand js-scroll-trigger" href="#page-top"></a>
+		  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-color:  #fff;">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+			  <li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="{% url 'index' %}">Home</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="{% url 'account_login' %}">Login</a>
+			  </li>
+			</ul>
+		  </div>
+		</div>
+				</nav>
+
+	{% endblock %}
+	
+{% block content %} 
+
+
+
+<div class="limiter">
+	<div class="container-login100">
+		<div class="wrap-login100">
+			<div class="login100-pic js-tilt" data-tilt>
+				<img src="{% static 'img/logo.jpg' %}" alt="IMG">
+			</div>
+
+			<form class="login100-form validate-form" method="POST" action="{% url 'writers:writer-signup' %}">
+				{% csrf_token %}
+				<span class="login100-form-title">
+					<h2 id="login-title" style="color: #bc2bff;">Writer Signup</h2>
+				</span>
+				{% if form.errors %}
+				
+				<div class="alert alert-warning alert-dismissible" role="alert">
+						{% for error in form.errors %}
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					{{ error }}
+			</div>
+			
+					{% endfor %}
+					{% endif %}
+
+				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					{{ form.email }}
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+						<i class="fa fa-envelope" aria-hidden="true"></i>
+					</span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Password is required" id="password1">
+						{{ form.password1 }}
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+						<i class="fa fa-lock" aria-hidden="true"></i>
+					</span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Confirm your password" id="password2">
+						{{ form.password2 }}
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+						<i class="fa fa-lock" aria-hidden="true"></i>
+					</span>
+				</div>
+				
+				<div class="container-login100-form-btn">
+					<button class="login100-form-btn">
+						Signup
+					</button>
+				</div>					
+				
+			
+
+				<div class="text-center p-t-136">
+					<a class="txt2" href="{% url 'account_login' %}">
+						Already have an account
+						<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+					</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+	{% endblock content %}

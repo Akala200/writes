@@ -1,0 +1,153 @@
+{% extends 'index/base.html' %}
+{% load static %}
+{% block navbar %}
+<div class="menu">
+    <ul class="list">
+<li>
+    <a href="javascript:void(0);" class="menu-toggle active">
+            <i class="material-icons">layers</i>
+            <span>Writers</span>
+    </a>
+    <ul class="ml-menu">
+        <li>
+            <a href="{% url 'customer:view_all_writers' %}">
+                <span>All Writers</span>
+            </a>
+        </li>
+        <li>
+                <a href="{% url 'customer:favorite_writers' %}">
+                    <span>Favorite Writers</span>
+                </a>
+            </li>
+        <li>
+            <a href="{% url 'customer:agric' %}">
+                <span>Agriculture</span>
+            </a>
+        </li>
+        <li>
+                <a href="{% url 'customer:culture' %}">
+                    <span>Culture</span>
+                </a>
+            </li>
+        <li>
+                <a href="{% url 'customer:economic' %}">
+                    <span>Economic</span>
+                </a>
+            </li>
+            <li>
+                    <a href="{% url 'customer:lifestyle' %}">
+                        <span>Lifestyle</span>
+                    </a>
+                </li>
+    </ul>
+</li>
+</ul>
+</div>
+{% endblock navbar %}
+{% block content %}
+<section class="content">
+        <div class="container-fluid">
+                <div class="block-header">
+                    <h2>DASHBOARD</h2>
+                </div>
+    
+                <!-- Widgets -->
+                <div class="row clearfix">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="info-box bg-orange hover-expand-effect">
+                                    <div class="icon">
+                                     <a href=""><i class="material-icons">person_add</i></a>
+                                    </div>
+                                    <div class="content">
+                                        <div class="text">PLACE AN ORDER</div>
+                                    </div>
+                                </div>
+                        </div>
+                </div>
+                </div>
+<div class="container-fluid">
+         
+<!-- Exportable Table -->
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                    <h2>
+                      All WRITER
+                    </h2>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                        <div class="row">
+                            <div>
+                                <div class="col-sm-9">
+                                    <hr/>
+                                    <div class="review-block">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <img src="{% static 'images/user.png' %}" class="img-rounded">
+                                                <div class="review-block-name"><a href="#">Johnson Chuwku</a></div>
+                                                <div class="review-block-date">1 day ago</div>
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <div class="review-block-rate">
+                                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                                    </button>
+                                                    <div>
+                                                        <h4>3.0</h4>
+                                                    </div>
+                                                </div>
+                                                <div class="review-block-description row">
+                                                    <div class="col-lg-3 col-md-3">
+                                                        <div class="progress">
+                                                            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;" data-toggle="tooltip" data-placement="top" title="Completion Rate">
+                                                            75%
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3"><b>450 Orders Completed</b></div>
+                                                    <div class="col-lg-3 col-md-3"><b>450 Reviews</b></div>
+                                                    <div class="col-lg-3 col-md-3">
+                                                            <div class="btn-group">
+                                                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        ACTION <span class="caret"></span>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu">
+                                                                            <li><a href="javascript:void(0);"><div class="demo-google-material-icon"> <i class="material-icons">person_add</i> <span class="icon-name"></span> </div>
+                                                                                Hire A Writer</a></li>
+                                                                        <li><a href="javascript:void(0);">                                     <div class="demo-google-material-icon"> <i class="material-icons">thumb_up</i> <span class="icon-name"></span> </div>
+                                                                            Add To Favorite</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Exportable Table -->
+</div>
+</section>
+<!-- #END# Widgets -->
+<!-- CPU Usage -->
+    {% endblock content %}

@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 
 
-class CustomerConfig(AppConfig):
-    name = 'customer'
+class WritersConfig(AppConfig):
+    name = 'writers'
 
     def ready(self):
         import writers.signals

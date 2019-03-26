@@ -1,0 +1,103 @@
+<ul class="list">
+    <li class="header">Dashboard</li>
+   
+    <li>
+        <a href="{% url 'customer:view_all_writers' %}">
+            <span>Assignment details</span>
+        </a>
+    </li>
+
+        <li>
+            <a href="javascript:void(0);" class="menu-toggle active">
+                    <i class="material-icons">layers</i>
+                    <span>Bids</span>
+            </a>
+            <ul class="ml-menu">
+                <li>
+                        <a href="{% url 'customer:favorite_writers' %}">
+                            <span>Favorite</span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="#">
+                        <span>Hired Before</span>
+                    </a>
+                </li>
+                <li>
+                        <a href="#">
+                            <span>Invited</span>
+                        </a>
+                    </li>
+                <li>
+                        <a href="#">
+                            <span>Assign A Writer</span>
+                        </a>
+                    </li>
+                    <li>
+                            <a href="#">
+                                <span>New Bids</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>Shortlisted</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>Declined</span>
+                            </a>
+                        </li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="javascript:void(0);" class="menu-toggle active">
+                    <i class="material-icons">home</i>
+                    <span>My Orders</span>
+            </a>
+            <ul class="ml-menu">
+                    <li>
+                            <a href="{% url 'customer:index' %}">
+                                <span>All Orders</span>
+                            </a>
+                        </li>
+                <li>
+                    <a href="#">
+                        <span>Bidding Orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'customer:order_in_progress' %}">
+                        <span>In Progress</span>
+                    </a>
+                </li>
+                <li>
+                        <a href="{% url 'customer:completed_order' %}">
+                            <span>Completed</span>
+                        </a>
+                    </li>
+                <li>
+                        <a href="{% url 'customer:cancelled_order' %}">
+                            <span>Cancelled</span>
+                        </a>
+                    </li>
+                    <li>
+                            <a href="{% url 'customer:expired_order' %}">
+                                <span>Expired</span>
+                            </a>
+                        </li>
+            </ul>
+        </li>
+
+        <li>
+                <a href="{% url 'customer:view_transactions' %}" >
+                        <i class="material-icons">account_balance_wallet</i>
+                    <span>Wallet</span>
+                </a>
+        </li>
+        
+       
+        
+
+</ul>

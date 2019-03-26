@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href=" {% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/utils.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+<!--===============================================================================================-->
+
+    <title>Writer/login</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link href="{% static 'vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href= "{% static 'css/creative.min.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body>
+		{% block navbar %} 
+	   <!-- Navigation -->
+	   <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-image: -webkit-linear-gradient(0deg, #bc2bff 0%, #7249fb 100%);" id="mainNav">
+			<div class="container">
+			  <a class="navbar-brand js-scroll-trigger" href="#page-top"></a>
+			  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-color:  #fff;">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+				  <li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="{% url 'index' %}">Home</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="{% url 'account_signup' %}">Signup</a>
+				  </li>
+				</ul>
+			  </div>
+			</div>
+					</nav>
+					{% endblock %}
+          
+
+
+
+
+	
+
+	
+<!--===============================================================================================-->	
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+    <script src=" {% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/tilt/tilt.jquery.min.js' %}"></script>
+
+<!--===============================================================================================-->
+		<script src="{% static 'js/login.js' %}"></script>
+		
+		{% block content %}
+
+    
+    {% endblock content %}
+
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<ul class="list">
+        <li class="header">Dashboard</li>
+        <li>
+                <a href="javascript:void(0);" class="menu-toggle active">
+                        <i class="material-icons">home</i>
+                        <span>My Orders</span>
+                </a>
+                <ul class="ml-menu">
+                        <li>
+                                <a href="{% url 'writers:all_orders' %}">
+                                    <span>All Bids</span>
+                                </a>
+                            </li>
+                    <li>
+                        <a href="{% url 'writers:new_order' %}">
+                            <span>New Orders</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'writers:active_bid' %}">
+                            <span>Active Bids</span>
+                        </a>
+                    </li>
+                    <li>
+                            <a href="{% url 'writers:completed_bid' %}">
+                                <span>Completed</span>
+                            </a>
+                        </li>
+                    <li>
+                            <a href="{% url 'writers:expired_bid' %}">
+                                <span>Expired</span>
+                            </a>
+                        </li>
+                      
+                </ul>
+            </li>
+       
+        
+        <li>
+                    <a href="{% url 'writers:view_transactions' %}" >
+                            <i class="material-icons">account_balance_wallet</i>
+                        <span>Wallet</span>
+                    </a>
+            </li>
+            <li>
+            <a href="{% url 'account_logout' %}">
+                    <i class="material-icons">arrow_back</i>
+                    <span>Logout</span></a>
+            </li>
+    
+    </ul>

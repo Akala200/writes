@@ -1,0 +1,9 @@
+-ability for users to login/signup
+-ability for users to rate writers
+-ability for users to have a private chat with the writers
+-ability for users to view writers catalogue based on writers and reviews 
+-ability for users to write reviews about writers
+-abiltity for users to hire writers
+-ability for users to search for writers based on topics
+-ability for users to place orders
+--ability for users to track oders 

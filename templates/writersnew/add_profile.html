@@ -1,0 +1,115 @@
+{% extends 'index/base.html' %}
+{% block content %}
+
+    <section class="content">
+            <div class="container-fluid">
+    
+                <!-- Widgets -->
+                <div class="row clearfix">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="info-box bg-orange hover-expand-effect">
+                                    <div class="icon">
+                                     <a href="{% url 'writers:update_profile'%}" disabled ><i class="material-icons">person_add</i></a>
+                                    </div>
+                                    <div class="content">
+                                        <div class="text">ADD PROFILE</div>
+                                    </div>
+                                </div>
+                        </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-pink hover-expand-effect">
+                            <div class="icon">
+                             <a  href=""><i class="material-icons">playlist_add_check</i></a>
+                            </div>
+                            <div class="content">
+                                <div class="text">Take Test</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-cyan hover-expand-effect">
+                            <div class="icon">
+                               <a  href="{% url 'writers:all_orders' %}"><i class="material-icons">help</i></a>
+                            </div>
+                            <div class="content">
+                                <div class="text">View Orders</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-light-green hover-expand-effect">
+                            <div class="icon">
+                              <a  href=""><i class="material-icons">forum</i></a>
+                            </div>
+                            <div class="content">
+                                <div class="text">Setup Payment</div>
+                                <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </section>
+                <!-- #END# Widgets -->
+
+    <section class="content">
+        <div class="container-fluid">
+            
+            <!-- Basic Validation -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h1>Create Your Profile</h1>
+                 
+                        </div>
+                        <div class="body">
+                            <form id="form_validation" method="POST" action="{% url 'writers:create-profile' %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        {{ form.full_name }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        {{ form.headline }}
+                                    </div>
+                                </div>
+                              
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                       {{ form.about }}
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-float">
+                                        <div class="form-line">
+                                                    {{ form.subject }}
+                    
+                                        </div>
+                                    </div>
+                                
+                                <div class="form-group form-float">
+                                        <div class="form-line">
+                                          {{ form.paypal_id}}
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-float">
+                                            <div class="form-line">
+                                              {{ form.image }}
+                                            </div>
+                                        </div>
+                 
+                                <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Basic Validation -->
+        </div>
+    </section>
+
+   {% endblock content %}

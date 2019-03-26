@@ -1,0 +1,171 @@
+{% extends 'index/base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row clearfix">
+                
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box bg-orange hover-expand-effect">
+                                <div class="icon">
+                                 <a href="{% url 'writers:place_a_bid' bid.pk %}"><i class="material-icons">mode_edit</i></a>
+                                </div>
+                                <div class="content">
+                                    <div class="text">Place Bid</div>
+                                </div>
+                            </div>
+                      
+        </div>
+        </div>
+            <!-- Example Tab -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                       
+                        <div class="body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#home" data-toggle="tab">ORDER DETAILS</a></li>
+                                <li role="presentation"><a href="#profile" data-toggle="tab">DESCRIPTIONS</a></li>
+                                <li role="presentation"><a href="#upload" data-toggle="tab">ADDITIONAL FILE</a></li>
+
+
+
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="home">
+                                    <div class="row clearfix" style="margin-top:30px;">
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                <div class="info-box">
+                                                    <div class="content">
+                                                        <div class="text"><b>TOPIC</b></div>
+                                                        <p>{{ bid.topic }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                <div class="info-box">
+                                                    <div class="content">
+                                                            <div class="text"><b>TYPE</b></div>
+                                                            <p>{{ bid.order_type }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                <div class="info-box">
+                                                    <div class="content">
+                                                            <div class="text"><b>SERVICE</b></div>
+                                                            <p>{{ bid.service }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                <div class="info-box">
+                                                    <div class="content">
+                                                            <div class="text"><b>SOURCE</b></div>
+                                                            <p>{{ bid.sources }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row clearfix" style="margin-top:30px;">
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                    <div class="info-box">
+                                                        <div class="content">
+                                                                <div class="text"><b>STYLE</b></div>
+                                                                <p>{{ bid.style }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                    <div class="info-box">
+                                                        <div class="content">
+                                                            <div class="text"><b>SUBJECT</b></div>
+                                                        <p>{{ bid.subject }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                    <div class="info-box">
+                                                        <div class="content">
+                                                           <div class="text"><b>LEVEL</b></div>
+                                                        <p>{{ bid.level }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                    <div class="info-box">
+                                                        <div class="content">
+                                                                <div class="text"><b>PAGE</b></div>
+                                                                <p>{{ bid.pages }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="profile">
+                                    
+                                    
+                                    <p style="padding:50px;">
+                                       {{ bid.description }}
+                                    </p>
+                                </div>
+
+                     
+
+                                <div role="tabpanel" class="tab-pane fade" id="upload">
+                                    <table class="table table-bordered js-sweetalert">
+                                
+                                        <thead>
+                                            <tr>
+                                                    <th>File Name</th>
+                                                    
+                                                    <th>ACTION</th>
+                                            </tr>
+                                        </thead>
+                                        {% for f in files %}
+                                        <tbody>
+                                           
+                                                
+                                               
+                                                <tr>
+                                                        <td><a href="{{ f.file_upload.url }}" download="{{ f.file_upload.url }}">{{ f.file_upload.name }}</a></td>
+                                                        <td><a type="button" class="btn btn-sucess waves-effect" href= "{{ f.file_upload.url }}" download="{{ f.file_upload.url }}">Download</a></td>
+                                                    </tr>
+                                                       
+                                                                            
+                                                                            
+                                                                           
+                                        </tbody>
+                                        {% endfor %}
+
+                                       
+                                      
+                                    </table>
+                                            
+                                </div>
+
+                                
+                
+
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Example Tab -->
+            <!-- Tabs With Only Icon Title -->
+            
+        </div>
+    </section>
+
+
+    <script src="{% static 'jsnew/rating2.js' %}"></script>
+
+{% endblock content %}

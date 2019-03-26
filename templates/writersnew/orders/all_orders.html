@@ -1,0 +1,145 @@
+{% extends 'index/base.html' %}
+{% block content %}
+    <section class="content">
+        <div class="container-fluid">
+            
+            <!-- Basic Examples -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="body">
+                     
+             <!-- Basic Table -->
+             <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                               All Bids
+                                
+                            </h2>
+                            
+                        </div>
+                        <div class="body table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Topic</th>
+                                        <th>Deadline</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                {% for bid in bids %}
+                                <tbody>
+                                    <tr>
+                                        {% if bid.approved %}
+                                        <td><a href="{% url 'writers:inprogress' bid.bidding_id.order_uuid %}">{{ bid.bidding_id.order_uuid }}</a></td>
+                                        {% else %}
+                                        <td><a href=""></a>{{ bid.bidding_id.order_uuid }}</td>
+                                        {% endif %}
+                                       
+                                        <td>{{ bid.bidding_id.topic }}</td>
+                                        <td>{{ bid.bidding_id.deadline }}</td>
+                                        {% if bid.order.expired %}
+                                        <td><span class="badge" style="font-size:14px; background-color: grey;">Expired</span></td>
+                                        {% elif bid.completed %}
+                                        <td><span class="badge bg-green" style="font-size:14px;">Completed</span></td>
+                                        {% elif bid.approved %}
+                                        <td> <span class="badge bg-orange" style="font-size: 14px;">In Progress</span></td>
+                                        {% elif bid.declined %}
+                                        <td><span class="badge" style="font-size:14px; background-color: grey;">Bid Declined</span></td>
+                                        {% else %}
+                                        <td><span class="badge bg-cyan waves-effect" style="font-size:14px;">Bid Placed</span></td>
+                                        {% endif %}
+                                        <td>
+                                            <div class="btn-group">
+                                                {% if bid.declined %}
+                                                <button type="button" class="btn btn-primary disabled dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    ACTION <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="javascript:void(0);"><span>
+                                                            <div class="demo-google-material-icon"><i class="material-icons">insert_drive_file</i> <span class="icon-name"></span></div>
+                                                    </span>View Order</a></li>
+                          
+                                                </ul>
+                                                {% elif bid.completed %}
+                                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        ACTION <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="javascript:void(0);"><span>
+                                                            <div class="demo-google-material-icon"><i class="material-icons">insert_drive_file</i> <span class="icon-name"></span></div>
+                                                    </span>View Order</a></li>
+                                                    </ul>
+                                                {% elif bid.expired %}
+                                                <button type="button" class="btn btn-primary disabled dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        ACTION <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="javascript:void(0);"><span>
+                                                                <div class="demo-google-material-icon"><i class="material-icons">insert_drive_file</i> <span class="icon-name"></span></div>
+                                                        </span>View Order</a></li>
+                              
+                                                    </ul>
+                                                    {% elif bid.approved %}
+                                                    <button type="button" class="btn btn-primary  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            ACTION <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="{% url 'writers:inprogress' bid.bidding_id.order_uuid %}"><span>
+                                                                    <div class="demo-google-material-icon"><i class="material-icons">insert_drive_file</i> <span class="icon-name"></span></div>
+                                                            </span>View Order</a></li>
+                                  
+                                                        </ul>
+                                                {% else %}
+                                                <button type="button" class="btn btn-primary disabled dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        ACTION <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="javascript:void(0);"><span>
+                                                                <div class="demo-google-material-icon"><i class="material-icons">insert_drive_file</i> <span class="icon-name"></span></div>
+                                                        </span>Place Order</a></li>
+                                                        </ul>
+                                                    {% endif %}
+
+                                                
+                                            </div>
+                    
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    
+                                </tbody>
+                                
+                            </table>
+                        </div>
+                        <nav>
+                            <ul class="pagination">
+                                <li class="disabled">
+                                    <a href="javascript:void(0);">
+                                        <i class="material-icons">chevron_left</i>
+                                    </a>
+                                </li>
+                                <li class="active"><a href="javascript:void(0);">1</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">2</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">3</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">4</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect">5</a></li>
+                                <li>
+                                    <a href="javascript:void(0);" class="waves-effect">
+                                        <i class="material-icons">chevron_right</i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Basic Table -->
+        </div>
+    </section>
+
+   {% endblock content %}

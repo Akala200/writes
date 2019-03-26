@@ -1,0 +1,201 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+     <!--================Home Banner Area =================-->
+     <section class="home_banner_area" style="height: 500px;">
+            <div class="banner_inner">
+                <div class="container">
+                    <div class="row banner_content"style="padding-top: 0px;">
+                        <div class="col-lg-9">
+                            <h2>Need to Write your Essay?</h2>
+                            <p style="font-size: 17px;">EssayPro is dedicated to helping customers achieve academic success. We offer all types of essay writing at student-friendly prices.</p>
+                        </div>
+                        <div class="col-lg-3">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+
+        
+        
+<section class="service_feature element_service">
+    <div class="container">
+        <div class="row">
+  <div class="col-lg-12 text-center">
+    <h2 class="section-heading">Features</h2>
+  </div>
+  </div>
+        <div class="row feature_inner">
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                        <img src="{% static 'img/clock.svg' %}" alt="" style="width: 65px">
+                    <h4>Delivering on Tight Deadlines</h4>
+                    <p>Always receive your essay before the deadline to let our writer make any necessary edits.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                        <img src="{% static 'img/anonymous.svg' %}" alt="" style="width: 65px">
+                    <h4>Guaranteed Anonymity</h4>
+                    <p>We don’t collect any personal info to preserve our reputation of being a secure and quality service.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                        <img src="{% static 'img/chat.svg' %}" alt="" style="width: 65px">
+                    <h4>Mimic Your Writing Style</h4>
+                    <p>Feel free to submit previous samples of your work to help our Pro’s mirror the way you write.</p>
+                </div>
+            </div>
+</div>
+<div class="row feature_inner">
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                        <img src="{% static 'img/card.svg' %}" alt="" style="width: 65px">
+                    <h4>All Subject Areas</h4>
+                    <p>Look through writer’s rates, of completed assignments and subject proficiency.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                        <img src="{% static 'img/search.svg' %}" alt="" style="width: 65px">
+                    <h4>100+ Writers Always Online</h4>
+                    <p>Place an order anytime and get price offers from Essay Kitten writers immediately.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                        <img src="{% static 'img/wallet.svg' %}" alt="" style="width: 65px">
+                    <h4>Quality Papers for a Great Price</h4>
+                    <p>Get even Dissertations for cheap - with student discounts of up to 33%!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Feature Area =================-->
+            <section class="interior_area interior_two">
+                    <div class="container">
+                        <div class="interior_inner row">
+                            <div class="col-lg-5 offset-lg-1">
+                                <div class="interior_text">
+                                    <h4>Who are Our Essay Writers?</h4>
+                                    <p style="font-size: 15px;">EssayPro writers are skilled native-speakers with experience in multiple subject areas. For example, admission essays are done by those whose proficiency is writing narratives and applications. Dissertations are written by the Ph.D. level writers with extensive writing experience. Each essay writer will work with you to explore and incorporate fresh ideas into the text.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <img class="img-fluid" src="{% static 'img/writter.svg' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+<section class="service_feature element_service">
+    <div class="container">
+        <div class="row">
+  </div>
+        <div class="row feature_inner">
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                        <img src="{% static 'img/clock.svg' %}" alt="" style="width: 65px">
+                    <h4>Any Deadline - Any Subject</h4>
+                    <p>Our professional paper writers can complete any assignment, regardless of topic or difficulty.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                        <img src="{% static 'img/phone.svg' %}" alt="" style="width: 65px">
+                    <h4>Email and SMS Notifications</h4>
+                    <p>Stay informed 24/7 through order updates, new chat messages, uploaded files, etc.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="feature_item">
+                        <img src="{% static 'img/chat.svg' %}" alt="" style="width: 65px">
+                    <h4>Online Writer Chat</h4>
+                    <p>Communicate with your writer at any time to discuss assignment details, request edits, etc.</p>
+                </div>
+            </div>
+</div>
+<div class="row text-center" style="padding: 40px;">
+    <div class="col-lg-12" id="buttonhigher">
+      <a class="banner_btn btn-header" id="findwriter" href="{% url 'account_login' %}">Find A Writer</a>
+    </div>
+</div>
+    </div>
+</section>
+<!--================End Feature Area =================-->
+    
+                      <section class="testimonials_area p_120">
+                            <div class="container">
+                              <div class="main_title">
+                                <h2>Customer Reviews</h2>
+                              </div>
+                              <div class="testi_slider owl-carousel row">
+                                <div class="item col-lg-6">
+                                  <div class="testi_item">
+                                <div class="media">
+                                  <div class="d-flex">
+                                    <img class="author_img rounded-circle" src="{% static 'img/customer3.jpg' %}" style="width: 130px; height: 150px; border-radius: 30%;" alt="">
+                                  </div>
+                                  <div class="media-body">
+                                    <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
+                                    <h4>Raye Neaves</h4>
+                                  </div>
+                                </div>
+                                  </div>
+                                </div>
+                                <div class="item col-lg-6">
+                                  <div class="testi_item">
+                                <div class="media">
+                                  <div class="d-flex">
+                                    <img class="author_img rounded-circle" src="{% static 'img/cuuz.jpg' %}" style="width: 130px; height: 150px; border-radius: 30%;" alt="">
+                                  </div>
+                                  <div class="media-body">
+                                    <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
+                                    <h4>Maile Concannons</h4>
+                                  </div>
+                                </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="testi_slider owl-carousel row">
+                                <div class="item col-lg-6">
+                                  <div class="testi_item">
+                                <div class="media">
+                                  <div class="d-flex">
+                                    <img class="author_img rounded-circle" src="{% static 'img/profile3.png' %}" style="width: 130px; height: 150px; border-radius: 30%;" alt="">
+                                  </div>
+                                  <div class="media-body">
+                                    <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
+                                    <h4>Season Lucier</h4>
+                                  </div>
+                                </div>
+                                  </div>
+                                </div>
+                                <div class="item col-lg-6">
+                                  <div class="testi_item">
+                                <div class="media">
+                                  <div class="d-flex">
+                                    <img class="author_img rounded-circle" src="{% static 'img/third.jpg' %}" style="width: 130px; height: 150px; border-radius: 30%;" alt="">
+                                  </div>
+                                  <div class="media-body">
+                                    <p>Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector, hardware.</p>
+                                    <h4>Lita Kenan</h4>
+                                  </div>
+                                </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="text-center" style="margin-top: 60px;">
+                              <a class="banner_btn btn-header" href="{%  url 'reviews' %}" style="border-radius: 20px;">View All</a>
+                            </div>
+                            </div>
+                          </section>
+{% endblock content %}

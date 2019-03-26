@@ -1,0 +1,88 @@
+{% extends 'view/base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+        <div class="content mt-3">
+            <div class="animated fadeIn">
+                <div class="container">
+
+                <div class="row" style="padding-left: 270px; padding-right: 270px; padding-top: 50px;">
+
+                    <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">User Profile</strong>
+                            </div>
+                            <div class="card-body">
+
+                                    <div class="form-group"><label for="company" class=" form-control-label">Full Name</label><input type="text" id="company" placeholder="Enter your fullname" class="form-control"></div>
+                                    <div class="form-group"><label for="company" class=" form-control-label">Headline</label><input type="text" id="company" placeholder="Enter your bio" class="form-control"></div>
+                                    <div class="col-12 col-md-12 form-group "><textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Lets meet you..." class="form-control"></textarea></div>
+
+                                  <select data-placeholder="Choose a Country..." class="standardSelect" tabindex="1" style="margin-top: 30px;">
+                                    <option value=""></option>
+                                    <option value="United States">United States</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="Afghanistan">Afghanistan</option>
+                                    <option value="Aland Islands">Aland Islands</option>
+                                    <option value="Albania">Albania</option>
+                                    <option value="Algeria">Algeria</option>
+                                    <option value="American Samoa">American Samoa</option>
+                                    <option value="Andorra">Andorra</option>
+                                    <option value="Angola">Angola</option>
+                                    <option value="Anguilla">Anguilla</option>
+                                    <option value="Antarctica">Antarctica</option>
+                                </select>
+                                
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Interest</strong>
+                            </div>
+                            <div class="card-body">
+
+                                  <select data-placeholder="Select subject" multiple class="standardSelect">
+                                    <option value=""></option>
+                                    <option value="United States">Math</option>
+                                    <option value="United Kingdom">English</option>
+                                    <option value="Afghanistan">Economics</option>
+                                    <option value="Aland Islands">Aland Islands</option>
+                                    <option value="Albania">Albania</option>
+                                    <option value="Algeria">Algeria</option>
+                                    <option value="American Samoa">American Samoa</option>
+                                    <option value="Andorra">Andorra</option>
+                                    <option value="Angola">Angola</option>
+                                    <option value="Anguilla">Anguilla</option>
+                                    <option value="Antarctica">Antarctica</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Profile picture</strong>
+                            </div>
+                            <div class="card-body">
+                                <div class="row form-group">
+                            <div class="col-12"><input type="file" id="file-input" name="file-input" class="form-control-file" aria-required="true"></div>
+                          </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+
+
+
+                </div>
+
+
+            </div><!-- .animated -->
+    
+
+    {% endblock content %}
