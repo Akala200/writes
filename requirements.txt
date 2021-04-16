@@ -14,7 +14,7 @@ django-bootstrap3-datetimepicker==2.2.3
 django-bootstrap4-datetimepicker==4.2
 django-cors-headers==2.4.0
 django-datetime-widget==0.9.3
-django-debug-toolbar==1.9.1
+django-debug-toolbar==1.11.1
 django-multiselectfield==0.1.8
 django-ranged-response==0.2.0
 -e git+https://github.com/gbozee/django-ravepay.git@cc9fba3440457ee2941bee2db464520eb00ad98e#egg=django_ravepay
